@@ -1,0 +1,140 @@
+"""
+Tkinter window: pick an image file, preview it, run local PaddleOCR, show text.
+"""
+
+from __future__ import annotations
+
+import os
+import threading
+import tkinter as tk
+from tkinter import filedialog, messagebox, ttk
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from PIL import Image
+
+os.environ.setdefault("PADDLE_PDX_DISABLE_MODEL_SOURCE_CHECK", "True")
+
+# ocr_captcha import is light; Paddle weights load on first Smart Scan (smart_scan).
+from ocr_captcha import smart_scan
+
+
+def _load_preview(path: str, max_w: int, max_h: int) -> "Image.Image":
+    from PIL import Image
+
+    im = Image.open(path)
+    im = im.convert("RGB")
+    im.thumbnail((max_w, max_h), Image.Resampling.LANCZOS)
+    return im
+
+
+class OcrApp(tk.Tk):
+    def __init__(self) -> None:
+        super().__init__()
+        self.title("CAPTCHA — Smart Scan (PaddleOCR, local)")
+        self.minsize(520, 420)
+        self._image_path: str | None = None
+        self._photo: tk.PhotoImage | None = None
+
+        pad = {"padx": 10, "pady": 6}
+        frm = ttk.Frame(self, padding=10)
+        frm.pack(fill=tk.BOTH, expand=True)
+
+        btn_row = ttk.Frame(frm)
+        btn_row.pack(fill=tk.X, **pad)
+        ttk.Button(btn_row, text="Image chuno…", command=self._pick_image).pack(
+            side=tk.LEFT, padx=(0, 8)
+        )
+        self._ocr_btn = ttk.Button(
+            btn_row, text="Smart Scan chalao", command=self._run_ocr, state=tk.DISABLED
+        )
+        self._ocr_btn.pack(side=tk.LEFT, padx=(0, 8))
+        ttk.Button(btn_row, text="Copy text", command=self._copy_text).pack(
+            side=tk.LEFT
+        )
+
+        self._status = ttk.Label(frm, text="Pehle ek image select karo.")
+        self._status.pack(anchor=tk.W, **pad)
+
+        preview_frame = ttk.LabelFrame(frm, text="Preview", padding=6)
+        preview_frame.pack(fill=tk.BOTH, expand=True, **pad)
+        self._preview_label = ttk.Label(preview_frame, anchor=tk.CENTER)
+        self._preview_label.pack(fill=tk.BOTH, expand=True)
+
+        out_frame = ttk.LabelFrame(frm, text="OCR result", padding=6)
+        out_frame.pack(fill=tk.BOTH, expand=False, **pad)
+        self._text = tk.Text(out_frame, height=4, wrap=tk.WORD, font=("Consolas", 11))
+        self._text.pack(fill=tk.BOTH, expand=True)
+
+    def _pick_image(self) -> None:
+        path = filedialog.askopenfilename(
+            title="Image select karo",
+            filetypes=[
+                ("Images", "*.png *.jpg *.jpeg *.gif *.bmp *.webp *.tif *.tiff"),
+                ("Sab files", "*.*"),
+            ],
+        )
+        if not path:
+            return
+        self._image_path = path
+        self._ocr_btn.config(state=tk.NORMAL)
+        self._status.config(text=f"File: {path}")
+        self._text.delete("1.0", tk.END)
+        try:
+            from PIL import ImageTk
+
+            im = _load_preview(path, max_w=560, max_h=320)
+            self._photo = ImageTk.PhotoImage(im)
+            self._preview_label.config(image=self._photo)
+        except Exception as e:
+            self._preview_label.config(image="")
+            self._photo = None
+            messagebox.showerror("Preview error", str(e))
+
+    def _run_ocr(self) -> None:
+        if not self._image_path:
+            return
+        self._ocr_btn.config(state=tk.DISABLED)
+        self._status.config(text="Smart Scan chal raha hai… thoda wait.")
+        self.config(cursor="watch")
+        path = self._image_path
+
+        def work() -> None:
+            try:
+                out = smart_scan(path)
+            except Exception as e:
+                self.after(0, lambda: self._ocr_done_error(str(e)))
+                return
+            self.after(0, lambda: self._ocr_done_ok(out))
+
+        threading.Thread(target=work, daemon=True).start()
+
+    def _ocr_done_ok(self, out: str) -> None:
+        self.config(cursor="")
+        self._ocr_btn.config(state=tk.NORMAL)
+        self._status.config(text=f"Done: {self._image_path}")
+        self._text.delete("1.0", tk.END)
+        self._text.insert(tk.END, out if out else "(koi text detect nahi hua)")
+
+    def _ocr_done_error(self, msg: str) -> None:
+        self.config(cursor="")
+        self._ocr_btn.config(state=tk.NORMAL)
+        self._status.config(text="Error.")
+        messagebox.showerror("Smart Scan error", msg)
+
+    def _copy_text(self) -> None:
+        t = self._text.get("1.0", tk.END).strip()
+        if not t or t == "(koi text detect nahi hua)":
+            return
+        self.clipboard_clear()
+        self.clipboard_append(t)
+        self._status.config(text="Clipboard mein copy ho gaya.")
+
+
+def main() -> None:
+    app = OcrApp()
+    app.mainloop()
+
+
+if __name__ == "__main__":
+    main()

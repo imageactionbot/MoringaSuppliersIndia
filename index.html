@@ -1,140 +1,1209 @@
-"""
-Tkinter window: pick an image file, preview it, run local PaddleOCR, show text.
-"""
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Moringa Suppliers India | #1 Guide to Organic Moringa from India</title>
+  <meta name="description" content="Complete guide to Moringa suppliers in India. 80% global supply. Products, health benefits, pros & cons, verification documents for international buyers. Pure information." />
+  <meta name="keywords" content="moringa suppliers india, organic moringa powder india, certified moringa exporters, moringa products list, moringa health benefits, moringa pros and cons, NPOP certified moringa, USDA organic moringa india, moringa buyer guide" />
+  <meta name="author" content="MoringaSuppliersIndia.com" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://moringasuppliersindia.com/" />
+  
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C7LEYP2M1L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-C7LEYP2M1L');
+  </script>
 
-from __future__ import annotations
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Moringa Suppliers India | Complete Buyer's Guide" />
+  <meta property="og:description" content="Your trusted resource for Moringa from India — products, benefits, pros & cons, suppliers, and verification documents." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1547592180-85f173990554?w=1200&q=80" />
+  <meta property="og:url" content="https://moringasuppliersindia.com/" />
+  <meta property="og:site_name" content="MoringaSuppliersIndia" />
 
-import os
-import threading
-import tkinter as tk
-from tkinter import filedialog, messagebox, ttk
-from typing import TYPE_CHECKING
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Moringa Suppliers India | Buyer's Guide" />
+  <meta name="twitter:description" content="Everything global buyers need to know about sourcing Moringa from India." />
 
-if TYPE_CHECKING:
-    from PIL import Image
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Moringa Suppliers India - Complete Buyer's Guide",
+    "description": "Informational guide for global buyers on Moringa from India — products, health benefits, pros & cons, top suppliers, and verification documents.",
+    "url": "https://moringasuppliersindia.com/",
+    "publisher": {
+      "@type": "Organization",
+      "name": "MoringaSuppliersIndia",
+      "url": "https://moringasuppliersindia.com/"
+    }
+  }
+  </script>
 
-os.environ.setdefault("PADDLE_PDX_DISABLE_MODEL_SOURCE_CHECK", "True")
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-# ocr_captcha import is light; Paddle weights load on first Smart Scan (smart_scan).
-from ocr_captcha import smart_scan
+  <style>
+    /* ============================================
+       PRODUCTION LEVEL CSS - VERSION 2.0
+       Consistent Container System | Pros/Cons | SEO Optimized
+       Domain: moringasuppliersindia.com
+    ============================================ */
+    
+    /* CSS Reset & Variables */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    :root {
+      --green-deep: #0a2e15;
+      --green-dark: #1a5f2a;
+      --green-main: #2d8a3a;
+      --green-mid: #4cae5a;
+      --green-light: #b8e0c0;
+      --green-pale: #eef7f0;
+      --green-ultra: #f5fcf6;
+      --gold: #d4a53a;
+      --gold-dark: #b8860b;
+      --gold-light: #fef5e6;
+      --text-dark: #1a2e1c;
+      --text-body: #2d4a33;
+      --text-muted: #6b8d6f;
+      --text-light: #9bb89e;
+      --white: #ffffff;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.04), 0 4px 12px rgba(45,138,58,0.06);
+      --shadow-md: 0 8px 24px rgba(0,0,0,0.06), 0 12px 32px rgba(45,138,58,0.10);
+      --shadow-lg: 0 25px 50px -12px rgba(0,0,0,0.15);
+      --shadow-xl: 0 35px 60px -15px rgba(0,0,0,0.2);
+      --radius-sm: 8px;
+      --radius: 16px;
+      --radius-lg: 24px;
+      --radius-xl: 32px;
+      --container: 1280px;
+      --container-padding: 2rem;
+      --section-spacing: 5rem;
+      --section-spacing-mobile: 3rem;
+    }
 
-def _load_preview(path: str, max_w: int, max_h: int) -> "Image.Image":
-    from PIL import Image
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 85px;
+      font-size: 16px;
+    }
 
-    im = Image.open(path)
-    im = im.convert("RGB")
-    im.thumbnail((max_w, max_h), Image.Resampling.LANCZOS)
-    return im
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-body);
+      background: var(--white);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
 
+    /* Typography */
+    h1, h2, h3, h4, h5, h6, .serif, .logo {
+      font-family: 'Playfair Display', serif;
+    }
 
-class OcrApp(tk.Tk):
-    def __init__(self) -> None:
-        super().__init__()
-        self.title("CAPTCHA — Smart Scan (PaddleOCR, local)")
-        self.minsize(520, 420)
-        self._image_path: str | None = None
-        self._photo: tk.PhotoImage | None = None
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--green-deep);
+    }
 
-        pad = {"padx": 10, "pady": 6}
-        frm = ttk.Frame(self, padding=10)
-        frm.pack(fill=tk.BOTH, expand=True)
+    h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      color: var(--green-deep);
+      margin-bottom: 0.5rem;
+    }
 
-        btn_row = ttk.Frame(frm)
-        btn_row.pack(fill=tk.X, **pad)
-        ttk.Button(btn_row, text="Image chuno…", command=self._pick_image).pack(
-            side=tk.LEFT, padx=(0, 8)
-        )
-        self._ocr_btn = ttk.Button(
-            btn_row, text="Smart Scan chalao", command=self._run_ocr, state=tk.DISABLED
-        )
-        self._ocr_btn.pack(side=tk.LEFT, padx=(0, 8))
-        ttk.Button(btn_row, text="Copy text", command=self._copy_text).pack(
-            side=tk.LEFT
-        )
+    h3 {
+      font-size: clamp(1.2rem, 2vw, 1.4rem);
+      font-weight: 600;
+      color: var(--green-dark);
+      margin-bottom: 0.5rem;
+    }
 
-        self._status = ttk.Label(frm, text="Pehle ek image select karo.")
-        self._status.pack(anchor=tk.W, **pad)
+    /* Container System - Consistent spacing everywhere */
+    .container {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 var(--container-padding);
+      width: 100%;
+    }
 
-        preview_frame = ttk.LabelFrame(frm, text="Preview", padding=6)
-        preview_frame.pack(fill=tk.BOTH, expand=True, **pad)
-        self._preview_label = ttk.Label(preview_frame, anchor=tk.CENTER)
-        self._preview_label.pack(fill=tk.BOTH, expand=True)
+    /* Section Spacing - Consistent */
+    section {
+      padding: var(--section-spacing) 0;
+    }
 
-        out_frame = ttk.LabelFrame(frm, text="OCR result", padding=6)
-        out_frame.pack(fill=tk.BOTH, expand=False, **pad)
-        self._text = tk.Text(out_frame, height=4, wrap=tk.WORD, font=("Consolas", 11))
-        self._text.pack(fill=tk.BOTH, expand=True)
+    @media (max-width: 768px) {
+      section {
+        padding: var(--section-spacing-mobile) 0;
+      }
+      :root {
+        --container-padding: 1.25rem;
+      }
+    }
 
-    def _pick_image(self) -> None:
-        path = filedialog.askopenfilename(
-            title="Image select karo",
-            filetypes=[
-                ("Images", "*.png *.jpg *.jpeg *.gif *.bmp *.webp *.tif *.tiff"),
-                ("Sab files", "*.*"),
-            ],
-        )
-        if not path:
-            return
-        self._image_path = path
-        self._ocr_btn.config(state=tk.NORMAL)
-        self._status.config(text=f"File: {path}")
-        self._text.delete("1.0", tk.END)
-        try:
-            from PIL import ImageTk
+    /* Utility Classes */
+    .section-header {
+      text-align: center;
+      max-width: 750px;
+      margin: 0 auto 3rem;
+    }
 
-            im = _load_preview(path, max_w=560, max_h=320)
-            self._photo = ImageTk.PhotoImage(im)
-            self._preview_label.config(image=self._photo)
-        except Exception as e:
-            self._preview_label.config(image="")
-            self._photo = None
-            messagebox.showerror("Preview error", str(e))
+    .section-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green-main);
+      margin-bottom: 1rem;
+    }
 
-    def _run_ocr(self) -> None:
-        if not self._image_path:
-            return
-        self._ocr_btn.config(state=tk.DISABLED)
-        self._status.config(text="Smart Scan chal raha hai… thoda wait.")
-        self.config(cursor="watch")
-        path = self._image_path
+    .section-tag::before {
+      content: '— ';
+    }
 
-        def work() -> None:
-            try:
-                out = smart_scan(path)
-            except Exception as e:
-                self.after(0, lambda: self._ocr_done_error(str(e)))
-                return
-            self.after(0, lambda: self._ocr_done_ok(out))
+    .divider-center {
+      width: 70px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--green-main), var(--gold));
+      border-radius: 3px;
+      margin: 1.2rem auto;
+    }
 
-        threading.Thread(target=work, daemon=True).start()
+    .divider-left {
+      width: 70px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--green-main), var(--gold));
+      border-radius: 3px;
+      margin: 1rem 0 1.8rem 0;
+    }
 
-    def _ocr_done_ok(self, out: str) -> None:
-        self.config(cursor="")
-        self._ocr_btn.config(state=tk.NORMAL)
-        self._status.config(text=f"Done: {self._image_path}")
-        self._text.delete("1.0", tk.END)
-        self._text.insert(tk.END, out if out else "(koi text detect nahi hua)")
+    /* Grid Systems */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+    }
 
-    def _ocr_done_error(self, msg: str) -> None:
-        self.config(cursor="")
-        self._ocr_btn.config(state=tk.NORMAL)
-        self._status.config(text="Error.")
-        messagebox.showerror("Smart Scan error", msg)
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
 
-    def _copy_text(self) -> None:
-        t = self._text.get("1.0", tk.END).strip()
-        if not t or t == "(koi text detect nahi hua)":
-            return
-        self.clipboard_clear()
-        self.clipboard_append(t)
-        self._status.config(text="Clipboard mein copy ho gaya.")
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
 
+    @media (max-width: 900px) {
+      .grid-2, .grid-3, .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+    }
 
-def main() -> None:
-    app = OcrApp()
-    app.mainloop()
+    @media (max-width: 600px) {
+      .grid-2, .grid-3, .grid-4 {
+        grid-template-columns: 1fr;
+      }
+    }
 
+    /* Cards */
+    .card {
+      background: var(--white);
+      border: 1px solid rgba(45,138,58,0.12);
+      border-radius: var(--radius);
+      padding: 1.8rem;
+      transition: all 0.3s ease;
+    }
 
-if __name__ == "__main__":
-    main()
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--green-light);
+    }
+
+    /* Navigation */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(45,138,58,0.12);
+      z-index: 1000;
+      padding: 0.75rem 0;
+      transition: all 0.3s;
+    }
+
+    .navbar.scrolled {
+      box-shadow: var(--shadow-sm);
+      padding: 0.5rem 0;
+    }
+
+    .nav-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 var(--container-padding);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--green-main);
+    }
+
+    .mobile-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .mobile-toggle span {
+      width: 25px;
+      height: 2px;
+      background: var(--green-dark);
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--green-ultra) 0%, var(--white) 70%);
+      display: flex;
+      align-items: center;
+      padding-top: 90px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--gold-light);
+      border: 1px solid var(--gold);
+      color: var(--gold-dark);
+      border-radius: 100px;
+      padding: 6px 18px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      margin: 2rem 0;
+    }
+
+    .stat-num {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--green-main);
+      font-family: 'Playfair Display', serif;
+    }
+
+    .stat-label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .pill {
+      background: var(--green-pale);
+      border: 1px solid var(--green-light);
+      color: var(--green-dark);
+      border-radius: 100px;
+      padding: 8px 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .pill:hover {
+      background: var(--green-main);
+      color: white;
+      border-color: var(--green-main);
+      transform: translateY(-2px);
+    }
+
+    .hero-image {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-xl);
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* Pros & Cons Section */
+    .proscons-section {
+      background: var(--green-ultra);
+    }
+
+    .proscons-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .pros-card, .cons-card {
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: all 0.3s;
+    }
+
+    .pros-card {
+      background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+      border: 1px solid var(--green-light);
+    }
+
+    .cons-card {
+      background: linear-gradient(135deg, #fef5e6 0%, #fce4b2 100%);
+      border: 1px solid var(--gold-light);
+    }
+
+    .pros-card h3, .cons-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pros-list, .cons-list {
+      list-style: none;
+    }
+
+    .pros-list li, .cons-list li {
+      padding: 0.6rem 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .pros-list li::before {
+      content: "✓";
+      color: var(--green-main);
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .cons-list li::before {
+      content: "✗";
+      color: var(--gold-dark);
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    /* Products Grid */
+    .product-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    /* Benefits Section - Dark */
+    .benefits-section {
+      background: linear-gradient(135deg, var(--green-deep) 0%, var(--green-dark) 100%);
+      color: white;
+    }
+
+    .benefits-section .section-tag {
+      color: var(--green-light);
+    }
+
+    .benefits-section h2 {
+      color: white;
+    }
+
+    .benefits-section .card {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(8px);
+      border-color: rgba(255,255,255,0.15);
+    }
+
+    .benefits-section .card h3 {
+      color: var(--green-light);
+    }
+
+    .benefits-section .card p {
+      color: rgba(255,255,255,0.7);
+    }
+
+    /* Supplier Table */
+    .suppliers-section {
+      background: var(--green-ultra);
+    }
+
+    .info-box {
+      background: var(--gold-light);
+      border-left: 4px solid var(--gold);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.5rem;
+      margin-bottom: 2rem;
+      font-size: 0.85rem;
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--white);
+    }
+
+    th {
+      background: var(--green-dark);
+      color: var(--green-light);
+      padding: 1rem;
+      text-align: left;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--green-pale);
+      font-size: 0.85rem;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background: var(--green-ultra);
+    }
+
+    .cert-tag {
+      display: inline-block;
+      background: var(--green-pale);
+      color: var(--green-dark);
+      border-radius: 100px;
+      padding: 3px 12px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      margin: 2px;
+    }
+
+    /* Documents Section */
+    .doc-item {
+      background: var(--green-ultra);
+      border: 1px solid var(--green-pale);
+      border-radius: var(--radius-sm);
+      padding: 1.2rem;
+      display: flex;
+      gap: 15px;
+      transition: all 0.2s;
+    }
+
+    .doc-item:hover {
+      transform: translateX(4px);
+      border-color: var(--green-light);
+    }
+
+    .doc-check {
+      width: 28px;
+      height: 28px;
+      background: var(--green-main);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+    }
+
+    .doc-check-opt {
+      background: var(--gold);
+    }
+
+    /* FAQ */
+    .faq-section {
+      background: var(--green-ultra);
+    }
+
+    .faq-item {
+      background: var(--white);
+      border: 1px solid var(--green-pale);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+
+    .faq-question {
+      font-weight: 700;
+      color: var(--green-dark);
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      gap: 10px;
+    }
+
+    .faq-question::before {
+      content: "Q:";
+      color: var(--green-main);
+      font-weight: 800;
+    }
+
+    .faq-answer {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      padding-left: 28px;
+    }
+
+    /* Disclaimer */
+    .disclaimer {
+      background: var(--green-deep);
+      text-align: center;
+    }
+
+    .disclaimer-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .disclaimer-content p {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.8rem;
+      line-height: 1.7;
+    }
+
+    /* Footer */
+    footer {
+      background: #0a2410;
+      padding: 3rem 0 2rem;
+    }
+
+    .footer-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 var(--container-padding);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      color: var(--green-light);
+      font-size: 1rem;
+    }
+
+    .footer-logo span {
+      color: var(--gold);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-size: 0.75rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--green-light);
+    }
+
+    .footer-copyright {
+      color: rgba(255,255,255,0.3);
+      font-size: 0.7rem;
+    }
+
+    /* Scroll Top */
+    .scroll-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--green-main);
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 1.2rem;
+      box-shadow: var(--shadow-md);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s;
+      z-index: 999;
+    }
+
+    .scroll-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .scroll-top:hover {
+      background: var(--green-dark);
+      transform: translateY(-3px);
+    }
+
+    /* Cookie Notice */
+    .cookie-notice {
+      position: fixed;
+      bottom: 1rem;
+      left: 1rem;
+      right: 1rem;
+      max-width: 380px;
+      background: var(--green-deep);
+      color: white;
+      padding: 1rem 1.2rem;
+      border-radius: var(--radius);
+      z-index: 1001;
+      box-shadow: var(--shadow-lg);
+      font-size: 0.75rem;
+      display: none;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .cookie-notice button {
+      background: var(--gold);
+      border: none;
+      padding: 6px 18px;
+      border-radius: 100px;
+      color: var(--green-deep);
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.7rem;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      display: none;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+      }
+      .mobile-toggle {
+        display: flex;
+      }
+      .hero-content {
+        grid-template-columns: 1fr;
+      }
+      .hero-image {
+        display: none;
+      }
+      .proscons-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Reveal Animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="/" class="logo">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <path d="M16 4C10 4 5 10 5 18C5 24 10 28 16 28C22 28 27 24 27 18C27 10 22 4 16 4Z" fill="#2d8a3a" opacity="0.15"/>
+        <path d="M16 4C16 4 8 8 8 18C8 24 11.5 28 16 28" stroke="#2d8a3a" stroke-width="2" stroke-linecap="round"/>
+        <path d="M16 4C16 4 24 8 24 18C24 24 20.5 28 16 28" stroke="#2d8a3a" stroke-width="2" stroke-linecap="round"/>
+        <path d="M16 28V14" stroke="#2d8a3a" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      Moringa<span>Suppliers</span>India
+    </a>
+    <ul class="nav-links">
+      <li><a href="#what-is-moringa">About</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#pros-cons">Pros & Cons</a></li>
+      <li><a href="#benefits">Benefits</a></li>
+      <li><a href="#suppliers">Suppliers</a></li>
+      <li><a href="#documents">Documents</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <div class="mobile-toggle" id="mobileToggle">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div style="display:flex; flex-direction:column; gap:1rem;">
+    <a href="#what-is-moringa">About Moringa</a>
+    <a href="#products">Products</a>
+    <a href="#pros-cons">Pros & Cons</a>
+    <a href="#benefits">Benefits</a>
+    <a href="#suppliers">Suppliers</a>
+    <a href="#documents">Documents</a>
+    <a href="#faq">FAQ</a>
+  </div>
+</div>
+
+<style>
+  .mobile-menu {
+    position: fixed;
+    top: 65px;
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--green-pale);
+    z-index: 999;
+    display: none;
+    box-shadow: var(--shadow-sm);
+  }
+  .mobile-menu a {
+    display: block;
+    padding: 0.6rem 0;
+    color: var(--text-body);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid var(--green-pale);
+  }
+  .mobile-menu a:last-child {
+    border-bottom: none;
+  }
+</style>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div>
+        <div class="hero-badge">🇮🇳 India's #1 Moringa Resource</div>
+        <h1>Your Complete Guide to <span style="color: var(--green-main);">Moringa</span> from India</h1>
+        <p style="font-size: 1.05rem; color: var(--text-muted); margin: 1rem 0;">Trusted informational resource for international buyers — products, benefits, pros & cons, and verification documents.</p>
+        <div class="hero-stats">
+          <div><div class="stat-num">80%</div><div class="stat-label">Global Supply from India</div></div>
+          <div><div class="stat-num">10+</div><div class="stat-label">Product Forms</div></div>
+          <div><div class="stat-num">92+</div><div class="stat-label">Nutrients</div></div>
+        </div>
+        <div class="hero-pills">
+          <a href="#what-is-moringa" class="pill">What is Moringa?</a>
+          <a href="#products" class="pill">Products</a>
+          <a href="#pros-cons" class="pill">Pros & Cons</a>
+          <a href="#documents" class="pill">Verification Guide</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="moringa.png" alt="Fresh Moringa leaves and powder from India" width="600" height="700">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- What is Moringa -->
+<section id="what-is-moringa">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">About the Plant</span>
+      <h2>What is Moringa?</h2>
+      <div class="divider-center"></div>
+      <p style="color: var(--text-muted); max-width: 700px; margin: 0 auto;">Moringa oleifera — the "Miracle Tree" native to India — is one of the most nutrient-dense plants on Earth.</p>
+    </div>
+    <div class="grid-2" style="margin-top: 2rem;">
+      <div class="card">
+        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🌱</div>
+        <h3>Native to India</h3>
+        <p>Cultivated for over 4,000 years across the Indian subcontinent. Every part of the tree — leaves, pods, seeds, flowers, roots, bark — has nutritional and medicinal value.</p>
+      </div>
+      <div class="card">
+        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🌍</div>
+        <h3>80% Global Share</h3>
+        <p>India is the world's largest producer and exporter of Moringa, dominating global supply. Tamil Nadu, Maharashtra, and Andhra Pradesh are primary growing regions.</p>
+      </div>
+      <div class="card">
+        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔬</div>
+        <h3>92+ Nutrients</h3>
+        <p>Contains 9 essential amino acids, 27 vitamins, 46 antioxidants, and minerals including calcium, iron, magnesium, potassium, and zinc.</p>
+      </div>
+      <div class="card">
+        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🌿</div>
+        <h3>Whole Tree Use</h3>
+        <p>Leaves to powder, seeds to oil, pods to drumsticks — nothing goes to waste. Moringa is truly a zero-waste crop with commercial value in every part.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Products Section -->
+<section id="products" style="background: var(--green-ultra);">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Product Range</span>
+      <h2>What Products Are Made from Moringa?</h2>
+      <div class="divider-center"></div>
+      <p>Moringa is incredibly versatile. Here are the major commercial products exported from India.</p>
+    </div>
+    <div class="grid-4">
+      <div class="card"><span class="product-icon">🌿</span><h3>Moringa Leaf Powder</h3><p>The most popular form. Rich in vitamins, minerals & antioxidants.</p></div>
+      <div class="card"><span class="product-icon">💊</span><h3>Capsules & Tablets</h3><p>Convenient daily dietary supplement for consistent dosing.</p></div>
+      <div class="card"><span class="product-icon">🍵</span><h3>Moringa Tea</h3><p>Dried leaves infused as herbal tea. Popular in wellness markets.</p></div>
+      <div class="card"><span class="product-icon">🌰</span><h3>Moringa Oil</h3><p>Cold-pressed from seeds. Used in cosmetics, hair care & cooking.</p></div>
+      <div class="card"><span class="product-icon">🥜</span><h3>Moringa Seeds</h3><p>Used for planting, water purification, and oil extraction.</p></div>
+      <div class="card"><span class="product-icon">📦</span><h3>Dried Drumsticks</h3><p>Long green pods, dried and packaged for global cuisine.</p></div>
+      <div class="card"><span class="product-icon">🧴</span><h3>Moringa Skincare</h3><p>Soaps, creams, lotions, and anti-aging serums.</p></div>
+      <div class="card"><span class="product-icon">🍲</span><h3>Fortified Foods</h3><p>Added to protein powders, health drinks, and snacks.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Pros & Cons Section - NEW -->
+<section id="pros-cons" class="proscons-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Balanced View</span>
+      <h2>Moringa: Pros & Cons</h2>
+      <div class="divider-center"></div>
+      <p>Everything you need to know before buying Moringa from India.</p>
+    </div>
+    <div class="proscons-grid">
+      <div class="pros-card">
+        <h3>✓ Pros (Advantages)</h3>
+        <ul class="pros-list">
+          <li>Extremely high nutrient density — 7x more Vitamin C than oranges, 4x more calcium than milk</li>
+          <li>Rich in antioxidants that fight oxidative stress and inflammation</li>
+          <li>May help lower blood sugar and cholesterol naturally</li>
+          <li>Supports immune system, bone health, and lactation</li>
+          <li>Sustainable crop — drought-resistant, fast-growing, zero-waste plant</li>
+          <li>India supplies 80% of global demand — consistent availability</li>
+          <li>Multiple product forms (powder, oil, capsules, tea, seeds)</li>
+          <li>Certified organic options available with proper documentation</li>
+        </ul>
+      </div>
+      <div class="cons-card">
+        <h3>✗ Cons (Disadvantages)</h3>
+        <ul class="cons-list">
+          <li>Not all Moringa from India is certified organic — verify documents carefully</li>
+          <li>Can interact with blood thinners, diabetes medication, and thyroid drugs</li>
+          <li>Improper storage leads to nutrient loss and potential contamination</li>
+          <li>May cause digestive issues (nausea, gas) if consumed in large quantities</li>
+          <li>Roots contain alkaloids that can be toxic in high amounts</li>
+          <li>Pregnant women should consult doctor before consuming</li>
+          <li>Lower-quality products may contain fillers or adulteration</li>
+          <li>International shipping costs can be high for bulk orders</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Benefits Section -->
+<section id="benefits" class="benefits-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Health & Wellness</span>
+      <h2>Scientifically Proven Benefits</h2>
+      <div class="divider-center"></div>
+      <p style="color: rgba(255,255,255,0.7);">Research supports multiple health benefits of Moringa consumption.</p>
+    </div>
+    <div class="grid-2">
+      <div class="card reveal"><div style="font-size: 1.8rem;">🛡️</div><h3>Rich in Antioxidants</h3><p>Contains quercetin, chlorogenic acid, and beta-carotene that protect cells from oxidative damage.</p></div>
+      <div class="card reveal"><div style="font-size: 1.8rem;">🔥</div><h3>Anti-Inflammatory</h3><p>Isothiocyanates in Moringa naturally reduce swelling, pain, and chronic inflammation.</p></div>
+      <div class="card reveal"><div style="font-size: 1.8rem;">🩸</div><h3>Blood Sugar Control</h3><p>Studies show Moringa may help lower blood glucose levels in people with diabetes.</p></div>
+      <div class="card reveal"><div style="font-size: 1.8rem;">❤️</div><h3>Heart Health</h3><p>May reduce cholesterol and blood pressure, supporting cardiovascular health.</p></div>
+      <div class="card reveal"><div style="font-size: 1.8rem;">🧠</div><h3>Brain Health</h3><p>Antioxidants and neuro-enhancing compounds support memory and cognitive function.</p></div>
+      <div class="card reveal"><div style="font-size: 1.8rem;">🦴</div><h3>Strong Bones</h3><p>High calcium (4x more than milk), magnesium, and vitamin K content.</p></div>
+      <div class="card reveal"><div style="font-size: 1.8rem;">🌙</div><h3>Immunity Booster</h3><p>Rich in vitamin C (7x more than oranges), zinc, and iron.</p></div>
+      <div class="card reveal"><div style="font-size: 1.8rem;">👶</div><h3>Lactation Support</h3><p>Traditionally used to support breast milk production in nursing mothers.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Suppliers Section -->
+<section id="suppliers" class="suppliers-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Informational Reference</span>
+      <h2>Top Indian Moringa Suppliers</h2>
+      <div class="divider-center"></div>
+      <p>Well-known Moringa suppliers based in India. This information is for reference only.</p>
+    </div>
+    <div class="info-box">
+      📌 <strong>Important Note:</strong> No contact details, phone numbers, or email addresses are provided. Buyers must independently research and verify all suppliers before any transaction.
+    </div>
+    <div class="table-wrapper">
+      <table>
+        <thead><tr><th>#</th><th>Supplier Name</th><th>Location</th><th>Known Certifications</th></tr></thead>
+        <tbody>
+          <tr><td>01</td><td><strong>Organic India</strong></td><td>Multiple States</td><td><span class="cert-tag">USDA Organic</span> <span class="cert-tag">EU Organic</span> <span class="cert-tag">NPOP</span></td></tr>
+          <tr><td>02</td><td><strong>Grenera Nutrients</strong></td><td>Tamil Nadu</td><td><span class="cert-tag">USDA Organic</span> <span class="cert-tag">EU Organic</span> <span class="cert-tag">Kosher</span> <span class="cert-tag">Halal</span></td></tr>
+          <tr><td>03</td><td><strong>The Himalaya Drug Company</strong></td><td>Karnataka</td><td><span class="cert-tag">GMP</span> <span class="cert-tag">Herbal Expertise</span></td></tr>
+          <tr><td>04</td><td><strong>Ancient Greenfields</strong></td><td>Tamil Nadu</td><td><span class="cert-tag">Organic Certified</span></td></tr>
+          <tr><td>05</td><td><strong>Viridia Biotech</strong></td><td>Tamil Nadu</td><td><span class="cert-tag">NPOP</span> <span class="cert-tag">ISO</span> <span class="cert-tag">GMP</span></td></tr>
+          <tr><td>06</td><td><strong>Jaycee Organics</strong></td><td>Tamil Nadu</td><td><span class="cert-tag">Demeter</span> <span class="cert-tag">Biodynamic</span></td></tr>
+          <tr><td>07</td><td><strong>Kalaasha Organics</strong></td><td>Rajasthan</td><td><span class="cert-tag">Certified Organic</span></td></tr>
+          <tr><td>08</td><td><strong>Herb Artizan</strong></td><td>Bengaluru</td><td><span class="cert-tag">Fair for Life</span></td></tr>
+          <tr><td>09</td><td><strong>Aayuritz Phytonutrients</strong></td><td>Tamil Nadu</td><td><span class="cert-tag">Organic Certified</span></td></tr>
+          <tr><td>10</td><td><strong>HNCO Organics</strong></td><td>India (Pan)</td><td><span class="cert-tag">Global Supplier</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Documents Section -->
+<section id="documents">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Due Diligence</span>
+      <h2>Buyer Verification Documents Guide</h2>
+      <div class="divider-center"></div>
+      <p>Before purchasing Moringa from any Indian supplier, always verify these critical documents.</p>
+    </div>
+    <div class="grid-2">
+      <div>
+        <h3 style="margin-bottom: 1.5rem;">✅ Mandatory Documents</h3>
+        <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+          <div class="doc-item"><div class="doc-check">✓</div><div><strong>NPOP Certificate</strong><br>India's national organic standard<br><small style="color: var(--text-muted);">Issued by: APEDA accredited body</small></div></div>
+          <div class="doc-item"><div class="doc-check">✓</div><div><strong>USDA Organic / EU Organic</strong><br>Required for USA/EU markets<br><small style="color: var(--text-muted);">Issued by: International certifying body</small></div></div>
+          <div class="doc-item"><div class="doc-check">✓</div><div><strong>Certificate of Analysis (COA)</strong><br>Batch-wise quality report<br><small style="color: var(--text-muted);">Issued by: Supplier's QA / Accredited Lab</small></div></div>
+          <div class="doc-item"><div class="doc-check">✓</div><div><strong>Heavy Metals Lab Test</strong><br>Lead, Arsenic, Mercury, Cadmium<br><small style="color: var(--text-muted);">Issued by: NABL accredited lab</small></div></div>
+          <div class="doc-item"><div class="doc-check">✓</div><div><strong>Phytosanitary Certificate</strong><br>Pest-free export clearance<br><small style="color: var(--text-muted);">Issued by: Govt of India (PQIS)</small></div></div>
+          <div class="doc-item"><div class="doc-check">✓</div><div><strong>Import Export Code (IEC)</strong><br>Legal export registration<br><small style="color: var(--text-muted);">Issued by: DGFT, India</small></div></div>
+          <div class="doc-item"><div class="doc-check">✓</div><div><strong>GST Certificate</strong><br>Valid Indian tax registration<br><small style="color: var(--text-muted);">Issued by: Government of India</small></div></div>
+        </div>
+      </div>
+      <div>
+        <h3 style="margin-bottom: 1.5rem;">⭐ Recommended Documents</h3>
+        <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+          <div class="doc-item"><div class="doc-check doc-check-opt">+</div><div><strong>Non-GMO Certificate</strong><br>Valued in EU and USA markets</div></div>
+          <div class="doc-item"><div class="doc-check doc-check-opt">+</div><div><strong>Kosher / Halal Certificate</strong><br>Required for Jewish and Islamic markets</div></div>
+          <div class="doc-item"><div class="doc-check doc-check-opt">+</div><div><strong>Fair Trade / Fair for Life</strong><br>Ethical sourcing proof</div></div>
+          <div class="doc-item"><div class="doc-check doc-check-opt">+</div><div><strong>Vegan Certificate</strong><br>Required for plant-based product claims</div></div>
+          <div class="doc-item"><div class="doc-check doc-check-opt">+</div><div><strong>Pesticide Residue Report</strong><br>Full multi-residue pesticide test</div></div>
+        </div>
+        <div style="margin-top: 2rem; background: linear-gradient(135deg, var(--green-pale), var(--gold-light)); border-radius: var(--radius); padding: 1.5rem;">
+          <h3 style="margin-bottom: 1rem;">⚡ Essential Buyer Tips</h3>
+          <div style="display: flex; flex-direction: column; gap: 0.6rem;">
+            <div>✓ Always request a product sample before bulk orders</div>
+            <div>✓ Verify certificate validity dates and issuing body</div>
+            <div>✓ Confirm MOQ (Minimum Order Quantity) in writing</div>
+            <div>✓ Understand payment terms (LC, advance, etc.)</div>
+            <div>✓ Clarify shipping method and lead time upfront</div>
+            <div>✓ Check supplier's export experience to your country</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section id="faq" class="faq-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Common Questions</span>
+      <h2>Frequently Asked Questions</h2>
+      <div class="divider-center"></div>
+    </div>
+    <div class="grid-2">
+      <div class="faq-item"><div class="faq-question">Is all Indian Moringa organic?</div><div class="faq-answer">No. Only certified organic Moringa is authentic. Always ask for NPOP, USDA, or EU Organic certificates from the supplier.</div></div>
+      <div class="faq-item"><div class="faq-question">Which Indian state has the best Moringa suppliers?</div><div class="faq-answer">Tamil Nadu is the largest producer (Madurai, Dindigul). Maharashtra (Solapur) is also an emerging hub.</div></div>
+      <div class="faq-item"><div class="faq-question">What is the typical MOQ for Moringa powder?</div><div class="faq-answer">Typically 25kg to 100kg for powder. Drumsticks may require 1 ton or more depending on the supplier.</div></div>
+      <div class="faq-item"><div class="faq-question">Can buyers get samples before ordering?</div><div class="faq-answer">Yes, most legitimate suppliers provide samples for a nominal fee plus international shipping cost.</div></div>
+      <div class="faq-item"><div class="faq-question">How long does shipping take from India?</div><div class="faq-answer">Air freight: 5-7 days. Sea freight: 25-40 days depending on destination port.</div></div>
+      <div class="faq-item"><div class="faq-question">What payment methods do Indian suppliers accept?</div><div class="faq-answer">Wire transfer (T/T), Letter of Credit (LC), or PayPal for samples.</div></div>
+      <div class="faq-item"><div class="faq-question">Is Moringa safe for daily consumption?</div><div class="faq-answer">Yes, in moderate amounts (1-2 teaspoons per day). Consult a doctor if pregnant, nursing, or on medication.</div></div>
+      <div class="faq-item"><div class="faq-question">What is the difference between organic and conventional Moringa?</div><div class="faq-answer">Organic Moringa is grown without synthetic pesticides or fertilizers and carries third-party certification.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Disclaimer -->
+<section id="disclaimer" class="disclaimer">
+  <div class="container">
+    <div class="disclaimer-content">
+      <div style="font-size: 2rem; margin-bottom: 1rem;">📢</div>
+      <h2 style="color: white;">Important Disclaimer</h2>
+      <div class="divider-center" style="margin: 1rem auto;"></div>
+      <p>This website is purely for informational and educational purposes. We do not sell Moringa products, and we do not provide any supplier contact details, phone numbers, email addresses, or direct connection services. All information is based on publicly available sources. Buyers are strongly advised to conduct their own due diligence before any transaction.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Moringa<span>Suppliers</span>India</div>
+    <ul class="footer-links">
+      <li><a href="#what-is-moringa">About</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#pros-cons">Pros & Cons</a></li>
+      <li><a href="#benefits">Benefits</a></li>
+      <li><a href="#suppliers">Suppliers</a></li>
+      <li><a href="#documents">Documents</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#disclaimer">Disclaimer</a></li>
+    </ul>
+    <div class="footer-copyright">© 2026 MoringaSuppliersIndia.com · Informational use only</div>
+  </div>
+</footer>
+
+<button class="scroll-top" id="scrollTopBtn">↑</button>
+
+<div class="cookie-notice" id="cookieNotice">
+  <span>🍪 This site uses cookies for analytics.</span>
+  <button id="acceptCookies">Accept</button>
+</div>
+
+<script>
+  // Nav scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+    document.getElementById('scrollTopBtn').classList.toggle('visible', window.scrollY > 300);
+  });
+
+  // Mobile toggle
+  const toggle = document.getElementById('mobileToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  toggle?.addEventListener('click', () => {
+    mobileMenu.style.display = mobileMenu.style.display === 'flex' ? 'none' : 'flex';
+  });
+
+  // Close mobile menu on link click
+  document.querySelectorAll('.mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => mobileMenu.style.display = 'none');
+  });
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Scroll to top
+  document.getElementById('scrollTopBtn').addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Cookie consent
+  const cookieNotice = document.getElementById('cookieNotice');
+  const acceptBtn = document.getElementById('acceptCookies');
+  if (!localStorage.getItem('cookiesAccepted')) {
+    cookieNotice.style.display = 'flex';
+  }
+  acceptBtn?.addEventListener('click', () => {
+    localStorage.setItem('cookiesAccepted', 'true');
+    cookieNotice.style.display = 'none';
+  });
+
+  // Reveal animation on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => revealObserver.observe(el));
+</script>
+
+</body>
+</html>

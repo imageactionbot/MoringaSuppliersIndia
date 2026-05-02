@@ -38,6 +38,20 @@
   <link rel="mask-icon" href="/favicon.svg" color="#2d8a3a" />
   <link rel="manifest" href="/site.webmanifest" />
 
+  <!-- Performance: DNS prefetch & preconnect -->
+  <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+  <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+  <link rel="dns-prefetch" href="//www.google-analytics.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Security & Privacy meta -->
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="color-scheme" content="light" />
+
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-C7LEYP2M1L"></script>
   <script>
@@ -208,8 +222,84 @@
     "@type": "BreadcrumbList",
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://moringasuppliersindia.com/" },
-      { "@type": "ListItem", "position": 2, "name": "Suppliers", "item": "https://moringasuppliersindia.com/#suppliers" },
-      { "@type": "ListItem", "position": 3, "name": "Contact", "item": "https://moringasuppliersindia.com/#contact" }
+      { "@type": "ListItem", "position": 2, "name": "About Moringa", "item": "https://moringasuppliersindia.com/#what-is-moringa" },
+      { "@type": "ListItem", "position": 3, "name": "Products", "item": "https://moringasuppliersindia.com/#products" },
+      { "@type": "ListItem", "position": 4, "name": "Suppliers", "item": "https://moringasuppliersindia.com/#suppliers" },
+      { "@type": "ListItem", "position": 5, "name": "Documents", "item": "https://moringasuppliersindia.com/#documents" },
+      { "@type": "ListItem", "position": 6, "name": "Contact", "item": "https://moringasuppliersindia.com/#contact" }
+    ]
+  }
+  </script>
+
+  <!-- Schema.org: Article (E-A-T signals) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Moringa Suppliers India — Complete Buyer's Guide 2026",
+    "description": "Authoritative guide for international buyers sourcing Moringa from India. Covers products, certifications, due diligence documents and the production process.",
+    "image": "https://moringasuppliersindia.com/moringa.png",
+    "datePublished": "2026-04-30",
+    "dateModified": "2026-05-03",
+    "author": {
+      "@type": "Organization",
+      "name": "Moringa Suppliers India Editorial Team",
+      "url": "https://moringasuppliersindia.com/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Moringa Suppliers India",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://moringasuppliersindia.com/favicon.svg"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://moringasuppliersindia.com/"
+    }
+  }
+  </script>
+
+  <!-- Schema.org: HowTo (How to verify a Moringa supplier) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Verify a Moringa Supplier in India",
+    "description": "A 6-step due-diligence checklist for international buyers before placing a Moringa order with any Indian supplier.",
+    "totalTime": "PT30M",
+    "step": [
+      { "@type": "HowToStep", "position": 1, "name": "Verify legal registration", "text": "Confirm IEC (Import Export Code), GST and company registration." },
+      { "@type": "HowToStep", "position": 2, "name": "Check organic certificates", "text": "Ask for NPOP (India), USDA Organic and/or EU Organic certificates with valid issuing body and dates." },
+      { "@type": "HowToStep", "position": 3, "name": "Request Certificate of Analysis (COA)", "text": "Get a batch-specific COA covering moisture, ash, microbial load, heavy metals and pesticides." },
+      { "@type": "HowToStep", "position": 4, "name": "Get a phytosanitary clearance", "text": "Government-issued PQIS phytosanitary certificate confirms pest-free export-grade material." },
+      { "@type": "HowToStep", "position": 5, "name": "Order a paid sample", "text": "Always evaluate a real sample before any bulk purchase." },
+      { "@type": "HowToStep", "position": 6, "name": "Use safe payment terms", "text": "Prefer Letter of Credit (LC) or escrow for first-time orders; avoid 100% upfront wires." }
+    ]
+  }
+  </script>
+
+  <!-- Schema.org: ItemList of Suppliers (informational reference) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Notable Moringa Suppliers Based in India",
+    "description": "Publicly known Moringa-related companies headquartered in India. Listed for informational reference only — not an endorsement.",
+    "itemListOrder": "https://schema.org/ItemListUnordered",
+    "numberOfItems": 10,
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Organic India" },
+      { "@type": "ListItem", "position": 2, "name": "Grenera Nutrients" },
+      { "@type": "ListItem", "position": 3, "name": "The Himalaya Drug Company" },
+      { "@type": "ListItem", "position": 4, "name": "Ancient Greenfields" },
+      { "@type": "ListItem", "position": 5, "name": "Viridia Biotech" },
+      { "@type": "ListItem", "position": 6, "name": "Jaycee Organics" },
+      { "@type": "ListItem", "position": 7, "name": "Kalaasha Organics" },
+      { "@type": "ListItem", "position": 8, "name": "Herb Artizan" },
+      { "@type": "ListItem", "position": 9, "name": "Aayuritz Phytonutrients" },
+      { "@type": "ListItem", "position": 10, "name": "HNCO Organics" }
     ]
   }
   </script>
@@ -1078,6 +1168,564 @@
       background: var(--green-light);
     }
 
+    /* ===== PRO COMPONENTS ===== */
+
+    /* Top Announcement Bar */
+    .top-bar {
+      background: linear-gradient(90deg, var(--green-deep), var(--green-dark));
+      color: var(--green-light);
+      font-size: 0.78rem;
+      padding: 8px 0;
+      text-align: center;
+      position: relative;
+      z-index: 1001;
+    }
+    .top-bar a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 600;
+      margin: 0 6px;
+    }
+    .top-bar a:hover { text-decoration: underline; }
+    .navbar { top: 36px; }
+    @media (max-width: 600px) {
+      .top-bar { font-size: 0.7rem; padding: 6px 0; }
+    }
+
+    /* Trust Strip */
+    .trust-strip {
+      background: var(--white);
+      border-top: 1px solid var(--green-pale);
+      border-bottom: 1px solid var(--green-pale);
+      padding: 1.5rem 0;
+    }
+    .trust-strip .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem 3rem;
+    }
+    .trust-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      color: var(--text-muted);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+    .trust-item-icon {
+      font-size: 1.4rem;
+      color: var(--green-main);
+    }
+
+    /* Section intro paragraph */
+    .section-intro {
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      text-align: center;
+      color: var(--text-body);
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    /* Why India - comparison table */
+    .why-india-section {
+      background: var(--white);
+    }
+    .compare-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .compare-table th {
+      background: var(--green-deep);
+      color: var(--green-light);
+      padding: 1rem;
+      text-align: left;
+      font-size: 0.78rem;
+    }
+    .compare-table td {
+      padding: 0.9rem 1rem;
+      border-bottom: 1px solid var(--green-pale);
+      font-size: 0.85rem;
+      color: var(--text-body);
+    }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table .highlight-col {
+      background: var(--green-ultra);
+      font-weight: 600;
+      color: var(--green-deep);
+    }
+    .compare-table .check { color: var(--green-main); font-weight: 700; }
+    .compare-table .cross { color: var(--gold-dark); }
+
+    /* Production Timeline */
+    .timeline-section {
+      background: var(--green-ultra);
+    }
+    .timeline {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 0;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--green-main), var(--gold));
+      transform: translateX(-50%);
+      border-radius: 3px;
+    }
+    .timeline-item {
+      position: relative;
+      width: 50%;
+      padding: 1rem 2rem 2rem;
+    }
+    .timeline-item:nth-child(odd) { left: 0; text-align: right; }
+    .timeline-item:nth-child(even) { left: 50%; }
+    .timeline-step {
+      background: var(--white);
+      border: 1px solid var(--green-pale);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.4rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .timeline-step h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.4rem;
+    }
+    .timeline-step p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+    .timeline-dot {
+      position: absolute;
+      width: 36px;
+      height: 36px;
+      background: var(--green-main);
+      color: white;
+      border: 4px solid var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+      top: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .timeline-item:nth-child(odd) .timeline-dot { right: -18px; }
+    .timeline-item:nth-child(even) .timeline-dot { left: -18px; }
+    @media (max-width: 768px) {
+      .timeline::before { left: 18px; }
+      .timeline-item, .timeline-item:nth-child(even) { width: 100%; left: 0; padding-left: 50px; padding-right: 0; text-align: left; }
+      .timeline-item:nth-child(odd) { text-align: left; }
+      .timeline-item:nth-child(odd) .timeline-dot,
+      .timeline-item:nth-child(even) .timeline-dot { left: 0; right: auto; }
+    }
+
+    /* Stats Dashboard */
+    .stats-section {
+      background: linear-gradient(135deg, var(--green-deep) 0%, var(--green-dark) 100%);
+      color: white;
+    }
+    .stats-section .section-tag { color: var(--green-light); }
+    .stats-section h2 { color: white; }
+    .stats-section .section-intro { color: rgba(255,255,255,0.78); }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+    @media (max-width: 900px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+    .stat-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      padding: 1.8rem 1.4rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .stat-card:hover {
+      transform: translateY(-6px);
+      background: rgba(255,255,255,0.1);
+      border-color: var(--green-light);
+    }
+    .stat-card .big {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--green-light), var(--gold));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      line-height: 1.1;
+      margin-bottom: 0.4rem;
+    }
+    .stat-card .label {
+      color: rgba(255,255,255,0.85);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+    .stat-card .source {
+      color: rgba(255,255,255,0.45);
+      font-size: 0.65rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* Top Destinations */
+    .destinations-section { background: var(--white); }
+    .dest-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1rem;
+    }
+    .dest-card {
+      background: var(--green-ultra);
+      border: 1px solid var(--green-pale);
+      border-radius: var(--radius);
+      padding: 1.2rem;
+      text-align: center;
+      transition: all 0.3s;
+    }
+    .dest-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--green-light);
+      box-shadow: var(--shadow-sm);
+    }
+    .dest-flag { font-size: 2rem; margin-bottom: 0.4rem; }
+    .dest-card h3 {
+      font-size: 0.95rem;
+      margin: 0;
+    }
+    .dest-card .dest-share {
+      font-size: 0.75rem;
+      color: var(--green-main);
+      font-weight: 700;
+      margin-top: 0.3rem;
+    }
+
+    /* Pricing Guide */
+    .pricing-section { background: var(--green-ultra); }
+    .pricing-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .pricing-table th {
+      background: var(--green-dark);
+      color: var(--green-light);
+      padding: 1rem;
+      text-align: left;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+    .pricing-table td {
+      padding: 0.95rem 1rem;
+      border-bottom: 1px solid var(--green-pale);
+      font-size: 0.85rem;
+    }
+    .pricing-table tr:last-child td { border-bottom: none; }
+    .price-tag {
+      display: inline-block;
+      background: var(--green-pale);
+      color: var(--green-dark);
+      border-radius: 100px;
+      padding: 4px 12px;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+    .price-disclaimer {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 1rem;
+      padding: 0.8rem 1rem;
+      background: var(--gold-light);
+      border-left: 3px solid var(--gold);
+      border-radius: var(--radius-sm);
+    }
+
+    /* Sustainability */
+    .sustain-section { background: var(--white); }
+    .sustain-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    @media (max-width: 900px) { .sustain-grid { grid-template-columns: 1fr; } }
+    .sustain-card {
+      background: linear-gradient(135deg, var(--green-ultra), var(--green-pale));
+      border: 1px solid var(--green-light);
+      border-radius: var(--radius);
+      padding: 1.8rem;
+      text-align: center;
+    }
+    .sustain-card .big-icon {
+      font-size: 2.4rem;
+      margin-bottom: 0.6rem;
+    }
+
+    /* Industry Insights / Buyer Scenarios */
+    .insights-section {
+      background: linear-gradient(135deg, var(--green-ultra), var(--white));
+    }
+    .insight-card {
+      background: var(--white);
+      border-left: 4px solid var(--green-main);
+      border-radius: var(--radius);
+      padding: 1.6rem 1.8rem;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s;
+    }
+    .insight-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+    .insight-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--green-deep);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+    .insight-quote::before {
+      content: '"';
+      position: absolute;
+      left: -0.2rem;
+      top: -0.5rem;
+      font-size: 3rem;
+      color: var(--gold);
+      font-family: serif;
+      line-height: 1;
+    }
+    .insight-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 1rem;
+      border-top: 1px solid var(--green-pale);
+    }
+    .insight-avatar {
+      width: 40px;
+      height: 40px;
+      background: var(--green-main);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+    .insight-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--green-dark);
+    }
+    .insight-role {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Glossary */
+    .glossary-section { background: var(--white); }
+    .glossary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    @media (max-width: 768px) { .glossary-grid { grid-template-columns: 1fr; } }
+    .glossary-item {
+      background: var(--green-ultra);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.2rem;
+      border-left: 3px solid var(--green-main);
+    }
+    .glossary-term {
+      font-weight: 700;
+      color: var(--green-dark);
+      font-size: 0.9rem;
+      margin-bottom: 0.2rem;
+    }
+    .glossary-def {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* About / Editorial */
+    .about-section { background: var(--green-ultra); }
+    .about-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-sm);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .editorial-meta {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--green-pale);
+    }
+    @media (max-width: 600px) { .editorial-meta { grid-template-columns: 1fr; } }
+    .editorial-meta div {
+      text-align: center;
+    }
+    .editorial-meta .em-label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+    .editorial-meta .em-value {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--green-dark);
+    }
+
+    /* Legal sections (Privacy / Terms / Cookie) */
+    .legal-section {
+      background: var(--white);
+      padding: 4rem 0;
+    }
+    .legal-section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+    .legal-section h3 {
+      font-size: 1.05rem;
+      margin: 1.5rem 0 0.5rem;
+      color: var(--green-dark);
+    }
+    .legal-section p, .legal-section li {
+      color: var(--text-body);
+      font-size: 0.9rem;
+      line-height: 1.75;
+    }
+    .legal-section ul {
+      padding-left: 1.5rem;
+      margin: 0.5rem 0 1rem;
+    }
+    .legal-section .legal-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      padding: 0.8rem 1rem;
+      background: var(--green-ultra);
+      border-radius: var(--radius-sm);
+      margin-bottom: 2rem;
+    }
+    .legal-divider {
+      border: none;
+      border-top: 1px dashed var(--green-pale);
+      margin: 3rem 0;
+    }
+
+    /* Pro footer (multi-column) */
+    .footer-pro {
+      background: #061b0c;
+      padding: 4rem 0 1.5rem;
+      color: rgba(255,255,255,0.7);
+    }
+    .footer-pro-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 var(--container-padding);
+    }
+    .footer-cols {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    @media (max-width: 900px) { .footer-cols { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .footer-cols { grid-template-columns: 1fr; } }
+    .footer-col h4 {
+      color: var(--green-light);
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+    .footer-col ul {
+      list-style: none;
+    }
+    .footer-col ul li {
+      margin-bottom: 0.5rem;
+    }
+    .footer-col a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.82rem;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--green-light); }
+    .footer-brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--green-light);
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    .footer-brand-logo span { color: var(--gold); }
+    .footer-tagline {
+      font-size: 0.82rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 1rem;
+    }
+    .footer-contact-mini {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.6);
+    }
+    .footer-contact-mini a {
+      color: var(--green-light);
+      text-decoration: none;
+    }
+    .footer-bottom {
+      padding-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.4);
+    }
+    .footer-bottom .last-updated {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.35);
+    }
+
     /* Floating WhatsApp button */
     .whatsapp-float {
       position: fixed;
@@ -1112,6 +1760,11 @@
 </head>
 <body>
 
+<!-- Top Announcement Bar -->
+<div class="top-bar" role="region" aria-label="Contact information">
+  📞 <a href="tel:+919321041954">+91 93210 41954</a> · ✉️ <a href="mailto:moringasuppliersindia@gmail.com">moringasuppliersindia@gmail.com</a> · 🌍 Serving 30+ countries
+</div>
+
 <!-- Navigation -->
 <nav class="navbar" id="navbar">
   <div class="nav-inner">
@@ -1127,9 +1780,10 @@
     <ul class="nav-links">
       <li><a href="#what-is-moringa">About</a></li>
       <li><a href="#products">Products</a></li>
-      <li><a href="#pros-cons">Pros & Cons</a></li>
-      <li><a href="#benefits">Benefits</a></li>
+      <li><a href="#why-india">Why India</a></li>
+      <li><a href="#process">Process</a></li>
       <li><a href="#suppliers">Suppliers</a></li>
+      <li><a href="#pricing">Pricing</a></li>
       <li><a href="#documents">Documents</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="#contact" class="nav-cta">Contact</a></li>
@@ -1144,11 +1798,20 @@
   <div style="display:flex; flex-direction:column; gap:1rem;">
     <a href="#what-is-moringa">About Moringa</a>
     <a href="#products">Products</a>
-    <a href="#pros-cons">Pros & Cons</a>
+    <a href="#pros-cons">Pros &amp; Cons</a>
     <a href="#benefits">Benefits</a>
+    <a href="#why-india">Why India</a>
+    <a href="#process">Production Process</a>
+    <a href="#industry">Industry Stats</a>
+    <a href="#destinations">Export Destinations</a>
+    <a href="#pricing">Pricing &amp; MOQ</a>
     <a href="#suppliers">Suppliers</a>
     <a href="#documents">Documents</a>
+    <a href="#sustainability">Sustainability</a>
+    <a href="#insights">Buyer Insights</a>
+    <a href="#glossary">Glossary</a>
     <a href="#faq">FAQ</a>
+    <a href="#about">About Us</a>
     <a href="#contact"><strong>Contact Us</strong></a>
   </div>
 </div>
@@ -1200,9 +1863,23 @@
         </div>
       </div>
       <div class="hero-image">
-        <img src="moringa.png" alt="Fresh Moringa leaves and powder from India" width="600" height="700">
+        <img src="moringa.png" alt="Fresh Moringa oleifera leaves and powder sourced from certified organic farms in India" width="600" height="700" loading="eager" fetchpriority="high">
       </div>
     </div>
+  </div>
+</section>
+
+<!-- Trust Strip -->
+<section class="trust-strip" aria-label="Certifications and trust signals">
+  <div class="container">
+    <div class="trust-item"><span class="trust-item-icon">🌱</span><span>NPOP Aware</span></div>
+    <div class="trust-item"><span class="trust-item-icon">🇺🇸</span><span>USDA Organic</span></div>
+    <div class="trust-item"><span class="trust-item-icon">🇪🇺</span><span>EU Organic</span></div>
+    <div class="trust-item"><span class="trust-item-icon">✡️</span><span>Kosher Aware</span></div>
+    <div class="trust-item"><span class="trust-item-icon">☪️</span><span>Halal Aware</span></div>
+    <div class="trust-item"><span class="trust-item-icon">🧪</span><span>NABL Lab Tested</span></div>
+    <div class="trust-item"><span class="trust-item-icon">🌍</span><span>30+ Countries</span></div>
+    <div class="trust-item"><span class="trust-item-icon">📋</span><span>APEDA Registered</span></div>
   </div>
 </section>
 
@@ -1324,6 +2001,214 @@
   </div>
 </section>
 
+<!-- Why India Section -->
+<section id="why-india" class="why-india-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Country Comparison</span>
+      <h2>Why India for Moringa Sourcing?</h2>
+      <div class="divider-center"></div>
+      <p class="section-intro">India is the world's largest producer of Moringa, accounting for an estimated <strong>~80% of global supply</strong>. Tropical climate, deep cultivation history, established export logistics and a mature certification ecosystem make India the most reliable sourcing origin for international buyers.</p>
+    </div>
+    <div class="table-wrapper">
+      <table class="compare-table" aria-label="Comparison of Moringa sourcing countries">
+        <thead>
+          <tr>
+            <th>Sourcing Factor</th>
+            <th class="highlight-col">🇮🇳 India</th>
+            <th>🌍 Africa (Kenya, Ghana)</th>
+            <th>🇵🇭 Philippines</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Estimated global supply share</td><td class="highlight-col">~80%</td><td>~10%</td><td>~5%</td></tr>
+          <tr><td>NPOP / USDA / EU Organic ecosystem</td><td class="highlight-col"><span class="check">✓ Mature</span></td><td><span class="check">✓ Growing</span></td><td>Limited</td></tr>
+          <tr><td>Year-round harvest</td><td class="highlight-col"><span class="check">✓ Yes</span></td><td>Seasonal</td><td>Seasonal</td></tr>
+          <tr><td>NABL-accredited testing labs</td><td class="highlight-col"><span class="check">✓ Wide network</span></td><td>Limited</td><td>Limited</td></tr>
+          <tr><td>Major export ports</td><td class="highlight-col">Chennai, Tuticorin, Mumbai, Mundra</td><td>Mombasa, Tema</td><td>Manila, Cebu</td></tr>
+          <tr><td>Documented buyer protections</td><td class="highlight-col"><span class="check">✓ APEDA, IEC, GST, FSSAI</span></td><td>Varies</td><td>Varies</td></tr>
+          <tr><td>Typical price competitiveness</td><td class="highlight-col"><span class="check">✓ Strong</span></td><td>Moderate</td><td>Higher</td></tr>
+          <tr><td>Variety of product forms (powder, oil, capsules, tea, seeds, drumsticks)</td><td class="highlight-col"><span class="check">✓ Broadest</span></td><td>Limited</td><td>Moderate</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 1rem; text-align: center;">Comparison reflects publicly reported industry information. Actual capabilities vary by individual supplier and region.</p>
+  </div>
+</section>
+
+<!-- Production Process Timeline -->
+<section id="process" class="timeline-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Farm to Export</span>
+      <h2>How Moringa Reaches You: The 6-Stage Process</h2>
+      <div class="divider-center"></div>
+      <p class="section-intro">A transparent look at how high-quality Moringa moves from Indian farms to international buyers — every stage built around traceability, food safety and certification.</p>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot">1</div>
+        <div class="timeline-step">
+          <h3>🌱 Cultivation</h3>
+          <p>Moringa oleifera is grown on certified organic farms primarily across Tamil Nadu, Maharashtra, Andhra Pradesh, Karnataka and Rajasthan. Farms are typically managed without synthetic pesticides or fertilizers when targeting NPOP / USDA / EU Organic certification.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">2</div>
+        <div class="timeline-step">
+          <h3>🌿 Harvesting</h3>
+          <p>Leaves are hand-picked at peak nutrient density, typically 40–60 days after pruning cycles. Drumstick pods, seeds and bark are harvested separately by purpose (food, oil-extraction, or planting).</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">3</div>
+        <div class="timeline-step">
+          <h3>☀️ Shade Drying</h3>
+          <p>Leaves are dried at low temperatures (typically below 50 °C) in clean, shaded environments to preserve chlorophyll, vitamins and antioxidants. Sun-drying or high-heat drying degrades nutrient content.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">4</div>
+        <div class="timeline-step">
+          <h3>⚙️ Processing &amp; Packaging</h3>
+          <p>Cleaned, sieved and milled in food-grade facilities — usually GMP / ISO / FSSAI compliant. Packed in food-grade aluminium foil, kraft paper or bulk fiber drums depending on the buyer's spec.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">5</div>
+        <div class="timeline-step">
+          <h3>🧪 Quality Testing</h3>
+          <p>Each batch is tested at NABL-accredited labs for moisture, ash, microbial load, heavy metals (Pb, As, Hg, Cd), pesticide residues and aflatoxins. A batch-specific Certificate of Analysis (COA) is issued.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">6</div>
+        <div class="timeline-step">
+          <h3>🚢 Export &amp; Shipping</h3>
+          <p>Phytosanitary certificate (PQIS), organic transaction certificate (TC) and shipping documents are issued. Goods leave via Chennai, Tuticorin, Mumbai or Mundra. Air freight: 5–7 days; sea freight: 25–40 days.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Industry Statistics -->
+<section id="industry" class="stats-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Industry Numbers</span>
+      <h2>Moringa from India by the Numbers</h2>
+      <div class="divider-center"></div>
+      <p class="section-intro">Key publicly reported statistics that explain why India dominates global Moringa trade.</p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="big">~80%</div>
+        <div class="label">Global Moringa Supply</div>
+        <div class="source">Industry estimates</div>
+      </div>
+      <div class="stat-card">
+        <div class="big">92+</div>
+        <div class="label">Nutrients per leaf</div>
+        <div class="source">Phytochemical studies</div>
+      </div>
+      <div class="stat-card">
+        <div class="big">7×</div>
+        <div class="label">Vitamin C vs oranges</div>
+        <div class="source">Comparative nutrition</div>
+      </div>
+      <div class="stat-card">
+        <div class="big">4×</div>
+        <div class="label">Calcium vs cow's milk</div>
+        <div class="source">Comparative nutrition</div>
+      </div>
+      <div class="stat-card">
+        <div class="big">10+</div>
+        <div class="label">Commercial product forms</div>
+        <div class="source">Trade categories</div>
+      </div>
+      <div class="stat-card">
+        <div class="big">30+</div>
+        <div class="label">Active export destinations</div>
+        <div class="source">Trade publications</div>
+      </div>
+      <div class="stat-card">
+        <div class="big">5</div>
+        <div class="label">Major Indian growing states</div>
+        <div class="source">TN · MH · AP · KA · RJ</div>
+      </div>
+      <div class="stat-card">
+        <div class="big">USD 8B+</div>
+        <div class="label">Projected global market by 2028</div>
+        <div class="source">Industry research reports</div>
+      </div>
+    </div>
+    <p style="text-align: center; margin-top: 2rem; font-size: 0.78rem; color: rgba(255,255,255,0.55);">Figures are publicly reported industry estimates and are intended for general informational reference. Verify current data with primary sources before commercial decisions.</p>
+  </div>
+</section>
+
+<!-- Top Export Destinations -->
+<section id="destinations" class="destinations-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Global Reach</span>
+      <h2>Top Export Destinations for Indian Moringa</h2>
+      <div class="divider-center"></div>
+      <p class="section-intro">Indian Moringa is shipped to nutrition, supplement, cosmetic, food and ayurveda markets across six continents. Below are the most active import regions reported by trade industry sources.</p>
+    </div>
+    <div class="dest-grid">
+      <div class="dest-card"><div class="dest-flag">🇺🇸</div><h3>United States</h3><div class="dest-share">Largest importer</div></div>
+      <div class="dest-card"><div class="dest-flag">🇩🇪</div><h3>Germany</h3><div class="dest-share">EU hub</div></div>
+      <div class="dest-card"><div class="dest-flag">🇬🇧</div><h3>United Kingdom</h3><div class="dest-share">Wellness market</div></div>
+      <div class="dest-card"><div class="dest-flag">🇫🇷</div><h3>France</h3><div class="dest-share">Cosmetics</div></div>
+      <div class="dest-card"><div class="dest-flag">🇯🇵</div><h3>Japan</h3><div class="dest-share">Premium grade</div></div>
+      <div class="dest-card"><div class="dest-flag">🇰🇷</div><h3>South Korea</h3><div class="dest-share">K-beauty</div></div>
+      <div class="dest-card"><div class="dest-flag">🇨🇦</div><h3>Canada</h3><div class="dest-share">Health foods</div></div>
+      <div class="dest-card"><div class="dest-flag">🇦🇺</div><h3>Australia</h3><div class="dest-share">Supplements</div></div>
+      <div class="dest-card"><div class="dest-flag">🇦🇪</div><h3>UAE</h3><div class="dest-share">Re-export hub</div></div>
+      <div class="dest-card"><div class="dest-flag">🇸🇦</div><h3>Saudi Arabia</h3><div class="dest-share">Halal market</div></div>
+      <div class="dest-card"><div class="dest-flag">🇿🇦</div><h3>South Africa</h3><div class="dest-share">Growing</div></div>
+      <div class="dest-card"><div class="dest-flag">🇧🇷</div><h3>Brazil</h3><div class="dest-share">Latin America</div></div>
+      <div class="dest-card"><div class="dest-flag">🇲🇽</div><h3>Mexico</h3><div class="dest-share">Wellness</div></div>
+      <div class="dest-card"><div class="dest-flag">🇸🇬</div><h3>Singapore</h3><div class="dest-share">SE Asia gateway</div></div>
+      <div class="dest-card"><div class="dest-flag">🇳🇱</div><h3>Netherlands</h3><div class="dest-share">EU distribution</div></div>
+      <div class="dest-card"><div class="dest-flag">🇮🇹</div><h3>Italy</h3><div class="dest-share">Nutraceuticals</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing & MOQ Guide -->
+<section id="pricing" class="pricing-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Buyer Reference</span>
+      <h2>Indicative Pricing &amp; MOQ Guide</h2>
+      <div class="divider-center"></div>
+      <p class="section-intro">A general reference for international buyers planning a first import. Actual prices and MOQs vary by supplier, certification, packaging, harvest season and global commodity rates.</p>
+    </div>
+    <div class="table-wrapper">
+      <table class="pricing-table" aria-label="Indicative Moringa product pricing and MOQ ranges">
+        <thead>
+          <tr><th>Product</th><th>Typical MOQ</th><th>Indicative FOB Price (USD)</th><th>Common Packaging</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Moringa Leaf Powder (Conventional)</strong></td><td>25–100 kg</td><td><span class="price-tag">$3 – $6 / kg</span></td><td>25 kg fiber drums / kraft</td></tr>
+          <tr><td><strong>Moringa Leaf Powder (Certified Organic)</strong></td><td>50–500 kg</td><td><span class="price-tag">$5 – $10 / kg</span></td><td>25 kg lined drums</td></tr>
+          <tr><td><strong>Moringa Leaf (Whole Dried)</strong></td><td>50–200 kg</td><td><span class="price-tag">$3 – $7 / kg</span></td><td>Vacuum / nitrogen-flush bags</td></tr>
+          <tr><td><strong>Moringa Tea Cut</strong></td><td>50–200 kg</td><td><span class="price-tag">$5 – $9 / kg</span></td><td>Sealed kraft / drums</td></tr>
+          <tr><td><strong>Moringa Capsules (500 mg)</strong></td><td>10,000 capsules</td><td><span class="price-tag">$0.01 – $0.04 / cap</span></td><td>HDPE jars / blisters</td></tr>
+          <tr><td><strong>Moringa Seeds</strong></td><td>25–100 kg</td><td><span class="price-tag">$4 – $9 / kg</span></td><td>Jute / poly bags</td></tr>
+          <tr><td><strong>Moringa Oil (Cold-Pressed)</strong></td><td>5–25 L</td><td><span class="price-tag">$25 – $80 / L</span></td><td>Amber glass / steel drums</td></tr>
+          <tr><td><strong>Dried Drumsticks</strong></td><td>500 kg – 1 ton</td><td><span class="price-tag">$2 – $5 / kg</span></td><td>Carton / poly bags</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="price-disclaimer">
+      ⚠️ <strong>Disclaimer:</strong> The above ranges are indicative only and are based on publicly available trade information. They do <em>not</em> constitute a price quotation or commercial offer. Always request a formal proforma invoice from a verified supplier before any purchase decision.
+    </div>
+  </div>
+</section>
+
 <!-- Suppliers Section -->
 <section id="suppliers" class="suppliers-section">
   <div class="container">
@@ -1397,6 +2282,171 @@
             <div>✓ Clarify shipping method and lead time upfront</div>
             <div>✓ Check supplier's export experience to your country</div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sustainability & Ethical Sourcing -->
+<section id="sustainability" class="sustain-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Planet & People</span>
+      <h2>Sustainability &amp; Ethical Sourcing</h2>
+      <div class="divider-center"></div>
+      <p class="section-intro">Moringa is one of the most sustainable cash crops on Earth — drought-resistant, fast-growing and almost entirely zero-waste. Buyers increasingly prefer Indian Moringa not just for quality but also for its environmental and social footprint.</p>
+    </div>
+    <div class="sustain-grid">
+      <div class="sustain-card">
+        <div class="big-icon">💧</div>
+        <h3>Low Water Footprint</h3>
+        <p>Moringa thrives in semi-arid conditions with minimal irrigation — typically using a fraction of the water required by conventional cash crops.</p>
+      </div>
+      <div class="sustain-card">
+        <div class="big-icon">🌳</div>
+        <h3>Fast-Growing &amp; Carbon Positive</h3>
+        <p>Mature trees can be harvested within 6–8 months. Continuous foliage growth means active CO₂ absorption throughout the year.</p>
+      </div>
+      <div class="sustain-card">
+        <div class="big-icon">♻️</div>
+        <h3>Zero-Waste Crop</h3>
+        <p>Every part of the tree has commercial value — leaves, pods, seeds, oil, bark, roots and even press-cake (used for water purification and animal feed).</p>
+      </div>
+      <div class="sustain-card">
+        <div class="big-icon">👩‍🌾</div>
+        <h3>Smallholder-Friendly</h3>
+        <p>Indian Moringa cultivation involves thousands of smallholder and women farmers, making fair-trade and Fair-for-Life certifications increasingly common.</p>
+      </div>
+      <div class="sustain-card">
+        <div class="big-icon">🍃</div>
+        <h3>Pesticide-Free Potential</h3>
+        <p>The plant's natural resilience reduces dependence on chemical inputs, making organic certification commercially feasible at scale.</p>
+      </div>
+      <div class="sustain-card">
+        <div class="big-icon">🌾</div>
+        <h3>Soil Regeneration</h3>
+        <p>Moringa improves soil structure, supports nitrogen fixing intercropping and helps prevent desertification in degraded farmlands.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Industry Insights / Buyer Scenarios -->
+<section id="insights" class="insights-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Buyer Perspectives</span>
+      <h2>Common Buyer Scenarios &amp; Industry Insights</h2>
+      <div class="divider-center"></div>
+      <p class="section-intro">These are illustrative examples representing typical questions and concerns we hear from international buyers. They are anonymized buyer profiles for educational reference — not customer testimonials.</p>
+    </div>
+    <div class="grid-2">
+      <div class="insight-card">
+        <div class="insight-quote">We were quoted three different prices for "organic" Moringa powder. The differences came down to certification body, harvest season and packaging — not deception. The supplier with valid USDA + EU Organic and a recent batch COA turned out to be the right long-term partner.</div>
+        <div class="insight-meta">
+          <div class="insight-avatar">EU</div>
+          <div>
+            <div class="insight-name">Nutraceutical Importer</div>
+            <div class="insight-role">European Union (illustrative scenario)</div>
+          </div>
+        </div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-quote">Our biggest learning was that paying for a NABL-accredited heavy-metals report on the actual shipment batch — not the supplier's "standard" COA — gave us full peace of mind for our retail buyers in the United States.</div>
+        <div class="insight-meta">
+          <div class="insight-avatar">US</div>
+          <div>
+            <div class="insight-name">Supplement Brand Owner</div>
+            <div class="insight-role">USA (illustrative scenario)</div>
+          </div>
+        </div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-quote">We used a Letter of Credit (LC) for our first 1-ton order. It cost slightly more in bank fees but completely removed the risk of dealing with a supplier we hadn't met in person.</div>
+        <div class="insight-meta">
+          <div class="insight-avatar">CA</div>
+          <div>
+            <div class="insight-name">Health Food Distributor</div>
+            <div class="insight-role">Canada (illustrative scenario)</div>
+          </div>
+        </div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-quote">Cosmetic-grade cold-pressed Moringa oil is a different category from food-grade. We always confirm extraction method, free fatty acid (FFA) content and oxidative stability before placing oil orders for skincare formulations.</div>
+        <div class="insight-meta">
+          <div class="insight-avatar">FR</div>
+          <div>
+            <div class="insight-name">Cosmetic Formulator</div>
+            <div class="insight-role">France (illustrative scenario)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p style="text-align:center; margin-top:1.5rem; font-size: 0.78rem; color: var(--text-muted);">⚖️ The above are educational, anonymized buyer scenarios. They do not represent reviews of any specific supplier listed on this site.</p>
+  </div>
+</section>
+
+<!-- Glossary -->
+<section id="glossary" class="glossary-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Trade Terminology</span>
+      <h2>Moringa Trade Glossary</h2>
+      <div class="divider-center"></div>
+      <p class="section-intro">Key terms every international buyer should know before negotiating with an Indian Moringa supplier.</p>
+    </div>
+    <div class="glossary-grid">
+      <div class="glossary-item"><div class="glossary-term">APEDA</div><div class="glossary-def">Agricultural and Processed Food Products Export Development Authority of India — the body that registers and supports agri-product exporters.</div></div>
+      <div class="glossary-item"><div class="glossary-term">NPOP</div><div class="glossary-def">National Programme for Organic Production — India's official organic certification standard recognized by major export markets.</div></div>
+      <div class="glossary-item"><div class="glossary-term">USDA Organic / NOP</div><div class="glossary-def">United States organic standard. Required for products sold as "organic" in the US.</div></div>
+      <div class="glossary-item"><div class="glossary-term">EU Organic (834/2007)</div><div class="glossary-def">The European Union organic regulation. Required for the EU green-leaf organic logo.</div></div>
+      <div class="glossary-item"><div class="glossary-term">COA</div><div class="glossary-def">Certificate of Analysis — a batch-specific lab report covering moisture, ash, microbiology, heavy metals and pesticide residues.</div></div>
+      <div class="glossary-item"><div class="glossary-term">NABL</div><div class="glossary-def">National Accreditation Board for Testing and Calibration Laboratories. NABL-accredited labs issue internationally recognized test reports.</div></div>
+      <div class="glossary-item"><div class="glossary-term">FSSAI</div><div class="glossary-def">Food Safety and Standards Authority of India — issues licences for food businesses operating within India.</div></div>
+      <div class="glossary-item"><div class="glossary-term">PQIS / Phytosanitary</div><div class="glossary-def">Plant Quarantine Information System certificate confirming the consignment is free from regulated pests, required for plant-product export.</div></div>
+      <div class="glossary-item"><div class="glossary-term">IEC</div><div class="glossary-def">Importer Exporter Code issued by India's DGFT — mandatory for any company exporting from India.</div></div>
+      <div class="glossary-item"><div class="glossary-term">FOB</div><div class="glossary-def">Free On Board — buyer takes ownership and shipping cost responsibility once goods are loaded on the vessel at the Indian port.</div></div>
+      <div class="glossary-item"><div class="glossary-term">CIF</div><div class="glossary-def">Cost, Insurance and Freight — supplier covers cost up to destination port including marine insurance.</div></div>
+      <div class="glossary-item"><div class="glossary-term">MOQ</div><div class="glossary-def">Minimum Order Quantity — the smallest volume a supplier will accept per order.</div></div>
+      <div class="glossary-item"><div class="glossary-term">LC (Letter of Credit)</div><div class="glossary-def">A bank-issued payment instrument that protects both buyer and supplier in international trade.</div></div>
+      <div class="glossary-item"><div class="glossary-term">TC (Transaction Certificate)</div><div class="glossary-def">An organic-trade document proving a specific shipment meets the organic standard claimed by the supplier.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Aflatoxin</div><div class="glossary-def">A naturally occurring mycotoxin tested for in dried plant products. Strict EU and US limits apply.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Heavy Metals Panel</div><div class="glossary-def">Lab test for Lead (Pb), Arsenic (As), Mercury (Hg) and Cadmium (Cd). Critical for nutraceutical-grade Moringa.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- About / Editorial Standards -->
+<section id="about" class="about-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">About This Resource</span>
+      <h2>About MoringaSuppliersIndia</h2>
+      <div class="divider-center"></div>
+    </div>
+    <div class="about-card">
+      <p style="font-size: 1rem; line-height: 1.8; color: var(--text-body); margin-bottom: 1rem;">
+        <strong>MoringaSuppliersIndia.com</strong> is an independent, editorially-curated information resource built specifically for international buyers, importers, distributors, brand-owners and researchers who want a clear, honest, jargon-free overview of the Indian Moringa industry.
+      </p>
+      <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text-body); margin-bottom: 1rem;">
+        We <strong>do not sell</strong> any Moringa products. We <strong>do not earn commission</strong> from any supplier listed on this website. Every section — products, certifications, supplier reference, pricing guide, glossary — is researched from publicly available trade sources, government export bodies (APEDA, DGFT, FSSAI), industry market reports and standard food-safety frameworks (NPOP, USDA NOP, EU 834/2007, NABL).
+      </p>
+      <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text-body);">
+        Our goal is simple: help you <strong>make better sourcing decisions</strong> with verified context, not marketing fluff. We continuously update this guide as the global Moringa industry evolves.
+      </p>
+      <div class="editorial-meta">
+        <div>
+          <div class="em-label">Published By</div>
+          <div class="em-value">MoringaSuppliersIndia Editorial Team</div>
+        </div>
+        <div>
+          <div class="em-label">Last Updated</div>
+          <div class="em-value">May 3, 2026</div>
+        </div>
+        <div>
+          <div class="em-label">Editorial Standard</div>
+          <div class="em-value">Public sources only · No paid placements</div>
         </div>
       </div>
     </div>
@@ -1480,34 +2530,222 @@
   </div>
 </section>
 
-<!-- Disclaimer -->
+<!-- Disclaimer (customer-friendly) -->
 <section id="disclaimer" class="disclaimer">
   <div class="container">
     <div class="disclaimer-content">
-      <div style="font-size: 2rem; margin-bottom: 1rem;">📢</div>
-      <h2 style="color: white;">Important Disclaimer</h2>
+      <div style="font-size: 2rem; margin-bottom: 1rem;">🤝</div>
+      <h2 style="color: white;">Our Promise to You</h2>
       <div class="divider-center" style="margin: 1rem auto;"></div>
-      <p>This website is purely for informational and educational purposes. We do not sell Moringa products and we do not share any third-party supplier's private contact details — phone numbers or email addresses listed in the supplier table are not provided. All supplier information is based on publicly available sources. The contact details on this page belong only to MoringaSuppliersIndia.com for general enquiries and information assistance. Buyers are strongly advised to conduct their own due diligence before any transaction.</p>
+      <p style="color: rgba(255,255,255,0.85); font-size: 0.92rem; margin-bottom: 1.2rem;">
+        We built MoringaSuppliersIndia.com with one belief — that <strong style="color:#fff;">honest information is the best service</strong> we can offer global buyers. So here is the truth, plainly stated:
+      </p>
+      <ul style="list-style:none; padding:0; text-align:left; max-width:720px; margin:0 auto; color:rgba(255,255,255,0.78); font-size:0.88rem; line-height:1.85;">
+        <li style="padding: 0.4rem 0;">✅ <strong style="color:#fff;">We are an information portal</strong> — not a seller, broker or middleman.</li>
+        <li style="padding: 0.4rem 0;">✅ <strong style="color:#fff;">No paid promotions.</strong> Suppliers cannot pay to be listed or ranked higher.</li>
+        <li style="padding: 0.4rem 0;">✅ <strong style="color:#fff;">No third-party contact sharing.</strong> Phone numbers and emails of supplier companies are deliberately not displayed.</li>
+        <li style="padding: 0.4rem 0;">✅ <strong style="color:#fff;">All content is researched</strong> from publicly available trade, government and food-safety sources.</li>
+        <li style="padding: 0.4rem 0;">✅ <strong style="color:#fff;">Health information</strong> on this website is general in nature and is not a substitute for professional medical advice.</li>
+        <li style="padding: 0.4rem 0;">✅ <strong style="color:#fff;">Pricing and statistics</strong> are indicative only and may change with market conditions.</li>
+        <li style="padding: 0.4rem 0;">✅ <strong style="color:#fff;">You are always in control.</strong> Please conduct your own independent due diligence and verification before entering into any commercial transaction with any supplier.</li>
+      </ul>
+      <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-top: 1.5rem;">
+        If anything on this website ever feels unclear, outdated or inaccurate, please write to us at
+        <a href="mailto:moringasuppliersindia@gmail.com" style="color: var(--gold);">moringasuppliersindia@gmail.com</a>
+        — we genuinely appreciate the feedback and update the page within 7 days.
+      </p>
     </div>
   </div>
 </section>
 
-<!-- Footer -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-logo">Moringa<span>Suppliers</span>India</div>
-    <ul class="footer-links">
-      <li><a href="#what-is-moringa">About</a></li>
-      <li><a href="#products">Products</a></li>
-      <li><a href="#pros-cons">Pros & Cons</a></li>
-      <li><a href="#benefits">Benefits</a></li>
-      <li><a href="#suppliers">Suppliers</a></li>
-      <li><a href="#documents">Documents</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#disclaimer">Disclaimer</a></li>
+<!-- Privacy Policy -->
+<section id="privacy" class="legal-section">
+  <div class="container">
+    <div class="section-header" style="text-align:left; margin-bottom:1rem;">
+      <span class="section-tag">Legal</span>
+      <h2>Privacy Policy</h2>
+      <div class="divider-left"></div>
+    </div>
+    <div class="legal-meta">📅 <strong>Effective date:</strong> May 3, 2026 · Last updated: May 3, 2026</div>
+    <p>Your privacy matters to us. This Privacy Policy explains what limited information we collect when you visit MoringaSuppliersIndia.com and how we use it.</p>
+
+    <h3>1. What We Collect</h3>
+    <p>This is a static informational website. We do <strong>not</strong> ask you to register, create an account, or submit personal forms. The only data automatically collected is:</p>
+    <ul>
+      <li><strong>Anonymous analytics</strong> (via Google Analytics 4) — pages viewed, country, device type, referring source, time on page. This data is aggregated and does not personally identify you.</li>
+      <li><strong>Standard server logs</strong> from our hosting (GitHub Pages) — IP address, browser version, request timestamps, used for security and abuse prevention.</li>
+      <li><strong>Information you voluntarily share</strong> when you contact us through WhatsApp or Email (your name, phone number, email address and the content of your message).</li>
     </ul>
-    <div class="footer-copyright">© 2026 MoringaSuppliersIndia.com · Informational use only</div>
+
+    <h3>2. How We Use Information</h3>
+    <ul>
+      <li>To respond to your enquiries when you reach out to us.</li>
+      <li>To improve the structure and content of this website.</li>
+      <li>To prevent abuse, spam and security incidents.</li>
+    </ul>
+    <p>We <strong>do not</strong> sell, rent, or share your personal information with any third party for marketing purposes.</p>
+
+    <h3>3. Cookies &amp; Tracking</h3>
+    <p>We use only essential analytics cookies set by Google Analytics. You can disable cookies in your browser at any time without losing access to any content on this website. See our <a href="#cookies">Cookie Policy</a> for details.</p>
+
+    <h3>4. Third-Party Services</h3>
+    <p>We use the following third-party services, each with its own privacy policy:</p>
+    <ul>
+      <li>Google Analytics &amp; Google Tag Manager (Google LLC)</li>
+      <li>Google Fonts (Google LLC)</li>
+      <li>GitHub Pages hosting (GitHub, Inc.)</li>
+      <li>WhatsApp messaging (Meta Platforms, Inc.) — when you initiate a chat</li>
+    </ul>
+
+    <h3>5. Your Rights</h3>
+    <p>You have the right to request access to, correction of, or deletion of any personal data you may have shared with us via email or WhatsApp. Send your request to <a href="mailto:moringasuppliersindia@gmail.com">moringasuppliersindia@gmail.com</a> and we will respond within 14 days.</p>
+
+    <h3>6. Children</h3>
+    <p>This website is intended for adult business users. We do not knowingly collect data from anyone under 18 years of age.</p>
+
+    <h3>7. Changes to This Policy</h3>
+    <p>We may update this Privacy Policy from time to time. The "Last updated" date at the top of this section will reflect the latest revision.</p>
+
+    <hr class="legal-divider">
+
+    <!-- Terms of Use -->
+    <div id="terms">
+    <div class="section-header" style="text-align:left; margin-bottom:1rem;">
+      <span class="section-tag">Legal</span>
+      <h2>Terms of Use</h2>
+      <div class="divider-left"></div>
+    </div>
+    <div class="legal-meta">📅 <strong>Effective date:</strong> May 3, 2026</div>
+    <p>By accessing MoringaSuppliersIndia.com (the "Website") you agree to the following terms. Please read them carefully.</p>
+
+    <h3>1. Informational Purpose Only</h3>
+    <p>All content on this Website is provided for general informational and educational purposes only. Nothing on this Website constitutes a commercial offer, price quotation, medical advice, legal advice or investment advice.</p>
+
+    <h3>2. No Sales or Brokerage</h3>
+    <p>We are not a seller, broker or agent of any Moringa supplier or buyer. We do not handle any commercial transactions, payments, shipments or contracts.</p>
+
+    <h3>3. No Endorsement of Suppliers</h3>
+    <p>The supplier names listed in the "Top Indian Moringa Suppliers" table are publicly known industry references. Their inclusion is <strong>not</strong> an endorsement, recommendation or quality guarantee. Buyers must conduct independent verification before any business engagement.</p>
+
+    <h3>4. Health Disclaimer</h3>
+    <p>Information about the nutritional and medicinal properties of Moringa is presented for general awareness only and has not been evaluated for individual medical use. Consult a qualified healthcare professional before consuming Moringa, especially if you are pregnant, nursing, on medication, or managing a chronic condition.</p>
+
+    <h3>5. Limitation of Liability</h3>
+    <p>To the fullest extent permitted by law, MoringaSuppliersIndia.com, its owners and contributors shall not be liable for any direct, indirect, incidental or consequential damages arising from the use of, or reliance on, any information presented on this Website.</p>
+
+    <h3>6. Intellectual Property</h3>
+    <p>All original written content, design, illustrations and code on this Website are the intellectual property of MoringaSuppliersIndia.com and may not be reproduced, redistributed or scraped without prior written permission. Brand names, logos and trademarks of third-party suppliers and certifying bodies remain the property of their respective owners.</p>
+
+    <h3>7. External Links</h3>
+    <p>The Website may include links to third-party services (Google, WhatsApp, GitHub). We are not responsible for the content or practices of any external website.</p>
+
+    <h3>8. Governing Law</h3>
+    <p>These terms are governed by the laws of India. Any dispute arising in connection with this Website shall be subject to the exclusive jurisdiction of the competent courts in India.</p>
+
+    <h3>9. Changes</h3>
+    <p>We may update these Terms periodically. Continued use of the Website after changes are posted constitutes your acceptance of the updated Terms.</p>
+    </div>
+
+    <hr class="legal-divider">
+
+    <!-- Cookie Policy -->
+    <div id="cookies">
+    <div class="section-header" style="text-align:left; margin-bottom:1rem;">
+      <span class="section-tag">Legal</span>
+      <h2>Cookie Policy</h2>
+      <div class="divider-left"></div>
+    </div>
+    <div class="legal-meta">📅 <strong>Effective date:</strong> May 3, 2026</div>
+    <p>A cookie is a small text file that a website saves on your device. We use cookies to understand how visitors engage with this Website so we can improve content quality.</p>
+
+    <h3>Types of Cookies We Use</h3>
+    <ul>
+      <li><strong>Essential / Functional cookies</strong> — required for the site to load correctly. These cannot be disabled.</li>
+      <li><strong>Analytics cookies</strong> — set by Google Analytics 4 to measure aggregate visitor behaviour. No personally identifying information is captured.</li>
+    </ul>
+
+    <h3>Managing Cookies</h3>
+    <p>You can control or delete cookies through your browser settings at any time. The Website remains fully accessible even if you disable analytics cookies.</p>
+
+    <p>Useful links to manage cookies in popular browsers:</p>
+    <ul>
+      <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Google Chrome</a></li>
+      <li><a href="https://support.microsoft.com/help/4027947" target="_blank" rel="noopener">Microsoft Edge</a></li>
+      <li><a href="https://support.brave.com/hc/en-us/articles/360050634931" target="_blank" rel="noopener">Brave Browser</a></li>
+      <li><a href="https://support.mozilla.org/kb/cookies-information-websites-store-on-your-computer" target="_blank" rel="noopener">Mozilla Firefox</a></li>
+      <li><a href="https://support.apple.com/guide/safari/manage-cookies-sfri11471/mac" target="_blank" rel="noopener">Apple Safari</a></li>
+    </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Pro Footer -->
+<footer class="footer-pro">
+  <div class="footer-pro-inner">
+    <div class="footer-cols">
+      <div class="footer-col">
+        <div class="footer-brand-logo">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <path d="M16 4C10 4 5 10 5 18C5 24 10 28 16 28C22 28 27 24 27 18C27 10 22 4 16 4Z" fill="#4cae5a" opacity="0.25"/>
+            <path d="M16 4C16 4 8 8 8 18C8 24 11.5 28 16 28" stroke="#b8e0c0" stroke-width="2" stroke-linecap="round"/>
+            <path d="M16 4C16 4 24 8 24 18C24 24 20.5 28 16 28" stroke="#b8e0c0" stroke-width="2" stroke-linecap="round"/>
+            <path d="M16 28V14" stroke="#d4a53a" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          Moringa<span>Suppliers</span>India
+        </div>
+        <p class="footer-tagline">Independent informational resource for international buyers sourcing Moringa from India. Researched from publicly available trade and government sources.</p>
+        <div class="footer-contact-mini">
+          📞 <a href="tel:+919321041954">+91 93210 41954</a><br>
+          ✉️ <a href="mailto:moringasuppliersindia@gmail.com">moringasuppliersindia@gmail.com</a><br>
+          💬 <a href="https://wa.me/919321041954" target="_blank" rel="noopener">WhatsApp Chat</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="#what-is-moringa">About Moringa</a></li>
+          <li><a href="#products">Product Range</a></li>
+          <li><a href="#pros-cons">Pros &amp; Cons</a></li>
+          <li><a href="#benefits">Health Benefits</a></li>
+          <li><a href="#sustainability">Sustainability</a></li>
+          <li><a href="#glossary">Trade Glossary</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Buyer Resources</h4>
+        <ul>
+          <li><a href="#why-india">Why India</a></li>
+          <li><a href="#process">Production Process</a></li>
+          <li><a href="#industry">Industry Statistics</a></li>
+          <li><a href="#destinations">Export Destinations</a></li>
+          <li><a href="#pricing">Pricing &amp; MOQ</a></li>
+          <li><a href="#suppliers">Supplier Reference</a></li>
+          <li><a href="#documents">Verification Documents</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>About &amp; Legal</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#insights">Buyer Insights</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#disclaimer">Disclaimer</a></li>
+          <li><a href="#privacy">Privacy Policy</a></li>
+          <li><a href="#terms">Terms of Use</a></li>
+          <li><a href="#cookies">Cookie Policy</a></li>
+          <li><a href="/sitemap.xml">Sitemap</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 MoringaSuppliersIndia.com · All rights reserved · Informational use only</div>
+      <div class="last-updated">📅 Last updated: May 3, 2026 · Made with care in India 🇮🇳</div>
+    </div>
   </div>
 </footer>
 

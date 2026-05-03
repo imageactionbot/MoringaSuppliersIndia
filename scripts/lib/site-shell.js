@@ -9,8 +9,10 @@ const root = path.join(__dirname, '..', '..');
 
 /** Must match GitHub Pages CNAME (www) so canonicals match the live host Google indexes. */
 const SITE = 'https://www.moringasuppliersindia.com';
+/** Default Open Graph / Twitter preview (exists in repo; do not use missing moringa.png). */
+const OG_DEFAULT_IMAGE = `${SITE}/og-brand.svg`;
 /** Bust CDN/browser cache when CSS/JS change; bump after edits to main.css or main.js. */
-const ASSET_VER = '9';
+const ASSET_VER = '10';
 
 const AMZ = {
   organicIndia: 'https://amzn.to/3QKamqU',
@@ -159,7 +161,9 @@ function amazonBtnSmall(href, label) {
 }
 
 function layout({ title, description, canonical, ogImage, breadcrumb, h1, lead, content, schemaJson }) {
-  const img = ogImage || `${SITE}/moringa.png`;
+  const img = ogImage || OG_DEFAULT_IMAGE;
+  const titleEsc = title.replace(/"/g, '&quot;');
+  const descEsc = description.replace(/"/g, '&quot;');
   const schema = schemaJson
     ? `<script type="application/ld+json">${JSON.stringify(schemaJson)}</script>`
     : '';
@@ -169,18 +173,29 @@ function layout({ title, description, canonical, ogImage, breadcrumb, h1, lead, 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>${title}</title>
-  <meta name="description" content="${description.replace(/"/g, '&quot;')}" />
+  <meta name="description" content="${descEsc}" />
   <link rel="canonical" href="${canonical}" />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#2d8a3a" />
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <link rel="apple-touch-icon" href="/logo.svg" />
+  <meta name="msapplication-TileColor" content="#2d8a3a" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
+  <link rel="icon" href="/logo.svg" type="image/svg+xml" sizes="256x256" />
+  <link rel="apple-touch-icon" href="/logo.svg" sizes="180x180" />
+  <link rel="mask-icon" href="/favicon.svg" color="#2d8a3a" />
+  <link rel="manifest" href="/site.webmanifest" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="${title.replace(/"/g, '&quot;')}" />
-  <meta property="og:description" content="${description.replace(/"/g, '&quot;')}" />
+  <meta property="og:site_name" content="Moringa Suppliers India" />
+  <meta property="og:title" content="${titleEsc}" />
+  <meta property="og:description" content="${descEsc}" />
   <meta property="og:url" content="${canonical}" />
   <meta property="og:image" content="${img}" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:type" content="image/svg+xml" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="${titleEsc}" />
+  <meta name="twitter:description" content="${descEsc}" />
+  <meta name="twitter:image" content="${img}" />
   ${GA}
   ${FONTS}
   ${schema}
@@ -216,6 +231,7 @@ function write(rel, html) {
 
 module.exports = {
   SITE,
+  OG_DEFAULT_IMAGE,
   ASSET_VER,
   AMZ,
   AFFILIATE_BOX,

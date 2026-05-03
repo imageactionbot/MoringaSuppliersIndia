@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Moringa Suppliers India">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f5fcf6"/>
+      <stop offset="55%" stop-color="#eef7f0"/>
+      <stop offset="100%" stop-color="#d8eedc"/>
+    </linearGradient>
+    <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a2e15"/>
+      <stop offset="100%" stop-color="#1a5f2a"/>
+    </linearGradient>
+    <linearGradient id="lf" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b8e0c0"/>
+      <stop offset="100%" stop-color="#2d8a3a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1200" height="8" fill="#2d8a3a"/>
+  <rect x="0" y="622" width="1200" height="8" fill="#d4a53a"/>
+  <g transform="translate(120 140)">
+    <rect width="320" height="320" rx="56" fill="url(#lg)"/>
+    <ellipse cx="160" cy="148" rx="110" ry="116" fill="url(#lf)" opacity="0.92"/>
+    <path d="M160 50C160 50 90 96 90 196c0 60 36 96 70 106" stroke="#eef7f0" stroke-width="12" stroke-linecap="round" fill="none"/>
+    <path d="M160 50C160 50 230 96 230 196c0 60-36 96-70 106" stroke="#eef7f0" stroke-width="12" stroke-linecap="round" fill="none"/>
+    <path d="M160 290V120" stroke="#d4a53a" stroke-width="12" stroke-linecap="round"/>
+    <circle cx="160" cy="108" r="18" fill="#d4a53a"/>
+  </g>
+  <text x="480" y="260" font-family="Georgia, 'Times New Roman', serif" font-size="52" font-weight="700" fill="#0a2e15">Moringa Suppliers India</text>
+  <text x="480" y="330" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="28" fill="#2d4a33">Verified buyer guides and Amazon retail links</text>
+  <text x="480" y="390" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="22" fill="#6b8d6f">India sourcing ù Organic certs ù Independent editorial</text>
+</svg>

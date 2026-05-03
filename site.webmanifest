@@ -2,7 +2,9 @@
   "name": "Moringa Suppliers India",
   "short_name": "MoringaIndia",
   "description": "Complete buyer's guide to Moringa suppliers in India — products, benefits, certifications, and verification documents.",
+  "id": "/",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#2d8a3a",
@@ -11,11 +13,17 @@
       "src": "/logo.svg",
       "sizes": "256x256",
       "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "/logo.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
     },
     {
       "src": "/favicon.svg",
-      "sizes": "any",
+      "sizes": "64x64",
       "type": "image/svg+xml",
       "purpose": "any"
     }

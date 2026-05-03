@@ -1,7 +1,8 @@
 /**
  * Builds /articles/ hub + 20 long-form authority pages from HTML fragments.
  * Run: node scripts/generate-articles.js
- * Requires: content/article-bodies/<slug>.html for each entry.
+ * Source fragments: content/article-bodies/<slug>.html (edit these).
+ * If a new stub is short, run once: node scripts/materialize-missing-bodies.cjs (pads under 1000 words).
  */
 const fs = require('fs');
 const path = require('path');

@@ -1726,6 +1726,206 @@
       color: rgba(255,255,255,0.35);
     }
 
+    /* ===== AMAZON / AFFILIATE COMPONENTS ===== */
+
+    /* Affiliate Disclosure box (shown above any affiliate link block) */
+    .affiliate-disclosure {
+      background: linear-gradient(135deg, #fef5e6 0%, #fff 100%);
+      border: 1px solid var(--gold);
+      border-left: 4px solid var(--gold-dark);
+      border-radius: var(--radius);
+      padding: 1rem 1.4rem;
+      margin: 0 auto 2rem;
+      max-width: 800px;
+      font-size: 0.85rem;
+      color: var(--text-dark);
+      line-height: 1.6;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .affiliate-disclosure .icon {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .affiliate-disclosure strong {
+      color: var(--gold-dark);
+    }
+
+    /* Where-to-Buy section */
+    .buy-section {
+      background: var(--green-ultra);
+    }
+
+    .featured-products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .product-card {
+      background: var(--white);
+      border: 1px solid var(--green-pale);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--green-light);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: linear-gradient(135deg, #FF9900, #ff6b00);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 100px;
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      z-index: 2;
+      box-shadow: 0 4px 10px rgba(255, 153, 0, 0.3);
+    }
+
+    .product-image {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, var(--green-pale), var(--green-ultra));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .product-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4), transparent 60%);
+    }
+
+    .product-body {
+      padding: 1.5rem 1.6rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .product-brand {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green-main);
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .product-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--green-deep);
+      line-height: 1.3;
+      margin-bottom: 0.6rem;
+    }
+
+    .product-features {
+      list-style: none;
+      padding: 0;
+      margin: 0.4rem 0 1.2rem;
+      font-size: 0.82rem;
+      color: var(--text-body);
+      flex: 1;
+    }
+    .product-features li {
+      padding: 0.2rem 0;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+    .product-features li::before {
+      content: '✓';
+      color: var(--green-main);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* Amazon CTA Button (official Amazon orange/yellow style) */
+    .amazon-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 20px;
+      background: linear-gradient(180deg, #FFD814 0%, #FFC107 100%);
+      color: #0F1111;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      border-radius: 100px;
+      border: 1px solid #FCD200;
+      box-shadow: 0 2px 5px rgba(213, 217, 217, 0.5), inset 0 1px 0 rgba(255,255,255,0.4);
+      transition: all 0.2s;
+      width: 100%;
+      text-align: center;
+    }
+    .amazon-btn:hover {
+      background: linear-gradient(180deg, #F7CA00 0%, #F2BC10 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(213, 217, 217, 0.6);
+    }
+    .amazon-btn .amz-logo {
+      font-weight: 900;
+      font-style: italic;
+      letter-spacing: -0.02em;
+      color: #131A22;
+    }
+
+    .amazon-btn-small {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: linear-gradient(180deg, #FFD814 0%, #FFC107 100%);
+      color: #0F1111 !important;
+      font-weight: 700;
+      font-size: 0.72rem;
+      text-decoration: none;
+      border-radius: 100px;
+      border: 1px solid #FCD200;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .amazon-btn-small:hover {
+      background: linear-gradient(180deg, #F7CA00 0%, #F2BC10 100%);
+      transform: translateY(-1px);
+    }
+
+    .product-meta {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 0.7rem;
+      line-height: 1.5;
+    }
+
+    .product-meta a {
+      color: var(--text-muted);
+      text-decoration: underline;
+    }
+
     /* Floating WhatsApp button */
     .whatsapp-float {
       position: fixed;
@@ -1761,8 +1961,8 @@
 <body>
 
 <!-- Top Announcement Bar -->
-<div class="top-bar" role="region" aria-label="Contact information">
-  📞 <a href="tel:+919321041954">+91 93210 41954</a> · ✉️ <a href="mailto:moringasuppliersindia@gmail.com">moringasuppliersindia@gmail.com</a> · 🌍 Serving 30+ countries
+<div class="top-bar" role="region" aria-label="Contact information and affiliate disclosure">
+  📞 <a href="tel:+919321041954">+91 93210 41954</a> · ✉️ <a href="mailto:moringasuppliersindia@gmail.com">moringasuppliersindia@gmail.com</a> · 🌍 30+ countries · <a href="#affiliate-disclosure" style="color: var(--gold-light);">Amazon Associate Disclosure</a>
 </div>
 
 <!-- Navigation -->
@@ -1781,7 +1981,7 @@
       <li><a href="#what-is-moringa">About</a></li>
       <li><a href="#products">Products</a></li>
       <li><a href="#why-india">Why India</a></li>
-      <li><a href="#process">Process</a></li>
+      <li><a href="#buy">Buy</a></li>
       <li><a href="#suppliers">Suppliers</a></li>
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#documents">Documents</a></li>
@@ -1805,6 +2005,7 @@
     <a href="#industry">Industry Stats</a>
     <a href="#destinations">Export Destinations</a>
     <a href="#pricing">Pricing &amp; MOQ</a>
+    <a href="#buy">Buy Online (Amazon)</a>
     <a href="#suppliers">Suppliers</a>
     <a href="#documents">Documents</a>
     <a href="#sustainability">Sustainability</a>
@@ -2209,6 +2410,62 @@
   </div>
 </section>
 
+<!-- Where to Buy Online -->
+<section id="buy" class="buy-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Buy Online</span>
+      <h2>Where to Buy Moringa Online</h2>
+      <div class="divider-center"></div>
+      <p class="section-intro">If you're a retail consumer (not bulk buyer), the easiest way to try authentic Indian Moringa is through trusted brands listed on Amazon. Below is a hand-picked option from one of India's most established certified-organic Moringa brands.</p>
+    </div>
+
+    <!-- FTC + Amazon-required disclosure (clearly displayed BEFORE any affiliate link) -->
+    <div class="affiliate-disclosure" role="note" aria-label="Amazon Associates disclosure">
+      <span class="icon" aria-hidden="true">ℹ️</span>
+      <div>
+        <strong>Affiliate Disclosure:</strong> MoringaSuppliersIndia.com is a participant in the Amazon Associates Program. <strong>As an Amazon Associate, I earn from qualifying purchases.</strong> The price you pay does not change. Some of the links below are affiliate links, which means we may receive a small commission if you make a purchase — at no extra cost to you. We only feature products we have researched and consider genuinely useful for our readers.
+      </div>
+    </div>
+
+    <div class="featured-products">
+      <!-- Featured product card: Organic India Moringa -->
+      <div class="product-card">
+        <div class="product-badge">Editor's Pick</div>
+        <div class="product-image" aria-hidden="true">🌿</div>
+        <div class="product-body">
+          <div class="product-brand">Organic India</div>
+          <h3 class="product-title">Organic India Moringa — Certified Organic Whole-Leaf Supplement</h3>
+          <ul class="product-features">
+            <li>India Organic + USDA Organic certified</li>
+            <li>Whole-leaf Moringa (no fillers or extracts)</li>
+            <li>Trusted nationally distributed wellness brand</li>
+            <li>Suitable for daily nutritional support</li>
+            <li>Vegetarian-friendly formulation</li>
+          </ul>
+          <a href="https://amzn.to/3QKamqU"
+             class="amazon-btn"
+             target="_blank"
+             rel="sponsored nofollow noopener"
+             aria-label="Check current price of Organic India Moringa on Amazon (affiliate link)">
+            🛒 Check Price on <span class="amz-logo">amazon</span>
+          </a>
+          <div class="product-meta">
+            🔒 Secure checkout on Amazon · Prices &amp; availability may change<br>
+            <a href="#affiliate-disclosure">Affiliate link disclosure</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p style="text-align:center; margin-top:2.5rem; font-size: 0.82rem; color: var(--text-muted); max-width: 700px; margin-left:auto; margin-right:auto;">
+      🛍️ <strong>Bulk / wholesale buyer?</strong> Skip Amazon and go straight to the
+      <a href="#suppliers" style="color: var(--green-main); font-weight: 600;">verified Indian suppliers list</a>
+      and the <a href="#documents" style="color: var(--green-main); font-weight: 600;">buyer documents guide</a>.
+    </p>
+  </div>
+</section>
+
 <!-- Suppliers Section -->
 <section id="suppliers" class="suppliers-section">
   <div class="container">
@@ -2219,22 +2476,45 @@
       <p>Well-known Moringa suppliers based in India. This information is for reference only.</p>
     </div>
     <div class="info-box">
-      📌 <strong>Important Note:</strong> No contact details, phone numbers, or email addresses are provided. Buyers must independently research and verify all suppliers before any transaction.
+      📌 <strong>Important Note:</strong> No third-party supplier contact details, phone numbers, or email addresses are provided here. Buyers must independently research and verify all suppliers before any transaction.
     </div>
+
+    <!-- Affiliate disclosure shown above the table because it contains an Amazon link -->
+    <div class="affiliate-disclosure" role="note" aria-label="Amazon Associates disclosure">
+      <span class="icon" aria-hidden="true">ℹ️</span>
+      <div>
+        <strong>Affiliate Disclosure:</strong> The "Check on Amazon" link below is an Amazon Associates affiliate link. <strong>As an Amazon Associate, I earn from qualifying purchases</strong> — at no extra cost to you. See our full <a href="#affiliate-disclosure">Affiliate Disclosure</a> for details.
+      </div>
+    </div>
+
     <div class="table-wrapper">
-      <table>
-        <thead><tr><th>#</th><th>Supplier Name</th><th>Location</th><th>Known Certifications</th></tr></thead>
+      <table aria-label="Notable Moringa suppliers based in India">
+        <thead><tr><th>#</th><th>Supplier Name</th><th>Location</th><th>Known Certifications</th><th>Buy Online</th></tr></thead>
         <tbody>
-          <tr><td>01</td><td><strong>Organic India</strong></td><td>Multiple States</td><td><span class="cert-tag">USDA Organic</span> <span class="cert-tag">EU Organic</span> <span class="cert-tag">NPOP</span></td></tr>
-          <tr><td>02</td><td><strong>Grenera Nutrients</strong></td><td>Tamil Nadu</td><td><span class="cert-tag">USDA Organic</span> <span class="cert-tag">EU Organic</span> <span class="cert-tag">Kosher</span> <span class="cert-tag">Halal</span></td></tr>
-          <tr><td>03</td><td><strong>The Himalaya Drug Company</strong></td><td>Karnataka</td><td><span class="cert-tag">GMP</span> <span class="cert-tag">Herbal Expertise</span></td></tr>
-          <tr><td>04</td><td><strong>Ancient Greenfields</strong></td><td>Tamil Nadu</td><td><span class="cert-tag">Organic Certified</span></td></tr>
-          <tr><td>05</td><td><strong>Viridia Biotech</strong></td><td>Tamil Nadu</td><td><span class="cert-tag">NPOP</span> <span class="cert-tag">ISO</span> <span class="cert-tag">GMP</span></td></tr>
-          <tr><td>06</td><td><strong>Jaycee Organics</strong></td><td>Tamil Nadu</td><td><span class="cert-tag">Demeter</span> <span class="cert-tag">Biodynamic</span></td></tr>
-          <tr><td>07</td><td><strong>Kalaasha Organics</strong></td><td>Rajasthan</td><td><span class="cert-tag">Certified Organic</span></td></tr>
-          <tr><td>08</td><td><strong>Herb Artizan</strong></td><td>Bengaluru</td><td><span class="cert-tag">Fair for Life</span></td></tr>
-          <tr><td>09</td><td><strong>Aayuritz Phytonutrients</strong></td><td>Tamil Nadu</td><td><span class="cert-tag">Organic Certified</span></td></tr>
-          <tr><td>10</td><td><strong>HNCO Organics</strong></td><td>India (Pan)</td><td><span class="cert-tag">Global Supplier</span></td></tr>
+          <tr>
+            <td>01</td>
+            <td><strong>Organic India</strong></td>
+            <td>Multiple States</td>
+            <td><span class="cert-tag">USDA Organic</span> <span class="cert-tag">EU Organic</span> <span class="cert-tag">NPOP</span></td>
+            <td>
+              <a href="https://amzn.to/3QKamqU"
+                 class="amazon-btn-small"
+                 target="_blank"
+                 rel="sponsored nofollow noopener"
+                 aria-label="Check Organic India Moringa on Amazon (affiliate link)">
+                🛒 Check on <span style="font-weight:900; font-style:italic;">amazon</span>
+              </a>
+            </td>
+          </tr>
+          <tr><td>02</td><td><strong>Grenera Nutrients</strong></td><td>Tamil Nadu</td><td><span class="cert-tag">USDA Organic</span> <span class="cert-tag">EU Organic</span> <span class="cert-tag">Kosher</span> <span class="cert-tag">Halal</span></td><td style="color: var(--text-muted); font-size: 0.78rem;">B2B / Direct</td></tr>
+          <tr><td>03</td><td><strong>The Himalaya Drug Company</strong></td><td>Karnataka</td><td><span class="cert-tag">GMP</span> <span class="cert-tag">Herbal Expertise</span></td><td style="color: var(--text-muted); font-size: 0.78rem;">Brand stores</td></tr>
+          <tr><td>04</td><td><strong>Ancient Greenfields</strong></td><td>Tamil Nadu</td><td><span class="cert-tag">Organic Certified</span></td><td style="color: var(--text-muted); font-size: 0.78rem;">B2B / Direct</td></tr>
+          <tr><td>05</td><td><strong>Viridia Biotech</strong></td><td>Tamil Nadu</td><td><span class="cert-tag">NPOP</span> <span class="cert-tag">ISO</span> <span class="cert-tag">GMP</span></td><td style="color: var(--text-muted); font-size: 0.78rem;">B2B / Direct</td></tr>
+          <tr><td>06</td><td><strong>Jaycee Organics</strong></td><td>Tamil Nadu</td><td><span class="cert-tag">Demeter</span> <span class="cert-tag">Biodynamic</span></td><td style="color: var(--text-muted); font-size: 0.78rem;">B2B / Direct</td></tr>
+          <tr><td>07</td><td><strong>Kalaasha Organics</strong></td><td>Rajasthan</td><td><span class="cert-tag">Certified Organic</span></td><td style="color: var(--text-muted); font-size: 0.78rem;">B2B / Direct</td></tr>
+          <tr><td>08</td><td><strong>Herb Artizan</strong></td><td>Bengaluru</td><td><span class="cert-tag">Fair for Life</span></td><td style="color: var(--text-muted); font-size: 0.78rem;">B2B / Direct</td></tr>
+          <tr><td>09</td><td><strong>Aayuritz Phytonutrients</strong></td><td>Tamil Nadu</td><td><span class="cert-tag">Organic Certified</span></td><td style="color: var(--text-muted); font-size: 0.78rem;">B2B / Direct</td></tr>
+          <tr><td>10</td><td><strong>HNCO Organics</strong></td><td>India (Pan)</td><td><span class="cert-tag">Global Supplier</span></td><td style="color: var(--text-muted); font-size: 0.78rem;">B2B / Direct</td></tr>
         </tbody>
       </table>
     </div>
@@ -2548,6 +2828,7 @@
         <li style="padding: 0.4rem 0;">✅ <strong style="color:#fff;">Health information</strong> on this website is general in nature and is not a substitute for professional medical advice.</li>
         <li style="padding: 0.4rem 0;">✅ <strong style="color:#fff;">Pricing and statistics</strong> are indicative only and may change with market conditions.</li>
         <li style="padding: 0.4rem 0;">✅ <strong style="color:#fff;">You are always in control.</strong> Please conduct your own independent due diligence and verification before entering into any commercial transaction with any supplier.</li>
+        <li style="padding: 0.4rem 0;">✅ <strong style="color:#fff;">Affiliate transparency:</strong> some links on this site (clearly marked) are Amazon Associates affiliate links. <em>As an Amazon Associate, I earn from qualifying purchases</em> at no extra cost to you. See our full <a href="#affiliate-disclosure" style="color: var(--gold);">Affiliate Disclosure</a>.</li>
       </ul>
       <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-top: 1.5rem;">
         If anything on this website ever feels unclear, outdated or inaccurate, please write to us at
@@ -2676,6 +2957,58 @@
       <li><a href="https://support.apple.com/guide/safari/manage-cookies-sfri11471/mac" target="_blank" rel="noopener">Apple Safari</a></li>
     </ul>
     </div>
+
+    <hr class="legal-divider">
+
+    <!-- Affiliate Disclosure (FTC + Amazon Operating Agreement compliant) -->
+    <div id="affiliate-disclosure">
+    <div class="section-header" style="text-align:left; margin-bottom:1rem;">
+      <span class="section-tag">Legal · Transparency</span>
+      <h2>Affiliate Disclosure</h2>
+      <div class="divider-left"></div>
+    </div>
+    <div class="legal-meta">📅 <strong>Effective date:</strong> May 3, 2026 · Compliant with U.S. FTC 16 CFR Part 255 and the Amazon Services LLC Associates Program Operating Agreement</div>
+
+    <div class="affiliate-disclosure" style="margin-left:0; max-width:none;">
+      <span class="icon" aria-hidden="true">🛡️</span>
+      <div>
+        <strong>Plain-English summary:</strong> Some links on MoringaSuppliersIndia.com are affiliate links. <strong>As an Amazon Associate, I earn from qualifying purchases.</strong> If you click an affiliate link and make a purchase, we may earn a small commission at <em>no additional cost to you</em>. This helps support the research, hosting and ongoing maintenance of this free educational resource.
+      </div>
+    </div>
+
+    <h3>1. What is an affiliate link?</h3>
+    <p>An affiliate link is a special web link that contains a unique tracking code. When you click an affiliate link and make a purchase on the destination retailer's website, that retailer pays us a small referral fee. <strong>The price you pay does not change.</strong> You are not asked to share any extra information with us.</p>
+
+    <h3>2. Programs we participate in</h3>
+    <ul>
+      <li><strong>Amazon Associates Program</strong> — MoringaSuppliersIndia.com is a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for sites to earn advertising fees by advertising and linking to Amazon.in, Amazon.com and other Amazon marketplaces. <strong>As an Amazon Associate, I earn from qualifying purchases.</strong></li>
+    </ul>
+
+    <h3>3. How affiliate links are marked</h3>
+    <p>We follow industry best practices and search engine guidelines to clearly identify affiliate links:</p>
+    <ul>
+      <li>A clearly visible disclosure box (like the orange box above) is shown <strong>before</strong> any affiliate link block on this site.</li>
+      <li>All affiliate links carry the HTML attribute <code>rel="sponsored nofollow noopener"</code> as recommended by Google.</li>
+      <li>Each affiliate button is labelled with a recognisable retailer name (e.g. "Check Price on Amazon").</li>
+      <li>Hover-tooltip / aria-label explicitly mentions "(affiliate link)" for accessibility.</li>
+    </ul>
+
+    <h3>4. Editorial independence</h3>
+    <p>We feature products only after independent research. <strong>No supplier or brand pays us</strong> to be included in our supplier reference table, our pricing guide or any other section of this site. The presence (or absence) of an affiliate link does not affect any factual content on this Website. If we ever recommend a product, it is because we believe it is genuinely useful for our readers — not because of the commission rate.</p>
+
+    <h3>5. Pricing &amp; availability</h3>
+    <p>Prices and product availability shown on Amazon (or any other retailer we link to) can change at any time. We do not control retailer pricing. Please always verify the current price on the retailer's page before placing an order.</p>
+
+    <h3>6. No medical or financial advice</h3>
+    <p>Any product we link to is shown for general informational purposes. It is not medical advice, dietary advice, or a guarantee of health outcomes. Please consult a qualified healthcare professional before starting any new supplement.</p>
+
+    <h3>7. Your trust matters</h3>
+    <p>We take FTC's <em>Endorsement Guides Concerning the Use of Endorsements and Testimonials in Advertising</em> very seriously. If you ever feel a disclosure on this Website is unclear, please email
+    <a href="mailto:moringasuppliersindia@gmail.com">moringasuppliersindia@gmail.com</a> and we will fix it immediately.</p>
+
+    <h3>8. Changes</h3>
+    <p>We may add, remove or change the affiliate programs we participate in. This Affiliate Disclosure will be updated to reflect any such change.</p>
+    </div>
   </div>
 </section>
 
@@ -2737,14 +3070,20 @@
           <li><a href="#privacy">Privacy Policy</a></li>
           <li><a href="#terms">Terms of Use</a></li>
           <li><a href="#cookies">Cookie Policy</a></li>
+          <li><a href="#affiliate-disclosure">Affiliate Disclosure</a></li>
           <li><a href="/sitemap.xml">Sitemap</a></li>
         </ul>
       </div>
     </div>
 
-    <div class="footer-bottom">
-      <div>© 2026 MoringaSuppliersIndia.com · All rights reserved · Informational use only</div>
-      <div class="last-updated">📅 Last updated: May 3, 2026 · Made with care in India 🇮🇳</div>
+    <div class="footer-bottom" style="flex-direction:column; align-items:flex-start; gap:0.6rem;">
+      <div style="font-size: 0.72rem; color: rgba(255,255,255,0.55); line-height:1.6;">
+        <strong style="color:#fcd200;">Amazon Associates Disclosure:</strong> MoringaSuppliersIndia.com is a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for sites to earn advertising fees by advertising and linking to Amazon.com and other Amazon marketplaces. <em>As an Amazon Associate, I earn from qualifying purchases.</em> Read our full <a href="#affiliate-disclosure" style="color: var(--green-light);">Affiliate Disclosure</a>.
+      </div>
+      <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:0.8rem; width:100%; padding-top:0.8rem; border-top:1px solid rgba(255,255,255,0.06);">
+        <div>© 2026 MoringaSuppliersIndia.com · All rights reserved · Informational use only</div>
+        <div class="last-updated">📅 Last updated: May 3, 2026 · Made with care in India 🇮🇳</div>
+      </div>
     </div>
   </div>
 </footer>

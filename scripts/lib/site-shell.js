@@ -28,7 +28,7 @@ const OG_DEFAULT_IMAGE = `${SITE}/Moringa_All_Products.webp`;
 /** SVG fallback used by some legacy share targets (kept for reference). */
 const OG_BRAND_SVG = `${SITE}/og-brand.svg`;
 /** Bust CDN/browser cache when CSS/JS change; bump after edits to main.css or main.js. */
-const ASSET_VER = '17';
+const ASSET_VER = '18';
 
 const AMZ = {
   organicIndia: 'https://amzn.to/3QKamqU',
@@ -296,23 +296,17 @@ function amazonBtnSmall(href, label) {
  * Render the hero block for inner pages. Keeps each section visually distinct via
  * the data-section theme (gradient + accent set in CSS).
  */
-function renderPageHero({ section, eyebrow, h1, lead, dateModified, datePublished, author, readingTime, heroStats }) {
+function renderPageHero({ section, eyebrow, h1, lead, dateModified, datePublished, author, readingTime, heroStats, breadcrumbHtml }) {
   const icon = heroIconFor(section);
   const eyebrowHtml = eyebrow
     ? `<span class="page-eyebrow" aria-hidden="false">${icon}<span>${eyebrow}</span></span>`
     : '';
 
-  // We deliberately do NOT render datePublished / dateModified in the hero so
-  // articles read evergreen (no "Updated May 3, 2026" stamp that ages the page).
-  // Dates may still flow into JSON-LD when callers explicitly want them, but
-  // the visible meta row sticks to author + reading time only.
+  // Evergreen by-line policy: no visible "By Avinash Chauhan · Read 4 min"
+  // meta row in the hero. Authorship is preserved in JSON-LD for E-A-T but
+  // the visible UI stays clean. We also intentionally suppress dates so the
+  // page never looks stale.
   const metaBits = [];
-  if (author && author.name) {
-    metaBits.push(`<span class="page-meta-item"><span class="page-meta-label">By</span> ${author.name}</span>`);
-  }
-  if (readingTime) {
-    metaBits.push(`<span class="page-meta-item"><span class="page-meta-label">Read</span> ${readingTime}</span>`);
-  }
   const metaHtml = metaBits.length
     ? `<div class="page-hero-meta">${metaBits.join('<span class="page-meta-sep" aria-hidden="true">&middot;</span>')}</div>`
     : '';
@@ -326,6 +320,7 @@ function renderPageHero({ section, eyebrow, h1, lead, dateModified, datePublishe
   return `<header class="page-hero page-hero--${section}" data-hero-section="${section}">
     <div class="page-hero-ornament" aria-hidden="true"></div>
     <div class="container page-hero-inner">
+      ${breadcrumbHtml || ''}
       ${eyebrowHtml}
       <h1>${h1}</h1>
       <p class="lead">${lead}</p>
@@ -438,20 +433,9 @@ function layout(opts) {
     ? `<meta name="keywords" content="${String(keywords).replace(/"/g, '&quot;')}" />`
     : '';
 
-  const heroBlock = renderPageHero({
-    section,
-    eyebrow: effectiveEyebrow,
-    h1,
-    lead,
-    dateModified,
-    datePublished,
-    author,
-    readingTime,
-    heroStats,
-  });
-
-  // Breadcrumb bar (visible). If breadcrumbTrail provided, render a pill-style bar;
-  // otherwise fall back to the legacy plain string (breadcrumb prop).
+  // Breadcrumb bar — built first so it can render INSIDE the hero block,
+  // making the hero's gradient background touch edge-to-edge with no gap
+  // between the nav and the hero ornament.
   let breadcrumbHtml = '';
   if (Array.isArray(breadcrumbTrail) && breadcrumbTrail.length) {
     const items = breadcrumbTrail
@@ -463,10 +447,23 @@ function layout(opts) {
         return `<li class="crumb"><a href="${t.url}">${t.name}</a></li>`;
       })
       .join('<li class="crumb-sep" aria-hidden="true">&rsaquo;</li>');
-    breadcrumbHtml = `<nav class="breadcrumb-nav breadcrumb-nav--pill" aria-label="Breadcrumb"><ol class="breadcrumb-list">${items}</ol></nav>`;
+    breadcrumbHtml = `<nav class="breadcrumb-nav breadcrumb-nav--pill breadcrumb-nav--in-hero" aria-label="Breadcrumb"><ol class="breadcrumb-list">${items}</ol></nav>`;
   } else if (breadcrumb) {
-    breadcrumbHtml = `<nav class="breadcrumb-nav" aria-label="Breadcrumb">${breadcrumb}</nav>`;
+    breadcrumbHtml = `<nav class="breadcrumb-nav breadcrumb-nav--in-hero" aria-label="Breadcrumb">${breadcrumb}</nav>`;
   }
+
+  const heroBlock = renderPageHero({
+    section,
+    eyebrow: effectiveEyebrow,
+    h1,
+    lead,
+    dateModified,
+    datePublished,
+    author,
+    readingTime,
+    heroStats,
+    breadcrumbHtml,
+  });
 
   // Pick the right MIME type for og:image so Slack/Facebook/LinkedIn parse it.
   const imgIsWebp = /\.webp(?:[?#].*)?$/i.test(img);
@@ -544,7 +541,6 @@ ${FONTS}
 <body data-section="${section}">
 ${nav()}
 <main id="main" class="page-shell page-shell--${section}">
-  ${breadcrumbHtml}
   ${heroBlock}
   <article class="page-content wide page-content--${section}">
     <div class="container">

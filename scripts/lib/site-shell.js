@@ -7,9 +7,10 @@ const path = require('path');
 const { fixHtml } = require('../normalize-html-dashes');
 const root = path.join(__dirname, '..', '..');
 
-const SITE = 'https://moringasuppliersindia.com';
+/** Must match GitHub Pages CNAME (www) so canonicals match the live host Google indexes. */
+const SITE = 'https://www.moringasuppliersindia.com';
 /** Bust CDN/browser cache when CSS/JS change; bump after edits to main.css or main.js. */
-const ASSET_VER = '8';
+const ASSET_VER = '9';
 
 const AMZ = {
   organicIndia: 'https://amzn.to/3QKamqU',

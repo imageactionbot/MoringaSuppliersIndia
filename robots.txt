@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow:
 
-Sitemap: https://moringasuppliersindia.com/sitemap.xml
+Sitemap: https://www.moringasuppliersindia.com/sitemap.xml

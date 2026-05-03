@@ -49,6 +49,44 @@ html {
   font-size: 16px;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0.75rem;
+  z-index: 10000;
+  padding: 0.55rem 1rem;
+  background: var(--green-deep);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  box-shadow: var(--shadow-md);
+}
+.skip-link:focus {
+  left: 0.75rem;
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--green-main);
+  outline-offset: 2px;
+}
+
 body {
   font-family: 'Inter', sans-serif;
   color: var(--text-body);
@@ -1267,7 +1305,7 @@ footer {
   padding-left: 1.5rem;
 }
 .insight-quote::before {
-  content: '\201C';
+  content: '"';
   position: absolute;
   left: -0.2rem;
   top: -0.5rem;

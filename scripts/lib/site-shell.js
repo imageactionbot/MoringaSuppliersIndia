@@ -4,9 +4,12 @@
  */
 const fs = require('fs');
 const path = require('path');
+const { fixHtml } = require('../normalize-html-dashes');
 const root = path.join(__dirname, '..', '..');
 
 const SITE = 'https://moringasuppliersindia.com';
+/** Bust CDN/browser cache when CSS/JS change; bump after edits to main.css or main.js. */
+const ASSET_VER = '5';
 
 const AMZ = {
   organicIndia: 'https://amzn.to/3QKamqU',
@@ -41,14 +44,15 @@ const GA = `  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C
 const FONTS = `  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/main.css" />`;
+  <link rel="stylesheet" href="/assets/css/main.css?v=${ASSET_VER}" />`;
 
 function topBar() {
   return '';
 }
 
 function nav() {
-  return `<nav class="navbar" id="navbar">
+  return `<a class="skip-link" href="#main">Skip to main content</a>
+<nav class="navbar" id="navbar">
   <div class="nav-inner">
     <a href="/" class="logo">
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
@@ -139,7 +143,7 @@ function footer() {
 </footer>
 <button class="scroll-top" id="scrollTopBtn" aria-label="Top">↑</button>
 <div class="cookie-notice" id="cookieNotice" role="dialog" aria-label="Cookie notice"><span>🍪 Analytics cookies.</span><button type="button" id="acceptCookies">Accept</button></div>
-<script defer src="/assets/js/main.js"></script>`;
+<script defer src="/assets/js/main.js?v=${ASSET_VER}"></script>`;
 }
 
 function amazonBtn(href, label) {
@@ -180,7 +184,7 @@ function layout({ title, description, canonical, ogImage, breadcrumb, h1, lead, 
 <body>
 ${topBar()}
 ${nav()}
-<main>
+<main id="main">
   <nav class="breadcrumb-nav" aria-label="Breadcrumb">${breadcrumb}</nav>
   <header class="page-hero">
     <div class="container">
@@ -202,12 +206,13 @@ ${footer()}
 function write(rel, html) {
   const p = path.join(root, rel);
   fs.mkdirSync(path.dirname(p), { recursive: true });
-  fs.writeFileSync(p, html, 'utf8');
+  fs.writeFileSync(p, fixHtml(html), 'utf8');
   console.log('wrote', rel);
 }
 
 module.exports = {
   SITE,
+  ASSET_VER,
   AMZ,
   AFFILIATE_BOX,
   GA,

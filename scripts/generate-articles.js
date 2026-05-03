@@ -91,7 +91,7 @@ function amazonFooterCtas(slug) {
     row1b = amazonBtn(AMZ.vahdam, 'Vahdam — Amazon');
     smallParts = [
       amazonBtnSmall(AMZ.kuliKuli, 'Kuli Kuli'),
-      amazonBtnSmall(AMZ.organicIndiaPowder, 'Organic India powder'),
+      amazonBtnSmall(AMZ.organicIndiaPowder, 'OI powder'),
       amazonBtnSmall(AMZ.tea, 'Teas'),
     ];
   } else if (slug === 'moringa-for-pets') {
@@ -116,7 +116,7 @@ function amazonFooterCtas(slug) {
     row1a = amazonBtn(AMZ.organicIndiaPowder, 'Compare powder listings');
     row1b = amazonBtn(AMZ.organicIndiaCapsules, 'Compare capsule listings');
   } else if (slug === 'moringa-vs-kale-spinach') {
-    row1a = amazonBtn(AMZ.organicIndiaPowder, 'Shelf-stable greens: Organic India leaf powder');
+    row1a = amazonBtn(AMZ.organicIndiaPowder, 'Shelf-stable greens: OI powder');
     row1b = amazonBtn(AMZ.kuliKuli, 'Kuli Kuli greens / moringa blends');
   }
 
@@ -127,7 +127,7 @@ function amazonFooterCtas(slug) {
 ${row1a}
 ${row1b}
 </div>
-<p class="article-cta-more">More: ${smallParts.join(' ')}</p>
+<div class="article-cta-more"><span class="article-cta-more-label">More options:</span>${smallParts.join('')}</div>
 <p class="article-cta-fineprint">Prices and Prime eligibility can change without notice.</p>
 </section>`;
 }
@@ -169,38 +169,6 @@ function keywordsForSlug(slug, h1) {
   return `${base}, ${extra}`;
 }
 
-/** Top-of-article "Editor's pick" strip — stronger affiliate placement above
- *  the fold, themed per-article so it aligns with the body content topic. */
-function topPickStrip(slug) {
-  let label = 'Editor\u2019s Amazon pick';
-  let primaryHref = AMZ.organicIndiaPowder;
-  let primaryLabel = 'Organic India leaf powder';
-  let context = 'A trusted USDA + India Organic certified pick most readers compare against.';
-
-  if (slug === 'moringa-detox-tea-recipes') {
-    primaryHref = AMZ.tea; primaryLabel = 'Moringa &amp; herbal tea picks'; context = 'Curated moringa-forward herbal teas on Amazon.';
-  } else if (slug === 'moringa-cooking-daily') {
-    primaryHref = AMZ.organicIndiaPowder; primaryLabel = 'Organic India leaf powder'; context = 'Most-recommended organic leaf powder for daily cooking and smoothies.';
-  } else if (slug === 'diy-moringa-face-masks' || slug === 'moringa-hair-skin') {
-    primaryHref = AMZ.skincare; primaryLabel = 'Moringa skincare on Amazon'; context = 'Browse moringa-based serums, creams, and masks.';
-  } else if (slug === 'moringa-for-pets') {
-    primaryHref = AMZ.organicIndiaPowder; primaryLabel = 'Organic India powder (vet-approved doses only)'; context = 'Talk to your vet first \u2014 then pick a clean, single-ingredient powder.';
-  } else if (slug === 'moringa-vs-spirulina') {
-    primaryHref = AMZ.organicIndiaPowder; primaryLabel = 'Moringa leaf powder'; context = 'Single-ingredient organic moringa for an apples-to-apples test.';
-  } else if (slug === 'organic-india-vs-vahdam-vs-kuli-kuli') {
-    primaryHref = AMZ.organicIndia; primaryLabel = 'Organic India \u2014 Amazon storefront'; context = 'Three-way comparison; start with the India-origin organic line.';
-  }
-
-  return `<aside class="article-top-pick" role="complementary" aria-label="${label}">
-  <span class="atp-tag">${label}</span>
-  <div class="atp-body">
-    <strong class="atp-name">${primaryLabel}</strong>
-    <span class="atp-context">${context}</span>
-  </div>
-  <a href="${primaryHref}" class="atp-cta" target="_blank" rel="sponsored nofollow noopener" aria-label="${primaryLabel} on Amazon (affiliate link)">Check on Amazon &rarr;</a>
-</aside>`;
-}
-
 function articlePage(meta) {
   const { slug, title, description, h1, lead } = meta;
   const body = readBody(slug);
@@ -209,7 +177,6 @@ function articlePage(meta) {
   let inner = body;
   inner = insertAfterFirstParagraph(inner, amazonMidCta());
   const content = `${AFFILIATE_BOX}
-${topPickStrip(slug)}
 <div class="article-prose">
 ${inner}
 ${amazonFooterCtas(slug)}
@@ -251,9 +218,9 @@ ${relatedBlock(slug)}
       publisher: { '@id': `${SITE}/#organization` },
       image: {
         '@type': 'ImageObject',
-        url: `${SITE}/Moringa_All_Products.webp`,
+        url: `${SITE}/og-brand.svg`,
         width: 1200,
-        height: 900,
+        height: 630,
       },
     },
   });
@@ -279,7 +246,7 @@ function hubPage() {
 ${amazonBtn(AMZ.organicIndiaPowder, 'Organic India leaf powder — Amazon')}
 ${amazonBtn(AMZ.organicIndiaCapsules, 'Organic India capsules — Amazon')}
 </div>
-<p class="articles-hub-more-links">Also: ${amazonBtnSmall(AMZ.organicIndia, 'Organic India hub')} ${amazonBtnSmall(AMZ.kuliKuli, 'Kuli Kuli')} ${amazonBtnSmall(AMZ.vahdam, 'Vahdam')} ${amazonBtnSmall(AMZ.tea, 'Tea search')}</p>
+<div class="articles-hub-more-links"><span class="article-cta-more-label">Also browse:</span>${amazonBtnSmall(AMZ.organicIndia, 'Organic India hub')}${amazonBtnSmall(AMZ.kuliKuli, 'Kuli Kuli')}${amazonBtnSmall(AMZ.vahdam, 'Vahdam')}${amazonBtnSmall(AMZ.tea, 'Tea search')}</div>
 </section>
 <p class="articles-hub-backlinks"><a href="/">&larr; Home buyer guide</a> &middot; <a href="/products/">Product guides</a></p>`;
   return layout({

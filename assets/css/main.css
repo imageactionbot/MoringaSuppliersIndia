@@ -1394,90 +1394,6 @@ footer {
 }
 
 /* ==========================================================================
-   Article "Editor's pick" strip — high-converting affiliate placement at
-   the very top of every article body, above the disclosure box. Sits as a
-   single horizontal card that collapses to stacked layout on mobile.
-   ========================================================================== */
-.article-top-pick {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.85rem 1.25rem;
-  margin: 1.25rem 0 1.5rem;
-  padding: 1rem 1.2rem;
-  background: linear-gradient(135deg, #fff8e7 0%, #fef5e6 100%);
-  border: 1px solid var(--gold);
-  border-left: 4px solid var(--gold-dark);
-  border-radius: var(--radius);
-  box-shadow: 0 2px 6px rgba(212, 165, 58, 0.12), 0 8px 22px rgba(212, 165, 58, 0.08);
-  position: relative;
-}
-.article-top-pick .atp-tag {
-  flex: none;
-  display: inline-flex;
-  align-items: center;
-  padding: 0.3rem 0.75rem;
-  border-radius: 999px;
-  background: var(--gold-dark);
-  color: #fff;
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  white-space: nowrap;
-}
-.article-top-pick .atp-body {
-  flex: 1 1 220px;
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-  min-width: 0;
-}
-.article-top-pick .atp-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.05rem;
-  color: var(--green-deep);
-  line-height: 1.25;
-}
-.article-top-pick .atp-context {
-  font-size: 0.85rem;
-  color: var(--text-body);
-  line-height: 1.5;
-}
-.article-top-pick .atp-cta {
-  flex: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding: 0.7rem 1.1rem;
-  border-radius: 999px;
-  background: var(--green-main);
-  color: #fff;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 0.92rem;
-  letter-spacing: 0.01em;
-  box-shadow: 0 2px 8px rgba(45, 138, 58, 0.2), 0 6px 18px rgba(45, 138, 58, 0.16);
-  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
-}
-.article-top-pick .atp-cta:hover {
-  background: var(--green-dark);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(45, 138, 58, 0.28), 0 10px 26px rgba(45, 138, 58, 0.2);
-}
-@media (max-width: 640px) {
-  .article-top-pick {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0.95rem 1rem 1.1rem;
-  }
-  .article-top-pick .atp-cta {
-    align-self: stretch;
-    justify-content: center;
-  }
-}
-
-/* ==========================================================================
    Quick buyer brief — top-of-page evergreen SEO block targeting the exact
    "Moringa Suppliers in India" query. Four equal-weight cards.
    ========================================================================== */
@@ -2272,11 +2188,19 @@ a.home-article-card:focus-visible .home-article-cta-arrow {
   max-width: 48rem;
   margin: 0 auto 1.25rem;
 }
-.articles-hub-cta-hint,
-.articles-hub-more-links {
+.articles-hub-cta-hint {
   font-size: 0.9rem;
   color: var(--text-muted);
   margin-top: 0.75rem;
+}
+.articles-hub-more-links {
+  margin-top: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.55rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
 }
 .articles-hub-amazon-row {
   margin-top: 0.75rem;
@@ -2303,23 +2227,65 @@ a.home-article-card:focus-visible .home-article-cta-arrow {
   color: var(--text-muted);
   margin: 0 0 0.65rem;
 }
-.article-cta-lead,
-.article-cta-more,
-.article-cta-fineprint {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  max-width: 40rem;
+/*
+  Article CTA panel — the "Compare on Amazon" block at the end of every article.
+  Was un-styled (just a section with raw <a> buttons that visually crammed
+  together). Now it has its own card frame and the small "More:" buttons get
+  proper flex-wrap with explicit gap so they never touch each other.
+*/
+.article-cta-panel {
+  margin: 2.5rem 0 1.5rem;
+  padding: 1.5rem 1.5rem 1.4rem;
+  background: linear-gradient(180deg, var(--white) 0%, var(--green-ultra) 100%);
+  border: 1px solid var(--green-pale);
+  border-left: 4px solid var(--green-main);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+.article-cta-panel h2 {
+  margin: 0 0 0.4rem;
+  font-size: 1.25rem;
+  color: var(--green-deep);
+}
+.article-cta-lead {
+  margin: 0 0 1.1rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-body);
+  max-width: 44rem;
 }
 .article-cta-more {
-  margin-top: 0.85rem;
-  line-height: 1.55;
+  margin: 1.2rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.55rem;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.article-cta-more-label {
+  font-weight: 700;
+  color: var(--green-deep);
+  margin-right: 0.15rem;
+  flex: 0 0 auto;
 }
 .article-cta-fineprint {
-  margin-top: 0.5rem;
-  font-size: 0.82rem;
+  margin: 1rem 0 0;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-style: italic;
 }
 .article-cta-buttons {
-  margin-top: 0.75rem;
+  margin-top: 0.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+}
+.article-cta-buttons > * { width: 100%; }
+@media (max-width: 720px) {
+  .article-cta-buttons { grid-template-columns: 1fr; }
+  .article-cta-panel { padding: 1.25rem 1.1rem; }
 }
 .buy-strip-note {
   margin: 0 0 0.75rem;
@@ -2538,20 +2504,27 @@ a.home-article-card:focus-visible .home-article-cta-arrow {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 6px 14px;
+  padding: 7px 14px;
   background: linear-gradient(180deg, #FFD814 0%, #FFC107 100%);
   color: #0F1111 !important;
   font-weight: 700;
-  font-size: 0.72rem;
+  font-size: 0.78rem;
+  line-height: 1.2;
   text-decoration: none;
   border-radius: 100px;
   border: 1px solid #FCD200;
-  transition: all 0.2s;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.55) inset, 0 2px 6px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
   white-space: nowrap;
 }
 .amazon-btn-small:hover {
   background: linear-gradient(180deg, #F7CA00 0%, #F2BC10 100%);
   transform: translateY(-1px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.55) inset, 0 4px 10px rgba(0, 0, 0, 0.10);
+}
+.amazon-btn-small:focus-visible {
+  outline: 2px solid #131A22;
+  outline-offset: 2px;
 }
 
 .product-meta {
@@ -2653,16 +2626,6 @@ body.has-mobile-nav {
   margin: 0 auto;
   padding-left: var(--container-padding);
   padding-right: var(--container-padding);
-}
-/* Variant: breadcrumb rendered INSIDE the page-hero so the hero gradient
-   touches edge-to-edge with no gap between nav and hero. The hero's own
-   .container handles horizontal padding, so this version drops it. */
-.breadcrumb-nav--in-hero {
-  padding: 0 0 0.75rem;
-  max-width: none;
-  margin: 0 0 0.5rem;
-  padding-left: 0;
-  padding-right: 0;
 }
 .breadcrumb-nav a {
   color: var(--green-main);
@@ -2918,22 +2881,13 @@ body[data-section="about"] {
   --hero-ink: #3a1d05;
 }
 
-/* Pill-style breadcrumb bar (sits just below the sticky nav).
-   When this bar is rendered standalone (legacy), it self-clears the nav.
-   When .breadcrumb-nav--in-hero is also applied, the hero's own top padding
-   handles the nav clearance and we drop our own offset. */
+/* Pill-style breadcrumb bar (sits just below the sticky nav) */
 .breadcrumb-nav--pill {
   padding: calc(var(--nav-height) + 1rem) 0 0;
   max-width: var(--container);
   margin: 0 auto;
   padding-left: var(--container-padding);
   padding-right: var(--container-padding);
-}
-.breadcrumb-nav--pill.breadcrumb-nav--in-hero {
-  padding: 0 0 0.6rem;
-  max-width: none;
-  padding-left: 0;
-  padding-right: 0;
 }
 .breadcrumb-nav--pill .breadcrumb-list {
   list-style: none;
@@ -2976,31 +2930,42 @@ body[data-section="about"] {
   font-weight: 600;
 }
 
-/* Upgraded page-hero: full-bleed gradient background that touches the nav at
-   the top and extends edge-to-edge horizontally. Breadcrumb is rendered
-   INSIDE this block so the whole top region reads as one cohesive band. */
+/*
+  Upgraded page-hero: full-bleed gradient banner.
+  - 100vw width broken out of any wrapping container so the gradient touches the
+    left and right edges of the viewport on every page.
+  - Lighter top, deeper accent at the bottom edge with a soft separator line.
+  - Eyebrow + h1 + lead inside .container keep reading width comfortable.
+*/
 body[data-section] .page-hero {
   position: relative;
   overflow: hidden;
-  /* Top padding clears the fixed nav so the breadcrumb pill sits on the
-     gradient (not behind the navbar). Bottom padding is generous so H1 and
-     lead breathe before content kicks in. */
-  padding: calc(var(--nav-height) + 1.1rem) 0 3rem;
+  padding: 2.4rem 0 3.4rem;
+  margin: 0;
+  width: 100%;
   background:
-    radial-gradient(80% 140% at 100% 0%, color-mix(in srgb, var(--accent) 10%, transparent) 0%, transparent 60%),
-    radial-gradient(60% 110% at 0% 100%, color-mix(in srgb, var(--accent) 7%, transparent) 0%, transparent 60%),
+    radial-gradient(80% 140% at 100% 0%, color-mix(in srgb, var(--accent) 14%, transparent) 0%, transparent 60%),
+    radial-gradient(60% 110% at 0% 100%, color-mix(in srgb, var(--accent) 9%, transparent) 0%, transparent 60%),
     linear-gradient(140deg, var(--hero-from) 0%, var(--hero-to) 100%);
-  border-bottom: 1px solid color-mix(in srgb, var(--accent) 18%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
   isolation: isolate;
+}
+/* True edge-to-edge: even if a parent has padding/margin, the hero breaks out
+   to the full viewport width with a calc-shift technique. */
+body[data-section] main > .page-hero,
+body[data-section] .page-shell > .page-hero {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
 }
 body[data-section] .page-hero-ornament {
   position: absolute;
   inset: 0;
   pointer-events: none;
   background-image:
-    radial-gradient(circle at 18% 22%, color-mix(in srgb, var(--accent) 16%, transparent) 0, transparent 45%),
-    radial-gradient(circle at 82% 78%, color-mix(in srgb, var(--accent) 10%, transparent) 0, transparent 50%);
-  opacity: 0.9;
+    radial-gradient(circle at 18% 22%, color-mix(in srgb, var(--accent) 18%, transparent) 0, transparent 45%),
+    radial-gradient(circle at 82% 78%, color-mix(in srgb, var(--accent) 12%, transparent) 0, transparent 50%);
+  opacity: 0.95;
   z-index: -1;
 }
 body[data-section] .page-hero::after {
@@ -3161,7 +3126,7 @@ body[data-section="legal"] .page-hero h1 {
   font-size: clamp(1.6rem, 3vw, 2.2rem);
 }
 body[data-section="legal"] .page-hero {
-  padding: calc(var(--nav-height) + 0.9rem) 0 2rem;
+  padding: 1.25rem 0 2rem;
 }
 
 /* Content cards accent — card / article body themed per-section */
@@ -3344,13 +3309,10 @@ body[data-section] a:focus-visible {
   }
 }
 
-/* Mobile spacing tune-up for the upgraded hero (still clear the fixed nav). */
+/* Mobile spacing tune-up for the upgraded hero */
 @media (max-width: 640px) {
   body[data-section] .page-hero {
-    padding: calc(var(--nav-height) + 0.6rem) 0 2rem;
-  }
-  body[data-section="legal"] .page-hero {
-    padding: calc(var(--nav-height) + 0.6rem) 0 1.5rem;
+    padding: 1.5rem 0 2rem;
   }
   .page-hero-stat {
     padding: 0.5rem 0.75rem;
@@ -3361,9 +3323,6 @@ body[data-section] a:focus-visible {
   }
   .breadcrumb-nav--pill .breadcrumb-list {
     font-size: 0.78rem;
-  }
-  .breadcrumb-nav--in-hero {
-    padding-bottom: 0.5rem;
   }
 }
 

@@ -11,7 +11,7 @@ function buyStrip() {
 ${amazonBtn(AMZ.organicIndiaPowder, 'See Organic India leaf powder on Amazon')}
 ${amazonBtn(AMZ.organicIndiaCapsules, 'See Organic India capsules on Amazon')}
 </div>
-<p style="margin-top:0.85rem;font-size:0.88rem;">More formats: ${amazonBtnSmall(AMZ.tea, 'Moringa tea')} ${amazonBtnSmall(AMZ.oil, 'Moringa oil')} ${amazonBtnSmall(AMZ.skincare, 'Skincare search')} ${amazonBtnSmall(AMZ.kuliKuli, 'Kuli Kuli store')}</p>
+<div class="article-cta-more"><span class="article-cta-more-label">More formats:</span>${amazonBtnSmall(AMZ.tea, 'Moringa tea')}${amazonBtnSmall(AMZ.oil, 'Moringa oil')}${amazonBtnSmall(AMZ.skincare, 'Skincare search')}${amazonBtnSmall(AMZ.kuliKuli, 'Kuli Kuli store')}</div>
 </div>`;
 }
 

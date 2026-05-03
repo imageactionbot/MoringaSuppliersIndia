@@ -63,7 +63,7 @@ function privacyBody() {
 <h3>2.2 Hosting and server logs</h3>
 <p>GitHub Pages and related infrastructure may log technical data such as IP address, user agent, requested URL, and timestamp. We do not operate those servers directly; their providers process logs under their own policies.</p>
 <h3>2.3 Information you send us</h3>
-<p>If you email <a href="mailto:moringasuppliersindia@gmail.com">moringasuppliersindia@gmail.com</a> or message a listed WhatsApp number, we receive whatever you choose to send (name, address snippets, business details, attachments). Do not send sensitive health information unless you accept that risk voluntarily.</p>
+<p>If you email <a href="mailto:moringasuppliersindia@gmail.com">moringasuppliersindia@gmail.com</a>, we receive whatever you choose to send (name, address snippets, business details, attachments). Do not send sensitive health information unless you accept that risk voluntarily.</p>
 
 <h2>3. How we use information</h2>
 <p>We use analytics and logs to fix broken links, prioritize content updates, and understand which guides help readers. We use contact messages to respond when appropriate. We do not sell your personal data as a standalone product, and we do not run a newsletter list on this policy’s effective date.</p>
@@ -92,16 +92,13 @@ function privacyBody() {
 <h2>11. Changes</h2>
 <p>We may update this policy when practices change. The “Effective” date at the top will move when we publish a revision. Continued use after changes constitutes acceptance of the updated policy for site visitors where permitted by law.</p>
 
-<h2>12. WhatsApp and informal channels</h2>
-<p>If we publish a WhatsApp contact for quick reader questions, messages may be stored on Meta’s infrastructure under Meta’s policies. We cannot guarantee instant replies. Do not send payment card numbers, government ID images, or confidential supplier contracts through informal chat; use encrypted business channels appropriate to your risk level.</p>
-
-<h2>13. Aggregated statistics</h2>
+<h2>12. Aggregated statistics</h2>
 <p>We may describe traffic in aggregate (“this comparison page is popular”) without naming individuals. Aggregates are derived from analytics vendors and do not intentionally re-identify users.</p>
 
-<h2>14. Breach notification</h2>
+<h2>13. Breach notification</h2>
 <p>Because we hold minimal direct databases, a “data breach” in the classic enterprise sense is unlikely for our project alone. If we learn that an integrated vendor reports a breach affecting our readers materially, we will post a notice on this site and describe sensible mitigation steps where we can do so responsibly.</p>
 
-<h2>15. California and other US state privacy rights</h2>
+<h2>14. California and other US state privacy rights</h2>
 <p>Some US states grant residents rights to know, delete, or opt out of certain sales or sharing. We do not sell personal information in the CCPA “sale” sense as of this writing. You may still email us with requests; we will respond within reasonable limits and may need information to verify identity.</p>
 
 <p><a href="/">← Home</a> · <a href="/legal/cookies.html">Cookie Policy</a></p>

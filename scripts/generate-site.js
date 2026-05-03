@@ -52,7 +52,7 @@ write('legal/disclaimer.html', layout({
 
 write('legal/privacy.html', layout({
   title: 'Privacy Policy | Moringa Suppliers India',
-  description: 'Privacy policy for MoringaSuppliersIndia.com — analytics, cookies, WhatsApp/email contact, and your rights.',
+  description: 'Privacy policy for MoringaSuppliersIndia.com — analytics, cookies, email contact, and your rights.',
   canonical: `${SITE}/legal/privacy.html`,
   breadcrumb: `<a href="/">Home</a> / Privacy`,
   h1: 'Privacy Policy',

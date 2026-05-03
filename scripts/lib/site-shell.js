@@ -9,10 +9,10 @@ const root = path.join(__dirname, '..', '..');
 
 /** Must match GitHub Pages CNAME (www) so canonicals match the live host Google indexes. */
 const SITE = 'https://www.moringasuppliersindia.com';
-/** Default Open Graph / Twitter preview (exists in repo; do not use missing moringa.png). */
+/** Default Open Graph / Twitter preview (repo asset; hero uses Moringa_All_Products.webp). */
 const OG_DEFAULT_IMAGE = `${SITE}/og-brand.svg`;
 /** Bust CDN/browser cache when CSS/JS change; bump after edits to main.css or main.js. */
-const ASSET_VER = '10';
+const ASSET_VER = '13';
 
 const AMZ = {
   organicIndia: 'https://amzn.to/3QKamqU',
@@ -115,8 +115,7 @@ function footer() {
         <p class="footer-tagline">Independent guides for buyers sourcing Moringa from India and trusted retail options on Amazon (US).</p>
         <div class="footer-contact-mini">
           📞 <a href="tel:+919321041954">+91 93210 41954</a><br>
-          ✉️ <a href="mailto:moringasuppliersindia@gmail.com">moringasuppliersindia@gmail.com</a><br>
-          <a href="https://wa.me/919321041954" target="_blank" rel="noopener">WhatsApp</a> <span class="footer-contact-hint">(optional)</span>
+          ✉️ <a href="mailto:moringasuppliersindia@gmail.com">moringasuppliersindia@gmail.com</a>
         </div>
       </div>
       <div class="footer-col"><h4>Guides</h4><ul>

@@ -14,6 +14,8 @@
 }
 
 :root {
+  /* Fixed header height (used by mobile drawer + scroll offset) */
+  --nav-height: 58px;
   --green-deep: #0a2e15;
   --green-dark: #1a5f2a;
   --green-main: #2d8a3a;
@@ -45,7 +47,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 85px;
+  scroll-padding-top: calc(var(--nav-height) + 18px);
   font-size: 16px;
 }
 
@@ -236,23 +238,26 @@ section {
   border-color: var(--green-light);
 }
 
-/* Navigation */
+/* Navigation — single-row desktop; hamburger from 1100px down */
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(255,255,255,0.97);
+  height: var(--nav-height);
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.97);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(45,138,58,0.12);
+  border-bottom: 1px solid rgba(45, 138, 58, 0.12);
   z-index: 1001;
-  padding: 0.75rem 0;
-  transition: all 0.3s;
+  padding: 0 0;
+  display: flex;
+  align-items: center;
+  transition: box-shadow 0.25s, background 0.25s;
 }
 
 .navbar.scrolled {
   box-shadow: var(--shadow-sm);
-  padding: 0.5rem 0;
 }
 
 .nav-inner {
@@ -260,18 +265,27 @@ section {
   margin: 0 auto;
   padding: 0 var(--container-padding);
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
+  gap: clamp(0.35rem, 1.2vw, 1rem);
+  width: 100%;
+  min-width: 0;
+  min-height: var(--nav-height);
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 1.25rem;
+  gap: 8px;
+  font-size: clamp(0.88rem, 0.55rem + 0.9vw, 1.18rem);
   font-weight: 700;
   color: var(--green-dark);
   text-decoration: none;
+  flex: 0 1 auto;
+  min-width: 0;
+  line-height: 1.1;
+  white-space: nowrap;
 }
 
 .logo span {
@@ -279,33 +293,38 @@ section {
 }
 
 .logo svg {
-  width: 32px;
-  height: 32px;
+  width: clamp(26px, 2.2vw, 32px);
+  height: clamp(26px, 2.2vw, 32px);
   flex-shrink: 0;
   display: block;
 }
 
 .nav-links {
   display: flex;
-  gap: 2rem;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1 1 auto;
+  min-width: 0;
+  gap: clamp(0.35rem, 0.65vw, 1.1rem);
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-@media (max-width: 1180px) and (min-width: 901px) {
-  .nav-links {
-    gap: 0.85rem;
-  }
-  .nav-links a {
-    font-size: 0.76rem;
-  }
+.nav-links li {
+  flex-shrink: 0;
 }
 
 .nav-links a {
   color: var(--text-muted);
   text-decoration: none;
-  font-size: 0.85rem;
-  font-weight: 500;
+  font-size: clamp(0.72rem, 0.55rem + 0.32vw, 0.84rem);
+  font-weight: 600;
   transition: color 0.2s;
+  white-space: nowrap;
+  padding: 0.2rem 0.08rem;
+  display: inline-block;
 }
 
 .nav-links a:hover {
@@ -358,7 +377,7 @@ section {
   background: linear-gradient(135deg, var(--green-ultra) 0%, var(--white) 70%);
   display: flex;
   align-items: center;
-  padding-top: 76px;
+  padding-top: calc(var(--nav-height) + 12px);
   position: relative;
   overflow: hidden;
 }
@@ -464,14 +483,15 @@ section {
   background: linear-gradient(145deg, rgba(245, 252, 246, 0.95), rgba(255, 255, 255, 0.98));
   border: 1px solid rgba(45, 138, 58, 0.12);
 }
-.hero-brand-mark {
-  width: min(100%, 400px);
+.hero-visual-photo {
+  width: min(100%, 520px);
   height: auto;
-  max-height: min(58vh, 440px);
+  max-height: min(56vh, 480px);
   object-fit: contain;
   display: block;
   margin: 0 auto;
-  filter: drop-shadow(0 12px 28px rgba(10, 46, 21, 0.12));
+  border-radius: var(--radius-sm);
+  filter: drop-shadow(0 12px 28px rgba(10, 46, 21, 0.14));
 }
 
 /* Pros & Cons Section */
@@ -850,13 +870,16 @@ footer {
   font-size: 0.7rem;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .nav-links {
     display: none;
   }
   .mobile-toggle {
     display: flex;
   }
+}
+
+@media (max-width: 900px) {
   .hero {
     min-height: auto;
     padding-bottom: 2.5rem;
@@ -902,23 +925,25 @@ footer {
 .nav-cta {
   background: var(--green-main);
   color: var(--white) !important;
-  padding: 8px 18px;
+  padding: 5px 12px;
   border-radius: 100px;
   transition: all 0.2s;
+  font-size: clamp(0.7rem, 0.55rem + 0.28vw, 0.8rem) !important;
 }
 .nav-cta:hover {
   background: var(--green-dark);
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 .nav-links a.nav-link-buy {
   background: linear-gradient(135deg, var(--green-main) 0%, var(--green-dark) 100%);
   color: #fff !important;
-  padding: 6px 16px;
+  padding: 5px 12px;
   border-radius: 100px;
   font-weight: 700;
+  font-size: clamp(0.7rem, 0.55rem + 0.28vw, 0.8rem) !important;
   border: 1px solid rgba(255, 255, 255, 0.22);
-  box-shadow: 0 2px 10px rgba(45, 138, 58, 0.28);
+  box-shadow: 0 2px 8px rgba(45, 138, 58, 0.22);
 }
 .nav-links a.nav-link-buy:hover {
   color: #fff !important;
@@ -933,9 +958,9 @@ footer {
 }
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 1.5rem;
-  max-width: 900px;
+  max-width: 520px;
   margin: 0 auto;
 }
 @media (max-width: 768px) {
@@ -970,10 +995,6 @@ footer {
   justify-content: center;
   margin-bottom: 0.6rem;
   flex-shrink: 0;
-}
-.contact-icon.whatsapp {
-  background: linear-gradient(135deg, #25D366, #128C7E);
-  color: white;
 }
 .contact-icon.email {
   background: linear-gradient(135deg, var(--gold), var(--gold-dark));
@@ -1732,11 +1753,6 @@ footer {
   color: var(--green-light);
   margin-left: 0.35rem;
 }
-.footer-contact-mini .footer-contact-hint {
-  font-size: 0.72rem;
-  color: rgba(255, 255, 255, 0.45);
-  font-weight: 400;
-}
 
 /* Home page: guides grid (isolated layout; do not share broken pill styles) */
 .home-authority-section {
@@ -2217,10 +2233,10 @@ a.home-article-card:active .home-article-desc {
 
 .mobile-menu {
   position: fixed;
-  top: 56px;
+  top: var(--nav-height);
   left: 0;
   right: 0;
-  max-height: min(70vh, calc(100dvh - 56px));
+  max-height: min(70vh, calc(100dvh - var(--nav-height)));
   overflow-y: auto;
   background: var(--white);
   padding: 0;
@@ -2278,7 +2294,7 @@ a.home-article-card:active .home-article-desc {
 }
 .nav-mobile-backdrop {
   position: fixed;
-  inset: 56px 0 0 0;
+  inset: var(--nav-height) 0 0 0;
   z-index: 999;
   background: rgba(15, 40, 22, 0.45);
   backdrop-filter: blur(2px);
@@ -2296,7 +2312,7 @@ body.has-mobile-nav {
 .breadcrumb-nav {
   font-size: 0.85rem;
   color: var(--text-muted);
-  padding: 4.5rem 0 0;
+  padding: calc(var(--nav-height) + 1.25rem) 0 0;
   max-width: var(--container);
   margin: 0 auto;
   padding-left: var(--container-padding);

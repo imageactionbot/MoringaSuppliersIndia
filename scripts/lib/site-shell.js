@@ -12,7 +12,7 @@ const SITE = 'https://www.moringasuppliersindia.com';
 /** Default Open Graph / Twitter preview (repo asset; hero uses Moringa_All_Products.webp). */
 const OG_DEFAULT_IMAGE = `${SITE}/og-brand.svg`;
 /** Bust CDN/browser cache when CSS/JS change; bump after edits to main.css or main.js. */
-const ASSET_VER = '14';
+const ASSET_VER = '15';
 
 const AMZ = {
   organicIndia: 'https://amzn.to/3QKamqU',
@@ -113,8 +113,8 @@ function footer() {
           Moringa<span>Suppliers</span>India
         </div>
         <p class="footer-tagline">Independent guides for buyers sourcing Moringa from India and trusted retail options on Amazon (US).</p>
+        <p class="footer-owner-line">Avinash Chauhan · Independent developer &amp; site owner</p>
         <div class="footer-contact-mini">
-          📞 <a href="tel:+919321041954">+91 93210 41954</a><br>
           ✉️ <a href="mailto:moringasuppliersindia@gmail.com">moringasuppliersindia@gmail.com</a>
         </div>
       </div>

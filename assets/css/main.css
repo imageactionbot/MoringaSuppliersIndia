@@ -1672,7 +1672,13 @@ footer {
   font-size: 0.82rem;
   line-height: 1.7;
   color: rgba(255,255,255,0.5);
-  margin-bottom: 1rem;
+  margin-bottom: 0.55rem;
+}
+.footer-owner-line {
+  font-size: 0.76rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.58);
+  margin: 0 0 0.7rem;
 }
 .footer-contact-mini {
   font-size: 0.8rem;

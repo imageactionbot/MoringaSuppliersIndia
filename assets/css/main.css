@@ -1753,3 +1753,67 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
+/* Long-form articles */
+.article-prose {
+  max-width: 48rem;
+  margin: 0 auto;
+  font-size: 1.05rem;
+  line-height: 1.78;
+  color: var(--text-body);
+}
+.article-prose h2 {
+  margin-top: 2.2rem;
+  margin-bottom: 0.75rem;
+  font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+  color: var(--green-dark);
+}
+.article-prose h3 {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  color: var(--green-dark);
+}
+.article-prose p {
+  margin: 0 0 1rem;
+}
+.article-prose ul,
+.article-prose ol {
+  margin: 1rem 0 1.25rem;
+  padding-left: 1.35rem;
+}
+.article-prose li {
+  margin-bottom: 0.45rem;
+}
+.article-prose table {
+  width: 100%;
+  margin: 1.2rem 0;
+  font-size: 0.92rem;
+}
+.related-articles-list {
+  columns: 1;
+  padding-left: 1.2rem;
+}
+@media (min-width: 640px) {
+  .related-articles-list {
+    columns: 2;
+    column-gap: 2rem;
+  }
+}
+.articles-hub-grid {
+  margin-top: 1.5rem;
+}
+.articles-hub-list {
+  list-style: decimal;
+  padding-left: 1.25rem;
+  display: grid;
+  gap: 1rem 2rem;
+}
+@media (min-width: 900px) {
+  .articles-hub-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.articles-hub-list li {
+  padding-left: 0.35rem;
+  break-inside: avoid;
+}

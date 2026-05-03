@@ -165,7 +165,7 @@ function hubPage() {
 <p>Organic <strong>Moringa oleifera</strong> from India: safety, purity, powder and capsules, brand comparisons, export paperwork, EU market rules, cooking, tea, skincare, and pets. Affiliate links appear only in the Amazon section below.</p>
 </div>
 <div class="articles-hub-grid">
-<ol class="articles-hub-list">${lis}</ol>
+<ul class="articles-hub-list">${lis}</ul>
 </div>
 <section class="article-cta-panel" aria-label="Amazon shopping">
 <h2>Amazon shortcuts</h2>

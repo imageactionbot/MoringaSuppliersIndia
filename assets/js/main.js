@@ -1,3 +1,8 @@
+/**
+ * Site UI: expects markup/CSS from /assets/css/main.css and shared nav/footer.
+ * Elements: #navbar, #scrollTopBtn, #mobileToggle, #mobileMenu, #navMobileBackdrop,
+ *           #cookieNotice, #acceptCookies, a[href^="#"], .reveal
+ */
 (function () {
   'use strict';
 

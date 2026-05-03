@@ -38,7 +38,7 @@ function renderHomeAuthorityBlock() {
         </a>
       </li>`;
   }).join('\n');
-  return `<ol class="home-articles-grid" start="1" aria-label="Moringa guides">\n${items}\n      </ol>
+  return `<ul class="home-articles-grid" aria-label="Moringa guides">\n${items}\n      </ul>
       <p class="home-articles-footer"><a class="home-articles-hub-link" href="/articles/">All guides &amp; Amazon shortcuts →</a></p>`;
 }
 

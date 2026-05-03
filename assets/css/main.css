@@ -1,4 +1,5 @@
 @charset "UTF-8";
+/* UI behaviour: /assets/js/main.js (nav, scroll-top, cookies, in-page anchors). */
 /* ============================================
    PRODUCTION LEVEL CSS - VERSION 2.0
    Consistent Container System | Pros/Cons | SEO Optimized
@@ -237,6 +238,13 @@ section {
 
 .logo span {
   color: var(--gold);
+}
+
+.logo svg {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  display: block;
 }
 
 .nav-links {
@@ -770,11 +778,30 @@ footer {
   .mobile-toggle {
     display: flex;
   }
+  .hero {
+    min-height: auto;
+    padding-bottom: 2.5rem;
+  }
   .hero-content {
     grid-template-columns: 1fr;
+    gap: 1.75rem;
   }
   .hero-image {
-    display: none;
+    display: block;
+    max-width: min(100%, 440px);
+    margin: 0 auto;
+    justify-self: center;
+  }
+  .hero-image img {
+    max-height: min(52vh, 380px);
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+  .hero-stats {
+    flex-wrap: wrap;
+    gap: 1.25rem 2rem;
+    justify-content: flex-start;
   }
   .proscons-grid {
     grid-template-columns: 1fr;
@@ -923,22 +950,31 @@ footer {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 2rem 3rem;
+  gap: 1.25rem 1.75rem;
+  row-gap: 1.25rem;
+}
+@media (min-width: 900px) {
+  .trust-strip .container {
+    gap: 2rem 3rem;
+  }
 }
 .trust-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   color: var(--text-muted);
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   text-align: center;
+  min-width: 0;
+  max-width: 8.5rem;
 }
 .trust-item-icon {
-  font-size: 1.4rem;
+  font-size: clamp(1.15rem, 2.8vw, 1.45rem);
+  line-height: 1;
   color: var(--green-main);
 }
 
@@ -1545,13 +1581,11 @@ footer {
   margin: 0 auto;
   max-width: 1120px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
-  gap: 1.35rem 1.5rem;
-  counter-reset: home-articles;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  gap: 1.25rem 1.35rem;
 }
 .home-article-item {
   margin: 0;
-  counter-increment: home-articles;
   min-width: 0;
 }
 .home-article-card {
@@ -1562,7 +1596,7 @@ footer {
   min-height: 0;
   min-width: 0;
   overflow: hidden;
-  padding: 1.2rem 1.15rem 1.25rem 2.55rem;
+  padding: 1.15rem 1.2rem 1.2rem;
   background: var(--white);
   border: 1px solid rgba(45, 138, 58, 0.14);
   border-radius: var(--radius);
@@ -1571,23 +1605,6 @@ footer {
   color: inherit;
   transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
   position: relative;
-}
-.home-article-card::before {
-  content: counter(home-articles);
-  position: absolute;
-  left: 0.85rem;
-  top: 1.15rem;
-  width: 1.4rem;
-  height: 1.4rem;
-  line-height: 1.4rem;
-  text-align: center;
-  font-size: 0.68rem;
-  font-weight: 800;
-  color: var(--white);
-  background: var(--green-main);
-  border-radius: 50%;
-  font-family: 'Inter', sans-serif;
-  flex-shrink: 0;
 }
 .home-article-card:hover {
   border-color: var(--green-light);
@@ -1628,6 +1645,30 @@ footer {
 .home-articles-hub-link:hover {
   color: var(--green-main);
   border-bottom-color: var(--green-main);
+}
+
+@media (max-width: 640px) {
+  .home-authority-section .section-header {
+    margin-bottom: 1.35rem;
+  }
+  .home-authority-lead {
+    padding: 0 0.15rem;
+    font-size: 0.95rem;
+  }
+  .home-articles-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    max-width: 100%;
+  }
+  .home-article-card {
+    padding: 1rem 1rem 1.05rem;
+  }
+  .home-article-title {
+    font-size: 0.98rem;
+  }
+  .home-articles-footer {
+    margin-top: 1.5rem;
+  }
 }
 
 .articles-hub-desc {
@@ -2095,10 +2136,11 @@ body.has-mobile-nav {
   margin-top: 1.5rem;
 }
 .articles-hub-list {
-  list-style: decimal;
-  padding-left: 1.25rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: grid;
-  gap: 1rem 2rem;
+  gap: 1rem 1.75rem;
 }
 @media (min-width: 900px) {
   .articles-hub-list {
@@ -2106,11 +2148,15 @@ body.has-mobile-nav {
   }
 }
 .articles-hub-list li {
-  padding-left: 0.35rem;
+  padding: 0.85rem 1rem;
   break-inside: avoid;
   min-width: 0;
   overflow-wrap: anywhere;
   word-break: break-word;
+  background: var(--white);
+  border: 1px solid rgba(45, 138, 58, 0.12);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--green-main);
 }
 .articles-hub-list li a strong {
   display: inline;

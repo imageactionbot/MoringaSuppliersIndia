@@ -10,6 +10,7 @@ const {
   SITE,
   AMZ,
   AFFILIATE_BOX,
+  DEFAULT_AUTHOR,
   layout,
   write,
   amazonBtn,
@@ -21,8 +22,19 @@ const bodiesDir = path.join(root, 'content', 'article-bodies');
 const { ARTICLES } = require('./lib/articles-catalog');
 const { patchIndexAuthority } = require('./lib/patch-index-authority');
 
+const ARTICLE_PUBLISHED = '2026-04-30';
+const ARTICLE_MODIFIED = '2026-05-03';
+
 function escHtml(s) {
   return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+/** Estimate reading time from body HTML. ~225 words/min is a common average. */
+function readingTimeFromHtml(html) {
+  const text = String(html).replace(/<[^>]*>/g, ' ');
+  const words = text.split(/\s+/).filter(Boolean).length;
+  const minutes = Math.max(1, Math.round(words / 225));
+  return { words, minutes, label: `${minutes} min read` };
 }
 
 function relatedBlock(slug) {
@@ -31,7 +43,7 @@ function relatedBlock(slug) {
   return `<div class="related-articles" style="margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--green-pale);">
 <h2>More authority topics</h2>
 <ul class="related-articles-list">${lis}</ul>
-<p><a href="/articles/">← All 20 articles</a> · <a href="/products/">Product guides</a> · <a href="/brands/">Brand guides</a> · <a href="/compare/">Comparisons</a></p>
+<p><a href="/articles/">&larr; All 20 articles</a> &middot; <a href="/products/">Product guides</a> &middot; <a href="/brands/">Brand guides</a> &middot; <a href="/compare/">Comparisons</a></p>
 </div>`;
 }
 
@@ -44,7 +56,7 @@ function insertAfterFirstParagraph(html, block) {
 
 function amazonMidCta() {
   return `<aside class="article-mid-cta" role="complementary" aria-label="Amazon retail shortcuts">
-<p class="article-mid-cta-note">Retail shortcuts (affiliate — see disclosure at top):</p>
+<p class="article-mid-cta-note">Retail shortcuts (affiliate &mdash; see disclosure at top):</p>
 <div class="article-mid-cta-row">
 ${amazonBtnSmall(AMZ.organicIndiaPowder, 'Organic India — leaf powder')}
 ${amazonBtnSmall(AMZ.organicIndiaCapsules, 'Organic India — capsules')}
@@ -126,9 +138,41 @@ function readBody(slug) {
   return fs.readFileSync(p, 'utf8');
 }
 
+/** Slug → SEO keyword shortlist. Keeps per-page keyword meta unique without manual upkeep. */
+function keywordsForSlug(slug, h1) {
+  const base = 'moringa, moringa oleifera, moringa india, organic moringa';
+  const map = {
+    'ultimate-moringa-encyclopedia': 'moringa encyclopedia, moringa guide, moringa research, moringa history, moringa science',
+    'moringa-benefits-every-age': 'moringa benefits, moringa for kids, moringa for seniors, moringa for adults, moringa nutrition age',
+    'moringa-side-effects-safety': 'moringa side effects, moringa safety, moringa pregnancy, moringa drug interactions',
+    'pure-vs-adulterated-moringa': 'pure moringa, adulterated moringa, moringa purity test, fake moringa powder, moringa fillers',
+    'moringa-vs-spirulina': 'moringa vs spirulina, spirulina vs moringa, superfood comparison, green powders',
+    'moringa-vs-kale-spinach': 'moringa vs kale, moringa vs spinach, nutrition comparison, leafy greens',
+    'moringa-powder-vs-capsules': 'moringa powder vs capsules, moringa absorption, moringa dosage format',
+    'organic-india-vs-vahdam-vs-kuli-kuli': 'organic india vs vahdam vs kuli kuli, top moringa brands, brand comparison',
+    'moringa-weight-loss': 'moringa weight loss, moringa fat burning, moringa metabolism, moringa blood sugar',
+    'moringa-diabetes': 'moringa diabetes, moringa blood sugar, moringa type 2 diabetes, moringa glycemic',
+    'moringa-hair-skin': 'moringa hair, moringa skin, moringa beauty, moringa serum',
+    'moringa-anemia': 'moringa anemia, moringa iron, moringa hemoglobin, moringa iron deficiency',
+    'moringa-export-quality-standards': 'moringa export standards, haccp moringa, iso 22000, gmp moringa, moringa quality',
+    'top-moringa-states-india': 'top moringa states india, tamil nadu moringa, maharashtra moringa, india production',
+    'moringa-packaging-international': 'moringa packaging export, moringa shelf life, moringa moisture, export packaging',
+    'moringa-eu-market': 'moringa eu market, novel food eu, moringa europe, eu organic moringa',
+    'moringa-cooking-daily': 'moringa recipes, moringa cooking, moringa smoothie, moringa daily use',
+    'moringa-detox-tea-recipes': 'moringa tea recipes, moringa detox tea, moringa blends, morning ritual',
+    'diy-moringa-face-masks': 'diy moringa face mask, moringa skincare diy, moringa acne, patch test',
+    'moringa-for-pets': 'moringa for dogs, moringa for cats, moringa for pets, pet supplement safety',
+  };
+  const extra = map[slug] || h1.toLowerCase();
+  return `${base}, ${extra}`;
+}
+
 function articlePage(meta) {
   const { slug, title, description, h1, lead } = meta;
-  let inner = readBody(slug);
+  const body = readBody(slug);
+  const rt = readingTimeFromHtml(body);
+
+  let inner = body;
   inner = insertAfterFirstParagraph(inner, amazonMidCta());
   const content = `${AFFILIATE_BOX}
 <div class="article-prose">
@@ -136,20 +180,50 @@ ${inner}
 ${amazonFooterCtas(slug)}
 ${relatedBlock(slug)}
 </div>`;
+
+  const canonical = `${SITE}/articles/${slug}.html`;
+
   return layout({
+    section: 'article',
+    articleType: true,
     title: `${title} | Moringa Suppliers India`,
     description,
-    canonical: `${SITE}/articles/${slug}.html`,
-    breadcrumb: `<a href="/">Home</a> / <a href="/articles/">Articles</a> / ${escHtml(h1)}`,
+    keywords: keywordsForSlug(slug, h1),
+    canonical,
+    breadcrumbTrail: [
+      { name: 'Home', url: '/' },
+      { name: 'Articles', url: '/articles/' },
+      { name: h1 },
+    ],
     h1,
     lead,
+    eyebrow: 'Editorial guide',
+    author: DEFAULT_AUTHOR,
+    datePublished: ARTICLE_PUBLISHED,
+    dateModified: ARTICLE_MODIFIED,
+    readingTime: rt.label,
     content,
     schemaJson: {
-      '@context': 'https://schema.org',
       '@type': 'Article',
       headline: h1,
-      url: `${SITE}/articles/${slug}.html`,
-      dateModified: '2026-05-03',
+      description,
+      url: canonical,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
+      datePublished: ARTICLE_PUBLISHED,
+      dateModified: ARTICLE_MODIFIED,
+      wordCount: rt.words,
+      timeRequired: `PT${rt.minutes}M`,
+      inLanguage: 'en',
+      articleSection: 'Moringa guides',
+      keywords: keywordsForSlug(slug, h1),
+      author: { '@type': 'Person', name: DEFAULT_AUTHOR.name, url: DEFAULT_AUTHOR.url },
+      publisher: { '@id': `${SITE}/#organization` },
+      image: {
+        '@type': 'ImageObject',
+        url: `${SITE}/og-brand.svg`,
+        width: 1200,
+        height: 630,
+      },
     },
   });
 }
@@ -176,20 +250,36 @@ ${amazonBtn(AMZ.organicIndiaCapsules, 'Organic India capsules — Amazon')}
 </div>
 <p class="articles-hub-more-links">Also: ${amazonBtnSmall(AMZ.organicIndia, 'Organic India hub')} ${amazonBtnSmall(AMZ.kuliKuli, 'Kuli Kuli')} ${amazonBtnSmall(AMZ.vahdam, 'Vahdam')} ${amazonBtnSmall(AMZ.tea, 'Tea search')}</p>
 </section>
-<p class="articles-hub-backlinks"><a href="/">← Home buyer guide</a> · <a href="/products/">Product guides</a></p>`;
+<p class="articles-hub-backlinks"><a href="/">&larr; Home buyer guide</a> &middot; <a href="/products/">Product guides</a></p>`;
   return layout({
+    section: 'article',
     title: 'Moringa Guides — Organic India Sourcing, Safety, Recipes | Moringa Suppliers India',
     description: 'Moringa guides: organic leaf powder and capsules, safety and purity, India export standards, EU compliance, brand comparisons, recipes, tea, skincare, and pets.',
+    keywords: 'moringa guides, moringa articles, organic india moringa, moringa safety, moringa recipes, moringa export, eu moringa',
     canonical: `${SITE}/articles/`,
-    breadcrumb: `<a href="/">Home</a> / Articles`,
+    breadcrumbTrail: [
+      { name: 'Home', url: '/' },
+      { name: 'Articles' },
+    ],
     h1: 'Moringa guides',
-    lead: 'India organic Moringa — sourcing, safety, comparisons, and everyday use.',
+    eyebrow: 'Editorial hub',
+    lead: 'India organic Moringa &mdash; sourcing, safety, comparisons, and everyday use.',
+    dateModified: ARTICLE_MODIFIED,
+    heroStats: [
+      { value: '20', label: 'Authority articles' },
+      { value: '~', label: 'Editorial only' },
+      { value: '2026', label: 'Updated' },
+    ],
     content,
     schemaJson: {
-      '@context': 'https://schema.org',
       '@type': 'CollectionPage',
       name: 'Moringa Articles',
       url: `${SITE}/articles/`,
+      hasPart: ARTICLES.map((a) => ({
+        '@type': 'Article',
+        headline: a.h1,
+        url: `${SITE}/articles/${a.slug}.html`,
+      })),
     },
   });
 }

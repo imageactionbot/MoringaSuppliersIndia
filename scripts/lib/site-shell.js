@@ -1,6 +1,15 @@
 /**
- * Shared layout shell for generated pages (legal, products, brands, compare, articles).
+ * Shared layout shell for generated pages (legal, products, brands, compare, articles, about).
  * Root = repo root (parent of scripts/).
+ *
+ * Design goals (v16 refresh):
+ *   - Each section (article / product / brand / compare / legal / about / hub) is visually
+ *     distinct via a body[data-section="..."] theme (accent colour, hero gradient, ornament).
+ *   - Every inner page ships the same strong SEO baseline: canonical, OG (with og:type logic),
+ *     Twitter card, per-page keywords, theme-color, BreadcrumbList + WebSite + the page's own
+ *     JSON-LD, and (on articles) Article schema with published/modified/author.
+ *   - The hero always has an eyebrow tag, h1, optional meta row (date · author · reading time)
+ *     and optional stat chips — so no two sections look identical.
  */
 const fs = require('fs');
 const path = require('path');
@@ -12,7 +21,7 @@ const SITE = 'https://www.moringasuppliersindia.com';
 /** Default Open Graph / Twitter preview (repo asset; hero uses Moringa_All_Products.webp). */
 const OG_DEFAULT_IMAGE = `${SITE}/og-brand.svg`;
 /** Bust CDN/browser cache when CSS/JS change; bump after edits to main.css or main.js. */
-const ASSET_VER = '15';
+const ASSET_VER = '16';
 
 const AMZ = {
   organicIndia: 'https://amzn.to/3QKamqU',
@@ -49,7 +58,93 @@ const FONTS = `  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/main.css?v=${ASSET_VER}" />`;
 
-function topBar() {
+const ORG_NODE = {
+  '@type': 'Organization',
+  '@id': `${SITE}/#organization`,
+  name: 'Moringa Suppliers India',
+  url: SITE,
+  logo: {
+    '@type': 'ImageObject',
+    url: `${SITE}/logo.svg`,
+    width: 256,
+    height: 256,
+  },
+  email: 'moringasuppliersindia@gmail.com',
+  founder: { '@type': 'Person', name: 'Avinash Chauhan' },
+};
+
+const WEBSITE_NODE = {
+  '@type': 'WebSite',
+  '@id': `${SITE}/#website`,
+  name: 'Moringa Suppliers India',
+  url: SITE,
+  publisher: { '@id': `${SITE}/#organization` },
+  inLanguage: 'en',
+};
+
+/** Default editorial author used on articles when the generator does not pass one. */
+const DEFAULT_AUTHOR = {
+  '@type': 'Person',
+  name: 'Avinash Chauhan',
+  url: `${SITE}/about.html`,
+};
+
+/**
+ * Infer the "section" (data-section attribute + default theme) from a URL path.
+ * Explicit opts.section always wins — this is just the fallback.
+ */
+function sectionFromCanonical(canonical) {
+  try {
+    const u = new URL(canonical);
+    const p = u.pathname;
+    if (p.startsWith('/articles/')) return 'article';
+    if (p.startsWith('/products/')) return 'product';
+    if (p.startsWith('/brands/')) return 'brand';
+    if (p.startsWith('/compare/')) return 'compare';
+    if (p.startsWith('/legal/')) return 'legal';
+    if (p === '/about.html') return 'about';
+    return 'home';
+  } catch {
+    return 'home';
+  }
+}
+
+/** Short, human eyebrow tag shown above H1 — keeps each section feeling different. */
+function eyebrowFor(section) {
+  switch (section) {
+    case 'article': return 'Editorial guide';
+    case 'product': return 'Product buyer guide';
+    case 'brand': return 'Brand guide';
+    case 'compare': return 'Side-by-side comparison';
+    case 'legal': return 'Legal notice';
+    case 'about': return 'About the site';
+    default: return 'Moringa Suppliers India';
+  }
+}
+
+/**
+ * Accent icon shown in the page-hero eyebrow pill per section.
+ * Plain SVG (aria-hidden) — no external requests.
+ */
+function heroIconFor(section) {
+  if (section === 'article') {
+    return `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="14" height="14"><path d="M5 4h11l3 3v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.6"/><path d="M8 10h8M8 14h8M8 18h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>`;
+  }
+  if (section === 'product') {
+    return `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="14" height="14"><path d="M4 7h16l-1.5 12a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8L4 7Z" stroke="currentColor" stroke-width="1.6"/><path d="M9 7a3 3 0 0 1 6 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>`;
+  }
+  if (section === 'brand') {
+    return `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="14" height="14"><path d="M12 3l2.5 5.5L20 10l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-1.5L12 3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>`;
+  }
+  if (section === 'compare') {
+    return `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="14" height="14"><path d="M6 4v16M18 4v16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M3 8l3-3 3 3M15 16l3 3 3-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  }
+  if (section === 'legal') {
+    return `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="14" height="14"><path d="M6 3h9l3 3v15H6V3Z" stroke="currentColor" stroke-width="1.6"/><path d="M9 9h6M9 13h6M9 17h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>`;
+  }
+  if (section === 'about') {
+    return `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="14" height="14"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.6"/><path d="M4 20c1.5-4 4.5-6 8-6s6.5 2 8 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>`;
+  }
   return '';
 }
 
@@ -113,9 +208,9 @@ function footer() {
           Moringa<span>Suppliers</span>India
         </div>
         <p class="footer-tagline">Independent guides for buyers sourcing Moringa from India and trusted retail options on Amazon (US).</p>
-        <p class="footer-owner-line">Avinash Chauhan · Independent developer &amp; site owner</p>
+        <p class="footer-owner-line">Avinash Chauhan &middot; Independent developer &amp; site owner</p>
         <div class="footer-contact-mini">
-          ✉️ <a href="mailto:moringasuppliersindia@gmail.com">moringasuppliersindia@gmail.com</a>
+          &#9993; <a href="mailto:moringasuppliersindia@gmail.com">moringasuppliersindia@gmail.com</a>
         </div>
       </div>
       <div class="footer-col"><h4>Guides</h4><ul>
@@ -140,49 +235,234 @@ function footer() {
         <a href="/legal/affiliate-disclosure.html">Details</a>
       </div>
       <div style="display:flex;flex-wrap:wrap;justify-content:space-between;width:100%;padding-top:0.8rem;border-top:1px solid rgba(255,255,255,0.06);">
-        <div>© 2026 MoringaSuppliersIndia.com</div>
+        <div>&copy; 2026 MoringaSuppliersIndia.com</div>
         <div class="last-updated">Last updated: May 3, 2026</div>
       </div>
     </div>
   </div>
 </footer>
-<button class="scroll-top" id="scrollTopBtn" aria-label="Top">↑</button>
-<div class="cookie-notice" id="cookieNotice" role="dialog" aria-label="Cookie notice"><span>🍪 Analytics cookies.</span><button type="button" id="acceptCookies">Accept</button></div>
+<button class="scroll-top" id="scrollTopBtn" aria-label="Top">&uarr;</button>
+<div class="cookie-notice" id="cookieNotice" role="dialog" aria-label="Cookie notice"><span>&#127850; Analytics cookies.</span><button type="button" id="acceptCookies">Accept</button></div>
 <script defer src="/assets/js/main.js?v=${ASSET_VER}"></script>`;
 }
 
 function amazonBtn(href, label) {
-  return `<a href="${href}" class="amazon-btn" target="_blank" rel="sponsored nofollow noopener" aria-label="${label} (affiliate)">🛒 ${label}</a>`;
+  return `<a href="${href}" class="amazon-btn" target="_blank" rel="sponsored nofollow noopener" aria-label="${label} (affiliate)">&#128722; ${label}</a>`;
 }
 
 function amazonBtnSmall(href, label) {
   return `<a href="${href}" class="amazon-btn-small" target="_blank" rel="sponsored nofollow noopener">${label}</a>`;
 }
 
-function layout({ title, description, canonical, ogImage, breadcrumb, h1, lead, content, schemaJson }) {
-  const img = ogImage || OG_DEFAULT_IMAGE;
-  const titleEsc = title.replace(/"/g, '&quot;');
-  const descEsc = description.replace(/"/g, '&quot;');
-  const schema = schemaJson
-    ? `<script type="application/ld+json">${JSON.stringify(schemaJson)}</script>`
+/**
+ * Render the hero block for inner pages. Keeps each section visually distinct via
+ * the data-section theme (gradient + accent set in CSS).
+ */
+function renderPageHero({ section, eyebrow, h1, lead, dateModified, datePublished, author, readingTime, heroStats }) {
+  const icon = heroIconFor(section);
+  const eyebrowHtml = eyebrow
+    ? `<span class="page-eyebrow" aria-hidden="false">${icon}<span>${eyebrow}</span></span>`
     : '';
+
+  const metaBits = [];
+  if (author && author.name) {
+    metaBits.push(`<span class="page-meta-item"><span class="page-meta-label">By</span> ${author.name}</span>`);
+  }
+  if (datePublished) {
+    metaBits.push(`<span class="page-meta-item"><span class="page-meta-label">Published</span> <time datetime="${datePublished}">${formatPrettyDate(datePublished)}</time></span>`);
+  }
+  if (dateModified) {
+    metaBits.push(`<span class="page-meta-item"><span class="page-meta-label">Updated</span> <time datetime="${dateModified}">${formatPrettyDate(dateModified)}</time></span>`);
+  }
+  if (readingTime) {
+    metaBits.push(`<span class="page-meta-item"><span class="page-meta-label">Read</span> ${readingTime}</span>`);
+  }
+  const metaHtml = metaBits.length
+    ? `<div class="page-hero-meta">${metaBits.join('<span class="page-meta-sep" aria-hidden="true">&middot;</span>')}</div>`
+    : '';
+
+  const statsHtml = Array.isArray(heroStats) && heroStats.length
+    ? `<div class="page-hero-stats" role="list">${heroStats
+        .map((s) => `<div class="page-hero-stat" role="listitem"><div class="phs-value">${s.value}</div><div class="phs-label">${s.label}</div></div>`)
+        .join('')}</div>`
+    : '';
+
+  return `<header class="page-hero page-hero--${section}" data-hero-section="${section}">
+    <div class="page-hero-ornament" aria-hidden="true"></div>
+    <div class="container page-hero-inner">
+      ${eyebrowHtml}
+      <h1>${h1}</h1>
+      <p class="lead">${lead}</p>
+      ${metaHtml}
+      ${statsHtml}
+    </div>
+  </header>`;
+}
+
+function formatPrettyDate(iso) {
+  // Accepts YYYY-MM-DD and returns e.g. "May 3, 2026"
+  try {
+    const d = new Date(iso);
+    if (Number.isNaN(d.getTime())) return iso;
+    return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+  } catch {
+    return iso;
+  }
+}
+
+/** Resolve a possibly-relative URL against the canonical SITE host. */
+function absUrl(u) {
+  if (!u) return u;
+  if (/^https?:\/\//i.test(u)) return u;
+  if (u.startsWith('/')) return `${SITE}${u}`;
+  return `${SITE}/${u}`;
+}
+
+/** Build a BreadcrumbList JSON-LD node from a trail array. Always uses absolute URLs. */
+function breadcrumbSchema(trail) {
+  if (!Array.isArray(trail) || trail.length === 0) return null;
+  return {
+    '@type': 'BreadcrumbList',
+    itemListElement: trail.map((t, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: t.name,
+      ...(t.url ? { item: absUrl(t.url) } : {}),
+    })),
+  };
+}
+
+/**
+ * Main page layout. Backwards-compatible with prior callers that pass
+ * { title, description, canonical, breadcrumb, h1, lead, content, schemaJson, ogImage }.
+ * New optional keys: section, keywords, dateModified, datePublished, author, readingTime,
+ * eyebrow, breadcrumbTrail, heroStats, articleType, extraHeadTags.
+ */
+function layout(opts) {
+  const {
+    title,
+    description,
+    canonical,
+    ogImage,
+    breadcrumb,
+    h1,
+    lead,
+    content,
+    schemaJson,
+    keywords,
+    dateModified,
+    datePublished,
+    author,
+    readingTime,
+    eyebrow,
+    breadcrumbTrail,
+    heroStats,
+    articleType, // if truthy, og:type=article (else website)
+    extraHeadTags = '',
+  } = opts;
+
+  const section = opts.section || sectionFromCanonical(canonical);
+  const effectiveEyebrow = eyebrow || eyebrowFor(section);
+  const img = ogImage || OG_DEFAULT_IMAGE;
+  const titleEsc = String(title).replace(/"/g, '&quot;');
+  const descEsc = String(description).replace(/"/g, '&quot;');
+  const isArticleLike = !!articleType || section === 'article';
+
+  // Combined JSON-LD graph: Organization + WebSite + BreadcrumbList + page-specific node(s).
+  const graphNodes = [ORG_NODE, WEBSITE_NODE];
+  const bc = breadcrumbSchema(breadcrumbTrail);
+  if (bc) graphNodes.push({ ...bc, '@id': `${canonical}#breadcrumb` });
+
+  if (schemaJson) {
+    const pageNodes = Array.isArray(schemaJson) ? schemaJson : [schemaJson];
+    for (const node of pageNodes) {
+      if (!node || typeof node !== 'object') continue;
+      const cleaned = { ...node };
+      // Promote WebPage / Article / CollectionPage etc. into the graph without duplicate @context.
+      delete cleaned['@context'];
+      graphNodes.push(cleaned);
+    }
+  }
+
+  const schemaBlock = `<script type="application/ld+json">${JSON.stringify({
+    '@context': 'https://schema.org',
+    '@graph': graphNodes,
+  })}</script>`;
+
+  const ogType = isArticleLike ? 'article' : 'website';
+  const articleMeta = isArticleLike
+    ? `
+  ${datePublished ? `<meta property="article:published_time" content="${datePublished}" />` : ''}
+  ${dateModified ? `<meta property="article:modified_time" content="${dateModified}" />` : ''}
+  ${author && author.name ? `<meta property="article:author" content="${author.name}" />` : ''}
+  <meta property="article:section" content="${section === 'article' ? 'Moringa guides' : section}" />`
+    : '';
+
+  const keywordsMeta = keywords
+    ? `<meta name="keywords" content="${String(keywords).replace(/"/g, '&quot;')}" />`
+    : '';
+
+  const heroBlock = renderPageHero({
+    section,
+    eyebrow: effectiveEyebrow,
+    h1,
+    lead,
+    dateModified,
+    datePublished,
+    author,
+    readingTime,
+    heroStats,
+  });
+
+  // Breadcrumb bar (visible). If breadcrumbTrail provided, render a pill-style bar;
+  // otherwise fall back to the legacy plain string (breadcrumb prop).
+  let breadcrumbHtml = '';
+  if (Array.isArray(breadcrumbTrail) && breadcrumbTrail.length) {
+    const items = breadcrumbTrail
+      .map((t, i, arr) => {
+        const isLast = i === arr.length - 1;
+        if (isLast || !t.url) {
+          return `<li class="crumb crumb--current" aria-current="page">${t.name}</li>`;
+        }
+        return `<li class="crumb"><a href="${t.url}">${t.name}</a></li>`;
+      })
+      .join('<li class="crumb-sep" aria-hidden="true">&rsaquo;</li>');
+    breadcrumbHtml = `<nav class="breadcrumb-nav breadcrumb-nav--pill" aria-label="Breadcrumb"><ol class="breadcrumb-list">${items}</ol></nav>`;
+  } else if (breadcrumb) {
+    breadcrumbHtml = `<nav class="breadcrumb-nav" aria-label="Breadcrumb">${breadcrumb}</nav>`;
+  }
+
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>${title}</title>
   <meta name="description" content="${descEsc}" />
+  ${keywordsMeta}
+  <meta name="author" content="${author && author.name ? author.name : 'MoringaSuppliersIndia.com'}" />
+  <meta name="publisher" content="MoringaSuppliersIndia.com" />
   <link rel="canonical" href="${canonical}" />
-  <meta name="robots" content="index, follow" />
+  <link rel="alternate" hreflang="en" href="${canonical}" />
+  <link rel="alternate" hreflang="x-default" href="${canonical}" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1" />
   <meta name="theme-color" content="#2d8a3a" />
   <meta name="msapplication-TileColor" content="#2d8a3a" />
+  <meta name="color-scheme" content="light" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
   <link rel="icon" href="/logo.svg" type="image/svg+xml" sizes="256x256" />
   <link rel="apple-touch-icon" href="/logo.svg" sizes="180x180" />
   <link rel="mask-icon" href="/favicon.svg" color="#2d8a3a" />
   <link rel="manifest" href="/site.webmanifest" />
-  <meta property="og:type" content="website" />
+  <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+  <meta property="og:type" content="${ogType}" />
+  <meta property="og:locale" content="en_IN" />
   <meta property="og:site_name" content="Moringa Suppliers India" />
   <meta property="og:title" content="${titleEsc}" />
   <meta property="og:description" content="${descEsc}" />
@@ -190,27 +470,25 @@ function layout({ title, description, canonical, ogImage, breadcrumb, h1, lead, 
   <meta property="og:image" content="${img}" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="${titleEsc}" />
   <meta property="og:image:type" content="image/svg+xml" />
+  ${articleMeta}
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="${titleEsc}" />
   <meta name="twitter:description" content="${descEsc}" />
   <meta name="twitter:image" content="${img}" />
-  ${GA}
-  ${FONTS}
-  ${schema}
+  <meta name="twitter:image:alt" content="${titleEsc}" />
+${GA}
+${FONTS}
+  ${schemaBlock}
+  ${extraHeadTags}
 </head>
-<body>
-${topBar()}
+<body data-section="${section}">
 ${nav()}
-<main id="main">
-  <nav class="breadcrumb-nav" aria-label="Breadcrumb">${breadcrumb}</nav>
-  <header class="page-hero">
-    <div class="container">
-      <h1>${h1}</h1>
-      <p class="lead">${lead}</p>
-    </div>
-  </header>
-  <article class="page-content wide">
+<main id="main" class="page-shell page-shell--${section}">
+  ${breadcrumbHtml}
+  ${heroBlock}
+  <article class="page-content wide page-content--${section}">
     <div class="container">
       ${content}
     </div>
@@ -236,11 +514,17 @@ module.exports = {
   AFFILIATE_BOX,
   GA,
   FONTS,
-  topBar,
+  ORG_NODE,
+  WEBSITE_NODE,
+  DEFAULT_AUTHOR,
+  topBar: () => '',
   nav,
   footer,
   amazonBtn,
   amazonBtnSmall,
   layout,
   write,
+  sectionFromCanonical,
+  breadcrumbSchema,
+  absUrl,
 };

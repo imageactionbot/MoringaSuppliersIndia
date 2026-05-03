@@ -2539,3 +2539,503 @@ body.has-mobile-nav {
   margin-top: 0.25rem;
   max-width: 100%;
 }
+
+/* ============================================
+   v16 REFRESH — section-themed inner pages
+   Each generated page (article / product / brand / compare / legal / about)
+   gets its own accent colour set, hero gradient and ornament via
+   body[data-section="..."]. Nothing here touches the home page.
+============================================ */
+
+body[data-section] {
+  --accent: var(--green-main);
+  --accent-dark: var(--green-dark);
+  --accent-soft: var(--green-pale);
+  --accent-ultra: var(--green-ultra);
+  --hero-from: #eef7f0;
+  --hero-to: #ffffff;
+  --hero-ink: var(--green-deep);
+}
+body[data-section="article"] {
+  --accent: #b8860b;
+  --accent-dark: #8a5a06;
+  --accent-soft: #fdf3d8;
+  --accent-ultra: #fffaef;
+  --hero-from: #fffaef;
+  --hero-to: #f7fbf4;
+  --hero-ink: #2a1f05;
+}
+body[data-section="product"] {
+  --accent: #2d8a3a;
+  --accent-dark: #1a5f2a;
+  --accent-soft: #e3f3e6;
+  --accent-ultra: #f3faf4;
+  --hero-from: #e8f5ec;
+  --hero-to: #ffffff;
+  --hero-ink: #0a2e15;
+}
+body[data-section="brand"] {
+  --accent: #6a4e9b;
+  --accent-dark: #4a3370;
+  --accent-soft: #efe8fb;
+  --accent-ultra: #f8f4ff;
+  --hero-from: #f4eefe;
+  --hero-to: #fbfbff;
+  --hero-ink: #231640;
+}
+body[data-section="compare"] {
+  --accent: #0d6e8a;
+  --accent-dark: #07506a;
+  --accent-soft: #dff1f6;
+  --accent-ultra: #f2fafd;
+  --hero-from: #e6f3f7;
+  --hero-to: #fafdff;
+  --hero-ink: #072d3a;
+}
+body[data-section="legal"] {
+  --accent: #4a5a6a;
+  --accent-dark: #2f3a46;
+  --accent-soft: #e8ecf1;
+  --accent-ultra: #f6f8fa;
+  --hero-from: #f2f5f8;
+  --hero-to: #ffffff;
+  --hero-ink: #1b242d;
+}
+body[data-section="about"] {
+  --accent: #c46a2a;
+  --accent-dark: #8a4415;
+  --accent-soft: #fbe9d7;
+  --accent-ultra: #fff6ec;
+  --hero-from: #fff1e1;
+  --hero-to: #fffaf3;
+  --hero-ink: #3a1d05;
+}
+
+/* Pill-style breadcrumb bar (sits just below the sticky nav) */
+.breadcrumb-nav--pill {
+  padding: calc(var(--nav-height) + 1rem) 0 0;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+.breadcrumb-nav--pill .breadcrumb-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.5rem;
+  padding: 0;
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+.breadcrumb-nav--pill .crumb {
+  display: inline-flex;
+  align-items: center;
+}
+.breadcrumb-nav--pill .crumb a {
+  color: var(--accent-dark);
+  text-decoration: none;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  border: 1px solid color-mix(in srgb, var(--accent) 18%, transparent);
+  transition: background 0.18s, color 0.18s, border-color 0.18s;
+}
+.breadcrumb-nav--pill .crumb a:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+.breadcrumb-nav--pill .crumb--current {
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--hero-ink);
+  font-weight: 600;
+}
+.breadcrumb-nav--pill .crumb-sep {
+  color: color-mix(in srgb, var(--accent) 45%, transparent);
+  font-weight: 600;
+}
+
+/* Upgraded page-hero: gradient background, ornament pattern, eyebrow tag, meta row, stat chips */
+body[data-section] .page-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 2rem 0 3rem;
+  background:
+    radial-gradient(80% 140% at 100% 0%, color-mix(in srgb, var(--accent) 10%, transparent) 0%, transparent 60%),
+    radial-gradient(60% 110% at 0% 100%, color-mix(in srgb, var(--accent) 7%, transparent) 0%, transparent 60%),
+    linear-gradient(140deg, var(--hero-from) 0%, var(--hero-to) 100%);
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 18%, transparent);
+  isolation: isolate;
+}
+body[data-section] .page-hero-ornament {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 18% 22%, color-mix(in srgb, var(--accent) 16%, transparent) 0, transparent 45%),
+    radial-gradient(circle at 82% 78%, color-mix(in srgb, var(--accent) 10%, transparent) 0, transparent 50%);
+  opacity: 0.9;
+  z-index: -1;
+}
+body[data-section] .page-hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 4px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--accent) 30%,
+    var(--accent-dark) 50%,
+    var(--accent) 70%,
+    transparent 100%);
+  opacity: 0.55;
+  z-index: 1;
+}
+body[data-section] .page-hero-inner {
+  position: relative;
+  z-index: 1;
+}
+body[data-section] .page-hero h1 {
+  color: var(--hero-ink);
+  letter-spacing: -0.015em;
+  margin-top: 0.85rem;
+}
+body[data-section] .page-hero .lead {
+  color: color-mix(in srgb, var(--hero-ink) 72%, #ffffff 0%);
+  max-width: 760px;
+  font-size: 1.08rem;
+  margin-top: 0.6rem;
+}
+
+/* Eyebrow pill above H1 */
+.page-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 12%, #ffffff);
+  color: var(--accent-dark);
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset;
+}
+.page-eyebrow svg {
+  flex: none;
+  color: var(--accent-dark);
+}
+
+/* Hero meta row (published / updated / author / reading time) */
+.page-hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  margin-top: 1.1rem;
+  font-size: 0.88rem;
+  color: color-mix(in srgb, var(--hero-ink) 70%, #ffffff 0%);
+}
+.page-meta-item {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  white-space: nowrap;
+}
+.page-meta-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-dark);
+  font-weight: 700;
+}
+.page-meta-sep {
+  color: color-mix(in srgb, var(--accent) 50%, transparent);
+}
+
+/* Stat chips inside hero (used for the Articles and Products hubs) */
+.page-hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.25rem;
+}
+.page-hero-stat {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: 0.55rem 0.95rem;
+  background: #ffffff;
+  border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02), 0 4px 12px color-mix(in srgb, var(--accent) 8%, transparent);
+  min-width: 90px;
+}
+.page-hero-stat .phs-value {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: var(--accent-dark);
+  line-height: 1;
+}
+.page-hero-stat .phs-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+/* Section-specific subtle signatures (keeps sections distinct at a glance) */
+body[data-section="article"] .page-hero-ornament {
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(212, 165, 58, 0.22) 0, transparent 40%),
+    radial-gradient(circle at 85% 80%, rgba(184, 134, 11, 0.12) 0, transparent 50%),
+    repeating-linear-gradient(-35deg, rgba(184, 134, 11, 0.05) 0 2px, transparent 2px 22px);
+}
+body[data-section="product"] .page-hero-ornament {
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(45, 138, 58, 0.18) 0, transparent 42%),
+    radial-gradient(circle at 90% 85%, rgba(76, 174, 90, 0.12) 0, transparent 50%);
+}
+body[data-section="brand"] .page-hero-ornament {
+  background-image:
+    radial-gradient(circle at 20% 25%, rgba(106, 78, 155, 0.20) 0, transparent 45%),
+    radial-gradient(circle at 80% 75%, rgba(106, 78, 155, 0.10) 0, transparent 55%),
+    repeating-linear-gradient(45deg, rgba(106, 78, 155, 0.04) 0 2px, transparent 2px 28px);
+}
+body[data-section="compare"] .page-hero-ornament {
+  background-image:
+    linear-gradient(90deg, rgba(13, 110, 138, 0.08) 0 1px, transparent 1px 50%),
+    radial-gradient(circle at 15% 20%, rgba(13, 110, 138, 0.15) 0, transparent 50%),
+    radial-gradient(circle at 85% 80%, rgba(13, 110, 138, 0.10) 0, transparent 55%);
+  background-size: 28px 28px, 100% 100%, 100% 100%;
+}
+body[data-section="legal"] .page-hero-ornament {
+  background-image:
+    repeating-linear-gradient(0deg, rgba(74, 90, 106, 0.05) 0 1px, transparent 1px 26px),
+    radial-gradient(circle at 20% 30%, rgba(74, 90, 106, 0.10) 0, transparent 50%);
+}
+body[data-section="about"] .page-hero-ornament {
+  background-image:
+    radial-gradient(circle at 20% 25%, rgba(196, 106, 42, 0.20) 0, transparent 45%),
+    radial-gradient(circle at 80% 80%, rgba(196, 106, 42, 0.10) 0, transparent 50%);
+}
+
+/* Make article h1 feel like a magazine cover without changing size class */
+body[data-section="article"] .page-hero h1 {
+  font-weight: 800;
+  line-height: 1.12;
+}
+body[data-section="legal"] .page-hero h1 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+}
+body[data-section="legal"] .page-hero {
+  padding: 1.25rem 0 2rem;
+}
+
+/* Content cards accent — card / article body themed per-section */
+body[data-section] .card {
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+body[data-section] a.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+}
+body[data-section] .articles-hub-list li {
+  border-left-color: var(--accent);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+body[data-section] .articles-hub-list li:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--accent) 15%, transparent);
+}
+
+/* Better article long-form prose (drop-cap + refined hr + blockquote) */
+body[data-section="article"] .article-prose > p:first-of-type::first-letter {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.4rem;
+  line-height: 0.9;
+  float: left;
+  padding: 0.45rem 0.55rem 0 0;
+  color: var(--accent-dark);
+  font-weight: 700;
+}
+body[data-section="article"] .article-prose blockquote {
+  margin: 1.5rem 0;
+  padding: 0.9rem 1.2rem;
+  border-left: 4px solid var(--accent);
+  background: var(--accent-ultra);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  color: var(--hero-ink);
+  font-style: italic;
+}
+body[data-section="article"] .article-prose hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent) 50%, transparent), transparent);
+  margin: 2rem auto;
+  max-width: 220px;
+}
+body[data-section="article"] .article-prose h2 {
+  color: var(--accent-dark);
+  position: relative;
+  padding-left: 0.9rem;
+}
+body[data-section="article"] .article-prose h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.35em;
+  bottom: 0.35em;
+  width: 3px;
+  background: var(--accent);
+  border-radius: 3px;
+}
+body[data-section="article"] .article-prose h3 {
+  color: var(--accent-dark);
+}
+body[data-section="article"] .article-prose ul li::marker {
+  color: var(--accent);
+}
+
+/* Legal pages: more paper-white with conservative accent */
+body[data-section="legal"] .page-content {
+  background: #fcfcfd;
+}
+body[data-section="legal"] .page-content .container {
+  max-width: 780px;
+  padding-top: 1rem;
+}
+
+/* Brand pages: accent chip label over h1 inside content */
+body[data-section="brand"] .page-content h2,
+body[data-section="brand"] .page-content h3 {
+  color: var(--accent-dark);
+}
+
+/* Compare pages: stronger table framing */
+body[data-section="compare"] .compare-table {
+  border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+body[data-section="compare"] .compare-table th {
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+}
+body[data-section="compare"] .compare-table tbody tr:nth-child(even) td {
+  background: var(--accent-ultra);
+}
+
+/* Product pages: featured CTA block gets accent rail */
+body[data-section="product"] .prime-buy-block {
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+  background: linear-gradient(180deg, var(--accent-ultra) 0%, #ffffff 100%);
+  border-radius: var(--radius);
+  padding: 1.4rem 1.5rem;
+  margin: 1.25rem 0 2rem;
+  box-shadow: var(--shadow-sm);
+}
+body[data-section="product"] .prime-buy-block h3 {
+  margin-top: 0;
+}
+
+/* About page content — distinct card style */
+body[data-section="about"] .about-card {
+  background: #fff;
+  border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+  border-radius: var(--radius);
+  padding: 1.4rem 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+body[data-section="about"] .editorial-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+body[data-section="about"] .em-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+body[data-section="about"] .em-value {
+  font-size: 0.92rem;
+  color: var(--hero-ink);
+  margin-top: 0.2rem;
+}
+
+/* Improved link focus rings tied to section accent */
+body[data-section] a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+/* Print styles — make articles look proper when printed or saved as PDF */
+@media print {
+  .navbar,
+  .mobile-menu,
+  .nav-mobile-backdrop,
+  .scroll-top,
+  .cookie-notice,
+  .footer-pro,
+  .amazon-btn,
+  .amazon-btn-small,
+  .affiliate-disclosure,
+  .article-mid-cta,
+  .article-cta-panel,
+  .related-articles {
+    display: none !important;
+  }
+  body[data-section] .page-hero {
+    padding: 0.5rem 0 1rem;
+    background: none;
+    border: none;
+  }
+  body[data-section] .page-hero-ornament,
+  body[data-section] .page-hero::after {
+    display: none;
+  }
+  body {
+    color: #111;
+    background: #fff;
+  }
+  a {
+    color: #111;
+    text-decoration: underline;
+  }
+  .page-content {
+    padding: 0;
+  }
+}
+
+/* Mobile spacing tune-up for the upgraded hero */
+@media (max-width: 640px) {
+  body[data-section] .page-hero {
+    padding: 1.5rem 0 2rem;
+  }
+  .page-hero-stat {
+    padding: 0.5rem 0.75rem;
+    min-width: 84px;
+  }
+  .page-hero-stat .phs-value {
+    font-size: 1.2rem;
+  }
+  .breadcrumb-nav--pill .breadcrumb-list {
+    font-size: 0.78rem;
+  }
+}

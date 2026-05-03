@@ -28,7 +28,7 @@ const OG_DEFAULT_IMAGE = `${SITE}/Moringa_All_Products.webp`;
 /** SVG fallback used by some legacy share targets (kept for reference). */
 const OG_BRAND_SVG = `${SITE}/og-brand.svg`;
 /** Bust CDN/browser cache when CSS/JS change; bump after edits to main.css or main.js. */
-const ASSET_VER = '18';
+const ASSET_VER = '19';
 
 const AMZ = {
   organicIndia: 'https://amzn.to/3QKamqU',
@@ -45,6 +45,17 @@ const AMZ = {
   sunfood: 'https://amzn.to/4tQXPR8',
   terrasoul: 'https://amzn.to/4uoNlIq',
   microIngredients: 'https://amzn.to/42vnGSN',
+};
+
+/**
+ * IndiaMART (B2B / bulk) affiliate link. Used wherever the page is talking
+ * to a wholesale buyer, importer, exporter, or someone asking "where do I
+ * actually contact moringa suppliers in India?". Kept separate from AMZ
+ * because it is a different commercial relationship (B2B marketplace, not
+ * Amazon Associates retail).
+ */
+const INDIAMART = {
+  moringa: 'https://IndiaMART.in/v/yNRgBEqn',
 };
 
 const AFFILIATE_BOX = `<div class="affiliate-disclosure affiliate-disclosure--compact" role="note" aria-label="Amazon Associates disclosure">
@@ -290,6 +301,21 @@ function amazonBtn(href, label) {
 
 function amazonBtnSmall(href, label) {
   return `<a href="${href}" class="amazon-btn-small" target="_blank" rel="sponsored nofollow noopener">${label}</a>`;
+}
+
+/**
+ * IndiaMART (bulk / B2B) CTA buttons. Visually distinct from Amazon yellow
+ * so users instantly understand "this is where I contact actual moringa
+ * suppliers in India for wholesale", not retail Amazon.
+ */
+function indiamartBtn(label, href) {
+  const url = href || INDIAMART.moringa;
+  return `<a href="${url}" class="indiamart-btn" target="_blank" rel="sponsored nofollow noopener" aria-label="${label} on IndiaMART (affiliate)">&#127981; ${label}</a>`;
+}
+
+function indiamartBtnSmall(label, href) {
+  const url = href || INDIAMART.moringa;
+  return `<a href="${url}" class="indiamart-btn-small" target="_blank" rel="sponsored nofollow noopener">${label}</a>`;
 }
 
 /**
@@ -567,6 +593,7 @@ module.exports = {
   OG_DEFAULT_IMAGE,
   ASSET_VER,
   AMZ,
+  INDIAMART,
   AFFILIATE_BOX,
   GA,
   FONTS,
@@ -578,6 +605,8 @@ module.exports = {
   footer,
   amazonBtn,
   amazonBtnSmall,
+  indiamartBtn,
+  indiamartBtnSmall,
   layout,
   write,
   sectionFromCanonical,

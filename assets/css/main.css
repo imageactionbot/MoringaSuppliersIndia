@@ -462,6 +462,20 @@ section {
   border-color: transparent;
   filter: brightness(1.05);
 }
+.pill.pill--bulk {
+  background: linear-gradient(135deg, #ee5d3b 0%, #c8451f 100%);
+  color: #fff;
+  border-color: rgba(181, 61, 26, 0.4);
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(200, 69, 31, 0.28);
+}
+.pill.pill--bulk:hover {
+  color: #fff;
+  border-color: transparent;
+  filter: brightness(1.05);
+  transform: translateY(-2px);
+}
+.pill.pill--bulk:visited { color: #fff; }
 
 .hero-image {
   border-radius: var(--radius-lg);
@@ -2525,6 +2539,133 @@ a.home-article-card:focus-visible .home-article-cta-arrow {
 .amazon-btn-small:focus-visible {
   outline: 2px solid #131A22;
   outline-offset: 2px;
+}
+
+/* ==========================================================================
+   IndiaMART (B2B / bulk) buttons.
+   - Brand-distinct from Amazon yellow so users know this is the bulk channel.
+   - Uses IndiaMART's signature warm orange/red.
+   - Big "indiamart-btn" matches the visual weight of .amazon-btn so the two
+     can sit side-by-side on a CTA row without one overpowering the other.
+   ========================================================================== */
+.indiamart-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: linear-gradient(180deg, #ee5d3b 0%, #c8451f 100%);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.92rem;
+  text-decoration: none;
+  border-radius: 100px;
+  border: 1px solid #b53d1a;
+  box-shadow: 0 2px 5px rgba(200, 69, 31, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+  text-align: center;
+}
+.indiamart-btn:hover {
+  background: linear-gradient(180deg, #f06b4c 0%, #b53d1a 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(200, 69, 31, 0.32);
+  color: #ffffff;
+}
+.indiamart-btn:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(238, 93, 59, 0.4);
+}
+.indiamart-btn:visited { color: #ffffff; }
+
+.indiamart-btn-small {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  background: linear-gradient(180deg, #ee5d3b 0%, #c8451f 100%);
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 0.78rem;
+  line-height: 1.2;
+  text-decoration: none;
+  border-radius: 100px;
+  border: 1px solid #b53d1a;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 2px 6px rgba(200, 69, 31, 0.18);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  white-space: nowrap;
+}
+.indiamart-btn-small:hover {
+  background: linear-gradient(180deg, #f06b4c 0%, #b53d1a 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 4px 10px rgba(200, 69, 31, 0.28);
+}
+.indiamart-btn-small:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(238, 93, 59, 0.4);
+}
+
+/* B2B "Bulk buyer strip" — eye-catching banner section that sits above
+   the suppliers table on the home page and on relevant inner pages. */
+.b2b-strip {
+  margin: 2rem 0;
+  padding: 1.5rem 1.6rem 1.4rem;
+  background:
+    radial-gradient(120% 180% at 100% 0%, rgba(238, 93, 59, 0.12) 0%, transparent 60%),
+    linear-gradient(135deg, #fff5f0 0%, #ffe9df 100%);
+  border: 1px solid #f5b69f;
+  border-left: 4px solid #ee5d3b;
+  border-radius: var(--radius);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 1.1rem 1.4rem;
+  box-shadow: 0 4px 18px rgba(200, 69, 31, 0.08);
+}
+.b2b-strip-eyebrow {
+  display: inline-block;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #b53d1a;
+  margin-bottom: 0.35rem;
+}
+.b2b-strip h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.15rem;
+  color: #6e2310;
+  font-weight: 700;
+}
+.b2b-strip p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #6e2310;
+  max-width: 44rem;
+}
+.b2b-strip p strong { color: #4a1808; }
+.b2b-strip-cta {
+  min-width: 220px;
+  align-self: center;
+}
+.b2b-strip-cta .indiamart-btn { width: 100%; }
+.b2b-strip-disclosure {
+  grid-column: 1 / -1;
+  font-size: 0.74rem;
+  color: #8a4a3a;
+  margin: 0;
+  padding-top: 0.6rem;
+  border-top: 1px dashed rgba(181, 61, 26, 0.25);
+}
+@media (max-width: 720px) {
+  .b2b-strip {
+    grid-template-columns: 1fr;
+    padding: 1.25rem 1.1rem;
+  }
+  .b2b-strip-cta { min-width: 0; }
 }
 
 .product-meta {

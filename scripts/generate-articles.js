@@ -9,12 +9,15 @@ const path = require('path');
 const {
   SITE,
   AMZ,
+  INDIAMART,
   AFFILIATE_BOX,
   DEFAULT_AUTHOR,
   layout,
   write,
   amazonBtn,
   amazonBtnSmall,
+  indiamartBtn,
+  indiamartBtnSmall,
 } = require('./lib/site-shell');
 
 const root = path.join(__dirname, '..');
@@ -129,7 +132,16 @@ ${row1b}
 </div>
 <div class="article-cta-more"><span class="article-cta-more-label">More options:</span>${smallParts.join('')}</div>
 <p class="article-cta-fineprint">Prices and Prime eligibility can change without notice.</p>
-</section>`;
+</section>
+<aside class="b2b-strip article-b2b-strip" role="complementary" aria-label="Bulk buyer shortcut">
+  <div>
+    <span class="b2b-strip-eyebrow">Buying in bulk?</span>
+    <h3>Get the best price on Moringa from <strong>Indian suppliers</strong> directly</h3>
+    <p>If you are sourcing moringa <strong>by the kilo or the ton</strong>, IndiaMART connects you with verified Indian moringa suppliers in minutes. Compare quotes, MOQ and certifications in one place.</p>
+  </div>
+  <div class="b2b-strip-cta">${indiamartBtn('Get best price on IndiaMART')}</div>
+  <p class="b2b-strip-disclosure"><strong>Disclosure:</strong> Affiliate link &mdash; we may earn a small referral fee at no cost to you. <a href="/legal/affiliate-disclosure.html" style="color:#c8451f;font-weight:600;">Policy</a>.</p>
+</aside>`;
 }
 
 function readBody(slug) {

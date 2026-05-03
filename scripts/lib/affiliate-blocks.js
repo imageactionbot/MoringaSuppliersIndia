@@ -2,7 +2,26 @@
  * Long-form editorial + Amazon CTA blocks for generate-site.js (retail guides).
  * All blocks assume AFFILIATE_BOX already precedes them on the page.
  */
-const { AMZ, amazonBtn, amazonBtnSmall } = require('./site-shell');
+const { AMZ, amazonBtn, amazonBtnSmall, indiamartBtn } = require('./site-shell');
+
+/**
+ * Reusable B2B "Get best price on IndiaMART" strip.
+ * Used on retail-focused hub pages so bulk buyers always see the alternative
+ * route (instead of bouncing to a competitor when Amazon is the wrong fit).
+ */
+function indiamartStrip({ title, body } = {}) {
+  const h = title || 'Get the best price on Moringa from <strong>Indian suppliers</strong> directly';
+  const p = body || 'If you are buying moringa <strong>in bulk or wholesale</strong>, IndiaMART connects you with thousands of verified Indian suppliers in minutes &mdash; compare quotes, MOQ and certifications in one place.';
+  return `<aside class="b2b-strip" role="complementary" aria-label="Bulk / wholesale buyer shortcut">
+  <div>
+    <span class="b2b-strip-eyebrow">Bulk / wholesale buyer?</span>
+    <h3>${h}</h3>
+    <p>${p}</p>
+  </div>
+  <div class="b2b-strip-cta">${indiamartBtn('Get best price on IndiaMART')}</div>
+  <p class="b2b-strip-disclosure"><strong>Disclosure:</strong> Affiliate link &mdash; we may earn a small referral fee at no cost to you. <a href="/legal/affiliate-disclosure.html" style="color:#c8451f;font-weight:600;">Policy</a>.</p>
+</aside>`;
+}
 
 function buyStrip() {
   return `<div class="buy-strip" role="region" aria-label="Amazon shopping shortcuts">
@@ -12,7 +31,8 @@ ${amazonBtn(AMZ.organicIndiaPowder, 'See Organic India leaf powder on Amazon')}
 ${amazonBtn(AMZ.organicIndiaCapsules, 'See Organic India capsules on Amazon')}
 </div>
 <div class="article-cta-more"><span class="article-cta-more-label">More formats:</span>${amazonBtnSmall(AMZ.tea, 'Moringa tea')}${amazonBtnSmall(AMZ.oil, 'Moringa oil')}${amazonBtnSmall(AMZ.skincare, 'Skincare search')}${amazonBtnSmall(AMZ.kuliKuli, 'Kuli Kuli store')}</div>
-</div>`;
+</div>
+${indiamartStrip()}`;
 }
 
 function productsHubLong() {
@@ -180,6 +200,7 @@ function comparePageLong() {
 
 module.exports = {
   buyStrip,
+  indiamartStrip,
   productsHubLong,
   productGuideLong,
   brandsHubLong,

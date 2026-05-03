@@ -251,37 +251,41 @@ function affiliateDisclosureBody() {
 <h2>7. Prices and availability</h2>
 <p>Amazon prices, coupons, and stock change frequently. Screenshots or examples in articles can become stale. Always confirm details at checkout.</p>
 
-<h2>8. Other programs</h2>
+<h2>8. IndiaMART (B2B / bulk buyer) affiliate</h2>
+<p>For bulk and wholesale buyers we link to <strong>IndiaMART</strong>, India's largest B2B marketplace, via an affiliate referral link (<code>https://IndiaMART.in/v/yNRgBEqn</code>). When you click an IndiaMART button on this site and submit a buy lead, we may receive a small referral fee from IndiaMART. The IndiaMART link is clearly labelled with our brand-distinct orange button or text link and tagged with <code>rel="sponsored nofollow noopener"</code>.</p>
+<p>IndiaMART runs the marketplace, supplier verification, lead quality, pricing and any commercial transaction between you and the supplier. We are not party to those transactions. You are responsible for independently verifying any moringa supplier's certifications (NPOP, USDA, EU Organic), legal registration (IEC, GST, APEDA), and reference checks before placing an order.</p>
+
+<h2>9. Other programs</h2>
 <p>If we join additional affiliate or sponsorship programs in the future, we will update this disclosure and mark new link types appropriately.</p>
 
-<h2>9. Contact</h2>
+<h2>10. Contact</h2>
 <p>Questions about disclosures: <a href="mailto:moringasuppliersindia@gmail.com">moringasuppliersindia@gmail.com</a></p>
 
-<h2>10. Coupons, lightning deals, and price errors</h2>
-<p>Amazon runs time-limited promotions. A guide may mention “check coupons” as generic shopper advice; we do not know your account-specific offers. If Amazon shows a price that seems mistaken, assume it can be corrected before shipment.</p>
+<h2>11. Coupons, lightning deals, and price errors</h2>
+<p>Amazon runs time-limited promotions. A guide may mention "check coupons" as generic shopper advice; we do not know your account-specific offers. If Amazon shows a price that seems mistaken, assume it can be corrected before shipment.</p>
 
-<h2>11. Multiple Amazon marketplaces</h2>
+<h2>12. Multiple Amazon marketplaces</h2>
 <p>Readers may shop Amazon.com, Amazon.in, Amazon.co.uk, or others. Our links typically target the US storefront for consistency with the Associates program configuration we use. You are responsible for choosing the marketplace that matches your shipping address and import rules.</p>
 
-<h2>12. Social proof and screenshots</h2>
-<p>Occasionally we describe typical listing elements (“often shows USDA Organic seal”). Screenshots age quickly. Always trust the live listing over an article image captured on a prior date.</p>
+<h2>13. Social proof and screenshots</h2>
+<p>Occasionally we describe typical listing elements ("often shows USDA Organic seal"). Screenshots age quickly. Always trust the live listing over an article image captured on a prior date.</p>
 
-<h2>13. Charitable claims</h2>
-<p>Some brands donate portions of sales. We do not audit charity accounting. If social impact drives your purchase, verify statements on the brand’s official site and filings rather than our summaries.</p>
+<h2>14. Charitable claims</h2>
+<p>Some brands donate portions of sales. We do not audit charity accounting. If social impact drives your purchase, verify statements on the brand's official site and filings rather than our summaries.</p>
 
-<h2>14. Conflicts of interest beyond Amazon</h2>
-<p>We may cite books, standards, or tools without affiliate fees. If we ever accept sponsored placements inside editorial columns (not just sidebar ads), we will label them visibly and update this disclosure. As of the effective date, Amazon Associates is the primary monetization we describe.</p>
+<h2>15. Conflicts of interest beyond Amazon</h2>
+<p>We may cite books, standards, or tools without affiliate fees. If we ever accept sponsored placements inside editorial columns (not just sidebar ads), we will label them visibly and update this disclosure. As of the effective date, Amazon Associates and IndiaMART referrals are the affiliate monetization we describe.</p>
 
-<h2>15. Tax and accounting</h2>
-<p>Affiliate income may be taxable in our jurisdiction. That does not affect your purchase price but explains why we maintain records of payouts and clicks as required by tax authorities and Amazon’s operating agreement.</p>
+<h2>16. Tax and accounting</h2>
+<p>Affiliate income may be taxable in our jurisdiction. That does not affect your purchase price but explains why we maintain records of payouts and clicks as required by tax authorities and Amazon's operating agreement.</p>
 
-<h2>16. Termination of Associates participation</h2>
-<p>If Amazon terminates our Associates account, links may stop earning commissions or be removed. Articles will remain for education; we may swap buttons to non-affiliate search links where ethically appropriate.</p>
+<h2>17. Termination of Associates participation</h2>
+<p>If Amazon or IndiaMART terminates our affiliate account, links may stop earning commissions or be removed. Articles will remain for education; we may swap buttons to non-affiliate search links where ethically appropriate.</p>
 
-<h2>17. Brand safety and takedowns</h2>
+<h2>18. Brand safety and takedowns</h2>
 <p>Trademark owners who believe our nominative use oversteps fair use may contact us with jurisdiction-specific details. We will review good-faith requests promptly, though we may disagree on nominative comparison pages that do not imply endorsement.</p>
 
-<h2>18. Record retention for compliance screenshots</h2>
+<h2>19. Record retention for compliance screenshots</h2>
 <p>We may keep internal screenshots of listings to document what we saw on a given date when updating buyer guides. Those screenshots are for editorial integrity, not public redistribution, unless cited as evidence in a transparency note.</p>
 
 <p><a href="/">← Home</a></p>

@@ -156,6 +156,10 @@ function readBody(slug) {
 function keywordsForSlug(slug, h1) {
   const base = 'moringa, moringa oleifera, moringa india, moringa suppliers in india, moringa suppliers india, organic moringa, organic moringa india';
   const map = {
+    'how-to-contact-indian-moringa-suppliers': 'how to contact moringa suppliers in india, contact indian moringa suppliers, moringa exporter india contact, how to find moringa suppliers in india, moringa wholesale india, moringa B2B india, moringa indiamart',
+    'import-moringa-from-india-step-by-step': 'import moringa from india, import moringa step by step, moringa import guide, moringa from india to usa, moringa from india to europe, moringa import customs, moringa FOB CIF india',
+    'moringa-private-label-india': 'moringa private label india, moringa contract manufacturing india, private label moringa supplements, indian moringa manufacturer, moringa OEM india, moringa white label',
+    'moringa-bulk-buyer-checklist': 'moringa bulk buyer checklist, moringa wholesale due diligence, verify moringa supplier india, moringa import checklist, moringa procurement checklist',
     'ultimate-moringa-encyclopedia': 'moringa encyclopedia, moringa guide, moringa research, moringa history, moringa science',
     'moringa-benefits-every-age': 'moringa benefits, moringa for kids, moringa for seniors, moringa for adults, moringa nutrition age',
     'moringa-side-effects-safety': 'moringa side effects, moringa safety, moringa pregnancy, moringa drug interactions',
@@ -181,17 +185,49 @@ function keywordsForSlug(slug, h1) {
   return `${base}, ${extra}`;
 }
 
+/**
+ * B2B-funnel articles target bulk buyers, importers and brand owners.
+ * They get an IndiaMART-led footer (single primary CTA + small secondary
+ * Amazon row) and skip the Amazon mid-article CTA so the Amazon push does
+ * not feel out of place in a wholesale context.
+ */
+const B2B_SLUGS = new Set([
+  'how-to-contact-indian-moringa-suppliers',
+  'import-moringa-from-india-step-by-step',
+  'moringa-private-label-india',
+  'moringa-bulk-buyer-checklist',
+]);
+
+function indiamartFooterCta() {
+  return `<section class="article-cta-panel article-cta-panel--b2b" aria-label="Get supplier quotes on IndiaMART">
+<h2>Talk to verified Indian moringa suppliers</h2>
+<p class="article-cta-lead">If you are sourcing moringa <strong>by the kilo or the ton</strong>, the fastest way to get real quotes is to post a single buy lead on IndiaMART and let multiple verified Indian suppliers respond with their pricing, MOQ, certifications and sample terms.</p>
+<div class="article-cta-buttons">
+<a href="https://IndiaMART.in/v/yNRgBEqn" class="indiamart-btn" target="_blank" rel="sponsored nofollow noopener" aria-label="Get best price for Moringa on IndiaMART (affiliate link)">&#127981; Get best price on IndiaMART</a>
+</div>
+<div class="article-cta-more"><span class="article-cta-more-label">Retail / sample comparison:</span>${amazonBtnSmall(AMZ.organicIndiaPowder, 'Organic India powder')}${amazonBtnSmall(AMZ.organicIndiaCapsules, 'OI capsules')}${amazonBtnSmall(AMZ.tea, 'Tea picks')}</div>
+<p class="article-cta-fineprint"><strong>Disclosure:</strong> The IndiaMART link above is an affiliate link. We may earn a small referral fee at no extra cost to you. Amazon links are affiliate too. <a href="/legal/affiliate-disclosure.html">Full policy</a>.</p>
+</section>`;
+}
+
 function articlePage(meta) {
   const { slug, title, description, h1, lead } = meta;
   const body = readBody(slug);
   const rt = readingTimeFromHtml(body);
+  const isB2B = B2B_SLUGS.has(slug);
 
   let inner = body;
-  inner = insertAfterFirstParagraph(inner, amazonMidCta());
+  // B2B-funnel articles skip the Amazon mid-article CTA; the body itself
+  // already contains an IndiaMART strip (in the contact-suppliers article)
+  // plus contextual links to other B2B articles.
+  if (!isB2B) {
+    inner = insertAfterFirstParagraph(inner, amazonMidCta());
+  }
+  const footerCta = isB2B ? indiamartFooterCta() : amazonFooterCtas(slug);
   const content = `${AFFILIATE_BOX}
 <div class="article-prose">
 ${inner}
-${amazonFooterCtas(slug)}
+${footerCta}
 ${relatedBlock(slug)}
 </div>`;
 

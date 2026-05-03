@@ -2256,6 +2256,20 @@ a.home-article-card:focus-visible .home-article-cta-arrow {
   border-radius: var(--radius);
   box-shadow: var(--shadow-sm);
 }
+/* B2B-flavored CTA panel for buyer-funnel articles. */
+.article-cta-panel--b2b {
+  background:
+    radial-gradient(120% 180% at 100% 0%, rgba(238, 93, 59, 0.10) 0%, transparent 60%),
+    linear-gradient(180deg, #ffffff 0%, #fff5f0 100%);
+  border: 1px solid #f5b69f;
+  border-left: 4px solid #ee5d3b;
+}
+.article-cta-panel--b2b h2 { color: #6e2310; }
+.article-cta-panel--b2b .article-cta-lead { color: #5a2410; }
+.article-cta-panel--b2b .article-cta-buttons {
+  grid-template-columns: 1fr;
+  max-width: 360px;
+}
 .article-cta-panel h2 {
   margin: 0 0 0.4rem;
   font-size: 1.25rem;

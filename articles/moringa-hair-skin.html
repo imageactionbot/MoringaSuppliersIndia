@@ -30,9 +30,7 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Moringa for Hair & Skin","url":"https://moringasuppliersindia.com/articles/moringa-hair-skin.html","dateModified":"2026-05-03"}</script>
 </head>
 <body>
-<div class="top-bar" role="region" aria-label="Quick links">
-  ✉️ <a href="mailto:moringasuppliersindia@gmail.com">moringasuppliersindia@gmail.com</a> · 💬 <a href="https://wa.me/919321041954" target="_blank" rel="noopener">WhatsApp</a> · 🌍 30+ countries · <a href="/legal/affiliate-disclosure.html" style="color: var(--gold-light);">Amazon Associate Disclosure</a>
-</div>
+
 <nav class="navbar" id="navbar">
   <div class="nav-inner">
     <a href="/" class="logo">
@@ -44,7 +42,7 @@
       </svg>
       Moringa<span>Suppliers</span>India
     </a>
-    <ul class="nav-links">
+    <ul class="nav-links" id="navDesktopLinks">
       <li><a href="/#what-is-moringa">About</a></li>
       <li><a href="/articles/">Articles</a></li>
       <li><a href="/products/">Products</a></li>
@@ -57,11 +55,13 @@
       <li><a href="/#faq">FAQ</a></li>
       <li><a href="/#contact" class="nav-cta">Contact</a></li>
     </ul>
-    <div class="mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></div>
+    <button type="button" class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+    </button>
   </div>
 </nav>
-<div class="mobile-menu" id="mobileMenu">
-  <div style="display:flex;flex-direction:column;gap:1rem;">
+<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Main navigation" hidden>
+  <div class="mobile-menu-inner">
     <a href="/">Home</a>
     <a href="/articles/">Authority articles (20)</a>
     <a href="/products/">Product guides</a>
@@ -74,6 +74,7 @@
     <a href="/#contact"><strong>Contact</strong></a>
   </div>
 </div>
+<div class="nav-mobile-backdrop" id="navMobileBackdrop" hidden aria-hidden="true"></div>
 <main>
   <nav class="breadcrumb-nav" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/articles/">Articles</a> / Moringa for Hair & Skin</nav>
   <header class="page-hero">

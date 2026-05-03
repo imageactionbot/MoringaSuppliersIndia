@@ -44,9 +44,7 @@ const FONTS = `  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="/assets/css/main.css" />`;
 
 function topBar() {
-  return `<div class="top-bar" role="region" aria-label="Quick links">
-  ✉️ <a href="mailto:moringasuppliersindia@gmail.com">moringasuppliersindia@gmail.com</a> · 💬 <a href="https://wa.me/919321041954" target="_blank" rel="noopener">WhatsApp</a> · 🌍 30+ countries · <a href="/legal/affiliate-disclosure.html" style="color: var(--gold-light);">Amazon Associate Disclosure</a>
-</div>`;
+  return '';
 }
 
 function nav() {
@@ -61,7 +59,7 @@ function nav() {
       </svg>
       Moringa<span>Suppliers</span>India
     </a>
-    <ul class="nav-links">
+    <ul class="nav-links" id="navDesktopLinks">
       <li><a href="/#what-is-moringa">About</a></li>
       <li><a href="/articles/">Articles</a></li>
       <li><a href="/products/">Products</a></li>
@@ -74,11 +72,13 @@ function nav() {
       <li><a href="/#faq">FAQ</a></li>
       <li><a href="/#contact" class="nav-cta">Contact</a></li>
     </ul>
-    <div class="mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></div>
+    <button type="button" class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+    </button>
   </div>
 </nav>
-<div class="mobile-menu" id="mobileMenu">
-  <div style="display:flex;flex-direction:column;gap:1rem;">
+<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Main navigation" hidden>
+  <div class="mobile-menu-inner">
     <a href="/">Home</a>
     <a href="/articles/">Authority articles (20)</a>
     <a href="/products/">Product guides</a>
@@ -90,7 +90,8 @@ function nav() {
     <a href="/#documents">Buyer docs</a>
     <a href="/#contact"><strong>Contact</strong></a>
   </div>
-</div>`;
+</div>
+<div class="nav-mobile-backdrop" id="navMobileBackdrop" hidden aria-hidden="true"></div>`;
 }
 
 function footer() {

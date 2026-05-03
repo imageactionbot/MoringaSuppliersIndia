@@ -442,11 +442,11 @@ write(
 
 const compareOIvV = `${AFFILIATE_BOX}
 <h3>Snapshot</h3>
-<table class="compare-table"><thead><tr><th>Topic</th><th>Organic India</th><th>Vahdam India</th></tr></thead><tbody>
+<div class="table-responsive"><table class="compare-table"><thead><tr><th>Topic</th><th>Organic India</th><th>Vahdam India</th></tr></thead><tbody>
 <tr><td>Core identity</td><td>Certified organic herbal &amp; wellness company (India)</td><td>Premium Indian tea &amp; superfoods with global D2C packaging</td></tr>
 <tr><td>Moringa strengths</td><td>Powder &amp; capsules under strict organic positioning</td><td>Moringa green tea &amp; superfood SKUs; gifting &amp; café-at-home</td></tr>
 <tr><td>Typical buyer</td><td>Ayurveda-aligned daily supplement user</td><td>Tea drinkers, gift buyers, premium pantry</td></tr>
-</tbody></table>
+</tbody></table></div>
 <h3>Best for… (guidance only)</h3>
 <div class="compare-use-grid">
   <div class="use-case-card"><strong>Daily organic moringa powder / capsules</strong>Lean Organic India SKUs with clear USDA Organic copy on the listing.</div>
@@ -473,11 +473,11 @@ write(
 );
 
 const compareOIvK = `${AFFILIATE_BOX}
-<table class="compare-table"><thead><tr><th>Topic</th><th>Organic India</th><th>Kuli Kuli</th></tr></thead><tbody>
+<div class="table-responsive"><table class="compare-table"><thead><tr><th>Topic</th><th>Organic India</th><th>Kuli Kuli</th></tr></thead><tbody>
 <tr><td>Origin story</td><td>India-based organic movement &amp; herbs</td><td>US brand built around moringa nutrition &amp; social impact narrative</td></tr>
 <tr><td>Formats</td><td>Powder, capsules, teas in herbal range</td><td>Powder, beverage mixes, bars, shots</td></tr>
 <tr><td>Positioning</td><td>Ayurvedic / organic certification focus</td><td>Moringa category leader in US natural retail</td></tr>
-</tbody></table>
+</tbody></table></div>
 <h3>Best for…</h3>
 <div class="compare-use-grid">
   <div class="use-case-card"><strong>Traditional organic powder / capsules</strong>Compare Organic India listings for single-ingredient leaf products.</div>

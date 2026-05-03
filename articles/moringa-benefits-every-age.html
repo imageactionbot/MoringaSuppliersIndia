@@ -30,9 +30,7 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Moringa Benefits for Every Age","url":"https://moringasuppliersindia.com/articles/moringa-benefits-every-age.html","dateModified":"2026-05-03"}</script>
 </head>
 <body>
-<div class="top-bar" role="region" aria-label="Quick links">
-  ✉️ <a href="mailto:moringasuppliersindia@gmail.com">moringasuppliersindia@gmail.com</a> · 💬 <a href="https://wa.me/919321041954" target="_blank" rel="noopener">WhatsApp</a> · 🌍 30+ countries · <a href="/legal/affiliate-disclosure.html" style="color: var(--gold-light);">Amazon Associate Disclosure</a>
-</div>
+
 <nav class="navbar" id="navbar">
   <div class="nav-inner">
     <a href="/" class="logo">
@@ -44,7 +42,7 @@
       </svg>
       Moringa<span>Suppliers</span>India
     </a>
-    <ul class="nav-links">
+    <ul class="nav-links" id="navDesktopLinks">
       <li><a href="/#what-is-moringa">About</a></li>
       <li><a href="/articles/">Articles</a></li>
       <li><a href="/products/">Products</a></li>
@@ -57,11 +55,13 @@
       <li><a href="/#faq">FAQ</a></li>
       <li><a href="/#contact" class="nav-cta">Contact</a></li>
     </ul>
-    <div class="mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></div>
+    <button type="button" class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+    </button>
   </div>
 </nav>
-<div class="mobile-menu" id="mobileMenu">
-  <div style="display:flex;flex-direction:column;gap:1rem;">
+<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Main navigation" hidden>
+  <div class="mobile-menu-inner">
     <a href="/">Home</a>
     <a href="/articles/">Authority articles (20)</a>
     <a href="/products/">Product guides</a>
@@ -74,6 +74,7 @@
     <a href="/#contact"><strong>Contact</strong></a>
   </div>
 </div>
+<div class="nav-mobile-backdrop" id="navMobileBackdrop" hidden aria-hidden="true"></div>
 <main>
   <nav class="breadcrumb-nav" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/articles/">Articles</a> / Moringa Benefits for Every Age</nav>
   <header class="page-hero">
@@ -119,12 +120,12 @@
 <p>Parents care about heavy metals; elders care about consistency; athletes care about banned-substance testing if competing. Importers address these with COAs and sometimes Informed Choice certifications on finished brands. B2B buyers should map which age cohort their SKU targets and align claims accordingly—regulators punish overreach. Retail readers can still benefit from knowing that child-facing claims receive stricter scrutiny in many jurisdictions.</p>
 
 <h2>Summary table (conceptual, not medical dosing)</h2>
-<table class="article-table" style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.92rem;"><thead><tr style="border-bottom:2px solid var(--green-pale);"><th style="text-align:left;padding:0.5rem;">Life stage</th><th style="text-align:left;padding:0.5rem;">Focus</th><th style="text-align:left;padding:0.5rem;">Caution</th></tr></thead><tbody>
+<div class="table-responsive"><table class="article-table" style="width:100%;border-collapse:collapse;font-size:0.92rem;"><thead><tr style="border-bottom:2px solid var(--green-pale);"><th style="text-align:left;padding:0.5rem;">Life stage</th><th style="text-align:left;padding:0.5rem;">Focus</th><th style="text-align:left;padding:0.5rem;">Caution</th></tr></thead><tbody>
 <tr><td style="padding:0.5rem;border-bottom:1px solid #eee;">Child</td><td style="padding:0.5rem;border-bottom:1px solid #eee;">Whole foods; tiny culinary amounts</td><td style="padding:0.5rem;border-bottom:1px solid #eee;">Dose discipline; choking in dry form</td></tr>
 <tr><td style="padding:0.5rem;border-bottom:1px solid #eee;">Adult</td><td style="padding:0.5rem;border-bottom:1px solid #eee;">Meal pairing; iron + vitamin C</td><td style="padding:0.5rem;border-bottom:1px solid #eee;">Caffeine stacking; unrealistic fat-loss claims</td></tr>
 <tr><td style="padding:0.5rem;border-bottom:1px solid #eee;">Pregnancy</td><td style="padding:0.5rem;border-bottom:1px solid #eee;">Clinician-guided food forms</td><td style="padding:0.5rem;border-bottom:1px solid #eee;">Concentrates; unknown adulterants</td></tr>
 <tr><td style="padding:0.5rem;">Older adult</td><td style="padding:0.5rem;">Soft-food integration</td><td style="padding:0.5rem;">Drug interactions; kidney function</td></tr>
-</tbody></table>
+</tbody></table></div>
 
 <h2>Family meal planning with one tin of powder</h2>
 <p>Households rarely want five different supplement bottles on the counter. A single high-quality tin can serve parents’ smoothies, teens’ post-practice shakes, and grandparents’ porridge if dosing discipline exists. Label a kitchen teaspoon “Moringa only” to avoid cross-flavor with spices. Teach teens to read serving sizes so influencer “tablespoon challenges” do not migrate home. Document any new supplement on the family health summary sheet you bring to doctor visits—clinicians appreciate specifics (brand, milligrams leaf equivalent if stated, frequency).</p>

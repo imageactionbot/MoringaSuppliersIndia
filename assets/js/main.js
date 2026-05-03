@@ -1,6 +1,35 @@
 (function () {
   'use strict';
 
+  function setMobileNavOpen(open) {
+    var toggle = document.getElementById('mobileToggle');
+    var mobileMenu = document.getElementById('mobileMenu');
+    var backdrop = document.getElementById('navMobileBackdrop');
+    if (!toggle || !mobileMenu) return;
+
+    if (open) {
+      mobileMenu.removeAttribute('hidden');
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.setAttribute('aria-label', 'Close menu');
+      toggle.classList.add('is-open');
+      document.body.classList.add('has-mobile-nav');
+      if (backdrop) {
+        backdrop.removeAttribute('hidden');
+        backdrop.setAttribute('aria-hidden', 'false');
+      }
+    } else {
+      mobileMenu.setAttribute('hidden', '');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open menu');
+      toggle.classList.remove('is-open');
+      document.body.classList.remove('has-mobile-nav');
+      if (backdrop) {
+        backdrop.setAttribute('hidden', '');
+        backdrop.setAttribute('aria-hidden', 'true');
+      }
+    }
+  }
+
   function init() {
     var navbar = document.getElementById('navbar');
     var scrollTopBtn = document.getElementById('scrollTopBtn');
@@ -14,14 +43,31 @@
 
     var toggle = document.getElementById('mobileToggle');
     var mobileMenu = document.getElementById('mobileMenu');
+    var backdrop = document.getElementById('navMobileBackdrop');
+
     if (toggle && mobileMenu) {
       toggle.addEventListener('click', function () {
-        mobileMenu.style.display = mobileMenu.style.display === 'flex' ? 'none' : 'flex';
+        var open = toggle.getAttribute('aria-expanded') === 'true';
+        setMobileNavOpen(!open);
       });
+
       mobileMenu.querySelectorAll('a').forEach(function (link) {
         link.addEventListener('click', function () {
-          mobileMenu.style.display = 'none';
+          setMobileNavOpen(false);
         });
+      });
+
+      if (backdrop) {
+        backdrop.addEventListener('click', function () {
+          setMobileNavOpen(false);
+        });
+      }
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && document.body.classList.contains('has-mobile-nav')) {
+          setMobileNavOpen(false);
+          toggle.focus();
+        }
       });
     }
 

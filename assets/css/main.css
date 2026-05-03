@@ -1585,6 +1585,7 @@ footer {
 .home-authority-section {
   background: linear-gradient(135deg, var(--green-ultra), var(--white));
   padding-bottom: var(--section-spacing-mobile);
+  overflow-x: clip;
 }
 .home-authority-section .section-header {
   margin-bottom: 2rem;
@@ -1609,6 +1610,19 @@ footer {
   line-height: 1.65;
   padding: 0 0.25rem;
 }
+.home-authority-lead a {
+  color: var(--green-main);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.home-authority-lead a:visited {
+  color: var(--green-dark);
+}
+.home-authority-lead a:hover {
+  color: var(--green-dark);
+}
 .home-authority-lead strong {
   color: var(--green-dark);
   font-weight: 600;
@@ -1619,14 +1633,15 @@ footer {
   margin: 0 auto;
   max-width: 1120px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
   gap: 1.25rem 1.35rem;
 }
 .home-article-item {
   margin: 0;
   min-width: 0;
 }
-.home-article-card {
+/* Whole card is an <a>; WebKit defaults to blue link — force site palette */
+a.home-article-card {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -1636,16 +1651,22 @@ footer {
   overflow: hidden;
   padding: 1.15rem 1.2rem 1.2rem;
   background: var(--white);
-  border: 1px solid rgba(45, 138, 58, 0.14);
+  border: 1px solid rgba(45, 138, 58, 0.18);
   border-radius: var(--radius);
   box-shadow: var(--shadow-sm);
   text-decoration: none;
-  color: inherit;
+  color: var(--text-body);
   transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
   position: relative;
+  -webkit-tap-highlight-color: rgba(45, 138, 58, 0.12);
+  touch-action: manipulation;
+}
+a.home-article-card:visited,
+a.home-article-card:active {
+  color: var(--text-body);
 }
 .home-article-card:hover {
-  border-color: var(--green-light);
+  border-color: var(--green-mid);
   box-shadow: var(--shadow-md);
   transform: translateY(-2px);
 }
@@ -1658,6 +1679,10 @@ footer {
   overflow-wrap: anywhere;
   word-break: break-word;
 }
+a.home-article-card:visited .home-article-title,
+a.home-article-card:active .home-article-title {
+  color: var(--green-deep);
+}
 .home-article-desc {
   font-size: 0.8rem;
   line-height: 1.5;
@@ -1669,16 +1694,25 @@ footer {
   -webkit-line-clamp: 3;
   overflow: hidden;
 }
+a.home-article-card:visited .home-article-desc,
+a.home-article-card:active .home-article-desc {
+  color: var(--text-muted);
+}
 .home-articles-footer {
   text-align: center;
   margin-top: 2rem;
   padding: 0 0.5rem;
 }
 .home-articles-hub-link {
+  display: inline-block;
   font-weight: 600;
   color: var(--green-dark);
   text-decoration: none;
   border-bottom: 1px solid rgba(45, 138, 58, 0.35);
+  -webkit-tap-highlight-color: rgba(45, 138, 58, 0.12);
+}
+.home-articles-hub-link:visited {
+  color: var(--green-dark);
 }
 .home-articles-hub-link:hover {
   color: var(--green-main);
@@ -1694,18 +1728,29 @@ footer {
     font-size: 0.95rem;
   }
   .home-articles-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.85rem;
     max-width: 100%;
   }
   .home-article-card {
-    padding: 1rem 1rem 1.05rem;
+    padding: 0.95rem 1rem 1rem;
+    border-radius: var(--radius-sm);
   }
   .home-article-title {
-    font-size: 0.98rem;
+    font-size: 0.96rem;
+    line-height: 1.35;
+  }
+  .home-article-desc {
+    font-size: 0.78rem;
+    line-height: 1.48;
+    -webkit-line-clamp: 4;
   }
   .home-articles-footer {
-    margin-top: 1.5rem;
+    margin-top: 1.35rem;
+  }
+  .home-articles-hub-link {
+    padding: 0.35rem 0.5rem;
+    line-height: 1.4;
   }
 }
 

@@ -24,7 +24,7 @@ function blurb(text, max = 120) {
   const slice = t.slice(0, max);
   const i = slice.lastIndexOf(' ');
   const cut = (i > 35 ? slice.slice(0, i) : slice).trim();
-  return `${cut}\u2026`;
+  return `${cut}...`;
 }
 
 function renderHomeAuthorityBlock() {
@@ -39,7 +39,7 @@ function renderHomeAuthorityBlock() {
       </li>`;
   }).join('\n');
   return `<ul class="home-articles-grid" aria-label="Moringa guides">\n${items}\n      </ul>
-      <p class="home-articles-footer"><a class="home-articles-hub-link" href="/articles/">All guides &amp; Amazon shortcuts →</a></p>`;
+      <p class="home-articles-footer"><a class="home-articles-hub-link" href="/articles/">All guides &amp; Amazon shortcuts &rarr;</a></p>`;
 }
 
 function patchIndexAuthority(repoRoot) {

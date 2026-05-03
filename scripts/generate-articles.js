@@ -18,33 +18,16 @@ const {
 
 const root = path.join(__dirname, '..');
 const bodiesDir = path.join(root, 'content', 'article-bodies');
+const { ARTICLES } = require('./lib/articles-catalog');
+const { patchIndexAuthority } = require('./lib/patch-index-authority');
 
-const ARTICLES = [
-  { slug: 'ultimate-moringa-encyclopedia', title: 'The Ultimate Moringa Encyclopedia (History to Modern Science)', description: 'Complete encyclopedia of Moringa oleifera: origins, traditional use, plant parts, nutrition, research context, and how India fits into global supply.', h1: 'The Ultimate Moringa Encyclopedia', lead: 'From ancient kitchens to modern labs — a single reference for what Moringa is, why it matters, and how to think critically about claims.' },
-  { slug: 'moringa-benefits-every-age', title: 'Moringa Benefits for Every Age: Kids, Adults & Seniors', description: 'Age-by-age guide to Moringa nutrition, sensible serving ideas, and safety considerations for children, adults, and older adults.', h1: 'Moringa Benefits for Every Age', lead: 'How different life stages change nutrition needs — and where Moringa fits as food, not magic.' },
-  { slug: 'moringa-side-effects-safety', title: 'Moringa Side Effects & Safety: What the Evidence Actually Says', description: 'Honest guide to Moringa safety, drug interactions, pregnancy and breastfeeding cautions, and when to stop and talk to a clinician.', h1: 'Moringa Side Effects & Safety', lead: 'The most searched topic deserves straight answers, medical disclaimers, and zero fear-mongering.' },
-  { slug: 'pure-vs-adulterated-moringa', title: 'How to Identify Pure vs. Adulterated Moringa Powder', description: 'Sensory checks, lab tests, certificate review, and red flags that separate genuine leaf powder from fillers and low-grade blends.', h1: 'Pure vs. Adulterated Moringa', lead: 'Trust is built on verification — here is a practical buyer and consumer checklist.' },
-  { slug: 'moringa-vs-spirulina', title: 'Moringa vs. Spirulina: Green Superfood Comparison', description: 'Compare Moringa leaf powder with spirulina on origin, nutrition profile, taste, use cases, and which to choose for your goals.', h1: 'Moringa vs. Spirulina', lead: 'Two different organisms, two different stories — pick with context, not hype.' },
-  { slug: 'moringa-vs-kale-spinach', title: 'Moringa vs. Kale vs. Spinach: Nutrition Density Compared', description: 'Leafy greens versus dried Moringa powder — how serving size skews comparisons and what “density” really means on your plate.', h1: 'Moringa vs. Kale vs. Spinach', lead: 'Why apples-to-apples comparisons matter, and when Moringa wins on convenience.' },
-  { slug: 'moringa-powder-vs-capsules', title: 'Moringa Powder vs. Capsules: Absorption & Convenience', description: 'Bioavailability basics, excipients in capsules, cost per gram, and how to choose powder or capsules for consistency and lifestyle.', h1: 'Moringa Powder vs. Capsules', lead: 'Same plant, different delivery — match the format to your routine and digestion.' },
-  { slug: 'organic-india-vs-vahdam-vs-kuli-kuli', title: 'Organic India vs. Vahdam vs. Kuli Kuli: Brand Comparison', description: 'Three-way comparison of popular Amazon Moringa brands — positioning, formats, sourcing story, and who each line suits best.', h1: 'Organic India vs. Vahdam vs. Kuli Kuli', lead: 'No single “winner” — choose by certification appetite, taste, and product format.' },
-  { slug: 'moringa-weight-loss', title: 'Moringa for Weight Loss: Metabolism & Science-Backed Context', description: 'What research suggests about Moringa, blood sugar stability, inflammation, and weight management — without miracle promises.', h1: 'Moringa for Weight Loss', lead: 'Supportive habits first; Moringa may be a helpful adjunct within a real food plan.' },
-  { slug: 'moringa-diabetes', title: 'Moringa for Diabetes Management: Blood Sugar & Medical Disclaimers', description: 'Evidence overview on Moringa and glycemic control, medication interactions, and why this is education — not treatment advice.', h1: 'Moringa & Blood Sugar (Diabetes Context)', lead: 'Read this alongside your doctor or diabetes educator, not instead of them.' },
-  { slug: 'moringa-hair-skin', title: 'Moringa for Hair Growth & Skin Glow: Beauty Angle Explained', description: 'Nutrients in Moringa linked to skin and hair health, topical vs. oral use, realistic timelines, and product types worth exploring.', h1: 'Moringa for Hair & Skin', lead: 'Beauty keywords meet biology — set expectations and avoid overnight-miracle marketing.' },
-  { slug: 'moringa-anemia', title: 'Moringa for Anemia: Iron, Hemoglobin & Diet Pairings', description: 'Non-heme iron in Moringa leaves, absorption enhancers (vitamin C), and limits compared to clinical iron therapy.', h1: 'Moringa for Anemia Support', lead: 'Food diversity plus medical care when iron deficiency is diagnosed.' },
-  { slug: 'moringa-export-quality-standards', title: 'Moringa Export Quality: HACCP, ISO & Organic Certifications', description: 'What global buyers ask for — HACCP, ISO 22000, GMP, organic schemes (USDA, EU, NPOP), and how they reduce risk in the supply chain.', h1: 'Moringa Export Quality Standards', lead: 'Certifications are shorthand for systems — here is what each acronym implies in practice.' },
-  { slug: 'top-moringa-states-india', title: 'Top Moringa Producing States in India (Data-Heavy Overview)', description: 'Regional production clusters, climate fit, processing hubs, and why state-level data is only one slice of sourcing decisions.', h1: 'Top Moringa States in India', lead: 'Geography, infrastructure, and certificates together beat a single ranking table.' },
-  { slug: 'moringa-packaging-international', title: 'Packaging Moringa for International Markets: Moisture & Shelf Life', description: 'Barrier films, desiccants, modified atmosphere, labeling for EU/US, and moisture control to prevent mold and rancidity.', h1: 'Moringa Packaging for Export', lead: 'Shelf life is won or lost in the first 48 hours after drying — packaging locks in the win.' },
-  { slug: 'moringa-eu-market', title: 'Moringa in the European Union: Trends, Novel Food & Regulations', description: 'EU market outlook for Moringa ingredients, regulatory themes, labeling, and what Indian exporters should validate with legal counsel.', h1: 'Moringa & the EU Market', lead: 'Trends are promising — compliance is non-negotiable.' },
-  { slug: 'moringa-cooking-daily', title: '10+ Creative Ways to Use Moringa in Daily Cooking', description: 'Indian and Western recipes, heat stability tips, flavor masking, and dose ideas for smoothies, dals, rotis, and baked goods.', h1: 'Moringa in Daily Cooking', lead: 'Make Moringa a habit by hiding it in food you already love.' },
-  { slug: 'moringa-detox-tea-recipes', title: 'Moringa Detox Tea Recipes: Morning Rituals Without False Claims', description: 'Tea blends, steeping notes, and honest language around “detox” — hydration and polyphenols, not toxin removal fiction.', h1: 'Moringa Detox Tea Recipes', lead: 'Rituals support consistency; science supports moderation and sleep.' },
-  { slug: 'diy-moringa-face-masks', title: 'DIY Moringa Face Masks for Acne-Prone Skin (Patch Test First)', description: 'Simple mask bases, why patch tests matter, when to see a dermatologist, and how Moringa powder behaves on sensitive skin.', h1: 'DIY Moringa Face Masks', lead: 'Kitchen skincare can be fun — respect your skin barrier first.' },
-  { slug: 'moringa-for-pets', title: 'Moringa for Pets: Safe Dosing for Dogs & Cats', description: 'Veterinary caution, tiny amounts, toxic plants to avoid confusing with Moringa, and why commercial pet foods already balance micronutrients.', h1: 'Moringa for Dogs & Cats', lead: 'If in doubt, ask your vet before supplementing animals.' },
-];
+function escHtml(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
 
 function relatedBlock(slug) {
   const others = ARTICLES.filter((a) => a.slug !== slug).slice(0, 8);
-  const lis = others.map((a) => `<li><a href="/articles/${a.slug}.html">${a.h1}</a></li>`).join('\n');
+  const lis = others.map((a) => `<li><a href="/articles/${a.slug}.html">${escHtml(a.h1)}</a></li>`).join('\n');
   return `<div class="related-articles" style="margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--green-pale);">
 <h2>More authority topics</h2>
 <ul class="related-articles-list">${lis}</ul>
@@ -52,12 +35,87 @@ function relatedBlock(slug) {
 </div>`;
 }
 
-function amazonRow() {
-  return `<div class="amazon-compare-row" style="margin-top:2rem;">
-${amazonBtn(AMZ.organicIndiaPowder, 'Organic India Moringa powder (Amazon)')}
-${amazonBtn(AMZ.organicIndiaCapsules, 'Organic India capsules (Amazon)')}
+/** Insert HTML immediately after the first </p> in body (for mid-article CTA). */
+function insertAfterFirstParagraph(html, block) {
+  const idx = html.indexOf('</p>');
+  if (idx === -1) return block + '\n' + html;
+  return html.slice(0, idx + 4) + '\n' + block + html.slice(idx + 4);
+}
+
+function amazonMidCta() {
+  return `<aside class="article-mid-cta" role="complementary" aria-label="Amazon retail shortcuts">
+<p class="article-mid-cta-note">Retail shortcuts (affiliate — see disclosure at top):</p>
+<div class="article-mid-cta-row">
+${amazonBtnSmall(AMZ.organicIndiaPowder, 'Organic India — leaf powder')}
+${amazonBtnSmall(AMZ.organicIndiaCapsules, 'Organic India — capsules')}
+${amazonBtnSmall(AMZ.tea, 'Moringa / herbal teas')}
 </div>
-<p style="margin-top:0.75rem;font-size:0.9rem;">Also browse: ${amazonBtnSmall(AMZ.vahdam, 'Vahdam')} ${amazonBtnSmall(AMZ.kuliKuli, 'Kuli Kuli')} ${amazonBtnSmall(AMZ.tea, 'Moringa tea')} ${amazonBtnSmall(AMZ.skincare, 'Skincare picks')}</p>`;
+</aside>`;
+}
+
+function amazonFooterCtas(slug) {
+  let row1a = amazonBtn(AMZ.organicIndiaPowder, 'See Organic India leaf powder on Amazon');
+  let row1b = amazonBtn(AMZ.organicIndiaCapsules, 'See Organic India capsules on Amazon');
+  let smallParts = [
+    amazonBtnSmall(AMZ.vahdam, 'Vahdam'),
+    amazonBtnSmall(AMZ.kuliKuli, 'Kuli Kuli'),
+    amazonBtnSmall(AMZ.tea, 'Tea picks'),
+    amazonBtnSmall(AMZ.skincare, 'Skincare search'),
+  ];
+
+  if (slug === 'moringa-detox-tea-recipes') {
+    row1a = amazonBtn(AMZ.tea, 'See moringa & herbal tea listings on Amazon');
+    row1b = amazonBtn(AMZ.organicIndia, 'Organic India storefront (teas & wellness)');
+  } else if (slug === 'moringa-cooking-daily') {
+    row1a = amazonBtn(AMZ.organicIndiaPowder, 'Leaf powder for cooking (Amazon)');
+    row1b = amazonBtn(AMZ.terrasoul, 'Terrasoul organic powder (Amazon)');
+  } else if (slug === 'diy-moringa-face-masks' || slug === 'moringa-hair-skin') {
+    row1a = amazonBtn(AMZ.skincare, 'Moringa skincare search on Amazon');
+    row1b = amazonBtn(AMZ.organicIndiaPowder, 'Pure leaf powder (DIY masks / smoothies)');
+  } else if (slug === 'organic-india-vs-vahdam-vs-kuli-kuli') {
+    row1a = amazonBtn(AMZ.organicIndia, 'Organic India — Amazon');
+    row1b = amazonBtn(AMZ.vahdam, 'Vahdam — Amazon');
+    smallParts = [
+      amazonBtnSmall(AMZ.kuliKuli, 'Kuli Kuli'),
+      amazonBtnSmall(AMZ.organicIndiaPowder, 'OI powder'),
+      amazonBtnSmall(AMZ.tea, 'Teas'),
+    ];
+  } else if (slug === 'moringa-for-pets') {
+    row1a = amazonBtn(AMZ.organicIndiaPowder, 'Organic India powder (tiny amounts only — ask your vet)');
+    row1b = amazonBtn(AMZ.organicIndiaCapsules, 'Capsules (only if your vet approves)');
+  } else if (slug === 'moringa-vs-spirulina') {
+    row1a = amazonBtn(AMZ.organicIndiaPowder, 'Moringa leaf powder (Amazon)');
+    row1b = amazonBtn(AMZ.microIngredients, 'Greens / spirulina style search (Amazon)');
+  } else if (slug === 'moringa-weight-loss' || slug === 'moringa-diabetes' || slug === 'moringa-anemia') {
+    row1a = amazonBtn(AMZ.organicIndiaPowder, 'Organic India powder — compare nutrition facts');
+    row1b = amazonBtn(AMZ.organicIndiaCapsules, 'Organic India capsules — compare serving size');
+  } else if (
+    slug === 'moringa-export-quality-standards' ||
+    slug === 'top-moringa-states-india' ||
+    slug === 'moringa-packaging-international' ||
+    slug === 'moringa-eu-market'
+  ) {
+    row1a = amazonBtn(AMZ.organicIndiaPowder, 'Retail reference: Organic India powder (cup-testing)');
+    row1b = amazonBtn(AMZ.organicIndia, 'Organic India brand hub on Amazon');
+    smallParts.push(amazonBtnSmall(AMZ.mantra24, '24 Mantra'));
+  } else if (slug === 'moringa-powder-vs-capsules') {
+    row1a = amazonBtn(AMZ.organicIndiaPowder, 'Compare powder listings');
+    row1b = amazonBtn(AMZ.organicIndiaCapsules, 'Compare capsule listings');
+  } else if (slug === 'moringa-vs-kale-spinach') {
+    row1a = amazonBtn(AMZ.organicIndiaPowder, 'Shelf-stable greens: OI powder');
+    row1b = amazonBtn(AMZ.kuliKuli, 'Kuli Kuli greens / moringa blends');
+  }
+
+  return `<section class="article-cta-panel" aria-label="Amazon shopping">
+<h2>Compare on Amazon</h2>
+<p class="article-cta-lead">Amazon runs checkout, returns, and pricing. Re-check the listing title and organic seal before you order.</p>
+<div class="amazon-compare-row article-cta-buttons">
+${row1a}
+${row1b}
+</div>
+<p class="article-cta-more">More: ${smallParts.join(' ')}</p>
+<p class="article-cta-fineprint">Prices and Prime eligibility can change without notice.</p>
+</section>`;
 }
 
 function readBody(slug) {
@@ -70,18 +128,19 @@ function readBody(slug) {
 
 function articlePage(meta) {
   const { slug, title, description, h1, lead } = meta;
-  const inner = readBody(slug);
+  let inner = readBody(slug);
+  inner = insertAfterFirstParagraph(inner, amazonMidCta());
   const content = `${AFFILIATE_BOX}
 <div class="article-prose">
 ${inner}
-${amazonRow()}
+${amazonFooterCtas(slug)}
 ${relatedBlock(slug)}
 </div>`;
   return layout({
     title: `${title} | Moringa Suppliers India`,
     description,
     canonical: `${SITE}/articles/${slug}.html`,
-    breadcrumb: `<a href="/">Home</a> / <a href="/articles/">Articles</a> / ${h1.replace(/</g, '')}`,
+    breadcrumb: `<a href="/">Home</a> / <a href="/articles/">Articles</a> / ${escHtml(h1)}`,
     h1,
     lead,
     content,
@@ -98,25 +157,33 @@ ${relatedBlock(slug)}
 function hubPage() {
   const lis = ARTICLES.map(
     (a) =>
-      `<li><a href="/articles/${a.slug}.html"><strong>${a.h1}</strong></a><br><span style="color:var(--text-muted);font-size:0.9rem;">${a.description}</span></li>`
+      `<li><a href="/articles/${a.slug}.html"><strong>${escHtml(a.h1)}</strong></a><br><span class="articles-hub-desc">${escHtml(a.description)}</span></li>`
   ).join('\n');
   const content = `${AFFILIATE_BOX}
-<p style="max-width:720px;font-size:1.05rem;color:var(--text-muted);">Twenty deep guides — pillars, comparisons, problem–solution, export, and recipes — each written for readers who want clarity, not hype. <strong>As an Amazon Associate, we earn from qualifying purchases.</strong></p>
+<div class="guide-prose articles-hub-intro">
+<h2>Guides by topic</h2>
+<p>Organic <strong>Moringa oleifera</strong> from India: safety, purity, powder and capsules, brand comparisons, export paperwork, EU market rules, cooking, tea, skincare, and pets. Affiliate links appear only in the Amazon section below.</p>
+</div>
 <div class="articles-hub-grid">
 <ol class="articles-hub-list">${lis}</ol>
 </div>
-<div class="amazon-compare-row" style="margin-top:2rem;">
-${amazonBtn(AMZ.organicIndia, 'Shop Organic India on Amazon')}
-${amazonBtn(AMZ.kuliKuli, 'Shop Kuli Kuli on Amazon')}
+<section class="article-cta-panel" aria-label="Amazon shopping">
+<h2>Amazon shortcuts</h2>
+<p class="articles-hub-cta-hint">Affiliate links (same disclosure as above). Confirm the live listing before checkout.</p>
+<div class="amazon-compare-row articles-hub-amazon-row">
+${amazonBtn(AMZ.organicIndiaPowder, 'Organic India leaf powder — Amazon')}
+${amazonBtn(AMZ.organicIndiaCapsules, 'Organic India capsules — Amazon')}
 </div>
-<p style="margin-top:1.5rem;"><a href="/">← Home buyer guide</a></p>`;
+<p class="articles-hub-more-links">Also: ${amazonBtnSmall(AMZ.organicIndia, 'Organic India hub')} ${amazonBtnSmall(AMZ.kuliKuli, 'Kuli Kuli')} ${amazonBtnSmall(AMZ.vahdam, 'Vahdam')} ${amazonBtnSmall(AMZ.tea, 'Tea search')}</p>
+</section>
+<p class="articles-hub-backlinks"><a href="/">← Home buyer guide</a> · <a href="/products/">Product guides</a></p>`;
   return layout({
-    title: 'Moringa Articles — 20 Authority Topics | Moringa Suppliers India',
-    description: 'Twenty in-depth Moringa articles: encyclopedia, safety, purity, comparisons, health context, export standards, EU market, recipes, skincare, and pets.',
+    title: 'Moringa Guides — Organic India Sourcing, Safety, Recipes | Moringa Suppliers India',
+    description: 'Moringa guides: organic leaf powder and capsules, safety and purity, India export standards, EU compliance, brand comparisons, recipes, tea, skincare, and pets.',
     canonical: `${SITE}/articles/`,
     breadcrumb: `<a href="/">Home</a> / Articles`,
-    h1: 'Moringa authority articles',
-    lead: 'Foundation content for serious readers, buyers, and brands.',
+    h1: 'Moringa guides',
+    lead: 'India organic Moringa — sourcing, safety, comparisons, and everyday use.',
     content,
     schemaJson: {
       '@context': 'https://schema.org',
@@ -132,6 +199,7 @@ function main() {
   for (const meta of ARTICLES) {
     write(`articles/${meta.slug}.html`, articlePage(meta));
   }
+  patchIndexAuthority(root);
   console.log('generate-articles.js done — wrote', ARTICLES.length + 1, 'pages');
 }
 

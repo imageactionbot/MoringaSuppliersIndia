@@ -25,9 +25,9 @@ const AMZ = {
   microIngredients: 'https://amzn.to/42vnGSN',
 };
 
-const AFFILIATE_BOX = `<div class="affiliate-disclosure" role="note" aria-label="Amazon Associates disclosure">
-  <span class="icon" aria-hidden="true">ℹ️</span>
-  <div><strong>Affiliate Disclosure:</strong> <strong>As an Amazon Associate, I earn from qualifying purchases.</strong> Amazon links on this page are affiliate links — the price you pay does not change. <a href="/legal/affiliate-disclosure.html">Full disclosure</a></div>
+const AFFILIATE_BOX = `<div class="affiliate-disclosure affiliate-disclosure--compact" role="note" aria-label="Amazon Associates disclosure">
+  <span class="icon" aria-hidden="true">&#9432;</span>
+  <div><strong>Disclosure:</strong> <strong>As an Amazon Associate, I earn from qualifying purchases.</strong> Amazon links on this page are affiliate links (no extra cost to you). <a href="/legal/affiliate-disclosure.html">Full policy</a></div>
 </div>`;
 
 const GA = `  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C7LEYP2M1L"></script>
@@ -80,7 +80,7 @@ function nav() {
 <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Main navigation" hidden>
   <div class="mobile-menu-inner">
     <a href="/">Home</a>
-    <a href="/articles/">Authority articles (20)</a>
+    <a href="/articles/">Moringa guides</a>
     <a href="/products/">Product guides</a>
     <a href="/brands/">Brand guides</a>
     <a href="/compare/">Comparisons</a>
@@ -107,11 +107,11 @@ function footer() {
         <div class="footer-contact-mini">
           📞 <a href="tel:+919321041954">+91 93210 41954</a><br>
           ✉️ <a href="mailto:moringasuppliersindia@gmail.com">moringasuppliersindia@gmail.com</a><br>
-          💬 <a href="https://wa.me/919321041954" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="https://wa.me/919321041954" target="_blank" rel="noopener">WhatsApp</a> <span class="footer-contact-hint">(optional)</span>
         </div>
       </div>
       <div class="footer-col"><h4>Guides</h4><ul>
-        <li><a href="/articles/">Articles hub (20 topics)</a></li>
+        <li><a href="/articles/">Moringa guides</a></li>
         <li><a href="/products/">Products hub</a></li>
         <li><a href="/brands/">Brands hub</a></li>
         <li><a href="/compare/">Compare hub</a></li>
@@ -126,8 +126,9 @@ function footer() {
       </ul></div>
     </div>
     <div class="footer-bottom" style="flex-direction:column;align-items:flex-start;gap:0.6rem;">
-      <div style="font-size:0.72rem;color:rgba(255,255,255,0.55);line-height:1.6;">
-        <strong style="color:#fcd200;">Amazon Associates:</strong> <em>As an Amazon Associate, I earn from qualifying purchases.</em> <a href="/legal/affiliate-disclosure.html" style="color:var(--green-light);">Details</a>
+      <div class="footer-affiliate-line">
+        <strong>Amazon Associates:</strong> <em>As an Amazon Associate, I earn from qualifying purchases.</em>
+        <a href="/legal/affiliate-disclosure.html">Details</a>
       </div>
       <div style="display:flex;flex-wrap:wrap;justify-content:space-between;width:100%;padding-top:0.8rem;border-top:1px solid rgba(255,255,255,0.06);">
         <div>© 2026 MoringaSuppliersIndia.com</div>
@@ -136,7 +137,6 @@ function footer() {
     </div>
   </div>
 </footer>
-<a href="https://wa.me/919321041954?text=Moringa%20enquiry" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" width="30" height="30" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 <button class="scroll-top" id="scrollTopBtn" aria-label="Top">↑</button>
 <div class="cookie-notice" id="cookieNotice"><span>🍪 Analytics cookies.</span><button type="button" id="acceptCookies">Accept</button></div>
 <script defer src="/assets/js/main.js"></script>`;

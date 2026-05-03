@@ -11,6 +11,26 @@ const {
   amazonBtn,
   amazonBtnSmall,
 } = require('./lib/site-shell');
+const {
+  buyStrip,
+  productsHubLong,
+  productGuideLong,
+  brandsHubLong,
+  brandPageLong,
+  compareHubLong,
+  comparePageLong,
+} = require('./lib/affiliate-blocks');
+const {
+  disclaimerBody,
+  privacyBody,
+  termsBody,
+  cookiesBody,
+  affiliateDisclosureBody,
+} = require('./lib/legal-blocks');
+
+function stripTags(s) {
+  return String(s).replace(/<[^>]*>/g, '');
+}
 
 // --- Legal ---
 write('legal/disclaimer.html', layout({
@@ -20,13 +40,7 @@ write('legal/disclaimer.html', layout({
   breadcrumb: `<a href="/">Home</a> / Disclaimer`,
   h1: 'Disclaimer',
   lead: 'How we publish information and what we do not guarantee.',
-  content: `<div class="legal-page">
-<p><strong>Last updated:</strong> May 3, 2026</p>
-<p>MoringaSuppliersIndia.com is an independent information resource. We do not sell Moringa products, do not arrange contracts between buyers and suppliers, and do not provide third-party supplier private contact details.</p>
-<p>Content is compiled from publicly available trade, regulatory and industry sources. Health-related statements are general in nature and are not medical advice.</p>
-<p>Some links are Amazon Associates affiliate links. <strong>As an Amazon Associate, I earn from qualifying purchases.</strong> See the <a href="/legal/affiliate-disclosure.html">Affiliate Disclosure</a>.</p>
-<p><a href="/">← Back to home guide</a></p>
-</div>`,
+  content: disclaimerBody(),
   schemaJson: {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
@@ -43,18 +57,7 @@ write('legal/privacy.html', layout({
   breadcrumb: `<a href="/">Home</a> / Privacy`,
   h1: 'Privacy Policy',
   lead: 'What we collect and how we use it.',
-  content: `<div class="legal-page">
-<p><strong>Effective:</strong> May 3, 2026</p>
-<h3>1. Data we collect</h3>
-<ul><li>Anonymous usage data via Google Analytics 4.</li><li>Standard GitHub Pages server logs.</li><li>Information you send us by email or WhatsApp.</li></ul>
-<h3>2. Use</h3>
-<p>We use data to respond to enquiries and improve the site. We do not sell personal data.</p>
-<h3>3. Cookies</h3>
-<p>See <a href="/legal/cookies.html">Cookie Policy</a>.</p>
-<h3>4. Your rights</h3>
-<p>Email <a href="mailto:moringasuppliersindia@gmail.com">moringasuppliersindia@gmail.com</a> for access, correction or deletion requests.</p>
-<p><a href="/">← Home</a></p>
-</div>`,
+  content: privacyBody(),
   schemaJson: { '@context': 'https://schema.org', '@type': 'WebPage', name: 'Privacy Policy', url: `${SITE}/legal/privacy.html` },
 }));
 
@@ -65,11 +68,7 @@ write('legal/terms.html', layout({
   breadcrumb: `<a href="/">Home</a> / Terms`,
   h1: 'Terms of Use',
   lead: 'Rules for using this website.',
-  content: `<div class="legal-page">
-<p><strong>Effective:</strong> May 3, 2026</p>
-<p>By using this site you agree that all content is for general information only, not an offer to sell goods or services, and not medical or legal advice. We are not liable for decisions you make based on this content. Supplier listings are not endorsements. Governing law: India.</p>
-<p><a href="/">← Home</a></p>
-</div>`,
+  content: termsBody(),
   schemaJson: { '@context': 'https://schema.org', '@type': 'WebPage', name: 'Terms of Use', url: `${SITE}/legal/terms.html` },
 }));
 
@@ -80,10 +79,7 @@ write('legal/cookies.html', layout({
   breadcrumb: `<a href="/">Home</a> / Cookies`,
   h1: 'Cookie Policy',
   lead: 'Cookies used on this site.',
-  content: `<div class="legal-page">
-<p>We use cookies for Google Analytics. You can disable cookies in your browser. See Google Chrome, Edge, Brave, Firefox, or Safari help for instructions.</p>
-<p><a href="/">← Home</a></p>
-</div>`,
+  content: cookiesBody(),
   schemaJson: { '@context': 'https://schema.org', '@type': 'WebPage', name: 'Cookie Policy', url: `${SITE}/legal/cookies.html` },
 }));
 
@@ -94,11 +90,7 @@ write('legal/affiliate-disclosure.html', layout({
   breadcrumb: `<a href="/">Home</a> / Affiliate disclosure`,
   h1: 'Affiliate Disclosure',
   lead: 'Amazon Associates Program participation and how we label links.',
-  content: `<div class="legal-page">
-<p><strong>As an Amazon Associate, I earn from qualifying purchases.</strong> MoringaSuppliersIndia.com participates in the Amazon Services LLC Associates Program. Affiliate links are marked with <code>rel="sponsored nofollow noopener"</code> and visible disclosures near buttons. Editorial content is not for sale; affiliate links do not change factual write-ups.</p>
-<p>Prices on Amazon change without notice — always verify on Amazon before buying.</p>
-<p><a href="/">← Home</a></p>
-</div>`,
+  content: affiliateDisclosureBody(),
   schemaJson: { '@context': 'https://schema.org', '@type': 'WebPage', name: 'Affiliate Disclosure', url: `${SITE}/legal/affiliate-disclosure.html` },
 }));
 
@@ -112,6 +104,8 @@ const productsHubContent = `${AFFILIATE_BOX}
   <a class="card" href="/products/moringa-oil.html" style="text-decoration:none;color:inherit;"><h3>🌰 Oil</h3><p>Cosmetic &amp; culinary grades. <strong>Guide →</strong></p></a>
   <a class="card" href="/products/moringa-skincare.html" style="text-decoration:none;color:inherit;"><h3>🧴 Skincare</h3><p>Serums, creams, soaps. <strong>Guide →</strong></p></a>
 </div>
+${productsHubLong()}
+${buyStrip()}
 <p style="margin-top:2rem;"><a href="/">← Full India sourcing guide (home)</a></p>`;
 
 write('products/index.html', layout({
@@ -143,10 +137,15 @@ function productPage({ slug, title, description, h1, lead, featuredHref, feature
     )
     .join('');
   const content = `${AFFILIATE_BOX}
-<h3>Featured pick</h3>
+<section class="prime-buy-block" aria-label="Featured Amazon pick">
+<h3>Featured pick — tap when you have 30 seconds to verify the listing</h3>
+<p style="font-size:0.95rem;color:var(--text-muted);max-width:42rem;">Use this button the moment you are ready to read ingredients and reviews on Amazon. If the title, organic seal, or pack size does not match what you want, hit back and re-open this guide—we would rather you skip a purchase than buy the wrong SKU.</p>
 <p>${amazonBtn(featuredHref, featuredLabel)}</p>
+</section>
+${productGuideLong(slug, stripTags(h1))}
 <h3>Other brands readers compare</h3>
 <div class="table-wrapper"><table><thead><tr><th>Brand</th><th>Note</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>
+${buyStrip()}
 <p style="margin-top:1.5rem;font-size:0.85rem;color:var(--text-muted);">We do not guarantee Amazon search results for shortened links point to a single SKU — always confirm product title and organic seals on Amazon before purchase.</p>
 <p><a href="/products/">← All product guides</a> · <a href="/">India sourcing guide</a></p>`;
   return layout({
@@ -284,7 +283,7 @@ write(
     breadcrumb: `<a href="/">Home</a> / Brands`,
     h1: 'Brand guides',
     lead: 'Who each brand is, what moringa formats they sell on Amazon, and a direct affiliate link.',
-    content: `${AFFILIATE_BOX}<div class="grid-2">${brandCards}</div><p style="margin-top:2rem;"><a href="/">← Home</a></p>`,
+    content: `${AFFILIATE_BOX}<div class="grid-2">${brandCards}</div>${brandsHubLong()}<p style="margin-top:2rem;"><a href="/">← Home</a></p>`,
     schemaJson: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Brand guides', url: `${SITE}/brands/` },
   })
 );
@@ -297,7 +296,7 @@ function brandPage({ file, title, description, h1, lead, href, body }) {
     breadcrumb: `<a href="/">Home</a> / <a href="/brands/">Brands</a> / ${h1}`,
     h1,
     lead,
-    content: `${AFFILIATE_BOX}${body}<p style="margin-top:2rem;">${amazonBtn(href, 'Check price on Amazon')}</p><p><a href="/brands/">← All brands</a></p>`,
+    content: `${AFFILIATE_BOX}${body}${brandPageLong(h1, href)}<p><a href="/brands/">← All brands</a></p>`,
     schemaJson: { '@context': 'https://schema.org', '@type': 'Article', headline: h1, url: `${SITE}/brands/${file}` },
   });
 }
@@ -435,12 +434,14 @@ write(
   <a class="card" href="/compare/organic-india-vs-vahdam.html" style="text-decoration:none;color:inherit;"><h3>Organic India vs Vahdam</h3><p>Ayurvedic organic pioneer vs premium tea &amp; gifting brand. →</p></a>
   <a class="card" href="/compare/organic-india-vs-kuli-kuli.html" style="text-decoration:none;color:inherit;"><h3>Organic India vs Kuli Kuli</h3><p>India organic heritage vs US moringa-native brand. →</p></a>
 </div>
+${compareHubLong()}
 <p><a href="/">← Home</a></p>`,
     schemaJson: { '@context': 'https://schema.org', '@type': 'CollectionPage', url: `${SITE}/compare/` },
   })
 );
 
 const compareOIvV = `${AFFILIATE_BOX}
+${comparePageLong()}
 <h3>Snapshot</h3>
 <div class="table-responsive"><table class="compare-table"><thead><tr><th>Topic</th><th>Organic India</th><th>Vahdam India</th></tr></thead><tbody>
 <tr><td>Core identity</td><td>Certified organic herbal &amp; wellness company (India)</td><td>Premium Indian tea &amp; superfoods with global D2C packaging</td></tr>
@@ -473,6 +474,7 @@ write(
 );
 
 const compareOIvK = `${AFFILIATE_BOX}
+${comparePageLong()}
 <div class="table-responsive"><table class="compare-table"><thead><tr><th>Topic</th><th>Organic India</th><th>Kuli Kuli</th></tr></thead><tbody>
 <tr><td>Origin story</td><td>India-based organic movement &amp; herbs</td><td>US brand built around moringa nutrition &amp; social impact narrative</td></tr>
 <tr><td>Formats</td><td>Powder, capsules, teas in herbal range</td><td>Powder, beverage mixes, bars, shots</td></tr>
@@ -502,5 +504,9 @@ write(
     schemaJson: { '@context': 'https://schema.org', '@type': 'Article', headline: 'Organic India vs Kuli Kuli', url: `${SITE}/compare/organic-india-vs-kuli-kuli.html` },
   })
 );
+
+const pathGen = require('path');
+const { patchIndexAuthority } = require('./lib/patch-index-authority');
+patchIndexAuthority(pathGen.join(__dirname, '..'));
 
 console.log('generate-site.js done');

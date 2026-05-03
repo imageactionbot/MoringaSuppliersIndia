@@ -94,6 +94,47 @@ write('legal/affiliate-disclosure.html', layout({
   schemaJson: { '@context': 'https://schema.org', '@type': 'WebPage', name: 'Affiliate Disclosure', url: `${SITE}/legal/affiliate-disclosure.html` },
 }));
 
+// --- About (site owner & editorial) ---
+const aboutContent = `${AFFILIATE_BOX}
+<p><strong>MoringaSuppliersIndia.com</strong> is an independent editorial project focused on one goal: help global buyers and curious consumers understand <em>Moringa oleifera</em> from India with clear sourcing context, certifications, and honest retail options (Amazon US affiliate links where relevant).</p>
+<p>We do <strong>not</strong> sell Moringa as a merchant, and we do <strong>not</strong> take fees from suppliers listed for informational reference. Commercial pages disclose Amazon Associates participation so you always know when a click may earn a small commission at no extra cost to you.</p>
+<div class="about-card" style="margin-top:1.75rem;">
+  <h3 style="margin-bottom:0.75rem;color:var(--green-deep);font-size:1.2rem;">Site owner</h3>
+  <p style="font-size:1rem;line-height:1.75;color:var(--text-body);margin-bottom:0.75rem;"><strong>Avinash Chauhan</strong> publishes and maintains this website. Editorial updates prioritize accuracy, plain-language explanations, and practical checklists (organic seals, lab vocabulary, export documents) over hype.</p>
+  <p style="font-size:0.95rem;line-height:1.75;color:var(--text-body);margin-bottom:0;">Primary contact: <a href="mailto:moringasuppliersindia@gmail.com">moringasuppliersindia@gmail.com</a> &mdash; for corrections, partnership notes on disclosures, or sourcing questions we can answer in an editorial capacity.</p>
+  <div class="editorial-meta" style="margin-top:1.25rem;">
+    <div><div class="em-label">Also on home</div><div class="em-value"><a href="/#about">Editorial standards block</a></div></div>
+    <div><div class="em-label">Retail guides</div><div class="em-value"><a href="/products/">Product hub</a> &middot; <a href="/brands/">Brands</a></div></div>
+    <div><div class="em-label">Deep reads</div><div class="em-value"><a href="/articles/">Articles index</a></div></div>
+  </div>
+</div>
+<p style="margin-top:2rem;font-size:0.9rem;color:var(--text-muted);">Nothing on this site is medical advice. Always confirm certificates and listings with suppliers or your healthcare professional as appropriate.</p>`;
+
+write('about.html', layout({
+  title: 'About Us | Moringa Suppliers India',
+  description: 'About MoringaSuppliersIndia.com, owner Avinash Chauhan, editorial standards, and how to contact us.',
+  canonical: `${SITE}/about.html`,
+  breadcrumb: `<a href="/">Home</a> / About us`,
+  h1: 'About MoringaSuppliersIndia',
+  lead: 'Who runs this site, how we make money (and how we do not), and how to reach us.',
+  content: aboutContent,
+  schemaJson: {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    name: 'About Moringa Suppliers India',
+    url: `${SITE}/about.html`,
+    description: 'About the MoringaSuppliersIndia.com editorial project and site owner.',
+    isPartOf: { '@type': 'WebSite', name: 'Moringa Suppliers India', url: SITE },
+    about: {
+      '@type': 'Organization',
+      name: 'Moringa Suppliers India',
+      url: SITE,
+      email: 'moringasuppliersindia@gmail.com',
+      founder: { '@type': 'Person', name: 'Avinash Chauhan' },
+    },
+  },
+}));
+
 // --- Products hub ---
 const productsHubContent = `${AFFILIATE_BOX}
 <p>Deep-dive guides by product type — each page explains what to look for (organic certs, heavy metals, packaging) and lists vetted Amazon options with affiliate links.</p>

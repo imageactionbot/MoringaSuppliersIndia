@@ -105,6 +105,10 @@
       "areaServed": "Worldwide",
       "availableLanguage": ["English", "Hindi"]
     }],
+    "founder": {
+      "@type": "Person",
+      "name": "Avinash Chauhan"
+    },
     "sameAs": [
       "https://wa.me/919321041954"
     ]
@@ -309,8 +313,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="preload" href="/assets/css/main.css?v=7" as="style" />
-  <link rel="stylesheet" href="/assets/css/main.css?v=7" />
+  <link rel="preload" href="/assets/css/main.css?v=8" as="style" />
+  <link rel="stylesheet" href="/assets/css/main.css?v=8" />
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
@@ -328,13 +332,14 @@
       Moringa<span>Suppliers</span>India
     </a>
     <ul class="nav-links" id="navDesktopLinks">
-      <li><a href="/#what-is-moringa">About</a></li>
+      <li><a href="/#what-is-moringa">The plant</a></li>
       <li><a href="/articles/">Articles</a></li>
+      <li><a href="/about.html">About us</a></li>
       <li><a href="/products/">Products</a></li>
       <li><a href="/brands/">Brands</a></li>
       <li><a href="/compare/">Compare</a></li>
       <li><a href="/#why-india">Why India</a></li>
-      <li><a href="/#buy">Buy</a></li>
+      <li><a href="/#buy" class="nav-link-buy">Buy</a></li>
       <li><a href="/#suppliers">Suppliers</a></li>
       <li><a href="/#documents">Buyer Docs</a></li>
       <li><a href="/#faq">FAQ</a></li>
@@ -349,6 +354,7 @@
 <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Main navigation" hidden>
   <div class="mobile-menu-inner">
     <a href="/">Home</a>
+    <a href="/about.html">About us</a>
     <a href="/articles/">Moringa guides</a>
     <a href="/products/">All Products (Guides)</a>
     <a href="/brands/">Brand Guides</a>
@@ -361,14 +367,14 @@
     <a href="/#industry">Industry Stats</a>
     <a href="/#destinations">Export Destinations</a>
     <a href="/#pricing">Pricing &amp; MOQ</a>
-    <a href="/#buy">Buy Online (Amazon)</a>
+    <a href="/#buy" class="mobile-menu-buy"><strong>Buy on Amazon</strong></a>
     <a href="/#suppliers">Suppliers</a>
     <a href="/#documents">Documents</a>
     <a href="/#sustainability">Sustainability</a>
     <a href="/#insights">Buyer Insights</a>
     <a href="/#glossary">Glossary</a>
     <a href="/#faq">FAQ</a>
-    <a href="/#about">About Us</a>
+    <a href="/about.html">About us (site)</a>
     <a href="/#contact"><strong>Contact Us</strong></a>
   </div>
 </div>
@@ -387,11 +393,15 @@
           <div><div class="stat-num">92+</div><div class="stat-label">Nutrients</div></div>
         </div>
         <div class="hero-pills">
+          <a href="#buy" class="pill pill--buy">Shop Amazon guides</a>
+          <a href="/products/moringa-capsules.html" class="pill">Capsules</a>
+          <a href="/products/moringa-skincare.html" class="pill">Skincare</a>
+          <a href="/products/moringa-powder.html" class="pill">Powder</a>
           <a href="#what-is-moringa" class="pill">What is Moringa?</a>
           <a href="#products" class="pill">Products</a>
-          <a href="/products/" class="pill">Amazon guides</a>
+          <a href="/products/" class="pill">All Amazon guides</a>
           <a href="/brands/" class="pill">Brand guides</a>
-          <a href="#pros-cons" class="pill">Pros & Cons</a>
+          <a href="#pros-cons" class="pill">Pros &amp; Cons</a>
           <a href="#documents" class="pill">Verification Guide</a>
         </div>
       </div>
@@ -886,8 +896,17 @@
       <span class="section-tag">Buy Online</span>
       <h2>Where to Buy Moringa Online</h2>
       <div class="divider-center"></div>
-      <p class="section-intro">If you're a retail consumer (not bulk buyer), the easiest way to try authentic Indian Moringa is through trusted brands listed on Amazon. Below is a hand-picked option from one of India's most established certified-organic Moringa brands.</p>
+      <p class="section-intro">If you are a retail shopper (not a bulk buyer), the fastest path is our <strong>Amazon US buyer guides</strong> by format &mdash; each page explains what to check on the label, then links to vetted listings. Pick a format below, or scroll for a featured Organic India pick.</p>
     </div>
+
+    <nav class="buy-format-grid" aria-label="Shop by Moringa product format on Amazon">
+      <a href="/products/moringa-powder.html"><span class="bf-icon" aria-hidden="true">🌿</span>Powder</a>
+      <a href="/products/moringa-capsules.html"><span class="bf-icon" aria-hidden="true">💊</span>Capsules</a>
+      <a href="/products/moringa-tea.html"><span class="bf-icon" aria-hidden="true">🍵</span>Tea</a>
+      <a href="/products/moringa-oil.html"><span class="bf-icon" aria-hidden="true">🛢️</span>Oil</a>
+      <a href="/products/moringa-skincare.html"><span class="bf-icon" aria-hidden="true">🧴</span>Skincare</a>
+    </nav>
+    <p class="buy-format-hint">Guides open in a new context on Amazon.com (US). Disclosure appears on each guide; prices change with inventory.</p>
 
     <div class="affiliate-disclosure affiliate-disclosure--compact" role="note" aria-label="Amazon Associates disclosure">
       <span class="icon" aria-hidden="true">&#9432;</span>
@@ -1177,10 +1196,11 @@
       <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text-body);">
         Our goal is simple: help you <strong>make better sourcing decisions</strong> with verified context, not marketing fluff. We continuously update this guide as the global Moringa industry evolves.
       </p>
+      <p style="font-size: 0.9rem; margin-top: 1rem;"><a href="/about.html" style="color: var(--green-main); font-weight: 600;">Full about page &rarr;</a> (site owner, disclosures, contact)</p>
       <div class="editorial-meta">
         <div>
-          <div class="em-label">Published By</div>
-          <div class="em-value">MoringaSuppliersIndia Editorial Team</div>
+          <div class="em-label">Site owner</div>
+          <div class="em-value">Avinash Chauhan</div>
         </div>
         <div>
           <div class="em-label">Last Updated</div>
@@ -1341,7 +1361,8 @@
       <div class="footer-col">
         <h4>Learn</h4>
         <ul>
-          <li><a href="/#what-is-moringa">About Moringa</a></li>
+          <li><a href="/about.html">About us</a></li>
+          <li><a href="/#what-is-moringa">About Moringa (plant)</a></li>
           <li><a href="/articles/">Moringa guides</a></li>
           <li><a href="/products/">Product Guides</a></li>
           <li><a href="/#pros-cons">Pros &amp; Cons</a></li>
@@ -1367,7 +1388,8 @@
       <div class="footer-col">
         <h4>About &amp; Legal</h4>
         <ul>
-          <li><a href="/#about">About Us</a></li>
+          <li><a href="/about.html">About us (site)</a></li>
+          <li><a href="/#about">Mission on home</a></li>
           <li><a href="/#insights">Buyer Insights</a></li>
           <li><a href="/#faq">FAQ</a></li>
           <li><a href="/#contact">Contact</a></li>
@@ -1401,6 +1423,6 @@
   <button type="button" id="acceptCookies">Accept</button>
 </div>
 
-  <script defer src="/assets/js/main.js?v=7"></script>
+  <script defer src="/assets/js/main.js?v=8"></script>
 </body>
 </html>

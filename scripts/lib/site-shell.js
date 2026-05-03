@@ -9,7 +9,7 @@ const root = path.join(__dirname, '..', '..');
 
 const SITE = 'https://moringasuppliersindia.com';
 /** Bust CDN/browser cache when CSS/JS change; bump after edits to main.css or main.js. */
-const ASSET_VER = '7';
+const ASSET_VER = '8';
 
 const AMZ = {
   organicIndia: 'https://amzn.to/3QKamqU',
@@ -64,13 +64,14 @@ function nav() {
       Moringa<span>Suppliers</span>India
     </a>
     <ul class="nav-links" id="navDesktopLinks">
-      <li><a href="/#what-is-moringa">About</a></li>
+      <li><a href="/#what-is-moringa">The plant</a></li>
       <li><a href="/articles/">Articles</a></li>
+      <li><a href="/about.html">About us</a></li>
       <li><a href="/products/">Products</a></li>
       <li><a href="/brands/">Brands</a></li>
       <li><a href="/compare/">Compare</a></li>
       <li><a href="/#why-india">Why India</a></li>
-      <li><a href="/#buy">Buy</a></li>
+      <li><a href="/#buy" class="nav-link-buy">Buy</a></li>
       <li><a href="/#suppliers">Suppliers</a></li>
       <li><a href="/#documents">Buyer Docs</a></li>
       <li><a href="/#faq">FAQ</a></li>
@@ -84,12 +85,13 @@ function nav() {
 <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Main navigation" hidden>
   <div class="mobile-menu-inner">
     <a href="/">Home</a>
+    <a href="/about.html">About us</a>
     <a href="/articles/">Moringa guides</a>
     <a href="/products/">Product guides</a>
     <a href="/brands/">Brand guides</a>
     <a href="/compare/">Comparisons</a>
     <a href="/#why-india">Why India</a>
-    <a href="/#buy">Buy (Amazon)</a>
+    <a href="/#buy" class="mobile-menu-buy"><strong>Buy on Amazon</strong></a>
     <a href="/#suppliers">Suppliers</a>
     <a href="/#documents">Buyer docs</a>
     <a href="/#contact"><strong>Contact</strong></a>
@@ -115,6 +117,7 @@ function footer() {
         </div>
       </div>
       <div class="footer-col"><h4>Guides</h4><ul>
+        <li><a href="/about.html">About us</a></li>
         <li><a href="/articles/">Moringa guides</a></li>
         <li><a href="/products/">Products hub</a></li>
         <li><a href="/brands/">Brands hub</a></li>

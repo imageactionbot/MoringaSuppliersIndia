@@ -5,8 +5,6 @@
 
 function disclaimerBody() {
   return `<div class="legal-page">
-<p><strong>Last updated:</strong> May 3, 2026</p>
-
 <h2>1. Nature of this website</h2>
 <p>MoringaSuppliersIndia.com is an independent editorial and reference project. We publish guides, comparisons, and articles about Moringa (<em>Moringa oleifera</em>) in trade, retail, and regulatory contexts. We do not operate as a broker, importer, exporter, manufacturer, or retailer of physical goods. We do not arrange contracts between buyers and suppliers, and we do not guarantee availability, pricing, or specifications of any third-party product or service.</p>
 
@@ -52,8 +50,6 @@ function disclaimerBody() {
 
 function privacyBody() {
   return `<div class="legal-page">
-<p><strong>Effective:</strong> May 3, 2026</p>
-
 <h2>1. Who we are</h2>
 <p>This policy describes how MoringaSuppliersIndia.com (“we”, “us”) handles information in connection with the public website hosted on GitHub Pages. We are a small editorial project, not a large data platform. We still want you to understand what can be observed when you browse.</p>
 
@@ -107,8 +103,6 @@ function privacyBody() {
 
 function termsBody() {
   return `<div class="legal-page">
-<p><strong>Effective:</strong> May 3, 2026</p>
-
 <h2>1. Agreement</h2>
 <p>By accessing MoringaSuppliersIndia.com you agree to these Terms of Use. If you disagree, do not use the site.</p>
 
@@ -175,8 +169,6 @@ function termsBody() {
 
 function cookiesBody() {
   return `<div class="legal-page">
-<p><strong>Effective:</strong> May 3, 2026</p>
-
 <h2>1. What cookies are</h2>
 <p>Cookies are small text files stored on your device when a site loads. They can remember preferences, keep you signed in on other sites (not typically used here), or help analytics tools distinguish returning visitors from one-off hits in an privacy-preserving way depending on configuration.</p>
 
@@ -237,8 +229,6 @@ function cookiesBody() {
 
 function affiliateDisclosureBody() {
   return `<div class="legal-page">
-<p><strong>Last updated:</strong> May 3, 2026</p>
-
 <h2>1. Amazon Associates participation</h2>
 <p>MoringaSuppliersIndia.com is a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for sites to earn advertising fees by advertising and linking to Amazon.com and related Amazon storefronts.</p>
 <p><strong>As an Amazon Associate, I earn from qualifying purchases.</strong> That statement appears here, near prominent affiliate buttons on commercial guides, and in our general <a href="/legal/disclaimer.html">Disclaimer</a> where relevant.</p>

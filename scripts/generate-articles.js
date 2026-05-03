@@ -22,8 +22,10 @@ const bodiesDir = path.join(root, 'content', 'article-bodies');
 const { ARTICLES } = require('./lib/articles-catalog');
 const { patchIndexAuthority } = require('./lib/patch-index-authority');
 
-const ARTICLE_PUBLISHED = '2026-04-30';
-const ARTICLE_MODIFIED = '2026-05-03';
+// Articles are intentionally evergreen: no visible dates in the hero, no
+// datePublished / dateModified in JSON-LD. This keeps the content from
+// looking stale six months from now and lines up with the "no date stamps"
+// editorial decision.
 
 function escHtml(s) {
   return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -140,7 +142,7 @@ function readBody(slug) {
 
 /** Slug → SEO keyword shortlist. Keeps per-page keyword meta unique without manual upkeep. */
 function keywordsForSlug(slug, h1) {
-  const base = 'moringa, moringa oleifera, moringa india, organic moringa';
+  const base = 'moringa, moringa oleifera, moringa india, moringa suppliers in india, moringa suppliers india, organic moringa, organic moringa india';
   const map = {
     'ultimate-moringa-encyclopedia': 'moringa encyclopedia, moringa guide, moringa research, moringa history, moringa science',
     'moringa-benefits-every-age': 'moringa benefits, moringa for kids, moringa for seniors, moringa for adults, moringa nutrition age',
@@ -199,8 +201,6 @@ ${relatedBlock(slug)}
     lead,
     eyebrow: 'Editorial guide',
     author: DEFAULT_AUTHOR,
-    datePublished: ARTICLE_PUBLISHED,
-    dateModified: ARTICLE_MODIFIED,
     readingTime: rt.label,
     content,
     schemaJson: {
@@ -209,8 +209,6 @@ ${relatedBlock(slug)}
       description,
       url: canonical,
       mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
-      datePublished: ARTICLE_PUBLISHED,
-      dateModified: ARTICLE_MODIFIED,
       wordCount: rt.words,
       timeRequired: `PT${rt.minutes}M`,
       inLanguage: 'en',
@@ -253,9 +251,9 @@ ${amazonBtn(AMZ.organicIndiaCapsules, 'Organic India capsules — Amazon')}
 <p class="articles-hub-backlinks"><a href="/">&larr; Home buyer guide</a> &middot; <a href="/products/">Product guides</a></p>`;
   return layout({
     section: 'article',
-    title: 'Moringa Guides — Organic India Sourcing, Safety, Recipes | Moringa Suppliers India',
-    description: 'Moringa guides: organic leaf powder and capsules, safety and purity, India export standards, EU compliance, brand comparisons, recipes, tea, skincare, and pets.',
-    keywords: 'moringa guides, moringa articles, organic india moringa, moringa safety, moringa recipes, moringa export, eu moringa',
+    title: 'Moringa Guides | Sourcing, Safety, Recipes \u2014 Moringa Suppliers India',
+    description: 'Moringa guides on organic leaf powder and capsules, safety and purity, India export standards, EU compliance, brand comparisons, recipes, tea, skincare, and pets \u2014 written for global buyers sourcing moringa suppliers in India.',
+    keywords: 'moringa guides, moringa suppliers in india, moringa articles, organic india moringa, moringa safety, moringa recipes, moringa export, eu moringa',
     canonical: `${SITE}/articles/`,
     breadcrumbTrail: [
       { name: 'Home', url: '/' },
@@ -264,11 +262,10 @@ ${amazonBtn(AMZ.organicIndiaCapsules, 'Organic India capsules — Amazon')}
     h1: 'Moringa guides',
     eyebrow: 'Editorial hub',
     lead: 'India organic Moringa &mdash; sourcing, safety, comparisons, and everyday use.',
-    dateModified: ARTICLE_MODIFIED,
     heroStats: [
       { value: '20', label: 'Authority articles' },
-      { value: '~', label: 'Editorial only' },
-      { value: '2026', label: 'Updated' },
+      { value: '100%', label: 'Editorial only' },
+      { value: 'Evergreen', label: 'Maintained' },
     ],
     content,
     schemaJson: {

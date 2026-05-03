@@ -1393,8 +1393,230 @@ footer {
   margin-top: 0.3rem;
 }
 
-/* Pricing Guide */
+/* ==========================================================================
+   Quick buyer brief — top-of-page evergreen SEO block targeting the exact
+   "Moringa Suppliers in India" query. Four equal-weight cards.
+   ========================================================================== */
+.quick-brief-section {
+  background: linear-gradient(180deg, #ffffff 0%, var(--green-ultra) 100%);
+  padding: 4rem 0 3rem;
+}
+.quick-brief-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.1rem;
+  margin-top: 2rem;
+}
+.qb-card {
+  background: var(--white);
+  border: 1px solid var(--green-pale);
+  border-radius: var(--radius);
+  padding: 1.4rem 1.3rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.qb-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--green-light);
+}
+.qb-icon {
+  font-size: 1.7rem;
+  line-height: 1;
+  margin-bottom: 0.55rem;
+}
+.qb-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--green-deep);
+  margin-bottom: 0.55rem;
+}
+.qb-card p {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--text-body);
+  margin: 0;
+}
+.qb-card strong { color: var(--green-deep); }
+.quick-brief-foot {
+  margin-top: 1.75rem;
+  text-align: center;
+  font-size: 0.92rem;
+  color: var(--text-muted);
+}
+.quick-brief-foot a {
+  color: var(--green-main);
+  font-weight: 600;
+  text-decoration: none;
+}
+.quick-brief-foot a:hover { text-decoration: underline; }
+
+/* ==========================================================================
+   Pricing / MOQ / Supplier-margin block (evergreen rewrite)
+   - No fixed dollar amounts; explains how Indian moringa suppliers price.
+   - Three layers: MOQ cards, margin cards, public price-source links.
+   - Cards fluid-collapse to one column under 720px.
+   ========================================================================== */
 .pricing-section { background: var(--green-ultra); }
+
+.moq-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.moq-card {
+  background: var(--white);
+  border: 1px solid var(--green-pale);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.1rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.moq-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--green-light);
+}
+.moq-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.moq-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--green-deep);
+  margin-bottom: 0.75rem;
+}
+.moq-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.45rem 0;
+  border-top: 1px dashed var(--green-pale);
+  font-size: 0.82rem;
+  color: var(--text-body);
+  line-height: 1.5;
+}
+.moq-row span {
+  color: var(--text-muted);
+  min-width: 7rem;
+}
+.moq-row strong {
+  text-align: right;
+  color: var(--green-deep);
+  font-weight: 700;
+  font-size: 0.82rem;
+}
+
+.margin-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin: 2rem 0 1.5rem;
+}
+@media (max-width: 820px) { .margin-grid { grid-template-columns: 1fr; } }
+.margin-card {
+  background: var(--white);
+  border: 1px solid var(--green-pale);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+.margin-card h3 {
+  font-size: 1.05rem;
+  color: var(--green-deep);
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+.margin-list {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--text-body);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+.margin-list li { margin-bottom: 0.45rem; }
+.margin-card--highlight {
+  background: linear-gradient(135deg, #fff8e7, #fef5e6);
+  border-color: var(--gold);
+}
+.margin-card--highlight h3 { color: var(--gold-dark); }
+.margin-card--highlight p {
+  font-size: 0.92rem;
+  line-height: 1.75;
+  color: var(--text-body);
+  margin-bottom: 0.75rem;
+}
+.margin-note {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.price-sources {
+  background: var(--white);
+  border: 1px solid var(--green-pale);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 1rem;
+}
+.price-sources h3 {
+  font-size: 1.05rem;
+  color: var(--green-deep);
+  margin-bottom: 0.5rem;
+}
+.price-sources-lead {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+.price-sources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.85rem;
+}
+.price-source {
+  background: var(--green-ultra);
+  border: 1px solid var(--green-pale);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 0.95rem;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--text-body);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+.price-source:hover {
+  background: var(--green-pale);
+  border-color: var(--green-light);
+}
+.price-source strong {
+  color: var(--green-deep);
+  display: inline-block;
+  margin-bottom: 2px;
+}
+.price-source a {
+  color: var(--green-main);
+  font-weight: 600;
+  text-decoration: none;
+  word-break: break-word;
+}
+.price-source a:hover { text-decoration: underline; }
+
+.price-disclaimer {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 1rem;
+  padding: 0.8rem 1rem;
+  background: var(--gold-light);
+  border-left: 3px solid var(--gold);
+  border-radius: var(--radius-sm);
+}
+
+/* Legacy class retained for any cached pages still rendering the table; new
+   home page uses .moq-grid + .margin-grid instead. */
 .pricing-table {
   width: 100%;
   border-collapse: collapse;
@@ -1425,15 +1647,6 @@ footer {
   padding: 4px 12px;
   font-size: 0.78rem;
   font-weight: 700;
-}
-.price-disclaimer {
-  font-size: 0.78rem;
-  color: var(--text-muted);
-  margin-top: 1rem;
-  padding: 0.8rem 1rem;
-  background: var(--gold-light);
-  border-left: 3px solid var(--gold);
-  border-radius: var(--radius-sm);
 }
 
 /* Sustainability */
@@ -3037,5 +3250,102 @@ body[data-section] a:focus-visible {
   }
   .breadcrumb-nav--pill .breadcrumb-list {
     font-size: 0.78rem;
+  }
+}
+
+/* ==========================================================================
+   Evergreen / SEO-polish layer (added 2026)
+   - Smoother card transitions site-wide.
+   - Accessible focus rings tuned for new MOQ + price-source blocks.
+   - Hide any leftover "Last updated" stamps that survive in cached pages.
+   - Slightly tighter mobile typography for the long-form home guide.
+   ========================================================================== */
+
+/* Hide stale "Last updated" footer text if any cached HTML still ships it.
+   We replaced it with .footer-evergreen (label-only, no date). */
+.last-updated { display: none !important; }
+.footer-evergreen {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.02em;
+}
+
+/* Hide the visible date strip in legacy article heroes that still include it.
+   The new build no longer emits it; this is purely a cache-safety net. */
+.page-meta-item[data-kind="date"],
+time[itemprop="datePublished"]:not([data-show]),
+time[itemprop="dateModified"]:not([data-show]) {
+  display: none;
+}
+
+/* Subtle hover lift across content cards for a smoother feel. */
+.card,
+.product-card,
+.brand-card,
+.dest-card,
+.stat-card,
+.faq-item,
+.glossary-item,
+.insight-card,
+.use-case-card,
+.home-article-card,
+.home-articles-grid .home-article-item {
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
+              box-shadow 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
+              border-color 0.25s ease;
+}
+.card:hover,
+.product-card:hover,
+.brand-card:hover,
+.dest-card:hover,
+.faq-item:hover,
+.glossary-item:hover,
+.insight-card:hover,
+.use-case-card:hover,
+.home-article-card:hover {
+  transform: translateY(-3px);
+}
+
+/* Image hover zoom-in only for hero product photos (smoother brand feel). */
+.hero-image .hero-visual-photo {
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+}
+.hero-image:hover .hero-visual-photo {
+  transform: scale(1.02);
+}
+
+/* Tighter mobile reading rhythm + safe-area padding for notched devices. */
+@media (max-width: 640px) {
+  :root {
+    --container-padding: 1.1rem;
+  }
+  .hero h1 {
+    font-size: clamp(1.6rem, 6vw, 2.1rem);
+    line-height: 1.2;
+  }
+  .moq-grid,
+  .price-sources-grid {
+    gap: 0.75rem;
+  }
+  .moq-card { padding: 1rem; }
+  .margin-card { padding: 1.15rem; }
+  body { padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right); }
+}
+
+/* Reduce motion: keep the new transitions extremely subtle when requested. */
+@media (prefers-reduced-motion: reduce) {
+  .card:hover,
+  .product-card:hover,
+  .brand-card:hover,
+  .dest-card:hover,
+  .faq-item:hover,
+  .glossary-item:hover,
+  .insight-card:hover,
+  .use-case-card:hover,
+  .home-article-card:hover,
+  .moq-card:hover,
+  .hero-image:hover .hero-visual-photo {
+    transform: none !important;
   }
 }

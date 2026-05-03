@@ -134,9 +134,9 @@ const aboutContent = `${AFFILIATE_BOX}
 
 write('about.html', layout({
   section: 'about',
-  title: 'About Us | Moringa Suppliers India',
-  description: 'About MoringaSuppliersIndia.com, owner Avinash Chauhan, editorial standards, and how to contact us.',
-  keywords: 'about moringa suppliers india, avinash chauhan, editorial standards, contact moringa',
+  title: 'About Moringa Suppliers India | Editorial Standards & Contact',
+  description: 'About Moringa Suppliers India \u2014 the independent buyer guide for moringa suppliers in India. Site owner Avinash Chauhan, editorial standards, disclosures and contact.',
+  keywords: 'about moringa suppliers india, moringa suppliers in india, avinash chauhan, editorial standards, contact moringa india, independent moringa buyer guide',
   canonical: `${SITE}/about.html`,
   breadcrumbTrail: trail(['Home', '/'], ['About us']),
   h1: 'About MoringaSuppliersIndia',
@@ -170,9 +170,9 @@ ${buyStrip()}
 
 write('products/index.html', layout({
   section: 'product',
-  title: 'Moringa Product Buyer Guides (Amazon US) | Moringa Suppliers India',
-  description: 'Guides for Moringa powder, capsules, tea, oil, and skincare on Amazon — organic certs, what to check, and affiliate links to top brands.',
-  keywords: 'moringa products, moringa powder, moringa capsules, moringa tea, moringa oil, moringa skincare, amazon moringa',
+  title: 'Moringa Product Buyer Guides from India (Amazon US) | Moringa Suppliers India',
+  description: 'Buyer guides for moringa powder, capsules, tea, oil and skincare from leading moringa suppliers in India. Organic certifications, what to check on the label, and Amazon retail picks.',
+  keywords: 'moringa products, moringa suppliers in india, moringa powder, moringa capsules, moringa tea, moringa oil, moringa skincare, amazon moringa, indian moringa brands',
   canonical: `${SITE}/products/`,
   breadcrumbTrail: trail(['Home', '/'], ['Products']),
   h1: 'Moringa product guides',
@@ -355,9 +355,9 @@ write(
   'brands/index.html',
   layout({
     section: 'brand',
-    title: 'Moringa Brand Guides (Amazon US) | Moringa Suppliers India',
-    description: 'Independent guides to Organic India, Vahdam, Kuli Kuli, Terrasoul, 24 Mantra, Banyan, Sunfood, Micro Ingredients & Indus Valley.',
-    keywords: 'moringa brands, organic india, vahdam, kuli kuli, terrasoul, 24 mantra, banyan botanicals, sunfood, micro ingredients, indus valley',
+    title: 'Moringa Brand Guides from India (Amazon US) | Moringa Suppliers India',
+    description: 'Independent buyer guides to leading moringa brands sourced from India \u2014 Organic India, Vahdam, Kuli Kuli, Terrasoul, 24 Mantra, Banyan, Sunfood, Micro Ingredients and Indus Valley.',
+    keywords: 'moringa brands, moringa suppliers in india, organic india, vahdam, kuli kuli, terrasoul, 24 mantra, banyan botanicals, sunfood, micro ingredients, indus valley',
     canonical: `${SITE}/brands/`,
     breadcrumbTrail: trail(['Home', '/'], ['Brands']),
     h1: 'Brand guides',

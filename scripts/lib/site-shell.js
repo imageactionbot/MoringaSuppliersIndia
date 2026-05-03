@@ -18,10 +18,17 @@ const root = path.join(__dirname, '..', '..');
 
 /** Must match GitHub Pages CNAME (www) so canonicals match the live host Google indexes. */
 const SITE = 'https://www.moringasuppliersindia.com';
-/** Default Open Graph / Twitter preview (repo asset; hero uses Moringa_All_Products.webp). */
-const OG_DEFAULT_IMAGE = `${SITE}/og-brand.svg`;
+/**
+ * Default Open Graph / Twitter preview.
+ * Use the products photo by default so Google's right-hand panel and social
+ * shares show the real product line-up (powder, capsules, oil, tea, soap)
+ * rather than a generic logo card.
+ */
+const OG_DEFAULT_IMAGE = `${SITE}/Moringa_All_Products.webp`;
+/** SVG fallback used by some legacy share targets (kept for reference). */
+const OG_BRAND_SVG = `${SITE}/og-brand.svg`;
 /** Bust CDN/browser cache when CSS/JS change; bump after edits to main.css or main.js. */
-const ASSET_VER = '16';
+const ASSET_VER = '17';
 
 const AMZ = {
   organicIndia: 'https://amzn.to/3QKamqU',
@@ -62,24 +69,55 @@ const ORG_NODE = {
   '@type': 'Organization',
   '@id': `${SITE}/#organization`,
   name: 'Moringa Suppliers India',
+  alternateName: ['MoringaSuppliersIndia', 'Moringa Suppliers in India'],
   url: SITE,
   logo: {
     '@type': 'ImageObject',
     url: `${SITE}/logo.svg`,
     width: 256,
     height: 256,
+    caption: 'Moringa Suppliers India',
+  },
+  // Knowledge-panel image: the products lineup so Google's right-side SERP
+  // panel can render the real Moringa products instead of just the logo.
+  image: {
+    '@type': 'ImageObject',
+    url: `${SITE}/Moringa_All_Products.webp`,
+    caption: 'Moringa products from India: powder, capsules, oil, tea, soap',
   },
   email: 'moringasuppliersindia@gmail.com',
   founder: { '@type': 'Person', name: 'Avinash Chauhan' },
+  knowsAbout: [
+    'Moringa oleifera',
+    'Moringa suppliers in India',
+    'Organic moringa powder',
+    'Moringa capsules',
+    'Moringa oil',
+    'Moringa tea',
+    'NPOP organic certification',
+    'USDA organic moringa',
+    'EU organic moringa',
+    'Moringa export from India',
+  ],
+  areaServed: { '@type': 'Place', name: 'Worldwide' },
 };
 
 const WEBSITE_NODE = {
   '@type': 'WebSite',
   '@id': `${SITE}/#website`,
   name: 'Moringa Suppliers India',
+  alternateName: 'Moringa Suppliers in India',
   url: SITE,
   publisher: { '@id': `${SITE}/#organization` },
   inLanguage: 'en',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: `${SITE}/?q={search_term_string}`,
+    },
+    'query-input': 'required name=search_term_string',
+  },
 };
 
 /** Default editorial author used on articles when the generator does not pass one. */
@@ -235,8 +273,8 @@ function footer() {
         <a href="/legal/affiliate-disclosure.html">Details</a>
       </div>
       <div style="display:flex;flex-wrap:wrap;justify-content:space-between;width:100%;padding-top:0.8rem;border-top:1px solid rgba(255,255,255,0.06);">
-        <div>&copy; 2026 MoringaSuppliersIndia.com</div>
-        <div class="last-updated">Last updated: May 3, 2026</div>
+        <div>&copy; MoringaSuppliersIndia.com &middot; Independent buyer guide</div>
+        <div class="footer-evergreen">Evergreen reference &middot; Made in India &#127470;&#127475;</div>
       </div>
     </div>
   </div>
@@ -264,15 +302,13 @@ function renderPageHero({ section, eyebrow, h1, lead, dateModified, datePublishe
     ? `<span class="page-eyebrow" aria-hidden="false">${icon}<span>${eyebrow}</span></span>`
     : '';
 
+  // We deliberately do NOT render datePublished / dateModified in the hero so
+  // articles read evergreen (no "Updated May 3, 2026" stamp that ages the page).
+  // Dates may still flow into JSON-LD when callers explicitly want them, but
+  // the visible meta row sticks to author + reading time only.
   const metaBits = [];
   if (author && author.name) {
     metaBits.push(`<span class="page-meta-item"><span class="page-meta-label">By</span> ${author.name}</span>`);
-  }
-  if (datePublished) {
-    metaBits.push(`<span class="page-meta-item"><span class="page-meta-label">Published</span> <time datetime="${datePublished}">${formatPrettyDate(datePublished)}</time></span>`);
-  }
-  if (dateModified) {
-    metaBits.push(`<span class="page-meta-item"><span class="page-meta-label">Updated</span> <time datetime="${dateModified}">${formatPrettyDate(dateModified)}</time></span>`);
   }
   if (readingTime) {
     metaBits.push(`<span class="page-meta-item"><span class="page-meta-label">Read</span> ${readingTime}</span>`);
@@ -432,6 +468,15 @@ function layout(opts) {
     breadcrumbHtml = `<nav class="breadcrumb-nav" aria-label="Breadcrumb">${breadcrumb}</nav>`;
   }
 
+  // Pick the right MIME type for og:image so Slack/Facebook/LinkedIn parse it.
+  const imgIsWebp = /\.webp(?:[?#].*)?$/i.test(img);
+  const imgIsPng = /\.png(?:[?#].*)?$/i.test(img);
+  const imgIsJpg = /\.jpe?g(?:[?#].*)?$/i.test(img);
+  const ogImageType = imgIsWebp ? 'image/webp' : imgIsPng ? 'image/png' : imgIsJpg ? 'image/jpeg' : 'image/svg+xml';
+  // Most non-SVG OG images on this site are 1200x900 (Moringa_All_Products.webp).
+  const ogImageWidth = imgIsWebp || imgIsPng || imgIsJpg ? '1200' : '1200';
+  const ogImageHeight = imgIsWebp || imgIsPng || imgIsJpg ? '900' : '630';
+
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -441,12 +486,15 @@ function layout(opts) {
   <meta name="description" content="${descEsc}" />
   ${keywordsMeta}
   <meta name="author" content="${author && author.name ? author.name : 'MoringaSuppliersIndia.com'}" />
-  <meta name="publisher" content="MoringaSuppliersIndia.com" />
+  <meta name="publisher" content="Moringa Suppliers India" />
+  <meta name="application-name" content="Moringa Suppliers India" />
+  <meta name="apple-mobile-web-app-title" content="Moringa Suppliers India" />
   <link rel="canonical" href="${canonical}" />
   <link rel="alternate" hreflang="en" href="${canonical}" />
   <link rel="alternate" hreflang="x-default" href="${canonical}" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <meta name="bingbot" content="index, follow" />
   <meta name="theme-color" content="#2d8a3a" />
   <meta name="msapplication-TileColor" content="#2d8a3a" />
   <meta name="color-scheme" content="light" />
@@ -454,10 +502,18 @@ function layout(opts) {
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
-  <link rel="icon" href="/logo.svg" type="image/svg+xml" sizes="256x256" />
+  <!--
+    Favicon priority (matters for Google's SERP brand mark):
+      1. /logo.svg   = primary brand mark, 256x256, used on the search result favicon dot.
+      2. /favicon.svg = same green leaf, smaller viewBox for tabs that prefer 64x64.
+    Listing logo.svg first with sizes="any" tells Google we have a high-quality square brand
+    icon, which is what's needed to replace the generic globe in search results.
+  -->
+  <link rel="icon" href="/logo.svg" type="image/svg+xml" sizes="any" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="64x64" />
+  <link rel="shortcut icon" href="/logo.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/logo.svg" sizes="180x180" />
-  <link rel="mask-icon" href="/favicon.svg" color="#2d8a3a" />
+  <link rel="mask-icon" href="/logo.svg" color="#2d8a3a" />
   <link rel="manifest" href="/site.webmanifest" />
   <link rel="dns-prefetch" href="//fonts.googleapis.com" />
   <link rel="dns-prefetch" href="//fonts.gstatic.com" />
@@ -468,12 +524,14 @@ function layout(opts) {
   <meta property="og:description" content="${descEsc}" />
   <meta property="og:url" content="${canonical}" />
   <meta property="og:image" content="${img}" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
+  <meta property="og:image:secure_url" content="${img}" />
+  <meta property="og:image:width" content="${ogImageWidth}" />
+  <meta property="og:image:height" content="${ogImageHeight}" />
   <meta property="og:image:alt" content="${titleEsc}" />
-  <meta property="og:image:type" content="image/svg+xml" />
+  <meta property="og:image:type" content="${ogImageType}" />
   ${articleMeta}
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@MoringaIndia" />
   <meta name="twitter:title" content="${titleEsc}" />
   <meta name="twitter:description" content="${descEsc}" />
   <meta name="twitter:image" content="${img}" />

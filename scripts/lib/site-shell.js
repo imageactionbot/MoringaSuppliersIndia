@@ -9,7 +9,7 @@ const root = path.join(__dirname, '..', '..');
 
 const SITE = 'https://moringasuppliersindia.com';
 /** Bust CDN/browser cache when CSS/JS change; bump after edits to main.css or main.js. */
-const ASSET_VER = '6';
+const ASSET_VER = '7';
 
 const AMZ = {
   organicIndia: 'https://amzn.to/3QKamqU',

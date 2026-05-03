@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-label="Moringa Suppliers India logo">
+  <defs>
+    <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a2e15"/>
+      <stop offset="100%" stop-color="#1a5f2a"/>
+    </linearGradient>
+    <linearGradient id="lf" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b8e0c0"/>
+      <stop offset="100%" stop-color="#2d8a3a"/>
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="48" fill="url(#lg)"/>
+  <ellipse cx="128" cy="118" rx="88" ry="92" fill="url(#lf)" opacity="0.92"/>
+  <path d="M128 40C128 40 72 72 72 148c0 48 28 76 56 84" stroke="#eef7f0" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <path d="M128 40C128 40 184 72 184 148c0 48-28 76-56 84" stroke="#eef7f0" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <path d="M128 232V100" stroke="#d4a53a" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="128" cy="88" r="14" fill="#d4a53a"/>
+</svg>

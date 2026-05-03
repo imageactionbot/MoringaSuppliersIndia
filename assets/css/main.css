@@ -1871,6 +1871,35 @@ a.home-article-card:visited .home-article-desc,
 a.home-article-card:active .home-article-desc {
   color: var(--text-muted);
 }
+.home-article-cta {
+  margin-top: auto;
+  padding-top: 0.7rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  color: var(--green-main);
+  border-top: 1px solid rgba(45, 138, 58, 0.14);
+  align-self: stretch;
+  letter-spacing: 0.01em;
+}
+a.home-article-card:hover .home-article-cta,
+a.home-article-card:focus-visible .home-article-cta {
+  color: var(--green-dark);
+}
+a.home-article-card:visited .home-article-cta,
+a.home-article-card:active .home-article-cta {
+  color: var(--green-main);
+}
+.home-article-cta-arrow {
+  transition: transform 0.2s ease;
+}
+a.home-article-card:hover .home-article-cta-arrow,
+a.home-article-card:focus-visible .home-article-cta-arrow {
+  transform: translateX(3px);
+}
 .home-articles-footer {
   text-align: center;
   margin-top: 2rem;
@@ -1917,6 +1946,10 @@ a.home-article-card:active .home-article-desc {
     font-size: 0.78rem;
     line-height: 1.48;
     -webkit-line-clamp: 4;
+  }
+  .home-article-cta {
+    font-size: 0.78rem;
+    padding-top: 0.55rem;
   }
   .home-articles-footer {
     margin-top: 1.35rem;

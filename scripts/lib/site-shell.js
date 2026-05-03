@@ -12,7 +12,7 @@ const SITE = 'https://www.moringasuppliersindia.com';
 /** Default Open Graph / Twitter preview (repo asset; hero uses Moringa_All_Products.webp). */
 const OG_DEFAULT_IMAGE = `${SITE}/og-brand.svg`;
 /** Bust CDN/browser cache when CSS/JS change; bump after edits to main.css or main.js. */
-const ASSET_VER = '13';
+const ASSET_VER = '14';
 
 const AMZ = {
   organicIndia: 'https://amzn.to/3QKamqU',

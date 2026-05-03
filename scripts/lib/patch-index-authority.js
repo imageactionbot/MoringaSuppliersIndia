@@ -32,9 +32,10 @@ function renderHomeAuthorityBlock() {
     const title = escapeHtml(a.h1);
     const desc = escapeHtml(blurb(a.description));
     return `      <li class="home-article-item">
-        <a class="home-article-card" href="/articles/${a.slug}.html">
+        <a class="home-article-card" href="/articles/${a.slug}.html" aria-label="${title} — read full guide">
           <span class="home-article-title">${title}</span>
           <span class="home-article-desc">${desc}</span>
+          <span class="home-article-cta"><span class="home-article-cta-text">Learn more</span><span class="home-article-cta-arrow" aria-hidden="true">→</span></span>
         </a>
       </li>`;
   }).join('\n');

@@ -28,7 +28,7 @@ const OG_DEFAULT_IMAGE = `${SITE}/Moringa_All_Products.webp`;
 /** SVG fallback used by some legacy share targets (kept for reference). */
 const OG_BRAND_SVG = `${SITE}/og-brand.svg`;
 /** Bust CDN/browser cache when CSS/JS change; bump after edits to main.css or main.js. */
-const ASSET_VER = '33';
+const ASSET_VER = '34';
 
 const AMZ = {
   organicIndia: 'https://amzn.to/3QKamqU',
@@ -70,6 +70,14 @@ function priceRealityBarHtml() {
     <button type="button" class="price-reality-dismiss" id="priceRealityDismiss" aria-label="Dismiss pricing notice"><span aria-hidden="true">&times;</span></button>
   </div>
 </aside>`;
+}
+
+/** Fixed row: guide FAB + scroll-to-top (one line, above price strip on mobile). */
+function pageToolsDockHtml() {
+  return `<div class="page-tools-dock" id="pageToolsDock">
+${guideAssistHtml()}
+<button class="scroll-top" id="scrollTopBtn" aria-label="Scroll to top">&uarr;</button>
+</div>`;
 }
 
 /** Floating “help me choose” assistant (links to guides + affiliates). */
@@ -353,8 +361,7 @@ function footer() {
   </div>
 </footer>
 ${priceRealityBarHtml()}
-${guideAssistHtml()}
-<button class="scroll-top" id="scrollTopBtn" aria-label="Top">&uarr;</button>
+${pageToolsDockHtml()}
 <div class="cookie-notice" id="cookieNotice" role="dialog" aria-labelledby="cookieNoticeLabel" aria-label="Cookie notice">
   <p class="cookie-notice-text" id="cookieNoticeLabel"><span class="cookie-notice-icon" aria-hidden="true">&#127850;</span> We use cookies for analytics. <a href="/legal/cookies.html" class="cookie-notice-policy">Cookie policy</a></p>
   <button type="button" class="cookie-notice-accept" id="acceptCookies">Accept</button>

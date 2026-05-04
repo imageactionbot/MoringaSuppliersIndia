@@ -59,12 +59,15 @@ function insertAfterFirstParagraph(html, block) {
   return html.slice(0, idx + 4) + '\n' + block + html.slice(idx + 4);
 }
 
-function amazonMidCta() {
+function amazonMidCta(slug) {
+  const capFirst = slug === 'moringa-capsules-benefits-guide';
+  const powder = amazonBtnSmall(AMZ.organicIndiaPowder, 'Organic India — leaf powder');
+  const caps = amazonBtnSmall(AMZ.organicIndiaCapsules, 'Organic India — capsules');
+  const rowBtns = capFirst ? `${caps}\n${powder}` : `${powder}\n${caps}`;
   return `<aside class="article-mid-cta" role="complementary" aria-label="Amazon retail shortcuts">
 <p class="article-mid-cta-note">Retail shortcuts (affiliate &mdash; see disclosure at top):</p>
 <div class="article-mid-cta-row">
-${amazonBtnSmall(AMZ.organicIndiaPowder, 'Organic India — leaf powder')}
-${amazonBtnSmall(AMZ.organicIndiaCapsules, 'Organic India — capsules')}
+${rowBtns}
 ${amazonBtnSmall(AMZ.tea, 'Moringa / herbal teas')}
 </div>
 </aside>`;
@@ -123,6 +126,15 @@ function amazonFooterCtas(slug) {
   } else if (slug === 'moringa-powder-vs-capsules') {
     row1a = amazonBtn(AMZ.organicIndiaPowder, 'Compare powder listings');
     row1b = amazonBtn(AMZ.organicIndiaCapsules, 'Compare capsule listings');
+  } else if (slug === 'moringa-capsules-benefits-guide') {
+    row1a = amazonBtn(AMZ.organicIndiaCapsules, 'Organic India moringa capsules on Amazon');
+    row1b = amazonBtn(AMZ.organicIndiaPowder, 'Organic India leaf powder — cost per gram check');
+    smallParts = [
+      amazonBtnSmall(AMZ.kuliKuli, 'Kuli Kuli'),
+      amazonBtnSmall(AMZ.vahdam, 'Vahdam'),
+      amazonBtnSmall(AMZ.organicIndia, 'Brand storefront'),
+      amazonBtnSmall(AMZ.tea, 'Tea picks'),
+    ];
   } else if (slug === 'moringa-vs-kale-spinach') {
     row1a = amazonBtn(AMZ.organicIndiaPowder, 'Shelf-stable greens: OI powder');
     row1b = amazonBtn(AMZ.kuliKuli, 'Kuli Kuli greens / moringa blends');
@@ -174,6 +186,8 @@ function keywordsForSlug(slug, h1) {
     'moringa-powder-vs-capsules': 'moringa powder vs capsules, moringa absorption, moringa dosage format',
     'moringa-powder-benefits-complete-guide':
       'moringa powder benefits, moringa powder for skin, moringa powder for women, moringa powder for men, how to use moringa powder, how to take moringa powder, moringa powder liver, moringa powder weight loss, moringa powder testosterone, moringa powder side effects',
+    'moringa-capsules-benefits-guide':
+      'moringa capsules, moringa capsules benefits, moringa capsules uses, moringa capsules for men, moringa capsules for women, moringa capsules amazon, moringa capsules price, organic moringa capsules, moringa leaf capsules dosage',
     'organic-india-vs-vahdam-vs-kuli-kuli': 'organic india vs vahdam vs kuli kuli, top moringa brands, brand comparison',
     'moringa-weight-loss': 'moringa weight loss, moringa fat burning, moringa metabolism, moringa blood sugar',
     'moringa-diabetes': 'moringa diabetes, moringa blood sugar, moringa type 2 diabetes, moringa glycemic',
@@ -228,7 +242,7 @@ function articlePage(meta) {
   // already contains an IndiaMART strip (in the contact-suppliers article)
   // plus contextual links to other B2B articles.
   if (!isB2B) {
-    inner = insertAfterFirstParagraph(inner, amazonMidCta());
+    inner = insertAfterFirstParagraph(inner, amazonMidCta(slug));
   }
   const footerCta = isB2B ? indiamartFooterCta() : amazonFooterCtas(slug);
   const content = `${AFFILIATE_BOX}

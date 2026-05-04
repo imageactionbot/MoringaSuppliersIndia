@@ -362,10 +362,6 @@ function footer() {
 </footer>
 ${priceRealityBarHtml()}
 ${pageToolsDockHtml()}
-<div class="cookie-notice" id="cookieNotice" role="dialog" aria-labelledby="cookieNoticeLabel" aria-label="Cookie notice">
-  <p class="cookie-notice-text" id="cookieNoticeLabel"><span class="cookie-notice-icon" aria-hidden="true">&#127850;</span> We use cookies for analytics. <a href="/legal/cookies.html" class="cookie-notice-policy">Cookie policy</a></p>
-  <button type="button" class="cookie-notice-accept" id="acceptCookies">Accept</button>
-</div>
 <script defer src="/assets/js/main.js?v=${ASSET_VER}"></script>`;
 }
 

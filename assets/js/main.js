@@ -1,7 +1,7 @@
 /**
  * Site UI: expects markup/CSS from /assets/css/main.css and shared nav/footer.
  * Elements: #navbar, #scrollTopBtn, #mobileToggle, #mobileMenu, #navMobileBackdrop,
- *           #cookieNotice, #acceptCookies, a[href^="#"], .reveal
+ *           a[href^="#"], .reveal
  */
 (function () {
   'use strict';
@@ -92,18 +92,6 @@
     if (scrollTopBtn) {
       scrollTopBtn.addEventListener('click', function () {
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-    }
-
-    var cookieNotice = document.getElementById('cookieNotice');
-    var acceptBtn = document.getElementById('acceptCookies');
-    if (cookieNotice && acceptBtn) {
-      if (!localStorage.getItem('cookiesAccepted')) {
-        cookieNotice.style.display = 'flex';
-      }
-      acceptBtn.addEventListener('click', function () {
-        localStorage.setItem('cookiesAccepted', 'true');
-        cookieNotice.style.display = 'none';
       });
     }
 

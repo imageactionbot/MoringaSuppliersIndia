@@ -60,6 +60,16 @@ function insertAfterFirstParagraph(html, block) {
 }
 
 function amazonMidCta(slug) {
+  if (slug === 'moringa-honey-benefits-guide') {
+    return `<aside class="article-mid-cta" role="complementary" aria-label="Amazon retail shortcuts">
+<p class="article-mid-cta-note">Retail shortcuts (affiliate &mdash; see disclosure at top):</p>
+<div class="article-mid-cta-row">
+${amazonBtnSmall(AMZ.tea, 'Moringa & herbal teas')}
+${amazonBtnSmall(AMZ.organicIndiaPowder, 'Organic leaf powder')}
+${amazonBtnSmall(AMZ.organicIndia, 'Organic India storefront')}
+</div>
+</aside>`;
+  }
   if (slug === 'moringa-skincare-products-guide') {
     return `<aside class="article-mid-cta" role="complementary" aria-label="Amazon retail shortcuts">
 <p class="article-mid-cta-note">Retail shortcuts (affiliate &mdash; see disclosure at top):</p>
@@ -106,6 +116,15 @@ function amazonFooterCtas(slug) {
   if (slug === 'moringa-detox-tea-recipes') {
     row1a = amazonBtn(AMZ.tea, 'See moringa & herbal tea listings on Amazon');
     row1b = amazonBtn(AMZ.organicIndia, 'Organic India storefront (teas & wellness)');
+  } else if (slug === 'moringa-honey-benefits-guide') {
+    row1a = amazonBtn(AMZ.tea, 'Moringa & herbal teas on Amazon');
+    row1b = amazonBtn(AMZ.organicIndiaPowder, 'Organic India leaf powder for honey blends');
+    smallParts = [
+      amazonBtnSmall(AMZ.microIngredients, 'Pantry / honey-style search'),
+      amazonBtnSmall(AMZ.kuliKuli, 'Kuli Kuli'),
+      amazonBtnSmall(AMZ.organicIndiaCapsules, 'Capsules'),
+      amazonBtnSmall(AMZ.skincare, 'Skincare'),
+    ];
   } else if (slug === 'moringa-cooking-daily') {
     row1a = amazonBtn(AMZ.organicIndiaPowder, 'Leaf powder for cooking (Amazon)');
     row1b = amazonBtn(AMZ.terrasoul, 'Terrasoul organic powder (Amazon)');
@@ -119,6 +138,8 @@ function amazonFooterCtas(slug) {
       amazonBtnSmall(AMZ.tea, 'Tea picks'),
     ];
   } else if (slug === 'diy-moringa-face-masks' || slug === 'moringa-hair-skin') {
+    row1a = amazonBtn(AMZ.skincare, 'Moringa skincare search on Amazon');
+    row1b = amazonBtn(AMZ.organicIndiaPowder, 'Pure leaf powder (DIY masks / smoothies)');
   } else if (slug === 'organic-india-vs-vahdam-vs-kuli-kuli') {
     row1a = amazonBtn(AMZ.organicIndia, 'Organic India — Amazon');
     row1b = amazonBtn(AMZ.vahdam, 'Vahdam — Amazon');
@@ -239,6 +260,8 @@ function keywordsForSlug(slug, h1) {
     'moringa-eu-market': 'moringa eu market, novel food eu, moringa europe, eu organic moringa',
     'moringa-cooking-daily': 'moringa recipes, moringa cooking, moringa smoothie, moringa daily use',
     'moringa-detox-tea-recipes': 'moringa tea recipes, moringa detox tea, moringa blends, morning ritual',
+    'moringa-honey-benefits-guide':
+      'moringa honey benefits, moringa honey tea, moringa honey uses, moringa honey face mask, moringa honey for men, moringa honey for women, moringa with black seed, black seed honey benefits, moringa honey benefits in tamil',
     'diy-moringa-face-masks': 'diy moringa face mask, moringa skincare diy, moringa acne, patch test',
     'moringa-for-pets': 'moringa for dogs, moringa for cats, moringa for pets, pet supplement safety',
   };

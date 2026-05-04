@@ -2879,6 +2879,26 @@ body.has-mobile-nav {
 .article-prose p {
   margin: 0 0 1rem;
 }
+.article-prose .article-figure {
+  margin: 1.75rem 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--green-pale);
+  background: rgba(255, 255, 255, 0.75);
+}
+.article-prose .article-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  vertical-align: middle;
+}
+.article-prose .article-figure .article-figure-caption {
+  padding: 0.65rem 1rem;
+  font-size: 0.9rem;
+  color: var(--text-muted, #4a5560);
+  line-height: 1.45;
+  border-top: 1px solid var(--green-pale);
+}
 .article-prose ul,
 .article-prose ol {
   margin: 1rem 0 1.25rem;
@@ -3572,8 +3592,51 @@ time[itemprop="dateModified"]:not([data-show]) {
   .insight-card:hover,
   .use-case-card:hover,
   .home-article-card:hover,
+  .home-visual-card:hover,
   .moq-card:hover,
   .hero-image:hover .hero-visual-photo {
     transform: none !important;
   }
+}
+
+/* Home: visual shortcuts to popular article topics */
+.home-visual-topics {
+  padding: 2.75rem 0;
+  background: linear-gradient(180deg, rgba(248, 252, 248, 1) 0%, var(--white, #fff) 55%);
+  border-top: 1px solid var(--green-pale);
+  border-bottom: 1px solid var(--green-pale);
+}
+.home-visual-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+.home-visual-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(45, 138, 58, 0.18);
+  text-decoration: none;
+  color: inherit;
+  background: var(--white, #fff);
+  box-shadow: 0 2px 8px rgba(45, 138, 58, 0.06);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.home-visual-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(45, 138, 58, 0.12);
+}
+.home-visual-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+.home-visual-card span {
+  padding: 0.85rem 1rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--green-dark, #1a5c2e);
 }

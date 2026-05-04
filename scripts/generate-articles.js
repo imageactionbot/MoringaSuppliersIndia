@@ -365,8 +365,11 @@ function hubPage() {
   ).join('\n');
   const content = `${AFFILIATE_BOX}
 <div class="guide-prose articles-hub-intro">
+<h2>Choose your path</h2>
+<p>New to the site? See <a href="/#start-here"><strong>How to use this site</strong></a> on the home page for a one-minute orientation (retail vs bulk vs &ldquo;just learning&rdquo;).</p>
+<p>Below, guides are grouped by <strong>topic</strong>, not by hype. Whether you want <strong>organic leaf powder</strong> for daily habits, a <strong>brand comparison</strong>, <strong>import paperwork</strong>, or <strong>EU / USDA organic</strong> context, scroll to the headline that matches your goal. Editorial pages stay evergreen by stressing verification and plain-language definitions; Amazon shortcuts are only in the panel at the bottom of this hub.</p>
 <h2>Guides by topic</h2>
-<p>Organic <strong>Moringa oleifera</strong> from India: safety, purity, powder and capsules, brand comparisons, export paperwork, EU market rules, cooking, tea, skincare, and pets. Affiliate links appear only in the Amazon section below.</p>
+<p>Organic <strong>Moringa oleifera</strong> from India: safety, purity, powder and capsules, brand comparisons, export paperwork, EU market rules, cooking, tea, skincare, and pets.</p>
 </div>
 <div class="articles-hub-grid">
 <ul class="articles-hub-list">${lis}</ul>

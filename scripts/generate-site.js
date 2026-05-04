@@ -119,6 +119,7 @@ write('legal/affiliate-disclosure.html', layout({
 // --- About (site owner & editorial) ---
 const aboutContent = `${AFFILIATE_BOX}
 <p><strong>MoringaSuppliersIndia.com</strong> is an independent editorial project focused on one goal: help global buyers and curious consumers understand <em>Moringa oleifera</em> from India with clear sourcing context, certifications, and honest retail options (Amazon US affiliate links where relevant).</p>
+<p>First visit? The home page has a short <a href="/#start-here">how to use this site</a> section so you can jump to retail guides, bulk sourcing, or articles without guessing.</p>
 <p>We do <strong>not</strong> sell Moringa as a merchant, and we do <strong>not</strong> take fees from suppliers listed for informational reference. Commercial pages disclose Amazon Associates participation so you always know when a click may earn a small commission at no extra cost to you.</p>
 <div class="about-card" style="margin-top:1.75rem;">
   <h3 style="margin-bottom:0.75rem;color:var(--green-deep);font-size:1.2rem;">Site owner</h3>
@@ -156,7 +157,8 @@ write('about.html', layout({
 
 // --- Products hub ---
 const productsHubContent = `${AFFILIATE_BOX}
-<p>Deep-dive guides by product type — each page explains what to look for (organic certs, heavy metals, packaging) and lists vetted Amazon options with affiliate links.</p>
+<p>These pages are for <strong>retail-style buyers</strong> (personal use, gifting, or benchmarking quality before you talk to exporters). If you are not sure that&rsquo;s you, open <a href="/#start-here"><strong>How to use this site</strong></a> on the home page first.</p>
+<p>Each guide below is a deep dive by <strong>product type</strong>: what to look for on the label (organic seals, heavy metals, plant part), then vetted Amazon shortcuts with affiliate disclosure. Principles stay useful as listings change; always confirm the live pack copy before checkout.</p>
 <div class="grid-2" style="margin-top:2rem;">
   <a class="card" href="/products/moringa-powder.html" style="text-decoration:none;color:inherit;"><h3>&#127807; Moringa powder</h3><p>Leaf powder &mdash; the core retail format. <strong>Guide &rarr;</strong></p></a>
   <a class="card" href="/products/moringa-capsules.html" style="text-decoration:none;color:inherit;"><h3>&#128138; Capsules</h3><p>Daily convenience. <strong>Guide &rarr;</strong></p></a>

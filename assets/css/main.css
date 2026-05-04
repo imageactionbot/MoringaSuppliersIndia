@@ -3593,6 +3593,7 @@ time[itemprop="dateModified"]:not([data-show]) {
   .use-case-card:hover,
   .home-article-card:hover,
   .home-visual-card:hover,
+  .home-start-card:hover,
   .moq-card:hover,
   .hero-image:hover .hero-visual-photo {
     transform: none !important;
@@ -3639,4 +3640,87 @@ time[itemprop="dateModified"]:not([data-show]) {
   font-weight: 600;
   font-size: 0.95rem;
   color: var(--green-dark, #1a5c2e);
+}
+
+/* Home: orientation / wayfinding (who this site is for) */
+.home-start-here {
+  padding: 2.75rem 0;
+  background: var(--white, #fff);
+  border-bottom: 1px solid var(--green-pale);
+}
+.home-start-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+.home-start-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  padding: 1.35rem 1.35rem 1.1rem;
+  border: 1px solid rgba(45, 138, 58, 0.2);
+  text-decoration: none;
+  color: inherit;
+  background: linear-gradient(165deg, rgba(248, 252, 248, 1) 0%, var(--white, #fff) 55%);
+  box-shadow: 0 2px 10px rgba(45, 138, 58, 0.06);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.home-start-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(45, 138, 58, 0.12);
+  border-color: rgba(45, 138, 58, 0.35);
+}
+.home-start-card h3 {
+  margin: 0 0 0.6rem;
+  font-size: 1.05rem;
+  font-family: var(--font-display, "Playfair Display", Georgia, serif);
+  color: var(--green-deep, #1a5c2e);
+  line-height: 1.35;
+}
+.home-start-card p {
+  margin: 0;
+  flex: 1;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--text-muted, #5a6b5f);
+}
+.home-start-cta {
+  margin-top: 1rem;
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--green-main, #2d8a3a);
+}
+
+.pill.pill--start {
+  border: 2px solid rgba(45, 138, 58, 0.45);
+  background: rgba(248, 252, 248, 1);
+  color: var(--green-deep, #1a5c2e);
+  font-weight: 600;
+}
+.pill.pill--start:hover {
+  background: rgba(45, 138, 58, 0.12);
+  border-color: var(--green-main, #2d8a3a);
+}
+
+.footer-sub {
+  margin: 1.25rem 0 0.5rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.55);
+  font-weight: 600;
+}
+.footer-quick-paths {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.footer-quick-paths li {
+  margin: 0.35rem 0;
+  padding: 0;
+  line-height: 1.4;
+}
+.footer-quick-paths a {
+  font-size: 0.9rem;
 }

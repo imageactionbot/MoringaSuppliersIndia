@@ -5,12 +5,14 @@
 const {
   SITE,
   AMZ,
+  INDIAMART,
   AFFILIATE_BOX,
   DEFAULT_AUTHOR,
   layout,
   write,
   amazonBtn,
   amazonBtnSmall,
+  indiamartBtn,
 } = require('./lib/site-shell');
 const {
   buyStrip,
@@ -155,8 +157,112 @@ write('about.html', layout({
   },
 }));
 
+/** Same decision aids as the home buyer hub, embedded on the product index for “which format?” shoppers. */
+function productsDecisionHubBlock() {
+  return `<section id="decision-hub-products" class="decision-hub-section decision-hub-section--subpage" aria-label="Buyer decision tools">
+  <div class="section-header" style="text-align:left;">
+    <span class="section-tag">Expert comparison</span>
+    <h2 style="font-size:clamp(1.35rem,3vw,1.85rem);">Buyer decision hub (quick matrix)</h2>
+    <p class="section-intro" style="max-width:40rem;margin-top:0.75rem;">Pick a <strong>form</strong>, match it to your <strong>use case</strong>, then open a <strong>live</strong> retail listing. Need the full visual layout? See the <a href="/#decision-hub">home decision hub</a>.</p>
+  </div>
+  <div id="product-matrix" class="product-matrix-wrap">
+    <h3>Product selection matrix (Amazon.com, US)</h3>
+    <p class="product-matrix-note"><span class="amazon-tag">Retail · Best price</span><strong>Check price on Amazon</strong> uses <a href="/legal/affiliate-disclosure.html">Amazon Associates</a> links. Confirm organic seals, plant part and reviews on the live pack before checkout.</p>
+    <div class="table-wrapper">
+      <table class="product-matrix-table" aria-label="Moringa product forms and retail shortcuts">
+        <thead>
+          <tr><th>Form</th><th>Best use</th><th>Price check (partner listing)</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Leaf powder</strong><br><a class="matrix-guide" href="/products/moringa-powder.html">Format guide&nbsp;&rarr;</a></td>
+            <td>Immunity-focused drinks, daily greens, smoothies</td>
+            <td><a href="${AMZ.organicIndiaPowder}" class="amazon-btn-table" target="_blank" rel="sponsored nofollow noopener">Check price on Amazon</a></td>
+          </tr>
+          <tr>
+            <td><strong>Capsules</strong><br><a class="matrix-guide" href="/products/moringa-capsules.html">Format guide&nbsp;&rarr;</a></td>
+            <td>Convenience, travel, measured servings without bitter taste</td>
+            <td><a href="${AMZ.organicIndiaCapsules}" class="amazon-btn-table" target="_blank" rel="sponsored nofollow noopener">Check price on Amazon</a></td>
+          </tr>
+          <tr>
+            <td><strong>Seed oil</strong><br><a class="matrix-guide" href="/products/moringa-oil.html">Format guide&nbsp;&rarr;</a></td>
+            <td>Skin and hair care, cosmetic and culinary finishes</td>
+            <td><a href="${AMZ.oil}" class="amazon-btn-table" target="_blank" rel="sponsored nofollow noopener">Check price on Amazon</a></td>
+          </tr>
+          <tr>
+            <td><strong>Seeds</strong><br><span class="matrix-guide">Planting &amp; oil-crushing supply</span></td>
+            <td>Farming, nurseries; not the same category as leaf powder</td>
+            <td><a href="${AMZ.kuliKuli}" class="amazon-btn-table" target="_blank" rel="sponsored nofollow noopener">Check price on Amazon</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <aside id="bulk-wholesale-products" class="bulk-procurement-bridge">
+    <h3>Bulk procurement &amp; wholesale</h3>
+    <p>For orders <strong>above 100 kg</strong> and typical export MOQs, we recommend requesting written quotes from <strong>verified IndiaMART exporters</strong> &mdash; compare certification packs, moisture specs, and incoterms side by side.</p>
+    <p style="margin:0 0 1rem;"><span class="b2b-tag">B2B · Verified marketplace</span>${indiamartBtn('Find bulk suppliers on IndiaMART')}</p>
+    <p class="bulk-bridge-disclosure" style="font-size:0.8rem;color:var(--text-muted);margin:0;">IndiaMART link: affiliate &mdash; <a href="/legal/affiliate-disclosure.html">policy</a>. Personal retail stays on the Amazon matrix above.</p>
+  </aside>
+  <div class="decision-hub-split">
+    <aside id="market-pulse-products" class="market-pulse-card">
+      <h3>Editorial market pulse</h3>
+      <p><strong>Recurring buyer theme:</strong> Certified organic <strong>leaf powder</strong> consistently surfaces in sourcing conversations for <strong>Germany</strong>, the <strong>United States</strong>, and the <strong>United Kingdom</strong> &mdash; alongside questions on heavy-metals testing and organic transaction certificates.</p>
+      <p class="market-pulse-disclaimer">Editorial snapshot based on typical inquiries and public trade commentary, not a live demand meter or commodity ticker. Validate against your own channels before purchasing.</p>
+    </aside>
+    <div id="purity-check-products" class="purity-check-card">
+      <h3>Purity quick-check (leaf powder)</h3>
+      <ol class="purity-steps">
+        <li><span class="purity-step-n" aria-hidden="true">1</span><strong>Colour</strong><span>Expect a uniform, vibrant green. Large grey/brown clumps can signal oxidation, ash or poor drying &mdash; not always, but worth asking the supplier.</span></li>
+        <li><span class="purity-step-n" aria-hidden="true">2</span><strong>Aroma</strong><span>Fresh, grassy notes are normal; musty, mould-like or rancid smells are red flags.</span></li>
+        <li><span class="purity-step-n" aria-hidden="true">3</span><strong>Texture</strong><span>Fine, sifted powder flows evenly; gritty sand-like contamination should trigger a lab conversation, not just a refund request.</span></li>
+      </ol>
+      <p class="purity-more"><a href="/purity-checklist.html">Printable purity checklist</a> &middot; <a href="/articles/pure-vs-adulterated-moringa.html">Adulteration deep-dive</a></p>
+    </div>
+  </div>
+</section>`;
+}
+
+const purityChecklistContent = `${AFFILIATE_BOX}
+<p><strong>Moringa oleifera</strong> leaf powder &mdash; a printable, English-only checklist for buyers who want a structured sniff-and-look review before they trust a pouch. This is <strong>not</strong> a substitute for laboratory testing or supplier due diligence.</p>
+<p style="margin-bottom:1.25rem;"><button type="button" class="amazon-btn" id="printChecklistBtn">Print or save as PDF</button></p>
+<div id="purity-checklist-print-area" class="purity-checklist-print-area">
+  <h2 class="purity-checklist-print-title">Moringa leaf powder &mdash; retail purity checklist</h2>
+  <p class="purity-checklist-meta">MoringaSuppliersIndia.com &middot; Educational use</p>
+  <ol class="purity-checklist-steps">
+    <li><strong>Colour &amp; appearance</strong> Uniform vibrant green? Avoid large grey/brown clumps that may indicate oxidation, ash, or inconsistent drying.</li>
+    <li><strong>Aroma</strong> Fresh, grassy notes are typical. Musty, mould-like, or rancid odours warrant stopping and asking for documentation.</li>
+    <li><strong>Texture &amp; mouthfeel (dry)</strong> Fine, sifted powder should flow evenly. Excessive grit may indicate soil, sand, or poor milling &mdash; escalate to a lab COA.</li>
+    <li><strong>Label &amp; organic claims</strong> Match NPOP / USDA / EU organic marks to the certifier registry and certificate dates. Root powder and leaf powder are not interchangeable.</li>
+    <li><strong>Heavy metals &amp; micro</strong> For anything beyond a pantry trial, request a batch COA (lead, cadmium, arsenic, mercury, aerobic plate count, yeast/mould as relevant).</li>
+  </ol>
+  <p class="purity-checklist-foot">Bulk or import? Use <a href="${INDIAMART.moringa}" target="_blank" rel="sponsored nofollow noopener">IndiaMART verified listings</a> for quotes and compare our <a href="/products/">Amazon format guides</a> for retail benchmarks.</p>
+</div>
+<p style="margin-top:2rem;font-size:0.9rem;color:var(--text-muted);">Nothing here is medical advice. See also <a href="/articles/pure-vs-adulterated-moringa.html">pure vs. adulterated moringa</a> and <a href="/legal/disclaimer.html">site disclaimer</a>.</p>`;
+
+write('purity-checklist.html', layout({
+  section: 'about',
+  title: 'Printable Moringa Leaf Powder Purity Checklist | Moringa Suppliers India',
+  description: 'Free English checklist: how to sanity-check moringa leaf powder for colour, smell, texture, labels, and when to ask for a COA. Print or save as PDF.',
+  keywords: 'moringa purity checklist, moringa powder quality, how to check moringa powder, organic moringa verification, moringa adulteration',
+  canonical: `${SITE}/purity-checklist.html`,
+  breadcrumbTrail: trail(['Home', '/'], ['Purity checklist']),
+  h1: 'Moringa leaf powder purity checklist',
+  lead: 'Print-friendly steps for a quick quality review before you rely on a retail pack or approach a supplier for samples.',
+  dateModified: BUILD_DATE,
+  content: purityChecklistContent,
+  schemaJson: {
+    '@type': 'WebPage',
+    name: 'Moringa leaf powder purity checklist',
+    url: `${SITE}/purity-checklist.html`,
+    description: 'Printable buyer checklist for moringa leaf powder quality signals.',
+    isPartOf: { '@id': `${SITE}/#website` },
+  },
+}));
+
 // --- Products hub ---
 const productsHubContent = `${AFFILIATE_BOX}
+${productsDecisionHubBlock()}
 <p>These pages are for <strong>retail-style buyers</strong> (personal use, gifting, or benchmarking quality before you talk to exporters). If you are not sure that&rsquo;s you, open <a href="/#start-here"><strong>How to use this site</strong></a> on the home page first.</p>
 <p>Each guide below is a deep dive by <strong>product type</strong>: what to look for on the label (organic seals, heavy metals, plant part), then vetted Amazon shortcuts with affiliate disclosure. Principles stay useful as listings change; always confirm the live pack copy before checkout.</p>
 <div class="grid-2" style="margin-top:2rem;">

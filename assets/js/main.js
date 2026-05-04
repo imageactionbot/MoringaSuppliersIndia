@@ -121,6 +121,107 @@
         revealObserver.observe(el);
       });
     }
+
+    var priceBar = document.getElementById('priceRealityBar');
+    var priceDismiss = document.getElementById('priceRealityDismiss');
+    if (priceBar && priceDismiss) {
+      if (sessionStorage.getItem('priceRealityDismissed') === '1') {
+        priceBar.style.display = 'none';
+        priceBar.setAttribute('hidden', '');
+      } else {
+        priceBar.removeAttribute('hidden');
+        document.body.classList.add('has-price-bar');
+      }
+      priceDismiss.addEventListener('click', function () {
+        sessionStorage.setItem('priceRealityDismissed', '1');
+        priceBar.style.display = 'none';
+        priceBar.setAttribute('hidden', '');
+        document.body.classList.remove('has-price-bar');
+      });
+    }
+
+    var gToggle = document.getElementById('guideAssistToggle');
+    var gPanel = document.getElementById('guideAssistPanel');
+    var gClose = document.getElementById('guideAssistClose');
+    var gRoot = document.getElementById('guideAssist');
+    function guideOpen(yes) {
+      if (!gPanel || !gToggle) return;
+      if (yes) {
+        gPanel.removeAttribute('hidden');
+        gToggle.setAttribute('aria-expanded', 'true');
+      } else {
+        gPanel.setAttribute('hidden', '');
+        gToggle.setAttribute('aria-expanded', 'false');
+      }
+    }
+    if (gToggle && gPanel) {
+      gToggle.addEventListener('click', function () {
+        guideOpen(gPanel.hasAttribute('hidden'));
+      });
+      if (gClose) gClose.addEventListener('click', function () { guideOpen(false); });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && gPanel && !gPanel.hasAttribute('hidden')) guideOpen(false);
+      });
+      if (gRoot) {
+        document.addEventListener('click', function (e) {
+          if (!gPanel.hasAttribute('hidden') && !gRoot.contains(e.target)) guideOpen(false);
+        });
+      }
+    }
+
+    var kgEl = document.getElementById('kgInput');
+    var lbEl = document.getElementById('lbInput');
+    if (kgEl && lbEl) {
+      var convLock = false;
+      var LB_PER_KG = 2.20462262;
+      function trimNum(s) {
+        return s.replace(/(\.\d*?)0+$/, '$1').replace(/\.$/, '');
+      }
+      kgEl.addEventListener('input', function () {
+        if (convLock) return;
+        convLock = true;
+        var v = parseFloat(kgEl.value);
+        lbEl.value = v >= 0 && !isNaN(v) ? trimNum((v * LB_PER_KG).toFixed(6)) : '';
+        convLock = false;
+      });
+      lbEl.addEventListener('input', function () {
+        if (convLock) return;
+        convLock = true;
+        var v = parseFloat(lbEl.value);
+        kgEl.value = v >= 0 && !isNaN(v) ? trimNum((v / LB_PER_KG).toFixed(6)) : '';
+        convLock = false;
+      });
+    }
+
+    var trEl = document.getElementById('google_translate_element');
+    if (trEl && !document.getElementById('google-translate-script')) {
+      window.googleTranslateElementInit = function () {
+        try {
+          if (!window.google || !window.google.translate) return;
+          new window.google.translate.TranslateElement(
+            {
+              pageLanguage: 'en',
+              includedLanguages: 'en,de,fr',
+              layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
+              autoDisplay: false,
+            },
+            'google_translate_element'
+          );
+        } catch (err) {}
+      };
+      var ts = document.createElement('script');
+      ts.id = 'google-translate-script';
+      ts.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+      ts.async = true;
+      document.head.appendChild(ts);
+    }
+
+    var printChk = document.getElementById('printChecklistBtn');
+    if (printChk) {
+      printChk.addEventListener('click', function () {
+        window.print();
+      });
+    }
   }
 
   if (document.readyState === 'loading') {

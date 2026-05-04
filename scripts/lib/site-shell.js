@@ -28,7 +28,7 @@ const OG_DEFAULT_IMAGE = `${SITE}/Moringa_All_Products.webp`;
 /** SVG fallback used by some legacy share targets (kept for reference). */
 const OG_BRAND_SVG = `${SITE}/og-brand.svg`;
 /** Bust CDN/browser cache when CSS/JS change; bump after edits to main.css or main.js. */
-const ASSET_VER = '24';
+const ASSET_VER = '28';
 
 const AMZ = {
   organicIndia: 'https://amzn.to/3QKamqU',
@@ -57,6 +57,54 @@ const AMZ = {
 const INDIAMART = {
   moringa: 'https://IndiaMART.in/v/yNRgBEqn',
 };
+
+/** Fixed pricing disclaimer + CTA strip (all templated pages). */
+function priceRealityBarHtml() {
+  return `<aside class="price-reality-bar" id="priceRealityBar" role="complementary" aria-label="Live pricing reminder">
+  <div class="price-reality-inner">
+    <p class="price-reality-text"><strong>Prices fluctuate with season and export grade.</strong> Moringa quotes move with harvest yield, moisture specs, organic premia, FX and freight. Use partner platforms for <em>current</em> numbers instead of treating any written example as live.</p>
+    <div class="price-reality-actions">
+      <a href="${AMZ.organicIndia}" class="price-reality-btn price-reality-btn--amz" target="_blank" rel="sponsored nofollow noopener">Check retail on Amazon</a>
+      <a href="${INDIAMART.moringa}" class="price-reality-btn price-reality-btn--b2b" target="_blank" rel="sponsored nofollow noopener">Compare wholesale on IndiaMART</a>
+      <button type="button" class="price-reality-dismiss" id="priceRealityDismiss" aria-label="Dismiss pricing notice">&times;</button>
+    </div>
+  </div>
+</aside>`;
+}
+
+/** Floating “help me choose” assistant (links to guides + affiliates). */
+function guideAssistHtml() {
+  return `<div class="guide-assist" id="guideAssist">
+  <button type="button" class="guide-assist-fab" id="guideAssistToggle" aria-expanded="false" aria-controls="guideAssistPanel">Help me choose</button>
+  <div class="guide-assist-panel" id="guideAssistPanel" role="dialog" aria-modal="true" aria-label="Quick choices" hidden>
+    <p class="guide-assist-lead">Pick a path &mdash; we send you to the right retail guide or B2B marketplace listing.</p>
+    <a class="guide-assist-link guide-assist-link--amz" href="/products/">&#128717;&#65039; Buy small quantity (Amazon guides)</a>
+    <a class="guide-assist-link guide-assist-link--b2b" href="${INDIAMART.moringa}" target="_blank" rel="sponsored nofollow noopener">&#127981; Source in bulk (IndiaMART)</a>
+    <a class="guide-assist-link guide-assist-link--doc" href="/purity-checklist.html">&#128196; Purity checklist (print / save as PDF)</a>
+    <button type="button" class="guide-assist-close" id="guideAssistClose">Close</button>
+  </div>
+</div>`;
+}
+
+function footerToolsColumn() {
+  return `<div class="footer-col footer-col--tools">
+        <h4>Global tools</h4>
+        <div class="unit-converter" id="unitConverter">
+          <label class="unit-converter-label" for="kgInput">Kilograms &harr; pounds</label>
+          <div class="unit-converter-row">
+            <input type="number" class="unit-converter-input" id="kgInput" inputmode="decimal" min="0" step="any" placeholder="kg" aria-label="Weight in kilograms" />
+            <span class="unit-converter-eq" aria-hidden="true">&harr;</span>
+            <input type="number" class="unit-converter-input" id="lbInput" inputmode="decimal" min="0" step="any" placeholder="lb" aria-label="Weight in pounds" />
+          </div>
+          <p class="unit-converter-hint">1 kg &asymp; 2.205 lb (avoirdupois). Confirm whether your supplier quotes metric <strong>kg</strong> or other units on the invoice.</p>
+        </div>
+        <div class="footer-translate-block">
+          <p class="footer-translate-label">Page language</p>
+          <p class="footer-translate-note">Google Translate is machine-generated; English remains authoritative for legal text.</p>
+          <div id="google_translate_element" class="google-translate-host"></div>
+        </div>
+      </div>`;
+}
 
 const AFFILIATE_BOX = `<div class="affiliate-disclosure affiliate-disclosure--compact" role="note" aria-label="Amazon Associates disclosure">
   <span class="icon" aria-hidden="true">&#9432;</span>
@@ -271,6 +319,8 @@ function footer() {
         <h4 class="footer-sub">Quick paths</h4>
         <ul class="footer-quick-paths">
           <li><a href="/#start-here">How to use this site (home)</a></li>
+          <li><a href="/#decision-hub">Buyer decision hub (home)</a></li>
+          <li><a href="/purity-checklist.html">Printable purity checklist</a></li>
           <li><a href="/#export-flow">Export flow diagram (home)</a></li>
           <li><a href="/#supplier-credentials">Credential checklist (home)</a></li>
           <li><a href="/products/">Retail product guides</a></li>
@@ -293,6 +343,7 @@ function footer() {
         <li><a href="/legal/cookies.html">Cookies</a></li>
         <li><a href="/legal/affiliate-disclosure.html">Affiliate disclosure</a></li>
       </ul></div>
+      ${footerToolsColumn()}
     </div>
     <div class="footer-bottom" style="flex-direction:column;align-items:flex-start;gap:0.6rem;">
       <div class="footer-affiliate-line">
@@ -306,6 +357,8 @@ function footer() {
     </div>
   </div>
 </footer>
+${priceRealityBarHtml()}
+${guideAssistHtml()}
 <button class="scroll-top" id="scrollTopBtn" aria-label="Top">&uarr;</button>
 <div class="cookie-notice" id="cookieNotice" role="dialog" aria-label="Cookie notice"><span>&#127850; Analytics cookies.</span><button type="button" id="acceptCookies">Accept</button></div>
 <script defer src="/assets/js/main.js?v=${ASSET_VER}"></script>`;
@@ -558,6 +611,7 @@ function layout(opts) {
   <link rel="dns-prefetch" href="//fonts.googleapis.com" />
   <link rel="dns-prefetch" href="//fonts.gstatic.com" />
   <link rel="dns-prefetch" href="//pagead2.googlesyndication.com" />
+  <link rel="dns-prefetch" href="//translate.google.com" />
   <meta property="og:type" content="${ogType}" />
   <meta property="og:locale" content="en_IN" />
   <meta property="og:site_name" content="Moringa Suppliers India" />

@@ -261,7 +261,7 @@ function keywordsForSlug(slug, h1) {
     'moringa-cooking-daily': 'moringa recipes, moringa cooking, moringa smoothie, moringa daily use',
     'moringa-detox-tea-recipes': 'moringa tea recipes, moringa detox tea, moringa blends, morning ritual',
     'moringa-honey-benefits-guide':
-      'moringa honey benefits, moringa honey tea, moringa honey uses, moringa honey face mask, moringa honey for men, moringa honey for women, moringa with black seed, black seed honey benefits, moringa honey benefits in tamil',
+      'moringa honey benefits, moringa honey tea, moringa honey uses, moringa honey face mask, moringa honey for men, moringa honey for women, moringa with black seed, black seed honey benefits',
     'diy-moringa-face-masks': 'diy moringa face mask, moringa skincare diy, moringa acne, patch test',
     'moringa-for-pets': 'moringa for dogs, moringa for cats, moringa for pets, pet supplement safety',
   };

@@ -1,5 +1,5 @@
 /**
- * Builds /articles/ hub + 20 long-form authority pages from HTML fragments.
+ * Builds /articles/ hub + all catalogued authority pages from HTML fragments.
  * Run: node scripts/generate-articles.js
  * Source fragments: content/article-bodies/<slug>.html (edit these).
  * If a new stub is short, run once: node scripts/materialize-missing-bodies.cjs (pads under 1000 words).
@@ -48,7 +48,7 @@ function relatedBlock(slug) {
   return `<div class="related-articles" style="margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--green-pale);">
 <h2>More authority topics</h2>
 <ul class="related-articles-list">${lis}</ul>
-<p><a href="/articles/">&larr; All 20 articles</a> &middot; <a href="/products/">Product guides</a> &middot; <a href="/brands/">Brand guides</a> &middot; <a href="/compare/">Comparisons</a></p>
+<p><a href="/articles/">&larr; All guides</a> (${ARTICLES.length} articles) &middot; <a href="/products/">Product guides</a> &middot; <a href="/brands/">Brand guides</a> &middot; <a href="/compare/">Comparisons</a></p>
 </div>`;
 }
 
@@ -103,7 +103,12 @@ function amazonFooterCtas(slug) {
   } else if (slug === 'moringa-vs-spirulina') {
     row1a = amazonBtn(AMZ.organicIndiaPowder, 'Moringa leaf powder (Amazon)');
     row1b = amazonBtn(AMZ.microIngredients, 'Greens / spirulina style search (Amazon)');
-  } else if (slug === 'moringa-weight-loss' || slug === 'moringa-diabetes' || slug === 'moringa-anemia') {
+  } else if (
+    slug === 'moringa-weight-loss' ||
+    slug === 'moringa-diabetes' ||
+    slug === 'moringa-anemia' ||
+    slug === 'moringa-powder-benefits-complete-guide'
+  ) {
     row1a = amazonBtn(AMZ.organicIndiaPowder, 'Organic India powder — compare nutrition facts');
     row1b = amazonBtn(AMZ.organicIndiaCapsules, 'Organic India capsules — compare serving size');
   } else if (
@@ -167,6 +172,8 @@ function keywordsForSlug(slug, h1) {
     'moringa-vs-spirulina': 'moringa vs spirulina, spirulina vs moringa, superfood comparison, green powders',
     'moringa-vs-kale-spinach': 'moringa vs kale, moringa vs spinach, nutrition comparison, leafy greens',
     'moringa-powder-vs-capsules': 'moringa powder vs capsules, moringa absorption, moringa dosage format',
+    'moringa-powder-benefits-complete-guide':
+      'moringa powder benefits, moringa powder for skin, moringa powder for women, moringa powder for men, how to use moringa powder, how to take moringa powder, moringa powder liver, moringa powder weight loss, moringa powder testosterone, moringa powder side effects',
     'organic-india-vs-vahdam-vs-kuli-kuli': 'organic india vs vahdam vs kuli kuli, top moringa brands, brand comparison',
     'moringa-weight-loss': 'moringa weight loss, moringa fat burning, moringa metabolism, moringa blood sugar',
     'moringa-diabetes': 'moringa diabetes, moringa blood sugar, moringa type 2 diabetes, moringa glycemic',
@@ -311,7 +318,7 @@ ${amazonBtn(AMZ.organicIndiaCapsules, 'Organic India capsules — Amazon')}
     eyebrow: 'Editorial hub',
     lead: 'India organic Moringa &mdash; sourcing, safety, comparisons, and everyday use.',
     heroStats: [
-      { value: '20', label: 'Authority articles' },
+      { value: String(ARTICLES.length), label: 'Authority articles' },
       { value: '100%', label: 'Editorial only' },
       { value: 'Evergreen', label: 'Maintained' },
     ],

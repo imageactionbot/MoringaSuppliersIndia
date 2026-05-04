@@ -61,10 +61,6 @@ function privacyBody() {
 <h3>2.3 Information you send us</h3>
 <p>If you email <a href="mailto:moringasuppliersindia@gmail.com">moringasuppliersindia@gmail.com</a>, we receive whatever you choose to send (name, address snippets, business details, attachments). Do not send sensitive health information unless you accept that risk voluntarily.</p>
 
-<h3>2.4 Language translation (Google)</h3>
-<p>Our footer may offer <strong>Google Translate</strong> as a convenience for readers who prefer German, French, or other supported languages. Translation is machine-generated and may mis-state technical, legal, or regulatory terms. The English version of each page (especially <a href="/legal/">legal notices</a>) remains the authoritative text.</p>
-<p>Using Translate may cause Google to process the page request under <a href="https://policies.google.com/privacy" rel="noopener nofollow">Google&rsquo;s privacy policy</a>; we do not control that processing.</p>
-
 <h2>3. How we use information</h2>
 <p>We use analytics and logs to fix broken links, prioritize content updates, and understand which guides help readers. We use contact messages to respond when appropriate. We do not sell your personal data as a standalone product, and we do not run a newsletter list on this policy’s effective date.</p>
 

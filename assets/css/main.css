@@ -4479,40 +4479,76 @@ body.has-price-bar {
 .guide-assist {
   position: fixed;
   bottom: 6.5rem;
-  right: 1.25rem;
+  left: max(1rem, env(safe-area-inset-left, 0px));
+  right: auto;
   z-index: 1009;
   font-family: Inter, system-ui, sans-serif;
 }
+
 .guide-assist-fab {
-  display: block;
-  width: 100%;
-  padding: 0.75rem 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  min-height: 48px;
+  padding: 0.65rem 1.2rem;
   border-radius: 100px;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.22);
   cursor: pointer;
   font-weight: 700;
   font-size: 0.82rem;
-  background: linear-gradient(135deg, var(--green-main), var(--green-dark));
+  letter-spacing: 0.02em;
+  background: linear-gradient(145deg, var(--green-main) 0%, #237d32 45%, var(--green-dark) 100%);
   color: #fff;
-  box-shadow: var(--shadow-md);
+  box-shadow:
+    0 4px 16px rgba(26, 95, 42, 0.45),
+    0 2px 6px rgba(0, 0, 0, 0.12);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
+
+.guide-assist-fab:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 6px 22px rgba(26, 95, 42, 0.5),
+    0 2px 8px rgba(0, 0, 0, 0.14);
+}
+
+.guide-assist-fab:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.guide-assist-fab::before {
+  content: "";
+  display: inline-block;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.35);
+  flex-shrink: 0;
+}
+
 .guide-assist-panel {
   position: absolute;
-  bottom: calc(100% + 10px);
-  right: 0;
-  width: min(340px, calc(100vw - 2rem));
+  bottom: calc(100% + 12px);
+  left: 0;
+  right: auto;
+  width: min(340px, calc(100vw - 1.5rem - env(safe-area-inset-left, 0px)));
   background: #fff;
   border: 1px solid var(--green-pale);
   border-radius: var(--radius);
   padding: 1rem 1.1rem;
   box-shadow: var(--shadow-lg);
 }
+
 .guide-assist-lead {
   margin: 0 0 0.85rem;
   font-size: 0.82rem;
   color: var(--text-muted);
   line-height: 1.45;
 }
+
 .guide-assist-link {
   display: block;
   padding: 0.65rem 0.75rem;
@@ -4524,19 +4560,23 @@ body.has-price-bar {
   border: 1px solid var(--green-pale);
   color: var(--green-deep) !important;
   background: var(--green-ultra);
+  transition: border-color 0.15s ease, background 0.15s ease;
 }
+
 .guide-assist-link:hover {
   border-color: var(--green-main);
   background: #fff;
 }
+
 .guide-assist-link--b2b {
   border-color: rgba(200, 69, 31, 0.25);
   background: rgba(248, 237, 230, 0.6);
 }
+
 .guide-assist-close {
   margin-top: 0.5rem;
   width: 100%;
-  padding: 0.45rem;
+  padding: 0.5rem;
   border-radius: var(--radius-sm);
   border: 1px solid var(--green-pale);
   background: #fff;
@@ -4545,9 +4585,24 @@ body.has-price-bar {
   font-weight: 600;
   color: var(--text-muted);
 }
+
+.guide-assist-close:hover {
+  border-color: var(--green-main);
+  color: var(--green-deep);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .guide-assist-fab {
+    transition: none;
+  }
+  .guide-assist-fab:hover {
+    transform: none;
+  }
+}
+
 @media (max-width: 600px) {
   .guide-assist {
-    right: max(0.75rem, env(safe-area-inset-right, 0px));
+    left: max(0.75rem, env(safe-area-inset-left, 0px));
     bottom: 5.5rem;
   }
   body.has-price-bar .guide-assist {
@@ -4567,7 +4622,7 @@ body.has-price-bar {
   }
 }
 
-/* Footer: unit converter + translate */
+/* Footer tools column (unit converter) */
 .footer-col--tools .unit-converter-label {
   display: block;
   font-size: 0.85rem;
@@ -4603,33 +4658,6 @@ body.has-price-bar {
   font-size: 0.72rem;
   line-height: 1.45;
   color: rgba(255, 255, 255, 0.45);
-}
-.footer-translate-block {
-  margin-top: 1.25rem;
-}
-.footer-translate-label {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--green-light);
-  margin: 0 0 0.35rem;
-}
-.footer-translate-note {
-  margin: 0 0 0.5rem;
-  font-size: 0.72rem;
-  line-height: 1.4;
-  color: rgba(255, 255, 255, 0.5);
-}
-.google-translate-host {
-  font-size: 0.75rem;
-}
-.google-translate-host select {
-  max-width: 100%;
-  padding: 0.35rem;
-  border-radius: var(--radius-sm);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.95);
-  color: var(--green-deep);
-  font-size: 0.8rem;
 }
 
 /* --- Printable purity checklist page --- */

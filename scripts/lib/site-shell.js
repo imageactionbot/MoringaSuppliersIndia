@@ -28,7 +28,7 @@ const OG_DEFAULT_IMAGE = `${SITE}/Moringa_All_Products.webp`;
 /** SVG fallback used by some legacy share targets (kept for reference). */
 const OG_BRAND_SVG = `${SITE}/og-brand.svg`;
 /** Bust CDN/browser cache when CSS/JS change; bump after edits to main.css or main.js. */
-const ASSET_VER = '30';
+const ASSET_VER = '31';
 
 const AMZ = {
   organicIndia: 'https://amzn.to/3QKamqU',
@@ -88,7 +88,7 @@ function guideAssistHtml() {
 
 function footerToolsColumn() {
   return `<div class="footer-col footer-col--tools">
-        <h4>Global tools</h4>
+        <h4>Weight converter</h4>
         <div class="unit-converter" id="unitConverter">
           <label class="unit-converter-label" for="kgInput">Kilograms &harr; pounds</label>
           <div class="unit-converter-row">
@@ -97,11 +97,6 @@ function footerToolsColumn() {
             <input type="number" class="unit-converter-input" id="lbInput" inputmode="decimal" min="0" step="any" placeholder="lb" aria-label="Weight in pounds" />
           </div>
           <p class="unit-converter-hint">1 kg &asymp; 2.205 lb (avoirdupois). Confirm whether your supplier quotes metric <strong>kg</strong> or other units on the invoice.</p>
-        </div>
-        <div class="footer-translate-block">
-          <p class="footer-translate-label">Page language</p>
-          <p class="footer-translate-note">Google Translate is machine-generated; English remains authoritative for legal text.</p>
-          <div id="google_translate_element" class="google-translate-host"></div>
         </div>
       </div>`;
 }
@@ -614,7 +609,6 @@ function layout(opts) {
   <link rel="dns-prefetch" href="//fonts.googleapis.com" />
   <link rel="dns-prefetch" href="//fonts.gstatic.com" />
   <link rel="dns-prefetch" href="//pagead2.googlesyndication.com" />
-  <link rel="dns-prefetch" href="//translate.google.com" />
   <meta property="og:type" content="${ogType}" />
   <meta property="og:locale" content="en_IN" />
   <meta property="og:site_name" content="Moringa Suppliers India" />

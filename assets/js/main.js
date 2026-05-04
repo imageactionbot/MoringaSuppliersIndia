@@ -193,29 +193,6 @@
       });
     }
 
-    var trEl = document.getElementById('google_translate_element');
-    if (trEl && !document.getElementById('google-translate-script')) {
-      window.googleTranslateElementInit = function () {
-        try {
-          if (!window.google || !window.google.translate) return;
-          new window.google.translate.TranslateElement(
-            {
-              pageLanguage: 'en',
-              includedLanguages: 'en,de,fr',
-              layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
-              autoDisplay: false,
-            },
-            'google_translate_element'
-          );
-        } catch (err) {}
-      };
-      var ts = document.createElement('script');
-      ts.id = 'google-translate-script';
-      ts.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-      ts.async = true;
-      document.head.appendChild(ts);
-    }
-
     var printChk = document.getElementById('printChecklistBtn');
     if (printChk) {
       printChk.addEventListener('click', function () {

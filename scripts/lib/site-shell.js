@@ -28,7 +28,7 @@ const OG_DEFAULT_IMAGE = `${SITE}/Moringa_All_Products.webp`;
 /** SVG fallback used by some legacy share targets (kept for reference). */
 const OG_BRAND_SVG = `${SITE}/og-brand.svg`;
 /** Bust CDN/browser cache when CSS/JS change; bump after edits to main.css or main.js. */
-const ASSET_VER = '23';
+const ASSET_VER = '24';
 
 const AMZ = {
   organicIndia: 'https://amzn.to/3QKamqU',
@@ -242,6 +242,8 @@ function nav() {
     <a href="/products/">Product guides</a>
     <a href="/brands/">Brand guides</a>
     <a href="/compare/">Comparisons</a>
+    <a href="/#export-flow">Export flow (home)</a>
+    <a href="/#supplier-credentials">FSSAI &amp; GMP (home)</a>
     <a href="/#why-india">Why India</a>
     <a href="/#buy" class="mobile-menu-buy"><strong>Buy on Amazon</strong></a>
     <a href="/#suppliers">Suppliers</a>
@@ -269,6 +271,8 @@ function footer() {
         <h4 class="footer-sub">Quick paths</h4>
         <ul class="footer-quick-paths">
           <li><a href="/#start-here">How to use this site (home)</a></li>
+          <li><a href="/#export-flow">Export flow diagram (home)</a></li>
+          <li><a href="/#supplier-credentials">Credential checklist (home)</a></li>
           <li><a href="/products/">Retail product guides</a></li>
           <li><a href="/articles/">Articles library</a></li>
           <li><a href="/#suppliers">Bulk sourcing &amp; suppliers</a></li>

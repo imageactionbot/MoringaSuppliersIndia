@@ -14,8 +14,10 @@
 }
 
 :root {
-  /* Fixed header height (used by mobile drawer + scroll offset) */
+  /* Fixed header (content row; safe-area adds above on iOS) */
   --nav-height: 58px;
+  --nav-safe-top: env(safe-area-inset-top, 0px);
+  --nav-offset: calc(var(--nav-height) + var(--nav-safe-top));
   --green-deep: #0a2e15;
   --green-dark: #1a5f2a;
   --green-main: #2d8a3a;
@@ -47,8 +49,10 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--nav-height) + 18px);
+  scroll-padding-top: calc(var(--nav-offset) + 12px);
   font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 /* Fluid images & video (WebP, GIF, etc.) — never wider than the viewport */
@@ -134,7 +138,8 @@ h3 {
 .container {
   max-width: var(--container);
   margin: 0 auto;
-  padding: 0 var(--container-padding);
+  padding-left: max(var(--container-padding), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--container-padding), env(safe-area-inset-right, 0px));
   width: 100%;
 }
 
@@ -251,13 +256,13 @@ section {
   top: 0;
   left: 0;
   right: 0;
-  height: var(--nav-height);
+  min-height: calc(var(--nav-height) + var(--nav-safe-top));
   box-sizing: border-box;
   background: rgba(255, 255, 255, 0.97);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(45, 138, 58, 0.12);
   z-index: 1001;
-  padding: 0 0;
+  padding: var(--nav-safe-top) 0 0;
   display: flex;
   align-items: center;
   transition: box-shadow 0.25s, background 0.25s;
@@ -270,7 +275,8 @@ section {
 .nav-inner {
   max-width: var(--container);
   margin: 0 auto;
-  padding: 0 var(--container-padding);
+  padding-left: max(var(--container-padding), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--container-padding), env(safe-area-inset-right, 0px));
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
@@ -347,11 +353,13 @@ section {
   cursor: pointer;
   background: none;
   border: none;
-  padding: 0.4rem;
+  padding: 0.5rem;
   margin: 0;
   line-height: 0;
   border-radius: var(--radius-sm);
   color: inherit;
+  min-width: 44px;
+  min-height: 44px;
 }
 
 .mobile-toggle:focus-visible {
@@ -384,7 +392,7 @@ section {
   background: linear-gradient(135deg, var(--green-ultra) 0%, var(--white) 70%);
   display: flex;
   align-items: center;
-  padding-top: calc(var(--nav-height) + 12px);
+  padding-top: calc(var(--nav-offset) + 12px);
   position: relative;
   overflow: hidden;
 }
@@ -410,6 +418,18 @@ section {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-bottom: 1.5rem;
+  max-width: 100%;
+  flex-wrap: wrap;
+  white-space: normal;
+  line-height: 1.35;
+}
+
+.hero-lede {
+  font-size: clamp(0.98rem, 2.8vw, 1.05rem);
+  color: var(--text-muted);
+  margin: 1rem 0;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
 }
 
 .hero-stats {
@@ -944,7 +964,7 @@ footer {
   gap: 0.65rem;
   padding-left: max(0.75rem, env(safe-area-inset-left));
   padding-right: max(0.75rem, env(safe-area-inset-right));
-  bottom: 1.35rem;
+  bottom: max(1.35rem, env(safe-area-inset-bottom, 0px));
   pointer-events: none;
   transition: bottom 0.28s ease;
 }
@@ -1039,6 +1059,14 @@ footer {
     grid-template-columns: 1fr;
     gap: 1.75rem;
   }
+  .hero-content > div:first-child {
+    min-width: 0;
+  }
+  .hero h1 {
+    overflow-wrap: anywhere;
+    hyphens: auto;
+    line-height: 1.18;
+  }
   .hero-image {
     display: block;
     max-width: min(100%, 440px);
@@ -1056,6 +1084,17 @@ footer {
     flex-wrap: wrap;
     gap: 1.25rem 2rem;
     justify-content: flex-start;
+  }
+  .hero-pills {
+    gap: 0.55rem;
+  }
+  .hero-pills .pill {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.55rem 1rem;
+    font-size: 0.82rem;
   }
   .proscons-grid {
     grid-template-columns: 1fr;
@@ -1243,6 +1282,18 @@ footer {
   font-size: clamp(1.15rem, 2.8vw, 1.45rem);
   line-height: 1;
   color: var(--green-main);
+}
+
+@media (max-width: 520px) {
+  .trust-strip .container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-items: center;
+    gap: 0.85rem 0.75rem;
+  }
+  .trust-item {
+    max-width: none;
+  }
 }
 
 /* Section intro paragraph */
@@ -2834,10 +2885,10 @@ a.home-article-card:focus-visible .home-article-cta-arrow {
 
 .mobile-menu {
   position: fixed;
-  top: var(--nav-height);
+  top: var(--nav-offset);
   left: 0;
   right: 0;
-  max-height: min(70vh, calc(100dvh - var(--nav-height)));
+  max-height: min(70vh, calc(100dvh - var(--nav-offset)));
   overflow-y: auto;
   background: var(--white);
   padding: 0;
@@ -2856,7 +2907,10 @@ a.home-article-card:focus-visible .home-article-cta-arrow {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-  padding: 1rem var(--container-padding) 1.25rem;
+  padding-top: 1rem;
+  padding-bottom: 1.25rem;
+  padding-left: max(var(--container-padding), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--container-padding), env(safe-area-inset-right, 0px));
   max-width: var(--container);
   margin: 0 auto;
   width: 100%;
@@ -2895,7 +2949,7 @@ a.home-article-card:focus-visible .home-article-cta-arrow {
 }
 .nav-mobile-backdrop {
   position: fixed;
-  inset: var(--nav-height) 0 0 0;
+  inset: var(--nav-offset) 0 0 0;
   z-index: 999;
   background: rgba(15, 40, 22, 0.45);
   backdrop-filter: blur(2px);
@@ -2913,11 +2967,11 @@ body.has-mobile-nav {
 .breadcrumb-nav {
   font-size: 0.85rem;
   color: var(--text-muted);
-  padding: calc(var(--nav-height) + 1.25rem) 0 0;
+  padding: calc(var(--nav-offset) + 1.25rem) 0 0;
   max-width: var(--container);
   margin: 0 auto;
-  padding-left: var(--container-padding);
-  padding-right: var(--container-padding);
+  padding-left: max(var(--container-padding), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--container-padding), env(safe-area-inset-right, 0px));
 }
 .breadcrumb-nav a {
   color: var(--green-main);
@@ -3204,11 +3258,11 @@ body[data-section="about"] {
 
 /* Pill-style breadcrumb bar (sits just below the sticky nav) */
 .breadcrumb-nav--pill {
-  padding: calc(var(--nav-height) + 1rem) 0 0;
+  padding: calc(var(--nav-offset) + 1rem) 0 0;
   max-width: var(--container);
   margin: 0 auto;
-  padding-left: var(--container-padding);
-  padding-right: var(--container-padding);
+  padding-left: max(var(--container-padding), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--container-padding), env(safe-area-inset-right, 0px));
 }
 .breadcrumb-nav--pill .breadcrumb-list {
   list-style: none;

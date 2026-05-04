@@ -3559,12 +3559,23 @@ body[data-section="product"] .prime-buy-block h3 {
 }
 
 /* About page content — distinct card style */
-body[data-section="about"] .about-card {
-  background: #fff;
-  border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+body[data-section="about"] .about-founder-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+body[data-section="about"] .about-founder-photo {
+  width: min(220px, 38vw);
+  height: auto;
+  object-fit: cover;
   border-radius: var(--radius);
-  padding: 1.4rem 1.5rem;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-md);
+  border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
+}
+body[data-section="about"] .about-founder-body {
+  flex: 1 1 240px;
+  min-width: 0;
 }
 body[data-section="about"] .editorial-meta {
   display: grid;

@@ -4478,11 +4478,18 @@ body.has-price-bar {
 
 .guide-assist {
   position: fixed;
-  bottom: 6.5rem;
   left: max(1rem, env(safe-area-inset-left, 0px));
   right: auto;
+  bottom: 6.5rem;
   z-index: 1009;
   font-family: Inter, system-ui, sans-serif;
+  transition: bottom 0.28s ease;
+}
+
+/* Behind the pricing strip until the visitor closes it (×); then sits above bottom UI */
+body.has-price-bar .guide-assist {
+  bottom: max(0.45rem, env(safe-area-inset-bottom, 0px));
+  z-index: 1006;
 }
 
 .guide-assist-fab {
@@ -4592,6 +4599,9 @@ body.has-price-bar {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .guide-assist {
+    transition: none;
+  }
   .guide-assist-fab {
     transition: none;
   }
@@ -4603,22 +4613,7 @@ body.has-price-bar {
 @media (max-width: 600px) {
   .guide-assist {
     left: max(0.75rem, env(safe-area-inset-left, 0px));
-    bottom: 5.5rem;
-  }
-  body.has-price-bar .guide-assist {
-    bottom: 10.75rem;
-  }
-}
-
-@media (min-width: 601px) and (max-width: 899px) {
-  body.has-price-bar .guide-assist {
-    bottom: 9.5rem;
-  }
-}
-
-@media (min-width: 900px) {
-  body.has-price-bar .guide-assist {
-    bottom: 8.35rem;
+    bottom: 5.25rem;
   }
 }
 

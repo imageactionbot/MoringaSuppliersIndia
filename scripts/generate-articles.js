@@ -60,6 +60,16 @@ function insertAfterFirstParagraph(html, block) {
 }
 
 function amazonMidCta(slug) {
+  if (slug === 'moringa-oil-benefits-guide') {
+    return `<aside class="article-mid-cta" role="complementary" aria-label="Amazon retail shortcuts">
+<p class="article-mid-cta-note">Retail shortcuts (affiliate &mdash; see disclosure at top):</p>
+<div class="article-mid-cta-row">
+${amazonBtnSmall(AMZ.oil, 'Moringa seed oil')}
+${amazonBtnSmall(AMZ.skincare, 'Moringa skincare')}
+${amazonBtnSmall(AMZ.organicIndiaPowder, 'Leaf powder (oral beauty stack)')}
+</div>
+</aside>`;
+  }
   const capFirst = slug === 'moringa-capsules-benefits-guide';
   const powder = amazonBtnSmall(AMZ.organicIndiaPowder, 'Organic India — leaf powder');
   const caps = amazonBtnSmall(AMZ.organicIndiaCapsules, 'Organic India — capsules');
@@ -135,6 +145,15 @@ function amazonFooterCtas(slug) {
       amazonBtnSmall(AMZ.organicIndia, 'Brand storefront'),
       amazonBtnSmall(AMZ.tea, 'Tea picks'),
     ];
+  } else if (slug === 'moringa-oil-benefits-guide') {
+    row1a = amazonBtn(AMZ.oil, 'Moringa seed oil on Amazon');
+    row1b = amazonBtn(AMZ.skincare, 'Moringa skincare, serums & face oils');
+    smallParts = [
+      amazonBtnSmall(AMZ.organicIndiaCapsules, 'Leaf capsules'),
+      amazonBtnSmall(AMZ.organicIndiaPowder, 'Leaf powder'),
+      amazonBtnSmall(AMZ.indusValley, 'Indus Valley'),
+      amazonBtnSmall(AMZ.tea, 'Tea picks'),
+    ];
   } else if (slug === 'moringa-vs-kale-spinach') {
     row1a = amazonBtn(AMZ.organicIndiaPowder, 'Shelf-stable greens: OI powder');
     row1b = amazonBtn(AMZ.kuliKuli, 'Kuli Kuli greens / moringa blends');
@@ -188,6 +207,8 @@ function keywordsForSlug(slug, h1) {
       'moringa powder benefits, moringa powder for skin, moringa powder for women, moringa powder for men, how to use moringa powder, how to take moringa powder, moringa powder liver, moringa powder weight loss, moringa powder testosterone, moringa powder side effects',
     'moringa-capsules-benefits-guide':
       'moringa capsules, moringa capsules benefits, moringa capsules uses, moringa capsules for men, moringa capsules for women, moringa capsules amazon, moringa capsules price, organic moringa capsules, moringa leaf capsules dosage',
+    'moringa-oil-benefits-guide':
+      'moringa oil, moringa oil benefits, moringa oil for hair, moringa oil for skin, moringa oil for face, moringa seed oil, moringa oil uses, moringa oil price, moringa oil capsules, moringa hair oil, moringa face oil',
     'organic-india-vs-vahdam-vs-kuli-kuli': 'organic india vs vahdam vs kuli kuli, top moringa brands, brand comparison',
     'moringa-weight-loss': 'moringa weight loss, moringa fat burning, moringa metabolism, moringa blood sugar',
     'moringa-diabetes': 'moringa diabetes, moringa blood sugar, moringa type 2 diabetes, moringa glycemic',

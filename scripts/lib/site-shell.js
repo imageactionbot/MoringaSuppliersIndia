@@ -28,7 +28,7 @@ const OG_DEFAULT_IMAGE = `${SITE}/Moringa_All_Products.webp`;
 /** SVG fallback used by some legacy share targets (kept for reference). */
 const OG_BRAND_SVG = `${SITE}/og-brand.svg`;
 /** Bust CDN/browser cache when CSS/JS change; bump after edits to main.css or main.js. */
-const ASSET_VER = '29';
+const ASSET_VER = '30';
 
 const AMZ = {
   organicIndia: 'https://amzn.to/3QKamqU',
@@ -66,8 +66,8 @@ function priceRealityBarHtml() {
     <div class="price-reality-actions">
       <a href="${AMZ.organicIndia}" class="price-reality-btn price-reality-btn--amz" target="_blank" rel="sponsored nofollow noopener">Check retail on Amazon</a>
       <a href="${INDIAMART.moringa}" class="price-reality-btn price-reality-btn--b2b" target="_blank" rel="sponsored nofollow noopener">Compare wholesale on IndiaMART</a>
-      <button type="button" class="price-reality-dismiss" id="priceRealityDismiss" aria-label="Dismiss pricing notice">&times;</button>
     </div>
+    <button type="button" class="price-reality-dismiss" id="priceRealityDismiss" aria-label="Dismiss pricing notice"><span aria-hidden="true">&times;</span></button>
   </div>
 </aside>`;
 }
@@ -360,7 +360,10 @@ function footer() {
 ${priceRealityBarHtml()}
 ${guideAssistHtml()}
 <button class="scroll-top" id="scrollTopBtn" aria-label="Top">&uarr;</button>
-<div class="cookie-notice" id="cookieNotice" role="dialog" aria-label="Cookie notice"><span>&#127850; Analytics cookies.</span><button type="button" id="acceptCookies">Accept</button></div>
+<div class="cookie-notice" id="cookieNotice" role="dialog" aria-labelledby="cookieNoticeLabel" aria-label="Cookie notice">
+  <p class="cookie-notice-text" id="cookieNoticeLabel"><span class="cookie-notice-icon" aria-hidden="true">&#127850;</span> We use cookies for analytics. <a href="/legal/cookies.html" class="cookie-notice-policy">Cookie policy</a></p>
+  <button type="button" class="cookie-notice-accept" id="acceptCookies">Accept</button>
+</div>
 <script defer src="/assets/js/main.js?v=${ASSET_VER}"></script>`;
 }
 

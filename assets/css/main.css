@@ -951,20 +951,37 @@ footer {
   z-index: 1005;
 }
 
+@media (max-width: 639px) {
+  .scroll-top {
+    width: 44px;
+    height: 44px;
+    bottom: 1.15rem;
+    right: max(0.65rem, env(safe-area-inset-right, 0px));
+    font-size: 1.05rem;
+  }
+}
+
 .scroll-top.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
 body.has-price-bar .scroll-top {
-  bottom: max(6.75rem, calc(5.5rem + env(safe-area-inset-bottom, 0px)));
-  right: max(1rem, env(safe-area-inset-right, 0px));
+  bottom: max(5.2rem, calc(4.05rem + env(safe-area-inset-bottom, 0px)));
+  right: max(0.75rem, env(safe-area-inset-right, 0px));
   z-index: 1008;
+}
+
+@media (min-width: 640px) and (max-width: 899px) {
+  body.has-price-bar .scroll-top {
+    bottom: max(5.45rem, calc(4.2rem + env(safe-area-inset-bottom, 0px)));
+  }
 }
 
 @media (min-width: 900px) {
   body.has-price-bar .scroll-top {
     bottom: max(5.25rem, calc(4.5rem + env(safe-area-inset-bottom, 0px)));
+    right: max(1rem, env(safe-area-inset-right, 0px));
   }
 }
 
@@ -4416,6 +4433,75 @@ time[itemprop="dateModified"]:not([data-show]) {
   color: #fff !important;
 }
 
+.price-reality-btn-label--full {
+  display: inline;
+}
+
+.price-reality-btn-label--compact {
+  display: none;
+}
+
+/* Phones: denser strip so it does not dominate the viewport */
+@media (max-width: 639px) {
+  .price-reality-bar {
+    box-shadow: 0 -2px 14px rgba(0, 0, 0, 0.14);
+  }
+
+  .price-reality-inner {
+    padding: 0.38rem max(0.5rem, env(safe-area-inset-left, 0px)) 0.32rem max(0.5rem, env(safe-area-inset-right, 0px));
+    gap: 0.32rem 0.35rem;
+  }
+
+  .price-reality-text {
+    font-size: 0.66rem;
+    line-height: 1.3;
+  }
+
+  .price-reality-dismiss {
+    min-width: 42px;
+    min-height: 42px;
+    font-size: 1.1rem;
+  }
+
+  .price-reality-actions {
+    gap: 0.28rem;
+  }
+
+  .price-reality-btn {
+    padding: 0.34rem 0.4rem;
+    min-height: 42px;
+    font-size: 0.65rem;
+    line-height: 1.1;
+  }
+
+  .price-reality-btn-label--full {
+    display: none;
+  }
+
+  .price-reality-btn-label--compact {
+    display: inline;
+  }
+}
+
+/* Small tablet: middle weight */
+@media (min-width: 640px) and (max-width: 899px) {
+  .price-reality-inner {
+    padding: 0.5rem var(--container-padding) 0.44rem;
+    gap: 0.48rem 0.45rem;
+  }
+
+  .price-reality-text {
+    font-size: 0.74rem;
+    line-height: 1.37;
+  }
+
+  .price-reality-btn {
+    min-height: 42px;
+    padding: 0.38rem 0.5rem;
+    font-size: 0.69rem;
+  }
+}
+
 /* Large screens: one calm row */
 @media (min-width: 900px) {
   .price-reality-inner {
@@ -4459,14 +4545,14 @@ time[itemprop="dateModified"]:not([data-show]) {
   }
 }
 
-/* Space for fixed bar + readable scroll clearance */
+/* Space for fixed bar + scroll clearance (scaled to compact bar height) */
 body.has-price-bar {
-  padding-bottom: 8.25rem;
+  padding-bottom: 6rem;
 }
 
 @media (min-width: 640px) and (max-width: 899px) {
   body.has-price-bar {
-    padding-bottom: 7rem;
+    padding-bottom: 5.75rem;
   }
 }
 
@@ -4490,6 +4576,12 @@ body.has-price-bar {
 body.has-price-bar .guide-assist {
   bottom: max(0.45rem, env(safe-area-inset-bottom, 0px));
   z-index: 1006;
+}
+
+@media (min-width: 640px) and (max-width: 899px) {
+  .guide-assist {
+    bottom: 6rem;
+  }
 }
 
 .guide-assist-fab {
@@ -4610,10 +4702,40 @@ body.has-price-bar .guide-assist {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 639px) {
   .guide-assist {
-    left: max(0.75rem, env(safe-area-inset-left, 0px));
-    bottom: 5.25rem;
+    left: max(0.65rem, env(safe-area-inset-left, 0px));
+    bottom: 4.85rem;
+  }
+
+  .guide-assist-fab {
+    min-height: 44px;
+    padding: 0.48rem 0.85rem;
+    font-size: 0.74rem;
+    gap: 0.28rem;
+    box-shadow:
+      0 3px 12px rgba(26, 95, 42, 0.38),
+      0 1px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .guide-assist-panel {
+    max-height: min(70vh, 26rem);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0.8rem 0.9rem;
+    bottom: calc(100% + 8px);
+    width: min(320px, calc(100vw - 1.1rem - env(safe-area-inset-left, 0px)));
+  }
+
+  .guide-assist-lead {
+    font-size: 0.76rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .guide-assist-link {
+    padding: 0.52rem 0.6rem;
+    font-size: 0.76rem;
+    margin-bottom: 0.35rem;
   }
 }
 

@@ -110,24 +110,6 @@
       });
     }
 
-    var priceBar = document.getElementById('priceRealityBar');
-    var priceDismiss = document.getElementById('priceRealityDismiss');
-    if (priceBar && priceDismiss) {
-      if (sessionStorage.getItem('priceRealityDismissed') === '1') {
-        priceBar.style.display = 'none';
-        priceBar.setAttribute('hidden', '');
-      } else {
-        priceBar.removeAttribute('hidden');
-        document.body.classList.add('has-price-bar');
-      }
-      priceDismiss.addEventListener('click', function () {
-        sessionStorage.setItem('priceRealityDismissed', '1');
-        priceBar.style.display = 'none';
-        priceBar.setAttribute('hidden', '');
-        document.body.classList.remove('has-price-bar');
-      });
-    }
-
     var gToggle = document.getElementById('guideAssistToggle');
     var gPanel = document.getElementById('guideAssistPanel');
     var gClose = document.getElementById('guideAssistClose');

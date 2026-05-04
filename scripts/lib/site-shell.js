@@ -28,7 +28,7 @@ const OG_DEFAULT_IMAGE = `${SITE}/Moringa_All_Products.webp`;
 /** SVG fallback used by some legacy share targets (kept for reference). */
 const OG_BRAND_SVG = `${SITE}/og-brand.svg`;
 /** Bust CDN/browser cache when CSS/JS change; bump after edits to main.css or main.js. */
-const ASSET_VER = '35';
+const ASSET_VER = '36';
 
 const AMZ = {
   organicIndia: 'https://amzn.to/3QKamqU',
@@ -58,21 +58,7 @@ const INDIAMART = {
   moringa: 'https://IndiaMART.in/v/yNRgBEqn',
 };
 
-/** Fixed pricing disclaimer + CTA strip (all templated pages). */
-function priceRealityBarHtml() {
-  return `<aside class="price-reality-bar" id="priceRealityBar" role="complementary" aria-label="Live pricing reminder">
-  <div class="price-reality-inner">
-    <p class="price-reality-text"><strong>Prices fluctuate with season and export grade.</strong> Moringa quotes move with harvest yield, moisture specs, organic premia, FX and freight. Use partner platforms for <em>current</em> numbers instead of treating any written example as live.</p>
-    <div class="price-reality-actions">
-      <a href="${AMZ.organicIndia}" class="price-reality-btn price-reality-btn--amz" target="_blank" rel="sponsored nofollow noopener" aria-label="Check retail on Amazon (opens in new tab)"><span class="price-reality-btn-label price-reality-btn-label--full">Check retail on Amazon</span><span class="price-reality-btn-label price-reality-btn-label--compact">Amazon</span></a>
-      <a href="${INDIAMART.moringa}" class="price-reality-btn price-reality-btn--b2b" target="_blank" rel="sponsored nofollow noopener" aria-label="Compare wholesale on IndiaMART (opens in new tab)"><span class="price-reality-btn-label price-reality-btn-label--full">Compare wholesale on IndiaMART</span><span class="price-reality-btn-label price-reality-btn-label--compact">IndiaMART</span></a>
-    </div>
-    <button type="button" class="price-reality-dismiss" id="priceRealityDismiss" aria-label="Dismiss pricing notice"><span aria-hidden="true">&times;</span></button>
-  </div>
-</aside>`;
-}
-
-/** Fixed row: guide FAB + scroll-to-top (one line, above price strip on mobile). */
+/** Fixed row: guide FAB + scroll-to-top. */
 function pageToolsDockHtml() {
   return `<div class="page-tools-dock" id="pageToolsDock">
 ${guideAssistHtml()}
@@ -360,7 +346,6 @@ function footer() {
     </div>
   </div>
 </footer>
-${priceRealityBarHtml()}
 ${pageToolsDockHtml()}
 <script defer src="/assets/js/main.js?v=${ASSET_VER}"></script>`;
 }

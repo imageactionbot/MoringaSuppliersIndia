@@ -98,7 +98,7 @@ write('legal/cookies.html', layout({
   canonical: `${SITE}/legal/cookies.html`,
   breadcrumbTrail: trail(['Home', '/'], ['Legal', '/legal/cookies.html'], ['Cookies']),
   h1: 'Cookie Policy',
-  lead: 'Cookies used on this site.',
+  lead: 'We use cookies for analytics. Cookie policy.',
   dateModified: BUILD_DATE,
   content: cookiesBody(),
   schemaJson: { '@type': 'WebPage', name: 'Cookie Policy', url: `${SITE}/legal/cookies.html` },

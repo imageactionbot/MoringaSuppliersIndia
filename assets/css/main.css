@@ -931,7 +931,7 @@ footer {
   font-size: 0.7rem;
 }
 
-/* Floating row: Help me choose + scroll-to-top (one line) */
+/* Floating row: Help + scroll-to-top (one line) */
 .page-tools-dock {
   position: fixed;
   left: 0;

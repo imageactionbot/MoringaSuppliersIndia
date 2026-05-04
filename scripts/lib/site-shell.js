@@ -28,7 +28,7 @@ const OG_DEFAULT_IMAGE = `${SITE}/Moringa_All_Products.webp`;
 /** SVG fallback used by some legacy share targets (kept for reference). */
 const OG_BRAND_SVG = `${SITE}/og-brand.svg`;
 /** Bust CDN/browser cache when CSS/JS change; bump after edits to main.css or main.js. */
-const ASSET_VER = '34';
+const ASSET_VER = '35';
 
 const AMZ = {
   organicIndia: 'https://amzn.to/3QKamqU',
@@ -80,10 +80,10 @@ ${guideAssistHtml()}
 </div>`;
 }
 
-/** Floating “help me choose” assistant (links to guides + affiliates). */
+/** Floating Help assistant (links to guides + affiliates). */
 function guideAssistHtml() {
   return `<div class="guide-assist" id="guideAssist">
-  <button type="button" class="guide-assist-fab" id="guideAssistToggle" aria-expanded="false" aria-controls="guideAssistPanel">Help me choose</button>
+  <button type="button" class="guide-assist-fab" id="guideAssistToggle" aria-expanded="false" aria-controls="guideAssistPanel" aria-label="Help: retail, wholesale, and purity checklist">Help</button>
   <div class="guide-assist-panel" id="guideAssistPanel" role="dialog" aria-modal="true" aria-label="Quick choices" hidden>
     <p class="guide-assist-lead">Pick a path &mdash; we send you to the right retail guide or B2B marketplace listing.</p>
     <a class="guide-assist-link guide-assist-link--amz" href="/products/">&#128717;&#65039; Buy small quantity (Amazon guides)</a>

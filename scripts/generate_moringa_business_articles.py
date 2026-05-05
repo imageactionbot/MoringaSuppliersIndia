@@ -21,7 +21,7 @@ NAV_AND_FOOTER_TAIL = r"""
           <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 4C10 4 5 10 5 18C5 24 10 28 16 28C22 28 27 24 27 18C27 10 22 4 16 4Z" fill="#4cae5a" opacity="0.25"/><path d="M16 4C16 4 8 8 8 18C8 24 11.5 28 16 28" stroke="#b8e0c0" stroke-width="2" stroke-linecap="round"/><path d="M16 4C16 4 24 8 24 18C24 24 20.5 28 16 28" stroke="#b8e0c0" stroke-width="2" stroke-linecap="round"/><path d="M16 28V14" stroke="#d4a53a" stroke-width="1.5" stroke-linecap="round"/></svg>
           Moringa<span>Suppliers</span>India
         </div>
-        <p class="footer-tagline">Independent guides for buyers sourcing Moringa from India and trusted retail options on Amazon (US).</p>
+        <p class="footer-tagline">U.S. readers first &mdash; Amazon.com retail (USD) and IndiaMART bulk RFQs (both usable from the United States). India export &amp; supplier verification second. Global readers welcome third. Independent editorial.</p>
         <p class="footer-owner-line">Avinash Chauhan &middot; Publisher &middot; B.Sc. CS (University of Mumbai) &middot; <a href="https://imageactionbot.com" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">ImageActionBot</a></p>
         <div class="footer-contact-mini">
           &#9993; <a href="mailto:moringasuppliersindia@gmail.com">moringasuppliersindia@gmail.com</a>
@@ -44,7 +44,7 @@ NAV_AND_FOOTER_TAIL = r"""
         <li><a href="/products/">Products hub</a></li>
         <li><a href="/brands/">Brands hub</a></li>
         <li><a href="/compare/">Compare hub</a></li>
-        <li><a href="/">India buyer guide (home)</a></li>
+        <li><a href="/">Home &mdash; U.S. retail + India sourcing</a></li>
       </ul></div>
       <div class="footer-col"><h4>Legal</h4><ul>
         <li><a href="/legal/disclaimer.html">Disclaimer</a></li>

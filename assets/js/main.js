@@ -158,7 +158,7 @@
       el.className = 'retail-usd-inr-hint';
       el.setAttribute('role', 'note');
       el.innerHTML =
-        '<strong>Retail pricing:</strong> Amazon guides here quote <strong>US dollars ($)</strong> because listings are on Amazon.com. Loading today’s indicative <strong>USD → INR</strong> rate…';
+        '<strong>U.S. retail focus:</strong> Amazon guides here quote <strong>US dollars ($)</strong> because listings target Amazon.com (USD checkout). Loading today’s indicative <strong>USD → INR</strong> rate…';
       if (path === '/') {
         var heroC = document.querySelector('.hero .container');
         if (heroC) heroC.insertBefore(el, heroC.firstChild);
@@ -175,7 +175,7 @@
           var date = data && data.date;
           if (!rate) throw new Error('no rate');
           el.innerHTML =
-            '<strong>Retail pricing:</strong> Amazon guides quote <strong>US dollars ($)</strong> (Amazon.com). <strong>Indicative FX:</strong> <strong>1 USD ≈ ' +
+            '<strong>U.S. retail focus:</strong> Amazon guides quote <strong>US dollars ($)</strong> (Amazon.com). <strong>Indicative FX:</strong> <strong>1 USD ≈ ' +
             rate.toFixed(2) +
             ' INR</strong> <span class="retail-usd-inr-hint__meta">(ECB reference via Frankfurter, date ' +
             date +

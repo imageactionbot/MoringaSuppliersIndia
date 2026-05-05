@@ -28,7 +28,7 @@ const OG_DEFAULT_IMAGE = `${SITE}/Moringa_All_Products.webp`;
 /** SVG fallback used by some legacy share targets (kept for reference). */
 const OG_BRAND_SVG = `${SITE}/og-brand.svg`;
 /** Bust CDN/browser cache when CSS/JS change; bump after edits to main.css or main.js. */
-const ASSET_VER = '45';
+const ASSET_VER = '46';
 
 const AMZ = {
   organicIndia: 'https://amzn.to/3QKamqU',
@@ -48,11 +48,10 @@ const AMZ = {
 };
 
 /**
- * IndiaMART (B2B / bulk) affiliate link. Used wherever the page is talking
- * to a wholesale buyer, importer, exporter, or someone asking "where do I
- * actually contact moringa suppliers in India?". Kept separate from AMZ
- * because it is a different commercial relationship (B2B marketplace, not
- * Amazon Associates retail).
+ * IndiaMART (B2B / bulk) affiliate link. U.S.-based buyers and importers use
+ * it too (works from the United States alongside Amazon.com retail). Also
+ * relevant for wholesale, export, and "contact suppliers in India" paths.
+ * Kept separate from AMZ (B2B marketplace vs Amazon Associates retail).
  */
 const INDIAMART = {
   moringa: 'https://IndiaMART.in/v/yNRgBEqn',
@@ -279,7 +278,7 @@ function footer() {
     <div class="footer-cols">
       <div class="footer-col">
         <div class="footer-brand-logo"><img src="/logo.svg" width="28" height="28" alt="Moringa Suppliers India" decoding="async" /></div>
-        <p class="footer-tagline">Independent guides for buyers sourcing Moringa from India and trusted retail options on Amazon (US).</p>
+        <p class="footer-tagline">U.S. readers first &mdash; Amazon.com retail (USD) and IndiaMART bulk RFQs (both usable from the United States). India export &amp; supplier verification second. Global readers welcome third. Independent editorial.</p>
         <p class="footer-owner-line">Avinash Chauhan &middot; Publisher &middot; B.Sc. CS (University of Mumbai) &middot; <a href="https://imageactionbot.com" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">ImageActionBot</a></p>
         <div class="footer-contact-mini">
           &#9993; <a href="mailto:moringasuppliersindia@gmail.com">moringasuppliersindia@gmail.com</a>
@@ -303,7 +302,7 @@ function footer() {
         <li><a href="/products/">Products hub</a></li>
         <li><a href="/brands/">Brands hub</a></li>
         <li><a href="/compare/">Compare hub</a></li>
-        <li><a href="/">India buyer guide (home)</a></li>
+        <li><a href="/">Home &mdash; U.S. retail + India sourcing</a></li>
       </ul></div>
       <div class="footer-col"><h4>Legal</h4><ul>
         <li><a href="/legal/disclaimer.html">Disclaimer</a></li>

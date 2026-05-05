@@ -1,5 +1,16 @@
 Google Search Console — Domain property verification (DNS TXT)
 
+Live checks (automated, GitHub Pages)
+  • http://moringasuppliersindia.com/ and https://moringasuppliersindia.com/ both return
+    HTTP 301 → https://www.moringasuppliersindia.com/ (apex correctly consolidates on www).
+  • URL-prefix verification via meta tag on the homepage works once the latest index.html is deployed.
+
+DNS TXT spot-check (apex)
+  As of last check via Google Public DNS (HTTPS DNS JSON API), there were no TXT answers in the
+  response body for moringasuppliersindia.com — meaning the domain-property verification TXT below
+  is still NOT visible globally until you add it at Hostinger. After adding, expect propagation within
+  minutes to hours.
+
 Why GitHub alone cannot fix this
   Search Console “Domain name provider” checks your DOMAIN’s DNS (at the
   registrar / DNS host), not your GitHub repository. www is already a CNAME

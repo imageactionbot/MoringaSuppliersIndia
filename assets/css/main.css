@@ -3185,6 +3185,102 @@ body.has-mobile-nav {
   max-width: 100%;
 }
 
+/* Topic clusters (hubs + inline article navigation) */
+.topic-cluster-nav--inline {
+  margin: 1.75rem 0;
+  padding: 1.1rem 1.25rem;
+  background: var(--accent-ultra);
+  border: 1px solid color-mix(in srgb, var(--green-main) 16%, transparent);
+  border-radius: var(--radius-sm);
+  border-left: 4px solid var(--green-main);
+}
+.topic-cluster-nav--inline h2 {
+  font-size: 1.12rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: var(--hero-ink, var(--green-deep));
+}
+.topic-cluster-lead {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+  margin: 0 0 0.65rem;
+}
+.topic-cluster-list {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+.topic-cluster-list li {
+  margin: 0.38rem 0;
+  line-height: 1.45;
+}
+.topic-silos {
+  display: grid;
+  gap: 1rem;
+  margin: 1.5rem 0 2rem;
+}
+@media (min-width: 820px) {
+  .topic-silos {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.topic-silo-card {
+  padding: 1.05rem 1.15rem;
+  background: var(--white);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(45, 138, 58, 0.12);
+  border-left: 3px solid var(--green-main);
+}
+.topic-silo-card h3 {
+  margin: 0 0 0.45rem;
+  font-size: 1.05rem;
+  color: var(--green-deep);
+}
+.topic-silo-card p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--text-body);
+}
+.money-pages-strip {
+  margin: 1.75rem 0 2rem;
+  padding: 1.15rem 1.25rem;
+  background: linear-gradient(135deg, var(--accent-soft, #fdf3d8) 0%, var(--white) 100%);
+  border: 1px solid rgba(184, 134, 11, 0.2);
+  border-radius: var(--radius-sm);
+}
+.money-pages-strip h2 {
+  margin: 0 0 0.65rem;
+  font-size: 1.1rem;
+}
+.money-pages-strip ul {
+  margin: 0;
+  padding-left: 1.15rem;
+}
+.money-pages-strip li {
+  margin: 0.35rem 0;
+}
+.money-cta-grid {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+@media (min-width: 640px) {
+  .money-cta-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.money-cta-card {
+  padding: 0.85rem 1rem;
+  background: var(--white);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(13, 110, 79, 0.15);
+}
+.money-cta-card strong {
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
 /* ============================================
    v16 REFRESH — section-themed inner pages
    Each generated page (article / product / brand / compare / legal / about)
@@ -3254,6 +3350,16 @@ body[data-section="about"] {
   --hero-from: #fff1e1;
   --hero-to: #fffaf3;
   --hero-ink: #3a1d05;
+}
+body[data-section="money"],
+body[data-section="topics"] {
+  --accent: #0d6e4f;
+  --accent-dark: #084d37;
+  --accent-soft: #d9f2ea;
+  --accent-ultra: #f0faf6;
+  --hero-from: #e6f7f0;
+  --hero-to: #ffffff;
+  --hero-ink: #0a2e1f;
 }
 
 /* Pill-style breadcrumb bar (sits just below the sticky nav) */

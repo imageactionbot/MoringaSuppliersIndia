@@ -161,14 +161,6 @@ const WEBSITE_NODE = {
   url: SITE,
   publisher: { '@id': `${SITE}/#organization` },
   inLanguage: 'en',
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: {
-      '@type': 'EntryPoint',
-      urlTemplate: `${SITE}/?q={search_term_string}`,
-    },
-    'query-input': 'required name=search_term_string',
-  },
 };
 
 /** Default editorial author used on articles when the generator does not pass one. */

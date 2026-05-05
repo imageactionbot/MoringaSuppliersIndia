@@ -12,3 +12,7 @@ npm-debug.log
 # Local tool scratch files
 .git-commit-msg.tmp
 *.tmp
+
+# Python bytecode (local script runs)
+**/__pycache__/
+*.py[cod]

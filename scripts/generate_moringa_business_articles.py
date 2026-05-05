@@ -266,14 +266,6 @@ def build_head(
             "url": base,
             "publisher": {"@id": f"{base}/#organization"},
             "inLanguage": "en",
-            "potentialAction": {
-                "@type": "SearchAction",
-                "target": {
-                    "@type": "EntryPoint",
-                    "urlTemplate": f"{base}/?q={{search_term_string}}",
-                },
-                "query-input": "required name=search_term_string",
-            },
         },
         {
             "@type": "BreadcrumbList",

@@ -28,7 +28,7 @@ const OG_DEFAULT_IMAGE = `${SITE}/Moringa_All_Products.webp`;
 /** SVG fallback used by some legacy share targets (kept for reference). */
 const OG_BRAND_SVG = `${SITE}/og-brand.svg`;
 /** Bust CDN/browser cache when CSS/JS change; bump after edits to main.css or main.js. */
-const ASSET_VER = '43';
+const ASSET_VER = '44';
 
 const AMZ = {
   organicIndia: 'https://amzn.to/3QKamqU',
@@ -233,15 +233,7 @@ function nav() {
   return `<a class="skip-link" href="#main">Skip to main content</a>
 <nav class="navbar" id="navbar">
   <div class="nav-inner">
-    <a href="/" class="logo">
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-        <path d="M16 4C10 4 5 10 5 18C5 24 10 28 16 28C22 28 27 24 27 18C27 10 22 4 16 4Z" fill="#2d8a3a" opacity="0.15"/>
-        <path d="M16 4C16 4 8 8 8 18C8 24 11.5 28 16 28" stroke="#2d8a3a" stroke-width="2" stroke-linecap="round"/>
-        <path d="M16 4C16 4 24 8 24 18C24 24 20.5 28 16 28" stroke="#2d8a3a" stroke-width="2" stroke-linecap="round"/>
-        <path d="M16 28V14" stroke="#2d8a3a" stroke-width="1.5" stroke-linecap="round"/>
-      </svg>
-      Moringa<span>Suppliers</span>India
-    </a>
+    <a href="/" class="logo"><img src="/logo.svg" width="32" height="32" alt="Moringa Suppliers India" decoding="async" /></a>
     <ul class="nav-links" id="navDesktopLinks">
       <li><a href="/#start-here">Start here</a></li>
       <li><a href="/#what-is-moringa">The plant</a></li>
@@ -290,10 +282,7 @@ function footer() {
   <div class="footer-pro-inner">
     <div class="footer-cols">
       <div class="footer-col">
-        <div class="footer-brand-logo">
-          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 4C10 4 5 10 5 18C5 24 10 28 16 28C22 28 27 24 27 18C27 10 22 4 16 4Z" fill="#4cae5a" opacity="0.25"/><path d="M16 4C16 4 8 8 8 18C8 24 11.5 28 16 28" stroke="#b8e0c0" stroke-width="2" stroke-linecap="round"/><path d="M16 4C16 4 24 8 24 18C24 24 20.5 28 16 28" stroke="#b8e0c0" stroke-width="2" stroke-linecap="round"/><path d="M16 28V14" stroke="#d4a53a" stroke-width="1.5" stroke-linecap="round"/></svg>
-          Moringa<span>Suppliers</span>India
-        </div>
+        <div class="footer-brand-logo"><img src="/logo.svg" width="28" height="28" alt="Moringa Suppliers India" decoding="async" /></div>
         <p class="footer-tagline">Independent guides for buyers sourcing Moringa from India and trusted retail options on Amazon (US).</p>
         <p class="footer-owner-line">Avinash Chauhan &middot; Publisher &middot; B.Sc. CS (University of Mumbai) &middot; <a href="https://imageactionbot.com" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">ImageActionBot</a></p>
         <div class="footer-contact-mini">

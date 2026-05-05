@@ -109,7 +109,7 @@ body {
 }
 
 /* Typography */
-h1, h2, h3, h4, h5, h6, .serif, .logo {
+h1, h2, h3, h4, h5, h6, .serif {
   font-family: 'Playfair Display', serif;
 }
 
@@ -290,22 +290,13 @@ section {
 .logo {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: clamp(0.88rem, 0.55rem + 0.9vw, 1.18rem);
-  font-weight: 700;
-  color: var(--green-dark);
   text-decoration: none;
   flex: 0 1 auto;
   min-width: 0;
-  line-height: 1.1;
-  white-space: nowrap;
+  line-height: 0;
 }
 
-.logo span {
-  color: var(--gold);
-}
-
-.logo svg {
+.logo img {
   width: clamp(26px, 2.2vw, 32px);
   height: clamp(26px, 2.2vw, 32px);
   flex-shrink: 0;
@@ -2075,14 +2066,15 @@ footer {
 .footer-brand-logo {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-family: 'Playfair Display', serif;
-  font-size: 1.2rem;
-  color: var(--green-light);
   margin-bottom: 1rem;
-  font-weight: 700;
+  line-height: 0;
 }
-.footer-brand-logo span { color: var(--gold); }
+.footer-brand-logo img {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  display: block;
+}
 .footer-tagline {
   font-size: 0.82rem;
   line-height: 1.7;

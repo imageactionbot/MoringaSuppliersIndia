@@ -8,18 +8,28 @@ const path = require('path');
 const root = path.join(__dirname, '..');
 const SKIP = new Set(['node_modules', '.git', 'content']);
 
-const OLD_STANDARD_TAGLINE =
-  '<p class="footer-tagline">Independent guides for buyers sourcing Moringa from India and trusted retail options on Amazon (US).</p>';
+const STANDARD_LEGACY = [
+  '<p class="footer-tagline">Independent guides for buyers sourcing Moringa from India and trusted retail options on Amazon (US).</p>',
+  '<p class="footer-tagline">U.S. readers first &mdash; Amazon.com retail (USD) and IndiaMART bulk RFQs (both usable from the United States). India export &amp; supplier verification second. Global readers welcome third. Independent editorial.</p>',
+];
 const NEW_STANDARD_TAGLINE =
-  '<p class="footer-tagline">U.S. readers first &mdash; Amazon.com retail (USD) and IndiaMART bulk RFQs (both usable from the United States). India export &amp; supplier verification second. Global readers welcome third. Independent editorial.</p>';
+  '<p class="footer-tagline">American and USA shoppers first &mdash; Amazon.com retail (USD) plus IndiaMART bulk RFQs you can run from the USA. India export &amp; supplier verification second. Global readers welcome third. Independent editorial.</p>';
 
 const OLD_INDEX_TAGLINE =
   '<p class="footer-tagline">Independent informational resource for international buyers sourcing Moringa from India. Researched from publicly available trade and government sources.</p>';
+const INDEX_LEGACY = [
+  OLD_INDEX_TAGLINE,
+  '<p class="footer-tagline">U.S. visitors first: Amazon.com (USD) &amp; IndiaMART bulk quotes (usable from the U.S.). India export documentation &amp; supplier checks second. Global readers third. Research from public trade &amp; government sources where cited.</p>',
+];
 const NEW_INDEX_TAGLINE =
-  '<p class="footer-tagline">U.S. visitors first: Amazon.com (USD) &amp; IndiaMART bulk quotes (usable from the U.S.). India export documentation &amp; supplier checks second. Global readers third. Research from public trade &amp; government sources where cited.</p>';
+  '<p class="footer-tagline">American and USA visitors first: Amazon.com (USD) and IndiaMART bulk quotes you can place from the USA. India export documentation &amp; supplier checks second. Global readers welcome third. Research from public trade &amp; government sources where cited.</p>';
 
 const OLD_HOME_LI = '<li><a href="/">India buyer guide (home)</a></li>';
-const NEW_HOME_LI = '<li><a href="/">Home &mdash; U.S. retail + India sourcing</a></li>';
+const HOME_LEGACY = [
+  OLD_HOME_LI,
+  '<li><a href="/">Home &mdash; U.S. retail + India sourcing</a></li>',
+];
+const NEW_HOME_LI = '<li><a href="/">Home &mdash; USA retail + India sourcing</a></li>';
 
 function walkHtml(dir, out) {
   for (const ent of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -39,10 +49,16 @@ function main() {
     const orig = s;
     const rel = path.relative(root, p).replace(/\\/g, '/');
     if (rel === 'index.html') {
-      if (s.includes(OLD_INDEX_TAGLINE)) s = s.split(OLD_INDEX_TAGLINE).join(NEW_INDEX_TAGLINE);
+      for (const old of INDEX_LEGACY) {
+        if (s.includes(old)) s = s.split(old).join(NEW_INDEX_TAGLINE);
+      }
     }
-    if (s.includes(OLD_STANDARD_TAGLINE)) s = s.split(OLD_STANDARD_TAGLINE).join(NEW_STANDARD_TAGLINE);
-    if (s.includes(OLD_HOME_LI)) s = s.split(OLD_HOME_LI).join(NEW_HOME_LI);
+    for (const old of STANDARD_LEGACY) {
+      if (s.includes(old)) s = s.split(old).join(NEW_STANDARD_TAGLINE);
+    }
+    for (const old of HOME_LEGACY) {
+      if (s.includes(old)) s = s.split(old).join(NEW_HOME_LI);
+    }
     if (s !== orig) {
       fs.writeFileSync(p, s, 'utf8');
       n++;

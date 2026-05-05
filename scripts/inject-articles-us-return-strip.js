@@ -14,9 +14,9 @@ const articlesDir = path.join(root, 'articles');
 const MARKER = '<!-- reader-return-strip-us:v1 -->';
 
 const STRIP = `${MARKER}
-<aside class="reader-return-strip" role="complementary" aria-label="U.S. visitor shortcuts — bookmark for repeat visits">
-  <h2 class="reader-return-strip__title">Save for your next U.S. checkout or import</h2>
-  <p class="reader-return-strip__lede">Most readers use <strong>Amazon.com</strong> (USD retail) or run <strong>IndiaMART</strong> bulk RFQs from the United States—same verification tools on every guide:</p>
+<aside class="reader-return-strip" role="complementary" aria-label="Shortcuts to bookmark — retail and India sourcing">
+  <h2 class="reader-return-strip__title">Save for your next checkout or import</h2>
+  <p class="reader-return-strip__lede">Many readers shop <strong>Amazon.com</strong> (USD listings) or run <strong>IndiaMART</strong> bulk RFQs &mdash; often from the USA. Same verification tools on every guide:</p>
   <ul class="reader-return-strip__list">
     <li><a href="/products/"><strong>Amazon product guides</strong></a> — powder, capsules, tea, oil &amp; skincare.</li>
     <li><a href="/brands/"><strong>Brand guides</strong></a> — who sells what with NPOP/USDA context.</li>
@@ -36,7 +36,7 @@ const BOILERPLATE_RE =
 
 function replaceBoilerplate(html) {
   return html.replace(BOILERPLATE_RE, (_, inner) => {
-    return `<p>This guide frames ${inner} with <strong>U.S. buyer reality first</strong> (Amazon.com retail benchmarks and bulk RFQs many readers run from the United States), <strong>India export mechanics second</strong>, and other regions third&mdash;without hype that fails regulatory or B2B scrutiny.</p>`;
+    return `<p>This guide frames ${inner} with <strong>American buyer context first</strong> (Amazon.com retail benchmarks and bulk RFQs many readers run from the USA), <strong>India export mechanics second</strong>, and other regions third&mdash;without hype that fails regulatory or B2B scrutiny.</p>`;
   });
 }
 

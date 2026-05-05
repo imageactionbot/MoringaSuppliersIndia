@@ -28,7 +28,7 @@ const OG_DEFAULT_IMAGE = `${SITE}/Moringa_All_Products.webp`;
 /** SVG fallback used by some legacy share targets (kept for reference). */
 const OG_BRAND_SVG = `${SITE}/og-brand.svg`;
 /** Bust CDN/browser cache when CSS/JS change; bump after edits to main.css or main.js. */
-const ASSET_VER = '48';
+const ASSET_VER = '49';
 
 const AMZ = {
   organicIndia: 'https://amzn.to/3QKamqU',
@@ -278,7 +278,7 @@ function footer() {
     <div class="footer-cols">
       <div class="footer-col">
         <div class="footer-brand-logo"><img src="/logo.svg" width="28" height="28" alt="Moringa Suppliers India" decoding="async" /></div>
-        <p class="footer-tagline">U.S. readers first &mdash; Amazon.com retail (USD) and IndiaMART bulk RFQs (both usable from the United States). India export &amp; supplier verification second. Global readers welcome third. Independent editorial.</p>
+        <p class="footer-tagline">American and USA shoppers first &mdash; Amazon.com retail (USD) plus IndiaMART bulk RFQs you can run from the USA. India export &amp; supplier verification second. Global readers welcome third. Independent editorial.</p>
         <p class="footer-owner-line">Avinash Chauhan &middot; Publisher &middot; B.Sc. CS (University of Mumbai) &middot; <a href="https://imageactionbot.com" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">ImageActionBot</a></p>
         <div class="footer-contact-mini">
           &#9993; <a href="mailto:moringasuppliersindia@gmail.com">moringasuppliersindia@gmail.com</a>
@@ -302,7 +302,7 @@ function footer() {
         <li><a href="/products/">Products hub</a></li>
         <li><a href="/brands/">Brands hub</a></li>
         <li><a href="/compare/">Compare hub</a></li>
-        <li><a href="/">Home &mdash; U.S. retail + India sourcing</a></li>
+        <li><a href="/">Home &mdash; USA retail + India sourcing</a></li>
       </ul></div>
       <div class="footer-col"><h4>Legal</h4><ul>
         <li><a href="/legal/disclaimer.html">Disclaimer</a></li>

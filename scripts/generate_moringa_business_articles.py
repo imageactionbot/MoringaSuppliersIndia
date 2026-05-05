@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 
 from moringa_business_article_bodies import EXTRA_ARTICLES
+from moringa_business_article_batch2 import BATCH2_ARTICLES
 
 ROOT = Path(__file__).resolve().parent.parent
 ART_DIR = ROOT / "articles"
@@ -137,7 +138,7 @@ def article_footer(related_slug_titles: list[tuple[str, str]]) -> str:
 <ul class="related-articles-list">
 {lis}
 </ul>
-<p><a href="/articles/">&larr; All guides</a> (39 articles) &middot; <a href="/products/">Product guides</a> &middot; <a href="/brands/">Brand guides</a> &middot; <a href="/compare/">Comparisons</a></p>
+<p><a href="/articles/">&larr; All guides</a> (58 articles) &middot; <a href="/products/">Product guides</a> &middot; <a href="/brands/">Brand guides</a> &middot; <a href="/compare/">Comparisons</a></p>
 </div>
 </div>
 """
@@ -378,6 +379,13 @@ RELATED_DEFAULT = [
     ("high-quality-moringa-suppliers-india.html", "Vetting high-quality moringa suppliers"),
     ("moringa-business-models-farming-trading-export.html", "Moringa business models"),
     ("is-moringa-profitable-business-2026.html", "Is moringa profitable in 2026+?"),
+    ("moringa-export-profit-margin-explained.html", "Export profit margin explained"),
+    ("how-much-money-moringa-export-india.html", "How much money from moringa export"),
+    ("moringa-export-requirements-usa-europe.html", "Export requirements: USA &amp; Europe"),
+    ("moringa-wholesale-export-pricing-strategy.html", "Wholesale export pricing strategy"),
+    ("moringa-farming-cost-per-acre-breakdown.html", "Farming cost per acre breakdown"),
+    ("moringa-powder-manufacturing-cost-setup-india.html", "Powder manufacturing cost &amp; setup"),
+    ("why-moringa-demand-increasing-worldwide.html", "Why moringa demand is rising"),
 ]
 
 
@@ -508,8 +516,10 @@ def main() -> None:
 
     for spec in EXTRA_ARTICLES:
         write_article(**spec)
+    for spec in BATCH2_ARTICLES:
+        write_article(**spec)
 
-    print("Done. Wrote", 1 + len(EXTRA_ARTICLES), "business articles.")
+    print("Done. Wrote", 1 + len(EXTRA_ARTICLES) + len(BATCH2_ARTICLES), "business articles.")
 
 if __name__ == "__main__":
     main()

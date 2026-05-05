@@ -2390,6 +2390,15 @@ a.home-article-card:focus-visible .home-article-cta-arrow {
   max-width: 48rem;
   margin: 0 auto 1.25rem;
 }
+.articles-hub-intro-tools {
+  margin: 1rem 0 0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+.articles-hub-intro-tools a {
+  color: var(--green-main);
+  font-weight: 600;
+}
 .articles-hub-cta-hint {
   font-size: 0.9rem;
   color: var(--text-muted);
@@ -3216,6 +3225,85 @@ body.has-mobile-nav {
 }
 .articles-hub-list li.is-filter-hidden {
   display: none !important;
+}
+
+/* /search.html — client-side index */
+.site-search-panel {
+  margin: 1.25rem 0 1rem;
+  padding: 1.15rem 1.2rem;
+  background: var(--white);
+  border: 1px solid rgba(45, 138, 58, 0.18);
+  border-radius: var(--radius-sm);
+}
+.site-search-input {
+  width: 100%;
+  max-width: 32rem;
+  padding: 0.65rem 0.85rem;
+  font-size: 1rem;
+  border: 1px solid rgba(45, 138, 58, 0.28);
+  border-radius: 10px;
+  font-family: inherit;
+}
+.site-search-input:focus {
+  outline: 2px solid var(--green-main);
+  outline-offset: 1px;
+}
+.site-search-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+  color: var(--green-deep);
+}
+.site-search-hint {
+  margin: 0.65rem 0 0;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  max-width: 40rem;
+}
+#siteSearchStatus {
+  margin: 1rem 0 0.35rem;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+.site-search-results-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.site-search-hit {
+  padding: 0.85rem 0;
+  border-bottom: 1px solid rgba(45, 138, 58, 0.12);
+}
+.site-search-hit:last-child {
+  border-bottom: none;
+}
+.site-search-hit a {
+  text-decoration: none;
+  color: var(--green-deep);
+}
+.site-search-hit a:hover .site-search-hit-title {
+  text-decoration: underline;
+}
+.site-search-hit-title {
+  font-weight: 700;
+  font-size: 1rem;
+  display: block;
+}
+.site-search-hit-meta {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 0.2rem;
+}
+.site-search-hit-desc {
+  margin: 0.35rem 0 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--text-body);
+}
+.site-search-empty {
+  margin: 1rem 0;
+  color: var(--text-muted);
 }
 
 .articles-hub-grid {

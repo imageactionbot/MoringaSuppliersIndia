@@ -28,7 +28,7 @@ const OG_DEFAULT_IMAGE = `${SITE}/Moringa_All_Products.webp`;
 /** SVG fallback used by some legacy share targets (kept for reference). */
 const OG_BRAND_SVG = `${SITE}/og-brand.svg`;
 /** Bust CDN/browser cache when CSS/JS change; bump after edits to main.css or main.js. */
-const ASSET_VER = '42';
+const ASSET_VER = '43';
 
 const AMZ = {
   organicIndia: 'https://amzn.to/3QKamqU',
@@ -246,6 +246,7 @@ function nav() {
       <li><a href="/#start-here">Start here</a></li>
       <li><a href="/#what-is-moringa">The plant</a></li>
       <li><a href="/articles/">Articles</a></li>
+      <li><a href="/search.html">Search</a></li>
       <li><a href="/about.html">About us</a></li>
       <li><a href="/products/">Products</a></li>
       <li><a href="/brands/">Brands</a></li>
@@ -268,6 +269,7 @@ function nav() {
     <a href="/#start-here"><strong>Start here — how to use this site</strong></a>
     <a href="/about.html">About us</a>
     <a href="/articles/">Moringa guides</a>
+    <a href="/search.html">Search</a>
     <a href="/products/">Product guides</a>
     <a href="/brands/">Brand guides</a>
     <a href="/compare/">Comparisons</a>
@@ -306,6 +308,7 @@ function footer() {
           <li><a href="/#supplier-credentials">Credential checklist (home)</a></li>
           <li><a href="/products/">Retail product guides</a></li>
           <li><a href="/articles/">Articles library</a></li>
+          <li><a href="/search.html">Site search</a></li>
           <li><a href="/#suppliers">Bulk sourcing &amp; suppliers</a></li>
         </ul>
       </div>

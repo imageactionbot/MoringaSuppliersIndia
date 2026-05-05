@@ -91,7 +91,7 @@ NAV_AND_FOOTER_TAIL = r"""
 </div>
 <button class="scroll-top" id="scrollTopBtn" aria-label="Scroll to top">&uarr;</button>
 </div>
-<script defer src="/assets/js/main.js?v=41"></script>
+<script defer src="/assets/js/main.js?v=42"></script>
 </body>
 </html>
 """
@@ -354,7 +354,7 @@ def build_head(
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/main.css?v=41" />
+  <link rel="stylesheet" href="/assets/css/main.css?v=42" />
   <script type="application/ld+json">{ld_json}</script>
 </head>
 <body data-section="article">

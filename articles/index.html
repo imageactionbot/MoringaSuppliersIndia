@@ -75,7 +75,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/main.css?v=41" />
+  <link rel="stylesheet" href="/assets/css/main.css?v=42" />
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.moringasuppliersindia.com/#organization","name":"Moringa Suppliers India","alternateName":["MoringaSuppliersIndia","Moringa Suppliers in India"],"url":"https://www.moringasuppliersindia.com","logo":{"@type":"ImageObject","url":"https://www.moringasuppliersindia.com/logo.svg","width":256,"height":256,"caption":"Moringa Suppliers India"},"image":{"@type":"ImageObject","url":"https://www.moringasuppliersindia.com/Moringa_All_Products.webp","caption":"Moringa products from India: powder, capsules, oil, tea, soap"},"email":"moringasuppliersindia@gmail.com","founder":{"@type":"Person","name":"Avinash Chauhan"},"knowsAbout":["Moringa oleifera","Moringa suppliers in India","Organic moringa powder","Moringa capsules","Moringa oil","Moringa tea","NPOP organic certification","USDA organic moringa","EU organic moringa","Moringa export from India"],"areaServed":{"@type":"Place","name":"Worldwide"}},{"@type":"WebSite","@id":"https://www.moringasuppliersindia.com/#website","name":"Moringa Suppliers India","alternateName":"Moringa Suppliers in India","url":"https://www.moringasuppliersindia.com","publisher":{"@id":"https://www.moringasuppliersindia.com/#organization"},"inLanguage":"en"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.moringasuppliersindia.com/"},{"@type":"ListItem","position":2,"name":"Articles"}],"@id":"https://www.moringasuppliersindia.com/articles/#breadcrumb"},{"@type":"CollectionPage","name":"Moringa Articles","url":"https://www.moringasuppliersindia.com/articles/","numberOfItems":78,"description":"Editorial guides on Moringa oleifera from India — farming, export, processing, buyers, retail education and verification."}]}</script>
   
 </head>
@@ -172,8 +172,22 @@
 <h2>Guides by topic</h2>
 <p>Organic <strong>Moringa oleifera</strong> from India: safety, purity, powder and capsules, brand comparisons, export paperwork, EU market rules, cooking, tea, skincare, and pets.</p>
 </div>
+<div class="articles-hub-toolbar" role="region" aria-label="Find a guide">
+  <label class="articles-hub-search-label" for="articlesHubSearch">Search guides</label>
+  <input type="search" id="articlesHubSearch" class="articles-hub-search" placeholder="Search titles and descriptions…" autocomplete="off" enterkeyhint="search" />
+  <div class="articles-hub-filters" role="group" aria-label="Topic filters">
+    <button type="button" class="articles-hub-chip is-active" data-filter="all">All</button>
+    <button type="button" class="articles-hub-chip" data-filter="buyers">Buyers &amp; sourcing</button>
+    <button type="button" class="articles-hub-chip" data-filter="export">Export &amp; trade</button>
+    <button type="button" class="articles-hub-chip" data-filter="farming">Farming</button>
+    <button type="button" class="articles-hub-chip" data-filter="processing">Processing</button>
+    <button type="button" class="articles-hub-chip" data-filter="wellness">Wellness &amp; retail education</button>
+    <button type="button" class="articles-hub-chip" data-filter="general">Other</button>
+  </div>
+  <p class="articles-hub-toolbar-hint" id="articlesHubCount" aria-live="polite"></p>
+</div>
 <div class="articles-hub-grid">
-<ul class="articles-hub-list"><li><a href="/articles/how-to-contact-indian-moringa-suppliers.html"><strong>How to Contact Indian Moringa Suppliers</strong></a><br><span class="articles-hub-desc">A practical, country-agnostic walkthrough for international buyers who want to reach verified moringa suppliers in India &mdash; channels, first-message template, verification checklist, geography, and red flags.</span></li>
+<ul class="articles-hub-list" id="articlesHubList"><li><a href="/articles/how-to-contact-indian-moringa-suppliers.html"><strong>How to Contact Indian Moringa Suppliers</strong></a><br><span class="articles-hub-desc">A practical, country-agnostic walkthrough for international buyers who want to reach verified moringa suppliers in India &mdash; channels, first-message template, verification checklist, geography, and red flags.</span></li>
 <li><a href="/articles/import-moringa-from-india-step-by-step.html"><strong>Importing Moringa from India: Step by Step</strong></a><br><span class="articles-hub-desc">Stage-by-stage guide to importing moringa from India for international buyers &mdash; SKU definition, supplier sourcing, sample evaluation, Incoterms, pre-shipment inspection, customs and incoming QC.</span></li>
 <li><a href="/articles/moringa-private-label-india.html"><strong>Moringa Private Label in India</strong></a><br><span class="articles-hub-desc">Brand-owner guide to private-label and contract manufacturing of moringa SKUs in India &mdash; typical MOQ and lead times, artwork brief, regulatory checklist, IP and exclusivity, and the costing breakdown.</span></li>
 <li><a href="/articles/moringa-bulk-buyer-checklist.html"><strong>Moringa Bulk Buyer Checklist</strong></a><br><span class="articles-hub-desc">Operational checklist that experienced importers run before issuing a first PO to any Indian moringa supplier &mdash; supplier identity, certifications, COA, sample evaluation, commercial terms, PSI, documentation pack and incoming QC.</span></li>
@@ -343,6 +357,7 @@
 </div>
 <button class="scroll-top" id="scrollTopBtn" aria-label="Scroll to top">&uarr;</button>
 </div>
-<script defer src="/assets/js/main.js?v=41"></script>
+<script defer src="/assets/js/main.js?v=42"></script>
+<script defer src="/assets/js/articles-hub-filter.js?v=42"></script>
 </body>
 </html>

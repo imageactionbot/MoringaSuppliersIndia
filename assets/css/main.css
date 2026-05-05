@@ -3149,6 +3149,75 @@ body.has-mobile-nav {
     column-gap: 2rem;
   }
 }
+.articles-hub-toolbar {
+  position: relative;
+  margin-top: 1.5rem;
+  padding: 1.1rem 1.15rem 1.15rem;
+  background: linear-gradient(165deg, rgba(248, 252, 248, 1) 0%, var(--white) 60%);
+  border: 1px solid rgba(45, 138, 58, 0.18);
+  border-radius: var(--radius-sm);
+}
+.articles-hub-search {
+  width: 100%;
+  max-width: 28rem;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.95rem;
+  border: 1px solid rgba(45, 138, 58, 0.25);
+  border-radius: 8px;
+  margin-bottom: 0.85rem;
+  font-family: inherit;
+}
+.articles-hub-search:focus {
+  outline: 2px solid var(--green-main);
+  outline-offset: 1px;
+}
+.articles-hub-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  align-items: center;
+}
+.articles-hub-chip {
+  appearance: none;
+  border: 1px solid rgba(45, 138, 58, 0.3);
+  background: var(--white);
+  color: var(--green-deep);
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+.articles-hub-chip:hover {
+  border-color: var(--green-main);
+  background: rgba(248, 252, 248, 1);
+}
+.articles-hub-chip.is-active {
+  background: var(--green-main);
+  border-color: var(--green-main);
+  color: #fff;
+}
+.articles-hub-toolbar-hint {
+  margin: 0.75rem 0 0;
+  font-size: 0.84rem;
+  color: var(--text-muted);
+}
+.articles-hub-search-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.articles-hub-list li.is-filter-hidden {
+  display: none !important;
+}
+
 .articles-hub-grid {
   margin-top: 1.5rem;
 }
@@ -3961,6 +4030,72 @@ time[itemprop="dateModified"]:not([data-show]) {
   font-weight: 600;
   font-size: 0.95rem;
   color: var(--green-dark, #1a5c2e);
+}
+
+/* Home: fold-level visitor lanes (before long orientation copy) */
+.visitor-path-strip {
+  padding: 2rem 0 2.25rem;
+  background: linear-gradient(180deg, rgba(248, 252, 248, 1) 0%, var(--white, #fff) 100%);
+  border-bottom: 1px solid var(--green-pale);
+}
+.visitor-path-strip-heading {
+  margin: 0 0 0.35rem;
+  font-size: 1.35rem;
+  font-family: var(--font-display, "Playfair Display", Georgia, serif);
+  color: var(--green-deep, #1a5c2e);
+}
+.visitor-path-strip-lede {
+  margin: 0 0 1.25rem;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--text-muted, #5a6b5f);
+  max-width: 46rem;
+}
+.visitor-path-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr));
+}
+.visitor-path-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 1.15rem 1.2rem;
+  border-radius: var(--radius-sm, 10px);
+  border: 1px solid rgba(45, 138, 58, 0.22);
+  background: var(--white, #fff);
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 2px 12px rgba(45, 138, 58, 0.07);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.visitor-path-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(45, 138, 58, 0.4);
+  box-shadow: 0 10px 28px rgba(45, 138, 58, 0.12);
+}
+.visitor-path-label {
+  font-weight: 700;
+  font-size: 0.92rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--green-main, #2d8a3a);
+}
+.visitor-path-desc {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--text-body, #3d4f42);
+}
+.visitor-path-footnote {
+  margin: 1.35rem 0 0;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--text-muted, #5a6b5f);
+  max-width: 48rem;
+}
+.visitor-path-footnote a {
+  color: var(--green-main, #2d8a3a);
+  font-weight: 600;
 }
 
 /* Home: orientation / wayfinding (who this site is for) */

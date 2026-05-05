@@ -324,7 +324,8 @@ def build_head(
   <link rel="dns-prefetch" href="//fonts.gstatic.com" />
   <link rel="dns-prefetch" href="//pagead2.googlesyndication.com" />
   <meta property="og:type" content="article" />
-  <meta property="og:locale" content="en_IN" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="en_IN" />
   <meta property="og:site_name" content="Moringa Suppliers India" />
   <meta property="og:title" content="{og_title}" />
   <meta property="og:description" content="{og_desc}" />

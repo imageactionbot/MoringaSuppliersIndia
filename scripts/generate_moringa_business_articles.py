@@ -7,6 +7,7 @@ from pathlib import Path
 
 from moringa_business_article_bodies import EXTRA_ARTICLES
 from moringa_business_article_batch2 import BATCH2_ARTICLES
+from moringa_business_article_batch3 import BATCH3_ARTICLES
 
 ROOT = Path(__file__).resolve().parent.parent
 ART_DIR = ROOT / "articles"
@@ -138,7 +139,7 @@ def article_footer(related_slug_titles: list[tuple[str, str]]) -> str:
 <ul class="related-articles-list">
 {lis}
 </ul>
-<p><a href="/articles/">&larr; All guides</a> (58 articles) &middot; <a href="/products/">Product guides</a> &middot; <a href="/brands/">Brand guides</a> &middot; <a href="/compare/">Comparisons</a></p>
+<p><a href="/articles/">&larr; All guides</a> (78 articles) &middot; <a href="/products/">Product guides</a> &middot; <a href="/brands/">Brand guides</a> &middot; <a href="/compare/">Comparisons</a></p>
 </div>
 </div>
 """
@@ -386,6 +387,9 @@ RELATED_DEFAULT = [
     ("moringa-farming-cost-per-acre-breakdown.html", "Farming cost per acre breakdown"),
     ("moringa-powder-manufacturing-cost-setup-india.html", "Powder manufacturing cost &amp; setup"),
     ("why-moringa-demand-increasing-worldwide.html", "Why moringa demand is rising"),
+    ("moringa-international-shipping-logistics-cost-guide.html", "International shipping &amp; logistics"),
+    ("moringa-supply-chain-farmer-to-exporter.html", "Supply chain: farmer to exporter"),
+    ("moringa-quality-control-export-grade.html", "QC for export-grade moringa"),
 ]
 
 
@@ -518,8 +522,10 @@ def main() -> None:
         write_article(**spec)
     for spec in BATCH2_ARTICLES:
         write_article(**spec)
+    for spec in BATCH3_ARTICLES:
+        write_article(**spec)
 
-    print("Done. Wrote", 1 + len(EXTRA_ARTICLES) + len(BATCH2_ARTICLES), "business articles.")
+    print("Done. Wrote", 1 + len(EXTRA_ARTICLES) + len(BATCH2_ARTICLES) + len(BATCH3_ARTICLES), "business articles.")
 
 if __name__ == "__main__":
     main()

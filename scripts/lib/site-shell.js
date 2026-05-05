@@ -28,7 +28,7 @@ const OG_DEFAULT_IMAGE = `${SITE}/Moringa_All_Products.webp`;
 /** SVG fallback used by some legacy share targets (kept for reference). */
 const OG_BRAND_SVG = `${SITE}/og-brand.svg`;
 /** Bust CDN/browser cache when CSS/JS change; bump after edits to main.css or main.js. */
-const ASSET_VER = '44';
+const ASSET_VER = '45';
 
 const AMZ = {
   organicIndia: 'https://amzn.to/3QKamqU',
@@ -66,17 +66,10 @@ ${guideAssistHtml()}
 </div>`;
 }
 
-/** Floating Help assistant (links to guides + affiliates). */
+/** Floating Search shortcut (opens on-site search). */
 function guideAssistHtml() {
   return `<div class="guide-assist" id="guideAssist">
-  <button type="button" class="guide-assist-fab" id="guideAssistToggle" aria-expanded="false" aria-controls="guideAssistPanel" aria-label="Help: retail, wholesale, and purity checklist">Help</button>
-  <div class="guide-assist-panel" id="guideAssistPanel" role="dialog" aria-modal="true" aria-label="Quick choices" hidden>
-    <p class="guide-assist-lead">Pick a path &mdash; we send you to the right retail guide or B2B marketplace listing.</p>
-    <a class="guide-assist-link guide-assist-link--amz" href="/products/">&#128717;&#65039; Buy small quantity (Amazon guides)</a>
-    <a class="guide-assist-link guide-assist-link--b2b" href="${INDIAMART.moringa}" target="_blank" rel="sponsored nofollow noopener">&#127981; Source in bulk (IndiaMART)</a>
-    <a class="guide-assist-link guide-assist-link--doc" href="/purity-checklist.html">&#128196; Purity checklist (print / save as PDF)</a>
-    <button type="button" class="guide-assist-close" id="guideAssistClose">Close</button>
-  </div>
+  <a href="/search.html" class="guide-assist-fab guide-assist-fab--search" aria-label="Search all moringa guides and pages on this site"><svg class="guide-assist-fab-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2.2"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span>Search</span></a>
 </div>`;
 }
 
@@ -233,7 +226,10 @@ function nav() {
   return `<a class="skip-link" href="#main">Skip to main content</a>
 <nav class="navbar" id="navbar">
   <div class="nav-inner">
+    <div class="nav-brand">
     <a href="/" class="logo"><img src="/logo.svg" width="32" height="32" alt="Moringa Suppliers India" decoding="async" /></a>
+    <a href="/search.html" class="nav-search-ic" aria-label="Search site — moringa guides and products"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2.2"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></a>
+    </div>
     <ul class="nav-links" id="navDesktopLinks">
       <li><a href="/#start-here">Start here</a></li>
       <li><a href="/#what-is-moringa">The plant</a></li>

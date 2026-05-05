@@ -303,6 +303,65 @@ section {
   display: block;
 }
 
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+  flex-shrink: 0;
+  min-width: 0;
+}
+
+.nav-search-ic {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  border-radius: var(--radius-sm);
+  color: var(--green-dark);
+  border: 1px solid transparent;
+  text-decoration: none;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.nav-search-ic:hover {
+  border-color: var(--green-pale);
+  background: var(--green-ultra);
+}
+
+.nav-search-ic:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.nav-search-ic svg {
+  display: block;
+}
+
+.retail-usd-inr-hint {
+  margin: 0 0 1rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(45, 138, 58, 0.22);
+  border-radius: var(--radius-sm);
+  color: var(--text-body);
+  max-width: 52rem;
+}
+
+.hero .retail-usd-inr-hint {
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.retail-usd-inr-hint__meta {
+  color: var(--text-muted);
+  font-weight: 400;
+  font-size: 0.78rem;
+}
+
 .nav-links {
   display: flex;
   flex-wrap: nowrap;
@@ -3220,6 +3279,30 @@ body.has-mobile-nav {
 }
 
 /* /search.html — client-side index */
+.site-search-quicklinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0 0 1.15rem;
+  align-items: center;
+}
+.site-search-quicklink {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border-radius: 100px;
+  text-decoration: none;
+  border: 1px solid var(--green-pale);
+  background: var(--green-ultra);
+  color: var(--green-deep) !important;
+}
+.site-search-quicklink:hover {
+  border-color: var(--green-main);
+  background: #fff;
+}
+
 .site-search-panel {
   margin: 1.25rem 0 1rem;
   padding: 1.15rem 1.2rem;
@@ -4670,6 +4753,23 @@ time[itemprop="dateModified"]:not([data-show]) {
 .guide-assist-fab:focus-visible {
   outline: 2px solid var(--gold);
   outline-offset: 3px;
+}
+
+.guide-assist-fab--search {
+  text-decoration: none;
+  color: #fff !important;
+}
+
+.guide-assist-fab--search:hover {
+  color: #fff !important;
+}
+
+.guide-assist-fab-icon {
+  flex-shrink: 0;
+}
+
+.guide-assist-fab--search::before {
+  display: none;
 }
 
 .guide-assist-fab::before {

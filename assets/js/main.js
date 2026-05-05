@@ -124,7 +124,7 @@
         gToggle.setAttribute('aria-expanded', 'false');
       }
     }
-    if (gToggle && gPanel) {
+    if (gToggle && gPanel && gToggle.tagName === 'BUTTON') {
       gToggle.addEventListener('click', function () {
         guideOpen(gPanel.hasAttribute('hidden'));
       });
@@ -138,6 +138,56 @@
         });
       }
     }
+
+    function injectRetailUsdInrHint() {
+      var sec = document.body && document.body.getAttribute('data-section');
+      var path = location.pathname.replace(/\/$/, '') || '/';
+      var retail =
+        sec === 'product' ||
+        sec === 'brand' ||
+        sec === 'compare' ||
+        path === '/' ||
+        path === '/products' ||
+        path.indexOf('/brands') === 0 ||
+        path.indexOf('/compare') === 0 ||
+        path.indexOf('/products') === 0;
+      if (!retail) return;
+      if (document.getElementById('retailUsdInrHint')) return;
+      var el = document.createElement('div');
+      el.id = 'retailUsdInrHint';
+      el.className = 'retail-usd-inr-hint';
+      el.setAttribute('role', 'note');
+      el.innerHTML =
+        '<strong>Retail pricing:</strong> Amazon guides here quote <strong>US dollars ($)</strong> because listings are on Amazon.com. Loading today’s indicative <strong>USD → INR</strong> rate…';
+      if (path === '/') {
+        var heroC = document.querySelector('.hero .container');
+        if (heroC) heroC.insertBefore(el, heroC.firstChild);
+      } else {
+        var main = document.querySelector('main#main') || document.querySelector('main');
+        if (main) main.insertBefore(el, main.firstChild);
+      }
+      fetch('https://api.frankfurter.app/latest?from=USD&to=INR')
+        .then(function (r) {
+          return r.json();
+        })
+        .then(function (data) {
+          var rate = data && data.rates && data.rates.INR;
+          var date = data && data.date;
+          if (!rate) throw new Error('no rate');
+          el.innerHTML =
+            '<strong>Retail pricing:</strong> Amazon guides quote <strong>US dollars ($)</strong> (Amazon.com). <strong>Indicative FX:</strong> <strong>1 USD ≈ ' +
+            rate.toFixed(2) +
+            ' INR</strong> <span class="retail-usd-inr-hint__meta">(ECB reference via Frankfurter, date ' +
+            date +
+            ' — not a bank rate).</span> Farming &amp; export articles may still show <strong>₹</strong> for India-only operating costs.';
+        })
+        .catch(function () {
+          el.innerHTML =
+            '<strong>Retail pricing:</strong> Guides quote <strong>US dollars ($)</strong> on Amazon.com. For rough mental math many readers use bands like <strong>1 USD ≈ 83–93 INR</strong>; confirm conversions with your bank or a live FX feed. India domestic cost articles may still use ₹.';
+        });
+    }
+
+    injectRetailUsdInrHint();
 
     var kgEl = document.getElementById('kgInput');
     var lbEl = document.getElementById('lbInput');

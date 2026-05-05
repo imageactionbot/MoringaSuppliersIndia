@@ -1,0 +1,32 @@
+Google Search Console — Domain property verification (DNS TXT)
+
+Why GitHub alone cannot fix this
+  Search Console “Domain name provider” checks your DOMAIN’s DNS (at the
+  registrar / DNS host), not your GitHub repository. www is already a CNAME
+  to GitHub Pages; the verification TXT record must live on the apex host
+  “moringasuppliersindia.com” (@).
+
+What to add at Hostinger (hPanel → Domains → your domain → DNS / DNS Zone Editor)
+  Type: TXT
+  Name / Host: @   ← apex only; do NOT use “www” for this line
+  TXT value (one string, paste exactly):
+    google-site-verification=f08AcNGqwN3eeVx55GkFpMA4CDRYx7Sr5cw9_V4g7OQ
+
+  Some panels split into “host” + “value”. If “value” must not include a
+  leading “google-site-verification=”, use Host: google-site-verification
+  and Value only: f08AcNGqwN3eeVx55GkFpMA4CDRYx7Sr5cw9_V4g7OQ
+  — but most UIs expect the full string above in the TXT value field with
+  Host @.
+
+After saving
+  Wait for DNS propagation (often minutes; can be a few hours). Then in
+  Search Console use “Verify” again.
+
+Check from Windows PowerShell:
+  Resolve-DnsName -Name moringasuppliersindia.com -Type TXT
+  You should see a TXT record containing the verification string.
+
+If you only need URL-prefix verification (not whole domain)
+  Add property https://www.moringasuppliersindia.com/ and choose the
+  “HTML tag” method. The meta tag is already in site index.html after you
+  deploy from this repo.

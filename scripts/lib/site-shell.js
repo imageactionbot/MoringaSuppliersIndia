@@ -28,7 +28,7 @@ const OG_DEFAULT_IMAGE = `${SITE}/Moringa_All_Products.webp`;
 /** SVG fallback used by some legacy share targets (kept for reference). */
 const OG_BRAND_SVG = `${SITE}/og-brand.svg`;
 /** Bust CDN/browser cache when CSS/JS change; bump after edits to main.css or main.js. */
-const ASSET_VER = '39';
+const ASSET_VER = '41';
 
 const AMZ = {
   organicIndia: 'https://amzn.to/3QKamqU',
@@ -293,7 +293,7 @@ function footer() {
           Moringa<span>Suppliers</span>India
         </div>
         <p class="footer-tagline">Independent guides for buyers sourcing Moringa from India and trusted retail options on Amazon (US).</p>
-        <p class="footer-owner-line">Avinash Chauhan &middot; Independent developer &amp; site owner</p>
+        <p class="footer-owner-line">Avinash Chauhan &middot; Publisher &middot; B.Sc. CS (University of Mumbai) &middot; <a href="https://imageactionbot.com" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">ImageActionBot</a></p>
         <div class="footer-contact-mini">
           &#9993; <a href="mailto:moringasuppliersindia@gmail.com">moringasuppliersindia@gmail.com</a>
         </div>
@@ -467,6 +467,13 @@ function layout(opts) {
   } = opts;
 
   const section = opts.section || sectionFromCanonical(canonical);
+  /** Article detail URLs only (not /articles/ hub): strengthens E-E-A-T sitewide when shell regenerates pages. */
+  const isArticleDetailPage =
+    typeof canonical === 'string' && /\/articles\/[^/]+\.html$/.test(canonical);
+  const publisherAsideHtml =
+    isArticleDetailPage && section === 'article'
+      ? `<aside class="article-publisher-aside" role="note" style="margin-top:2rem;padding:1rem 1.25rem;background:var(--green-ultra);border-radius:var(--radius-sm);border-left:4px solid var(--green-main);font-size:0.95rem;line-height:1.65;color:var(--text-body);"><!-- article-publisher-aside:v1 --><strong>About the publisher:</strong> Avinash Chauhan publishes this site independently &mdash; disclosures &amp; roadmap on <a href="/about.html">About us</a>. Sourcing introductions: <a href="mailto:moringasuppliersindia@gmail.com">moringasuppliersindia@gmail.com</a>.</aside>`
+      : '';
   const effectiveEyebrow = eyebrow || eyebrowFor(section);
   const img = ogImage || OG_DEFAULT_IMAGE;
   const titleEsc = String(title).replace(/"/g, '&quot;');
@@ -622,6 +629,7 @@ ${nav()}
   <article class="page-content wide page-content--${section}">
     <div class="container">
       ${content}
+      ${publisherAsideHtml}
     </div>
   </article>
 </main>

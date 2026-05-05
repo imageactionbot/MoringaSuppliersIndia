@@ -22,7 +22,7 @@ NAV_AND_FOOTER_TAIL = r"""
           Moringa<span>Suppliers</span>India
         </div>
         <p class="footer-tagline">Independent guides for buyers sourcing Moringa from India and trusted retail options on Amazon (US).</p>
-        <p class="footer-owner-line">Avinash Chauhan &middot; Independent developer &amp; site owner</p>
+        <p class="footer-owner-line">Avinash Chauhan &middot; Publisher &middot; B.Sc. CS (University of Mumbai) &middot; <a href="https://imageactionbot.com" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">ImageActionBot</a></p>
         <div class="footer-contact-mini">
           &#9993; <a href="mailto:moringasuppliersindia@gmail.com">moringasuppliersindia@gmail.com</a>
         </div>
@@ -91,7 +91,7 @@ NAV_AND_FOOTER_TAIL = r"""
 </div>
 <button class="scroll-top" id="scrollTopBtn" aria-label="Scroll to top">&uarr;</button>
 </div>
-<script defer src="/assets/js/main.js?v=39"></script>
+<script defer src="/assets/js/main.js?v=41"></script>
 </body>
 </html>
 """
@@ -354,7 +354,7 @@ def build_head(
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/main.css?v=39" />
+  <link rel="stylesheet" href="/assets/css/main.css?v=41" />
   <script type="application/ld+json">{ld_json}</script>
 </head>
 <body data-section="article">

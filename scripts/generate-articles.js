@@ -25,6 +25,15 @@ const bodiesDir = path.join(root, 'content', 'article-bodies');
 const { ARTICLES } = require('./lib/articles-catalog');
 const { patchIndexAuthority } = require('./lib/patch-index-authority');
 
+function countArticleHtmlPages() {
+  const dir = path.join(root, 'articles');
+  try {
+    return fs.readdirSync(dir).filter((f) => f.endsWith('.html') && f !== 'index.html').length;
+  } catch {
+    return ARTICLES.length;
+  }
+}
+
 // Articles are intentionally evergreen: no visible dates in the hero, no
 // datePublished / dateModified in JSON-LD. This keeps the content from
 // looking stale six months from now and lines up with the "no date stamps"
@@ -398,7 +407,7 @@ ${amazonBtn(AMZ.organicIndiaCapsules, 'Organic India capsules — Amazon')}
     eyebrow: 'Editorial hub',
     lead: 'India organic Moringa &mdash; sourcing, safety, comparisons, and everyday use.',
     heroStats: [
-      { value: String(ARTICLES.length), label: 'Authority articles' },
+      { value: String(countArticleHtmlPages()), label: 'Authority articles' },
       { value: '100%', label: 'Editorial only' },
       { value: 'Evergreen', label: 'Maintained' },
     ],
@@ -406,12 +415,10 @@ ${amazonBtn(AMZ.organicIndiaCapsules, 'Organic India capsules — Amazon')}
     schemaJson: {
       '@type': 'CollectionPage',
       name: 'Moringa Articles',
+      description:
+        'Editorial guides on Moringa oleifera from India — farming, export, processing, buyers, retail education and verification.',
       url: `${SITE}/articles/`,
-      hasPart: ARTICLES.map((a) => ({
-        '@type': 'Article',
-        headline: a.h1,
-        url: `${SITE}/articles/${a.slug}.html`,
-      })),
+      numberOfItems: countArticleHtmlPages(),
     },
   });
 }

@@ -4807,10 +4807,6 @@ time[itemprop="dateModified"]:not([data-show]) {
   flex-shrink: 0;
 }
 
-.guide-assist-fab--search::before {
-  display: none;
-}
-
 .guide-assist-fab::before {
   content: "";
   display: inline-block;
@@ -4820,6 +4816,18 @@ time[itemprop="dateModified"]:not([data-show]) {
   background: rgba(255, 255, 255, 0.9);
   box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.35);
   flex-shrink: 0;
+}
+
+/* Search FAB uses SVG only — suppress decorative dot (must beat .guide-assist-fab::before cascade). */
+.guide-assist-fab.guide-assist-fab--search::before {
+  content: none;
+  display: none;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+  background: transparent;
 }
 
 .guide-assist-panel {

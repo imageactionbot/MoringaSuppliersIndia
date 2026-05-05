@@ -28,7 +28,7 @@ const OG_DEFAULT_IMAGE = `${SITE}/Moringa_All_Products.webp`;
 /** SVG fallback used by some legacy share targets (kept for reference). */
 const OG_BRAND_SVG = `${SITE}/og-brand.svg`;
 /** Bust CDN/browser cache when CSS/JS change; bump after edits to main.css or main.js. */
-const ASSET_VER = '49';
+const ASSET_VER = '50';
 
 const AMZ = {
   organicIndia: 'https://amzn.to/3QKamqU',
@@ -315,8 +315,11 @@ function footer() {
     </div>
     <div class="footer-bottom" style="flex-direction:column;align-items:flex-start;gap:0.6rem;">
       <div class="footer-affiliate-line">
-        <strong>Amazon Associates:</strong> <em>As an Amazon Associate, I earn from qualifying purchases.</em>
-        <a href="/legal/affiliate-disclosure.html">Details</a>
+        <strong>Affiliate disclosure:</strong>
+        <em>Amazon Associate</em> &mdash; we earn from qualifying Amazon purchases.
+        <span class="footer-affiliate-sep" aria-hidden="true">&middot;</span>
+        <em>IndiaMART</em> &mdash; we may earn a referral fee on labelled bulk-quote links.
+        <a href="/legal/affiliate-disclosure.html">Full policy</a>
       </div>
       <div style="display:flex;flex-wrap:wrap;justify-content:space-between;width:100%;padding-top:0.8rem;border-top:1px solid rgba(255,255,255,0.06);">
         <div>&copy; MoringaSuppliersIndia.com &middot; Independent buyer guide</div>

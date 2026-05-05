@@ -2225,6 +2225,22 @@ footer {
   color: var(--green-light);
   margin-left: 0.35rem;
 }
+.footer-affiliate-line .footer-affiliate-sep {
+  margin: 0 0.35rem;
+  opacity: 0.72;
+}
+.buyer-action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: stretch;
+  margin: 1rem 0 1.35rem;
+}
+.buyer-action-row .amazon-btn,
+.buyer-action-row .indiamart-btn {
+  width: auto;
+  flex: 1 1 min(260px, 100%);
+}
 
 /* Home page: guides grid (isolated layout; do not share broken pill styles) */
 .home-authority-section {

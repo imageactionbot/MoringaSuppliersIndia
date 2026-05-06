@@ -139,7 +139,7 @@ def article_footer(related_slug_titles: list[tuple[str, str]]) -> str:
 <ul class="related-articles-list">
 {lis}
 </ul>
-<p><a href="/articles/">&larr; All guides</a> (80 articles) &middot; <a href="/products/">Product guides</a> &middot; <a href="/brands/">Brand guides</a> &middot; <a href="/compare/">Comparisons</a></p>
+<p><a href="/articles/">&larr; All guides</a> (81 articles) &middot; <a href="/products/">Product guides</a> &middot; <a href="/brands/">Brand guides</a> &middot; <a href="/compare/">Comparisons</a></p>
 </div>
 </div>
 """

@@ -29,7 +29,7 @@
       out.add('farming');
     }
     if (
-      /powder-manufacturing|manufacturing-cost|processing-unit|oil-extraction-business|leaf-drying|quality-control-export|packaging-standards-export|certification-organic-export|start-small-scale-moringa-powder|small-scale-moringa-processing|processing/.test(
+      /powder-manufacturing|how-powder-and-oil-are-made|manufacturing-cost|processing-unit|oil-extraction-business|leaf-drying|quality-control-export|packaging-standards-export|certification-organic-export|start-small-scale-moringa-powder|small-scale-moringa-processing|processing/.test(
         slug
       )
     ) {

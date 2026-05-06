@@ -2,30 +2,35 @@
  * Long-form editorial + Amazon CTA blocks for generate-site.js (retail guides).
  * All blocks assume AFFILIATE_BOX already precedes them on the page.
  */
-const { AMZ, amazonBtn, amazonBtnSmall, indiamartBtn } = require('./site-shell');
+const { AMZ, amazonBtn, amazonBtnSmall, indiamartBtn, alibabaBtn } = require('./site-shell');
 
 /**
- * Reusable B2B "Get best price on IndiaMART" strip.
- * Used on retail-focused hub pages so bulk buyers always see the alternative
- * route (instead of bouncing to a competitor when Amazon is the wrong fit).
+ * B2B strip: Alibaba.com first (worldwide), IndiaMART second (India-depth RFQs).
  */
 function indiamartStrip({ title, body } = {}) {
-  const h = title || 'Get the best price on Moringa from <strong>Indian suppliers</strong> directly';
-  const p = body || 'If you are buying moringa <strong>in bulk or wholesale</strong>, IndiaMART connects you with thousands of verified Indian suppliers in minutes &mdash; compare quotes, MOQ and certifications in one place.';
+  const h =
+    title ||
+    '<strong>Alibaba.com</strong> &mdash; worldwide B2B; <strong>IndiaMART</strong> &mdash; India supplier depth';
+  const p =
+    body ||
+    'Sourcing drums, private label, or export-ready moringa? <strong>Alibaba.com</strong> lets buyers in any country message verified Indian factories and traders. <strong>IndiaMART</strong> stays ideal for India-centric MOQ comparisons and domestic-vendor RFQs.';
   return `<aside class="b2b-strip" role="complementary" aria-label="Bulk / wholesale buyer shortcut">
   <div>
     <span class="b2b-strip-eyebrow">Bulk / wholesale buyer?</span>
     <h3>${h}</h3>
     <p>${p}</p>
   </div>
-  <div class="b2b-strip-cta">${indiamartBtn('Get best price on IndiaMART')}</div>
-  <p class="b2b-strip-disclosure"><strong>Disclosure:</strong> Affiliate link &mdash; we may earn a small referral fee at no cost to you. <a href="/legal/affiliate-disclosure.html" style="color:#c8451f;font-weight:600;">Policy</a>.</p>
+  <div class="b2b-strip-cta b2b-strip-cta-stack">
+    ${alibabaBtn('Alibaba &mdash; India moringa suppliers')}
+    ${indiamartBtn('IndiaMART &mdash; India bulk quotes')}
+  </div>
+  <p class="b2b-strip-disclosure"><strong>Note:</strong> Alibaba + IndiaMART links are partner referrals &mdash; we may earn a fee. <a href="/legal/affiliate-disclosure.html" style="color:#c8451f;font-weight:600;">Policy</a>.</p>
 </aside>`;
 }
 
 function buyStrip() {
   return `<div class="buy-strip" role="region" aria-label="Amazon shopping shortcuts">
-<p class="buy-strip-note">Buttons below: Amazon Associates (affiliate). Confirm title and seals on Amazon before checkout. <a href="/legal/affiliate-disclosure.html">Policy</a></p>
+<p class="buy-strip-note">Retail: Amazon Associates where labelled. Bulk B2B: Alibaba + IndiaMART shortcuts in the strip below. <a href="/legal/affiliate-disclosure.html">Partner programme policy</a></p>
 <div class="amazon-compare-row">
 ${amazonBtn(AMZ.organicIndiaPowder, 'See Organic India leaf powder on Amazon')}
 ${amazonBtn(AMZ.organicIndiaCapsules, 'See Organic India capsules on Amazon')}

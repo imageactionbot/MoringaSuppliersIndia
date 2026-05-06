@@ -8,7 +8,7 @@
   function categoriesForSlug(slug) {
     var out = new Set();
     if (
-      /supplier|contact-indian|bulk-buyer|private-label|high-quality-moringa|find-verified|verified-moringa-buyers|sell-moringa|international-buyers/.test(
+      /supplier|contact-indian|bulk-buyer|private-label|high-quality-moringa|find-verified|verified-moringa-buyers|sell-moringa|international-buyers|moringa-bulk-sourcing-alibaba|indiamart-moringa-buyers-seo/.test(
         slug
       )
     ) {

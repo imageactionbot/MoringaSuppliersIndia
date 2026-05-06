@@ -28,7 +28,7 @@ const OG_DEFAULT_IMAGE = `${SITE}/Moringa_All_Products.webp`;
 /** SVG fallback used by some legacy share targets (kept for reference). */
 const OG_BRAND_SVG = `${SITE}/og-brand.svg`;
 /** Bust CDN/browser cache when CSS/JS change; bump after edits to main.css or main.js. */
-const ASSET_VER = '50';
+const ASSET_VER = '52';
 
 const AMZ = {
   organicIndia: 'https://amzn.to/3QKamqU',
@@ -55,6 +55,22 @@ const AMZ = {
  */
 const INDIAMART = {
   moringa: 'https://IndiaMART.in/v/yNRgBEqn',
+};
+
+/**
+ * Alibaba.com CPS landing links (topic-specific). India produces most commercial
+ * moringa; these pages help readers reach suppliers and equipment worldwide with
+ * India-heavy inventory — editorial pages explain verification separately.
+ */
+const ALIBABA = {
+  moringa: 'https://offer.alibaba.com/cps/smkhuk0t?bm=cps&src=saf',
+  powderBulk: 'https://offer.alibaba.com/cps/qpl8cfrb?bm=cps&src=saf',
+  powderMachine: 'https://offer.alibaba.com/cps/nphlkga1?bm=cps&src=saf',
+  tabletMachine: 'https://offer.alibaba.com/cps/ekts56j8?bm=cps&src=saf',
+  oilMachine: 'https://offer.alibaba.com/cps/t14t7foc?bm=cps&src=saf',
+  seedsWholesale: 'https://offer.alibaba.com/cps/7jjso32t?bm=cps&src=saf',
+  /** @deprecated alias — same as moringa */
+  moringaIndiaSuppliers: 'https://offer.alibaba.com/cps/smkhuk0t?bm=cps&src=saf',
 };
 
 /** Fixed row: guide FAB + scroll-to-top. */
@@ -278,7 +294,7 @@ function footer() {
     <div class="footer-cols">
       <div class="footer-col">
         <div class="footer-brand-logo"><img src="/logo.svg" width="28" height="28" alt="Moringa Suppliers India" decoding="async" /></div>
-        <p class="footer-tagline">American and USA shoppers first &mdash; Amazon.com retail (USD) plus IndiaMART bulk RFQs you can run from the USA. India export &amp; supplier verification second. Global readers welcome third. Independent editorial.</p>
+        <p class="footer-tagline">Amazon.com retail (USD) first for personal buyers; <strong>Alibaba.com</strong> + <strong>IndiaMART</strong> for bulk from any country &mdash; India remains the premium-value moringa hub (quality per dollar). Independent editorial.</p>
         <p class="footer-owner-line">Avinash Chauhan &middot; Publisher &middot; B.Sc. CS (University of Mumbai) &middot; <a href="https://imageactionbot.com" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">ImageActionBot</a></p>
         <div class="footer-contact-mini">
           &#9993; <a href="mailto:moringasuppliersindia@gmail.com">moringasuppliersindia@gmail.com</a>
@@ -318,7 +334,9 @@ function footer() {
         <strong>Affiliate disclosure:</strong>
         <em>Amazon Associate</em> &mdash; we earn from qualifying Amazon purchases.
         <span class="footer-affiliate-sep" aria-hidden="true">&middot;</span>
-        <em>IndiaMART</em> &mdash; we may earn a referral fee on labelled bulk-quote links.
+        <em>Alibaba.com</em> &mdash; we may earn a commission via labelled CPS links.
+        <span class="footer-affiliate-sep" aria-hidden="true">&middot;</span>
+        <em>IndiaMART</em> &mdash; we may earn a referral fee on labelled bulk links.
         <a href="/legal/affiliate-disclosure.html">Full policy</a>
       </div>
       <div style="display:flex;flex-wrap:wrap;justify-content:space-between;width:100%;padding-top:0.8rem;border-top:1px solid rgba(255,255,255,0.06);">
@@ -353,6 +371,19 @@ function indiamartBtn(label, href) {
 function indiamartBtnSmall(label, href) {
   const url = href || INDIAMART.moringa;
   return `<a href="${url}" class="indiamart-btn-small" target="_blank" rel="sponsored nofollow noopener">${label}</a>`;
+}
+
+/**
+ * Alibaba B2B CTA — visually distinct (brand orange).
+ */
+function alibabaBtn(label, href) {
+  const url = href || ALIBABA.moringa;
+  return `<a href="${url}" class="alibaba-btn" target="_blank" rel="sponsored nofollow noopener" aria-label="${label} on Alibaba (affiliate)">&#127760; ${label}</a>`;
+}
+
+function alibabaBtnSmall(label, href) {
+  const url = href || ALIBABA.moringa;
+  return `<a href="${url}" class="alibaba-btn-small" target="_blank" rel="sponsored nofollow noopener">${label}</a>`;
 }
 
 /**
@@ -642,6 +673,7 @@ module.exports = {
   ASSET_VER,
   AMZ,
   INDIAMART,
+  ALIBABA,
   AFFILIATE_BOX,
   GA,
   FONTS,
@@ -655,6 +687,8 @@ module.exports = {
   amazonBtnSmall,
   indiamartBtn,
   indiamartBtnSmall,
+  alibabaBtn,
+  alibabaBtnSmall,
   layout,
   write,
   sectionFromCanonical,

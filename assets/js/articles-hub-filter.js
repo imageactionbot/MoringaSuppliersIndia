@@ -8,14 +8,14 @@
   function categoriesForSlug(slug) {
     var out = new Set();
     if (
-      /supplier|contact-indian|bulk-buyer|private-label|high-quality-moringa|find-verified|verified-moringa-buyers|sell-moringa|international-buyers|moringa-bulk-sourcing-alibaba|indiamart-moringa-buyers-seo/.test(
+      /supplier|contact-indian|bulk-buyer|private-label|high-quality-moringa|find-verified|verified-moringa-buyers|sell-moringa|international-buyers|moringa-bulk-sourcing-alibaba|indiamart-moringa-buyers-seo|alibaba-vs-indiamart-vs-direct-factory|sample-negotiation-moq/.test(
         slug
       )
     ) {
       out.add('buyers');
     }
     if (
-      /export|import-moringa|wholesale|shipping|logistics|countries-moringa|registration-india|license-india|supply-chain|scale-local-to-global|demand-usa|market-size|global-moringa|buyers-worldwide|eu-market|packaging-international|export-quality|profit-margin|profitable-business|earn-from|pricing-strategy|best-countries|international-shipping|sell-moringa-products|export-business|export-requirements|export-license|global-demand|demand-increasing|demand-trends|freight/.test(
+      /export|import-moringa|wholesale|shipping|logistics|countries-moringa|registration-india|license-india|supply-chain|scale-local-to-global|demand-usa|market-size|global-moringa|buyers-worldwide|eu-market|packaging-international|export-quality|profit-margin|profitable-business|earn-from|pricing-strategy|best-countries|international-shipping|sell-moringa-products|export-business|export-requirements|export-license|global-demand|demand-increasing|demand-trends|freight|import-compliance-checklist/.test(
         slug
       )
     ) {
@@ -29,7 +29,7 @@
       out.add('farming');
     }
     if (
-      /powder-manufacturing|how-powder-and-oil-are-made|manufacturing-cost|processing-unit|oil-extraction-business|leaf-drying|quality-control-export|packaging-standards-export|certification-organic-export|start-small-scale-moringa-powder|small-scale-moringa-processing|processing/.test(
+      /powder-manufacturing|how-powder-and-oil-are-made|manufacturing-cost|processing-unit|oil-extraction-business|leaf-drying|quality-control-export|packaging-standards-export|certification-organic-export|start-small-scale-moringa-powder|small-scale-moringa-processing|processing|machine-roi-india-small-scale/.test(
         slug
       )
     ) {
